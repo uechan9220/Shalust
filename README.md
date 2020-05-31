@@ -1,3 +1,11 @@
+# illustgram
+
+## 概要
+イラスト共有プラットフォーム
+UIはインスタグラムのように扱い、タグはpixivのようにする予定。
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
