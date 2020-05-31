@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { ThemeProvider, createGlobalStyle } from 'styled-components'
+import * as BaseTheme from './themes/BaseStyle'
+import reset from 'styled-reset'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom'
+
+const GlobalStyle = createGlobalStyle`
+  ${reset}
+  /* other styles */
+`
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ThemeProvider theme={BaseTheme}>
+      <GlobalStyle />
+      <Router>
+        <Switch>
+          <Route path="/">
+            <p>hello</p>
+          </Route>
+        </Switch>
+      </Router>
+    </ThemeProvider>
+  )
 }
 
-export default App;
+export default App
