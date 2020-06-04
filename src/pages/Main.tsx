@@ -4,7 +4,7 @@ import styled from 'styled-components'
 /**
  * components
  */
-import MainTitle from '../components/MainTitle'
+import MainTitle from '../components/Main/Title'
 
 const Container = styled.div`
   
