@@ -8,6 +8,11 @@ import {
   Route,
 } from 'react-router-dom'
 
+/**
+ * pages
+ */
+import Main from './pages/Main'
+
 const GlobalStyle = createGlobalStyle`
   ${reset}
   /* other styles */
@@ -20,7 +25,7 @@ function App() {
       <Router>
         <Switch>
           <Route path="/">
-            <p>hello</p>
+            <Main />
           </Route>
         </Switch>
       </Router>
