@@ -12,6 +12,10 @@ import {
  * pages
  */
 import Main from './pages/Main'
+import Tag from './pages/Tag'
+import Tags from './pages/Tags'
+import MyPage from './pages/MyPage'
+import Home from './pages/Home'
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -24,8 +28,20 @@ function App() {
       <GlobalStyle />
       <Router>
         <Switch>
-          <Route path="/">
+          <Route exact path="/">
             <Main />
+          </Route>
+          <Route exact path="/home">
+            <Home />
+          </Route>
+          <Route path="/mypage/:id">
+            <MyPage />
+          </Route>
+          <Route exact path="/tags">
+            <Tags />
+          </Route>
+          <Route path="/tags/:tag">
+            <Tag />
           </Route>
         </Switch>
       </Router>
