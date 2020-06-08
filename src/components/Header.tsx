@@ -11,6 +11,7 @@ const Container = styled.div`
   justify-content: space-between;
   box-sizing: border-box;
   align-items: center;
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.1), 0px 4px 8px rgba(0,0,0,0.1);
 `
 
 const Title = styled.p`
