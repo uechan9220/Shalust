@@ -5,6 +5,8 @@ import reset from 'styled-reset'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import styled from 'styled-components'
 
+import { AuthProvider } from './Auth'
+
 /**
  * Header
  */
@@ -41,24 +43,28 @@ function App() {
             <Route exact path="/">
               <Main />
             </Route>
-            <Route exact path="/home">
-              <Home />
-            </Route>
-            <Route path="/mypage/:id">
-              <MyPage />
-            </Route>
-            <Route exact path="/tags">
-              <Tags />
-            </Route>
-            <Route path="/tags/:tag">
-              <Tag />
-            </Route>
             <Route path="/login">
               <Login />
             </Route>
             <Route path="/signin">
               <Signin />
             </Route>
+            <AuthProvider>
+              <Switch>
+                <Route exact path="/home">
+                  <Home />
+                </Route>
+                <Route path="/mypage/:id">
+                  <MyPage />
+                </Route>
+                <Route exact path="/tags">
+                  <Tags />
+                </Route>
+                <Route path="/tags/:tag">
+                  <Tag />
+                </Route>
+              </Switch>
+            </AuthProvider>
           </Switch>
         </Container>
       </Router>
