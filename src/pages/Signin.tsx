@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import firebase from '../Firebase'
-import { AuthContext } from '../Auth'
+import { AuthContext } from '../AuthProvider'
 
 const Container = styled.div``
 
@@ -9,10 +9,8 @@ const Signin: React.FC = (props: any) => {
   const { currentUser } = useContext(AuthContext)
 
   useEffect(() => {
+    // currentUser && props.history.push('/')
     console.log(currentUser)
-    firebase.auth().onAuthStateChanged((user: any) => {
-      currentUser && props.history.push('/')
-    })
   }, [currentUser])
 
   const login = () => {
