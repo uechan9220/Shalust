@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import firebase from '../Firebase'
+import { withRouter } from 'react-router'
 import { AuthContext } from '../AuthProvider'
 
 const Container = styled.div``
@@ -8,15 +9,17 @@ const Container = styled.div``
 const Signin: React.FC = (props: any) => {
   const { currentUser } = useContext(AuthContext)
 
-  useEffect(() => {
-    // currentUser && props.history.push('/')
-    console.log(currentUser)
-  }, [currentUser])
-
   const login = () => {
     const provider = new firebase.auth.GoogleAuthProvider()
     firebase.auth().signInWithRedirect(provider)
   }
+
+  useEffect(() => {
+    if (currentUser) {
+      props.history.push('/')
+    }
+    console.log(currentUser)
+  }, [currentUser])
 
   return (
     <Container>
@@ -26,4 +29,4 @@ const Signin: React.FC = (props: any) => {
   )
 }
 
-export default Signin
+export default withRouter(Signin)
