@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../AuthProvider'
 
 const Container = styled.div`
   position: fixed;
@@ -11,6 +12,8 @@ const Container = styled.div`
   justify-content: space-between;
   box-sizing: border-box;
   align-items: center;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1), 0px 4px 8px rgba(0, 0, 0, 0.1);
+  height: 4.2rem;
 `
 
 const Title = styled.p`
@@ -53,19 +56,31 @@ const Signin = styled.p`
 `
 
 const Header: React.FC = () => {
+  const { currentUser } = useContext(AuthContext)
   return (
     <Container>
       <Link to="/">
         <Title>Illustgram</Title>
       </Link>
-      <Content>
-        <Link to="/signin">
-          <Signin>Sign in</Signin>
-        </Link>
-        <Link to="/login">
-          <Login>Login</Login>
-        </Link>
-      </Content>
+      {currentUser ? (
+        <Content>
+          <Link to="/tags">
+            <Signin>Tags</Signin>
+          </Link>
+          <Link to="/home">
+            <Signin>Home</Signin>
+          </Link>
+        </Content>
+      ) : (
+        <Content>
+          <Link to="/signin">
+            <Signin>Sign in</Signin>
+          </Link>
+          <Link to="/login">
+            <Login>Login</Login>
+          </Link>
+        </Content>
+      )}
     </Container>
   )
 }
