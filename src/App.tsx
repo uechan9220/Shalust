@@ -5,7 +5,8 @@ import reset from 'styled-reset'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import styled from 'styled-components'
 
-import { AuthProvider } from './Auth'
+import { AuthProvider } from './AuthProvider'
+import { Auth } from './Auth'
 
 /**
  * Header
@@ -37,36 +38,38 @@ function App() {
     <ThemeProvider theme={BaseTheme}>
       <GlobalStyle />
       <Router>
-        <Header />
-        <Container>
-          <Switch>
-            <Route exact path="/">
-              <Main />
-            </Route>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <Route path="/signin">
-              <Signin />
-            </Route>
-            <AuthProvider>
-              <Switch>
-                <Route exact path="/home">
-                  <Home />
-                </Route>
-                <Route path="/mypage/:id">
-                  <MyPage />
-                </Route>
-                <Route exact path="/tags">
-                  <Tags />
-                </Route>
-                <Route path="/tags/:tag">
-                  <Tag />
-                </Route>
-              </Switch>
-            </AuthProvider>
-          </Switch>
-        </Container>
+        <AuthProvider>
+          <Header />
+          <Container>
+            <Switch>
+              <Route exact path="/">
+                <Main />
+              </Route>
+              <Route path="/login">
+                <Login />
+              </Route>
+              <Route path="/signin">
+                <Signin />
+              </Route>
+              <Auth>
+                <Switch>
+                  <Route exact path="/home">
+                    <Home />
+                  </Route>
+                  <Route path="/mypage/:id">
+                    <MyPage />
+                  </Route>
+                  <Route exact path="/tags">
+                    <Tags />
+                  </Route>
+                  <Route path="/tags/:tag">
+                    <Tag />
+                  </Route>
+                </Switch>
+              </Auth>
+            </Switch>
+          </Container>
+        </AuthProvider>
       </Router>
     </ThemeProvider>
   )
