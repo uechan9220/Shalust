@@ -1,9 +1,20 @@
-import React from 'react'
+import React, { useEffect, useContext } from 'react'
 import styled from 'styled-components'
+import { withRouter } from 'react-router'
+import { AuthContext } from '../AuthProvider'
 
 const Container = styled.div``
 
-const Login: React.FC = () => {
+const Login: React.FC = (props: any) => {
+  const { currentUser } = useContext(AuthContext)
+
+  useEffect(() => {
+    if (currentUser) {
+      props.history.push('/')
+    }
+    console.log(currentUser)
+  }, [currentUser])
+
   return (
     <Container>
       <p>Login</p>
@@ -11,4 +22,4 @@ const Login: React.FC = () => {
   )
 }
 
-export default Login
+export default withRouter(Login)
