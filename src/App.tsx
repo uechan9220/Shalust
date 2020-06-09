@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { AuthProvider } from './AuthProvider'
-import { Auth } from './Auth'
+import Auth from './Auth'
 
 /**
  * Header
