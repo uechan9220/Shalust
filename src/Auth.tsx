@@ -1,36 +1,22 @@
-import React, { useState, useEffect, useRef, createContext } from 'react'
-import { Redirect } from 'react-router-dom'
-import firebase from './Firebase'
-import { User } from 'firebase'
+import React, { useEffect, useContext } from 'react'
 
-// import LoadingOverlay from 'react-loading-overlay'
-
-// Contextの型を用意
-interface IAuthContext {
-  currentUser: User | null | undefined
-}
+import { AuthContext } from './AuthProvider'
 
 // Contextを宣言。Contextの中身を {currentUser: undefined} と定義
-const AuthContext = createContext<IAuthContext>({
-  currentUser: undefined,
-})
-
-const AuthProvider = (props: any) => {
-  const [currentUser, setCurrentUser] = useState<User | null | undefined>(
-    undefined
-  )
+const Auth = (props: any) => {
+  const { currentUser } = useContext(AuthContext)
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
-      setCurrentUser(user)
-    })
-  }, [])
+    if (currentUser === null) alert('何もないよ')
+    //ここにsignin pageへのリダイレクト作業を入れる
+    console.log(currentUser)
+  }, [currentUser])
 
   return (
-    <AuthContext.Provider value={{ currentUser: currentUser }}>
+    <>
       {props.children}
-    </AuthContext.Provider>
+    </>
   )
 }
 
-export { AuthContext, AuthProvider }
+export { Auth }
