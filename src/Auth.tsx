@@ -1,22 +1,23 @@
 import React, { useEffect, useContext } from 'react'
 
 import { AuthContext } from './AuthProvider'
+import { withRouter } from 'react-router'
 
 // Contextを宣言。Contextの中身を {currentUser: undefined} と定義
 const Auth = (props: any) => {
   const { currentUser } = useContext(AuthContext)
 
   useEffect(() => {
-    if (currentUser === null) alert('何もないよ')
+    if (currentUser === null) {
+      alert('ログインしてください(>_<)')
+      props.history.push('./signin')
+      console.log(props.history)
+    }
     //ここにsignin pageへのリダイレクト作業を入れる
     console.log(currentUser)
   }, [currentUser])
 
-  return (
-    <>
-      {props.children}
-    </>
-  )
+  return <div>{props.children}</div>
 }
 
-export { Auth }
+export default withRouter(Auth)
