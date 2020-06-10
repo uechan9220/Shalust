@@ -8,6 +8,11 @@ import styled from 'styled-components'
 import { AuthProvider } from './AuthProvider'
 import Auth from './Auth'
 
+import ApolloClient from 'apollo-client'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+import { HttpLink } from 'apollo-link-http'
+import { ApolloProvider } from '@apollo/react-hooks'
+
 /**
  * Header
  */
@@ -33,45 +38,60 @@ const Container = styled.div`
   padding-top: 4.2rem;
 `
 
-function App() {
+const createApolloClient = (authToken: any) => {
+  return new ApolloClient({
+    link: new HttpLink({
+      uri: 'https://hasura.io/learn/graphql',
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+    }),
+    cache: new InMemoryCache(),
+  })
+}
+
+function App({ idToken }: any) {
+  const client = createApolloClient(idToken)
   return (
-    <ThemeProvider theme={BaseTheme}>
-      <GlobalStyle />
-      <Router>
-        <AuthProvider>
-          <Header />
-          <Container>
-            <Switch>
-              <Route exact path="/">
-                <Main />
-              </Route>
-              <Route path="/login">
-                <Login />
-              </Route>
-              <Route path="/signin">
-                <Signin />
-              </Route>
-              <Auth>
-                <Switch>
-                  <Route exact path="/home">
-                    <Home />
-                  </Route>
-                  <Route path="/mypage/:id">
-                    <MyPage />
-                  </Route>
-                  <Route exact path="/tags">
-                    <Tags />
-                  </Route>
-                  <Route path="/tags/:tag">
-                    <Tag />
-                  </Route>
-                </Switch>
-              </Auth>
-            </Switch>
-          </Container>
-        </AuthProvider>
-      </Router>
-    </ThemeProvider>
+    <ApolloProvider client={client}>
+      <ThemeProvider theme={BaseTheme}>
+        <GlobalStyle />
+        <Router>
+          <AuthProvider>
+            <Header />
+            <Container>
+              <Switch>
+                <Route exact path="/">
+                  <Main />
+                </Route>
+                <Route path="/login">
+                  <Login />
+                </Route>
+                <Route path="/signin">
+                  <Signin />
+                </Route>
+                <Auth>
+                  <Switch>
+                    <Route exact path="/home">
+                      <Home />
+                    </Route>
+                    <Route path="/mypage/:id">
+                      <MyPage />
+                    </Route>
+                    <Route exact path="/tags">
+                      <Tags />
+                    </Route>
+                    <Route path="/tags/:tag">
+                      <Tag />
+                    </Route>
+                  </Switch>
+                </Auth>
+              </Switch>
+            </Container>
+          </AuthProvider>
+        </Router>
+      </ThemeProvider>
+    </ApolloProvider>
   )
 }
 
