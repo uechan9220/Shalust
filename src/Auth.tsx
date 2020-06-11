@@ -8,7 +8,8 @@ const Auth = (props: any) => {
   const { currentUser } = useContext(AuthContext)
 
   useEffect(() => {
-    if (currentUser === null) {
+    console.log(currentUser.user)
+    if (currentUser.user === undefined) {
       alert('ログインしてください(>_<)')
       props.history.push('./signin')
       console.log(props.history)
