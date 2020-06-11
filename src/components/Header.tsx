@@ -62,7 +62,7 @@ const Header: React.FC = () => {
       <Link to="/">
         <Title>Illustgram</Title>
       </Link>
-      {currentUser ? (
+      {currentUser.user ? (
         <Content>
           <Link to="/tags">
             <Signin>Tags</Signin>
