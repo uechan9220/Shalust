@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, createContext } from 'react'
 import { Redirect } from 'react-router-dom'
-import firebase  from './Firebase'
+import firebase from './Firebase'
 import { User } from 'firebase'
 
 // import LoadingOverlay from 'react-loading-overlay'
@@ -34,9 +34,6 @@ const AuthProvider = (props: any) => {
         const idTokenResult = await user.getIdTokenResult()
         const hasuraClaim = idTokenResult.claims['https://hasura.io/jwt/claims']
         const db = firebase.database()
-        console.log(user)
-        console.log(token)
-        console.log(hasuraClaim)
 
         if (hasuraClaim) {
           setCurrentUser({ status: 'in', user, token })
@@ -49,6 +46,7 @@ const AuthProvider = (props: any) => {
             const token = await user.getIdToken(true)
             setCurrentUser({ status: 'in', user, token })
           })
+          console.log(currentUser)
         }
       } else {
         setCurrentUser({ status: 'out' })
