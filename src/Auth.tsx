@@ -9,10 +9,11 @@ const Auth = (props: any) => {
 
   useEffect(() => {
     console.log(currentUser.user)
-    if (currentUser.user === undefined) {
-      alert('ログインしてください(>_<)')
-      props.history.push('./signin')
+    console.log(currentUser.status)
+    if (currentUser.user === undefined && currentUser.status !== 'loading') {
+      props.history.push('/signin')
       console.log(props.history)
+      alert('ログインしてください(>_<)')
     }
     //ここにsignin pageへのリダイレクト作業を入れる
     console.log(currentUser)
