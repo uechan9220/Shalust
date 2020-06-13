@@ -15,7 +15,7 @@ const Signin: React.FC = (props: any) => {
   }
 
   useEffect(() => {
-    if (currentUser) {
+    if (currentUser.user) {
       props.history.push('/')
     }
     console.log(currentUser)

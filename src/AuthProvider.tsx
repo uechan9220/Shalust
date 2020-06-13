@@ -7,23 +7,50 @@ import { User } from 'firebase'
 
 // Contextの型を用意
 interface IAuthContext {
-  currentUser: User | null | undefined
+  currentUser: AuthProps
 }
 
 // Contextを宣言。Contextの中身を {currentUser: undefined} と定義
 const AuthContext = createContext<IAuthContext>({
-  currentUser: undefined,
+  currentUser: { status: 'loading' },
 })
 
+interface AuthProps {
+  status: string
+  user?: User
+  token?: string
+}
+
 const AuthProvider = (props: any) => {
-  const [currentUser, setCurrentUser] = useState<User | null | undefined>(
-    undefined
-  )
+  const [currentUser, setCurrentUser] = useState<AuthProps>({
+    status: 'loading',
+  })
 
   useEffect(() => {
     // if (currentUser === undefined) history.push('/signin')
-    firebase.auth().onAuthStateChanged((user) => {
-      setCurrentUser(user)
+    firebase.auth().onAuthStateChanged(async (user: any) => {
+      if (user) {
+        const token = await user.getIdToken()
+        const idTokenResult = await user.getIdTokenResult()
+        const hasuraClaim = idTokenResult.claims['https://hasura.io/jwt/claims']
+        const db = firebase.database()
+
+        if (hasuraClaim) {
+          setCurrentUser({ status: 'in', user, token })
+        } else {
+          // Check if refresh is required.
+          const metadataRef = db.ref('metadata/' + user.uid + '/refreshTime')
+
+          metadataRef.on('value', async () => {
+            // Force refresh to pick up the latest custom claims changes.
+            const token = await user.getIdToken(true)
+            setCurrentUser({ status: 'in', user, token })
+          })
+          console.log(currentUser)
+        }
+      } else {
+        setCurrentUser({ status: 'out' })
+      }
     })
   }, [])
 
