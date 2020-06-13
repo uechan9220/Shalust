@@ -9,7 +9,7 @@ const Login: React.FC = (props: any) => {
   const { currentUser } = useContext(AuthContext)
 
   useEffect(() => {
-    if (currentUser) {
+    if (currentUser.user) {
       props.history.push('/')
     }
     console.log(currentUser)

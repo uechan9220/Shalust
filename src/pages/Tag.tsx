@@ -9,7 +9,6 @@ const Tag: React.FC = (props: any) => {
   
   return (
     <Container>
-      <p>Tag</p>
       <p>{tag}</p>
     </Container>
   )
