@@ -1,20 +1,17 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 import * as BaseTheme from './themes/BaseStyle'
 import reset from 'styled-reset'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import styled from 'styled-components'
 
-import { AuthProvider, AuthContext } from './AuthProvider'
+import { AuthProvider } from './AuthProvider'
 import Auth from './Auth'
 
+import ApolloClient from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { HttpLink } from 'apollo-link-http'
 import { ApolloProvider } from '@apollo/react-hooks'
-import { WebSocketLink } from 'apollo-link-ws'
-import ApolloClient from 'apollo-client'
-import { split } from 'apollo-link'
-import { getMainDefinition } from 'apollo-utilities'
 
 /**
  * Header
@@ -41,46 +38,20 @@ const Container = styled.div`
   padding-top: 4.2rem;
 `
 
-function App() {
-  const { currentUser } = useContext(AuthContext)
-
-  const isIn = currentUser.status === 'in'
-
-  const headers = isIn ? { Authorization: `Bearer ${currentUser.token}` } : {}
-
-  const httpLink = new HttpLink({
-    uri: `http://${process.env.REACT_APP_HASURA_ENDPOINT}`,
-    headers,
-  })
-
-  const wsLink = new WebSocketLink({
-    uri: `wss://${process.env.REACT_APP_HASURA_ENDPOINT}`,
-    options: {
-      reconnect: true,
-      connectionParams: {
-        headers,
+const createApolloClient = (authToken: any) => {
+  return new ApolloClient({
+    link: new HttpLink({
+      uri: 'https://hasura.io/learn/graphql',
+      headers: {
+        Authorization: `Bearer ${authToken}`,
       },
-    },
-  })
-
-  const link = split(
-    // split based on operation type
-    ({ query }) => {
-      const definition = getMainDefinition(query)
-      return (
-        definition.kind === 'OperationDefinition' &&
-        definition.operation === 'subscription'
-      )
-    },
-    wsLink,
-    httpLink
-  )
-
-  const client = new ApolloClient({
-    link,
+    }),
     cache: new InMemoryCache(),
   })
+}
 
+function App({ idToken }: any) {
+  const client = createApolloClient(idToken)
   return (
     <ApolloProvider client={client}>
       <ThemeProvider theme={BaseTheme}>
