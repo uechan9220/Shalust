@@ -5,7 +5,23 @@ import { allTagQuery } from '../data/queries'
 import { TagQueryProps } from '../generated/TagProps'
 import { Link } from 'react-router-dom'
 
-const Container = styled.div``
+const Container = styled.div`
+  display: flex;
+`
+
+const Tag = styled.p`
+  display: flex;
+  align-items: center;
+  color: #37beb0;
+  height: 3.2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.6em 1em;
+  border: 1px solid #37beb0;
+  border-radius: 2px;
+  background-color: #fff;
+  transition: color, background-color 0.1s ease-out;
+`
 
 const Tags: React.FC = () => {
   return (
@@ -16,13 +32,15 @@ const Tags: React.FC = () => {
             {!loading && data
               ? data!.Tags.map((items: any, index: number) => {
                   return (
-                    <Link to={`/tags/${items.name}`}>
-                      <p key={index}>{items.name}</p>
+                    <Link
+                      style={{ textDecoration: 'none' }}
+                      to={`/tags/${items.name}`}
+                    >
+                      <Tag key={index}>{items.name}</Tag>
                     </Link>
                   )
                 })
               : null}
-            <p>hoge</p>
           </Container>
         )
       }}
