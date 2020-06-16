@@ -2,11 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 import { Query, QueryResult } from 'react-apollo'
 import { allTagQuery } from '../data/queries'
-import { TagQueryProps } from '../generated/TagProps'
+import { TagQueryProps } from '../generated/Props'
 import { Link } from 'react-router-dom'
 
 const Container = styled.div`
   display: flex;
+  padding: 0 1rem;
 `
 
 const Tag = styled.p`
@@ -33,7 +34,7 @@ const Tags: React.FC = () => {
               ? data!.Tags.map((items: any, index: number) => {
                   return (
                     <Link
-                      style={{ textDecoration: 'none' }}
+                      style={{ textDecoration: 'none', marginRight: '1rem' }}
                       to={`/tags/${items.name}`}
                     >
                       <Tag key={index}>{items.name}</Tag>
