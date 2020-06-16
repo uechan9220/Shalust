@@ -48,7 +48,6 @@ function App() {
 
   const headers = isIn ? { Authorization: `Bearer ${currentUser.token}` } : {}
 
-
   const httpLink = new HttpLink({
     uri: `http://${process.env.REACT_APP_HASURA_ENDPOINT}`,
     headers,
