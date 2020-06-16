@@ -7,3 +7,14 @@ export const allTagQuery = gql`
     }
   }
 `
+
+export const allPostQuery = gql`
+  query posts($tagName: String) {
+    Post(where: { post_tags: { Tag: { name: { _eq: $tagName } } } }) {
+      create_at
+      id
+      caption
+      image
+    }
+  }
+`
