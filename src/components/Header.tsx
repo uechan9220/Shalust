@@ -1,7 +1,9 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../AuthProvider'
+import { useQuery } from 'react-apollo'
+import { myUserQuery } from '../data/queries'
 
 const Container = styled.div`
   position: fixed;
@@ -57,8 +59,16 @@ const Signin = styled.p`
 
 const Header: React.FC = () => {
   const { currentUser } = useContext(AuthContext)
+
+  // useStateのところに currentUser.user.email を入れたい
+  const [userEmail, setUserEmail] = useState('example@example.com')
+  const { loading, error, data } = useQuery(myUserQuery, {
+    variables: { email: userEmail },
+  })
+
   return (
     <Container>
+      {/* {console.log(data)} */}
       <Link to="/">
         <Title>Illustgram</Title>
       </Link>
@@ -67,9 +77,13 @@ const Header: React.FC = () => {
           <Link to="/tags">
             <Signin>Tags</Signin>
           </Link>
-          <Link to='/mypage/hoge'>
-            <Signin>MyPage</Signin>
-          </Link>
+          {data.User.map((items: any, index: number) => {
+            return (
+              <Link to={`/mypage/${items.uniqueID}`}>
+                <Signin>MyPage</Signin>
+              </Link>
+            )
+          })}
         </Content>
       ) : (
         <Content>
