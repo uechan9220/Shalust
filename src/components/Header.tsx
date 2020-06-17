@@ -67,8 +67,8 @@ const Header: React.FC = () => {
           <Link to="/tags">
             <Signin>Tags</Signin>
           </Link>
-          <Link to="/home">
-            <Signin>Home</Signin>
+          <Link to='/mypage/hoge'>
+            <Signin>MyPage</Signin>
           </Link>
         </Content>
       ) : (
