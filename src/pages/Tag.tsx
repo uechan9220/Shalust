@@ -9,7 +9,9 @@ import { Query, QueryResult } from 'react-apollo'
 import { allPostQuery } from '../data/queries'
 import { PostQueryProps } from '../generated/Props'
 
-const Container = styled.div``
+const Container = styled.div`
+  padding: 0 1rem;
+`
 
 const Title = styled.p`
   text-align: center;
@@ -18,28 +20,41 @@ const Title = styled.p`
   font-weight: bold;
 `
 
+const ContentContainer = styled.div`
+  display: flex;
+`
+
+const Content = styled.div`
+  width: 15rem;
+  height: 15rem;
+`
+
+const ContentImage = styled.img`
+  width: 100%;
+`
+
 const Tag: React.FC = (props: any) => {
   let { tag } = useParams()
 
   return (
-    <Query query={allPostQuery} variables={{ tagName: '期待の新人' }}>
+    <Query query={allPostQuery} variables={{ tagName: tag }}>
       {({ loading, data, error }: QueryResult<PostQueryProps>) => {
         return (
           <Container>
             <Title>{tag}</Title>
-            {console.log(data)}
-            {!loading && data
-              ? data.Post.map((items: any, index: number) => {
-                  return (
-                    <div>
-                      <p>{items.id}</p>
-                      <p>{items.create_at}</p>
-                      <p>{items.caption}</p>
-                      <p>{items.image}</p>
-                    </div>
-                  )
-                })
-              : null}
+            <ContentContainer>
+              {!loading && data
+                ? data.Post.map((items: any, index: number) => {
+                    return (
+                      <Content>
+                        <ContentImage src={items.image} />
+                        <p>{items.create_at}</p>
+                        <p>{items.caption}</p>
+                      </Content>
+                    )
+                  })
+                : null}
+            </ContentContainer>
           </Container>
         )
       }}
