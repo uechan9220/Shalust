@@ -6,9 +6,22 @@ export interface PostQueryProps {
   Post: [
     {
       create_at: any
-      id: number
       caption: string
       image: string
+      Likes_aggregate: [
+        {
+          aggregate: [
+            {
+              count: number
+            }
+          ]
+        }
+      ]
+      Like: [
+        {
+          id: number
+        }
+      ]
     }
   ]
 }
