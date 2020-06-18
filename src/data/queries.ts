@@ -14,6 +14,14 @@ export const allPostQuery = gql`
       create_at
       caption
       image
+      Likes_aggregate {
+        aggregate {
+          count
+        }
+      }
+      Likes {
+        id
+      }
     }
   }
 `
