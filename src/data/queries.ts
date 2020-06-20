@@ -21,6 +21,23 @@ export const allPostQuery = gql`
       }
       Likes {
         id
+        post_id
+        user_id
+      }
+    }
+  }
+`
+
+export const fetchLikes = gql`
+  query FetchLikes($id: number, $userId: string) {
+    Post(where: { id: { _eq: $id } }) {
+      Likes_aggregate {
+        aggregate {
+          count
+        }
+      }
+      Likes(where: { user_id: { _eq: $userId } }) {
+        id
       }
     }
   }
