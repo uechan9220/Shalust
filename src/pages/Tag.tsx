@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { useParams } from 'react-router-dom'
 import { Query, QueryResult, useMutation } from 'react-apollo'
@@ -7,7 +7,7 @@ import { AuthContext } from '../AuthProvider'
 /**
  * query, Props
  */
-import { allPostQuery } from '../data/queries'
+import { allPostQuery, fetchLikes } from '../data/queries'
 import { PostQueryProps } from '../generated/Props'
 import { likePost } from '../data/mutation'
 
@@ -60,10 +60,32 @@ const ContentImage = styled.img`
 const Tag: React.FC = (props: any) => {
   let { tag } = useParams()
   const { currentUser } = useContext(AuthContext)
+  const [liked, setLiked] = useState(false)
+  const [countLikes, setCountLikes] = useState(-1)
 
-  const [like_post] = useMutation(likePost, {
-    // variables: {postId: }
-  })
+  const postLike = (post_id: number, user_id: number) => {
+    useMutation(likePost, {
+      variables: { postId: post_id, userId: user_id },
+      refetchQueries: [
+        {
+          query: fetchLikes,
+          variables: { id: post_id, userId: user_id },
+        },
+      ],
+    })
+  }
+
+  // const [likePost] = useMutation(LIKE_POST, {
+  //   variables: { postId: props.postId, userId: userId.current },
+  //   refetchQueries: [
+  //     {
+  //       query: FETCH_LIKES,
+  //       variables: { id: props.postId, userId: userId.current }
+  //     }
+  //   ]
+  // });
+
+  const deleteLike = (postId: number, userId: number) => {}
 
   return (
     <Query query={allPostQuery} variables={{ tagName: tag }}>
@@ -80,6 +102,29 @@ const Tag: React.FC = (props: any) => {
                         <p>{items.create_at}</p>
                         <p>{items.caption}</p>
                         <p>Like: {items.Likes_aggregate.aggregate.count}</p>
+                        {!liked && (
+                          <button
+                            className="post-like-button-white button-nodec"
+                            onClick={() => {
+                              postLike(items.Likes.post_id, items.Likes.user_id)
+                              setLiked(true)
+                              setCountLikes(countLikes + 1)
+                            }}
+                          />
+                        )}
+                        {liked && (
+                          <button
+                            className="post-like-button-black button-nodec"
+                            onClick={() => {
+                              deleteLike(
+                                items.Likes.post_id,
+                                items.Likes.user_id
+                              )
+                              setLiked(false)
+                              setCountLikes(countLikes - 1)
+                            }}
+                          />
+                        )}
                       </Content>
                     )
                   })
