@@ -45,7 +45,6 @@ const AuthProvider = (props: any) => {
             const token = await user.getIdToken(true)
             setCurrentUser({ status: 'in', user, token })
           })
-          console.log(currentUser)
         }
       } else {
         setCurrentUser({ status: 'out' })

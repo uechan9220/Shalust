@@ -28,7 +28,6 @@ import Main from './pages/Main'
 import Tag from './pages/Tag'
 import Tags from './pages/Tags'
 import MyPage from './pages/MyPage'
-import Home from './pages/Home'
 import Login from './pages/Login'
 import Signin from './pages/Signin'
 
@@ -101,9 +100,6 @@ function App() {
                 </Route>
                 <Auth>
                   <Switch>
-                    <Route exact path="/home">
-                      <Home />
-                    </Route>
                     <Route path="/mypage/:id">
                       <MyPage />
                     </Route>
