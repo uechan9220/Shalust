@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef, createContext } from 'react'
-import { Redirect } from 'react-router-dom'
+import React, { useState, useEffect, createContext } from 'react'
 import firebase from './Firebase'
 import { User } from 'firebase'
 
