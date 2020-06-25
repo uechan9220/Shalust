@@ -8,8 +8,6 @@ const Auth = (props: any) => {
   const { currentUser } = useContext(AuthContext)
 
   useEffect(() => {
-    console.log(currentUser.user)
-    console.log(currentUser.status)
     if (currentUser.user === undefined && currentUser.status !== 'loading') {
       props.history.push('/signin')
       console.log(props.history)
@@ -17,6 +15,7 @@ const Auth = (props: any) => {
     }
     //ここにsignin pageへのリダイレクト作業を入れる
     console.log(currentUser)
+    console.log(currentUser.token)
   }, [currentUser])
 
   return <div>{props.children}</div>
