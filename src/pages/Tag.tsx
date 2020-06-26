@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { useParams } from 'react-router-dom'
 import { Query, QueryResult, useMutation } from 'react-apollo'
 import { AuthContext } from '../AuthProvider'
@@ -11,17 +11,21 @@ import { allPostQuery, fetchLikes } from '../data/queries'
 import { PostQueryProps } from '../generated/Props'
 import { likePost } from '../data/mutation'
 
-/**
- * どうにかstyled-componentsで実装したい
- * 参考URL -> https://qiita.com/wintyo/items/cb90e5ac50d193cce578
- */
-// @mixin flex-fitting($column - width, $max - column) {
-//   @for $i from 1 through $max - column {
-//     @media only screen and(min - width: $i * $item - width) {
-//       max - width: $i * $item - width;
-//     }
-//   }
-// }
+// columnWidth: 1カラムの幅
+// maxColumn: 最大カラム数
+const flexFitting = (columnWidth: number, maxColumn: number) => {
+  let styles = ''
+  for (let i = 1; i < maxColumn; i++) {
+    styles += `
+      @media only screen and (min-width: ${i * columnWidth}px){
+        max-width: ${i * columnWidth}px;
+      }
+     `
+  }
+  return css`
+    ${styles}
+  `
+}
 
 const Container = styled.div`
   padding: 0 1rem;
@@ -36,25 +40,26 @@ const Title = styled.p`
 
 const ContentContainer = styled.div`
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  &::after {
-    content: '';
-    flex: auto;
-  }
+  margin: 0 auto;
+  flex-flow: wrap;
+  ${flexFitting(256, 8)}
 `
 
 const Content = styled.div`
-  min-width: 15rem;
-  min-height: 15rem;
-  max-width: 15rem;
-  max-height: 15rem;
-  margin: 2rem 1rem;
+  min-width: 14rem;
+  min-height: 20rem;
+  max-width: 14rem;
+  max-height: 20rem;
+  margin: 1rem;
 `
 
-const ContentImage = styled.img`
+const Image = styled.img`
   width: 100%;
   height: 100%;
+`
+
+const ImageContent = styled.div`
+  height: 15rem;
 `
 
 const Tag: React.FC = (props: any) => {
@@ -63,27 +68,18 @@ const Tag: React.FC = (props: any) => {
   const [liked, setLiked] = useState(false)
   const [countLikes, setCountLikes] = useState(-1)
 
-  const postLike = (post_id: number, user_id: number) => {
-    useMutation(likePost, {
-      variables: { postId: post_id, userId: user_id },
-      refetchQueries: [
-        {
-          query: fetchLikes,
-          variables: { id: post_id, userId: user_id },
-        },
-      ],
-    })
-  }
-
-  // const [likePost] = useMutation(LIKE_POST, {
-  //   variables: { postId: props.postId, userId: userId.current },
-  //   refetchQueries: [
-  //     {
-  //       query: FETCH_LIKES,
-  //       variables: { id: props.postId, userId: userId.current }
-  //     }
-  //   ]
-  // });
+  // useMutationで変数を使いたい
+  // const postLike = (post_id: number, user_id: number) => {
+  //   useMutation(likePost, {
+  //     variables: { postId: post_id, userId: user_id },
+  //     refetchQueries: [
+  //       {
+  //         query: fetchLikes,
+  //         variables: { id: post_id, userId: user_id },
+  //       },
+  //     ],
+  //   })
+  // }
 
   const deleteLike = (postId: number, userId: number) => {}
 
@@ -98,7 +94,9 @@ const Tag: React.FC = (props: any) => {
                 ? data.Post.map((items: any, index: number) => {
                     return (
                       <Content>
-                        <ContentImage src={items.image} />
+                        <ImageContent>
+                          <Image src={items.image} />
+                        </ImageContent>
                         <p>{items.create_at}</p>
                         <p>{items.caption}</p>
                         <p>Like: {items.Likes_aggregate.aggregate.count}</p>
@@ -106,7 +104,7 @@ const Tag: React.FC = (props: any) => {
                           <button
                             className="post-like-button-white button-nodec"
                             onClick={() => {
-                              postLike(items.Likes.post_id, items.Likes.user_id)
+                              // postLike(items.Likes.post_id, items.Likes.user_id)
                               setLiked(true)
                               setCountLikes(countLikes + 1)
                             }}
