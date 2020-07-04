@@ -1,5 +1,6 @@
 FROM golang:1.14
 
+
 RUN go get github.com/oxequa/realize
 
 ENV CGO_ENABLED=0 \
@@ -8,11 +9,11 @@ ENV CGO_ENABLED=0 \
     GO111MODULE=on
 EXPOSE 8080
 
-RUN mkdir /app 
+# RUN mkdir /app 
 
-WORKDIR /app
+# WORKDIR /app
 
-COPY . /app
+# COPY . /app
 
-CMD ["realize", "start"]
+CMD ["realize", "start", "--build","--run"]
 
