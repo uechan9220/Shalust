@@ -1,5 +1,7 @@
 FROM golang:1.14
 
+RUN go get github.com/oxequa/realize
+
 ENV CGO_ENABLED=0 \
     GOOS=linux \
     GOARCH=amd64 \
@@ -12,7 +14,5 @@ WORKDIR /app
 
 COPY . /app
 
-RUN go get github.com/pilu/fresh
-WORKDIR /app/api/cmd/local_development
-CMD ["fresh"]
+CMD ["realize", "start"]
 
