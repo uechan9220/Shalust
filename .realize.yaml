@@ -8,10 +8,10 @@ schema:
   commands:
     install:
       status: true
-      method: go build -o main api/cmd/local_development/main.go
+      method: go build -o local_development api/cmd/local_development.go
     run:
       status: true
-      method: ./main
+      method: ./local_development
   watcher:
     extensions:
     - go

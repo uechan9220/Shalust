@@ -4,17 +4,21 @@ services:
     image: minio/minio:latest
     ports:
       - 9000:9000
-    # volumes:
-    #   - ./data/minio/data:/export
-    #   - ./data/minio/config:/root/.minio
+    volumes:
+      - ./data/minio/data:/export
+      - ./data/minio/config:/root/.minio
     environment:
       MINIO_ACCESS_KEY: AKIA_MINIO_ACCESS_KEY
       MINIO_SECRET_KEY: minio
-    command: server /export 
+    command: server /export
+    networks:
+      - illustgram-network 
   createbuckets:
     image: minio/mc
     depends_on:
       - minio
+    networks:
+      - illustgram-network 
     entrypoint: >
       /bin/sh -c "
       until (/usr/bin/mc config host add myminio http://minio:9000 AKIA_MINIO_ACCESS_KEY minio_secret_key) do echo '...waiting...' && sleep 1; done;
@@ -35,6 +39,8 @@ services:
       --innodb_file_per_table
       --innodb_file_format=BARRACUDA
       --innodb_large_prefix=1
+    networks:
+        - illustgram-network 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     ports:
@@ -48,3 +54,9 @@ services:
       - mysql
     depends_on:
       - mysql
+    networks:
+      - illustgram-network 
+
+  networks:
+    illustgram-network:
+       external: true
