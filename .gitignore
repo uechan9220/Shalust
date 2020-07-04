@@ -24,4 +24,5 @@ yarn-error.log*
 
 .env
 
-main
+local_development
+data
