@@ -8,13 +8,15 @@ schema:
   commands:
     install:
       status: true
+      method: go build -o main api/cmd/local_development/main.go
     run:
       status: true
+      method: ./main
   watcher:
     extensions:
     - go
     paths:
-    - ../../
+    - ./api
     ignored_paths:
     - .git
     - .realize
