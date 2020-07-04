@@ -8,7 +8,7 @@ func Serve(r *gin.Engine, port string) {
 
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
-			"message": "pong",
+			"huaaaaaaaa": "hogea",
 		})
 	})
 
