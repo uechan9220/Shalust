@@ -1,7 +1,7 @@
 package main
 
 import (
-	"illustgram/api/pkg/server"
+	"shalust/api/pkg/server"
 
 	"github.com/gin-gonic/gin"
 )
