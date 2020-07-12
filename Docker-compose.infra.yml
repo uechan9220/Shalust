@@ -12,13 +12,13 @@ services:
       MINIO_SECRET_KEY: minio
     command: server /export
     networks:
-      - illustgram-network 
+      - shalust-network 
   createbuckets:
     image: minio/mc
     depends_on:
       - minio
     networks:
-      - illustgram-network 
+      - shalust-network 
     entrypoint: >
       /bin/sh -c "
       until (/usr/bin/mc config host add myminio http://minio:9000 AKIA_MINIO_ACCESS_KEY minio_secret_key) do echo '...waiting...' && sleep 1; done;
@@ -32,7 +32,7 @@ services:
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=hoge
+      - MYSQL_DATABASE=shalust
     command: >
       --character-set-server=utf8mb4
       --collation-server=utf8mb4_general_ci
@@ -40,7 +40,7 @@ services:
       --innodb_file_format=BARRACUDA
       --innodb_large_prefix=1
     networks:
-        - illustgram-network 
+        - shalust-network 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     ports:
@@ -55,8 +55,8 @@ services:
     depends_on:
       - mysql
     networks:
-      - illustgram-network 
+      - shalust-network 
 
-  networks:
-    illustgram-network:
-       external: true
+networks:
+  shalust-network:
+    external: true
