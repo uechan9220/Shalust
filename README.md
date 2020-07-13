@@ -11,6 +11,9 @@ docker create network shalust-network
 ### `起動`
 docker-compose -f docker-compose.yml -f docker-compose.infra.yml up -d  
 
+### `DBのセットアップ`
+docker-compose exec api bash -c "sql-migrate up"
+
 ### `概要`
 
 #### `phpmyadmin`
