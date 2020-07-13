@@ -3,16 +3,16 @@ services:
   minio:
     image: minio/minio:latest
     ports:
-      - 9000:9000
+      - 19000:9000
     volumes:
       - ./data/minio/data:/export
       - ./data/minio/config:/root/.minio
-    environment:
-      MINIO_ACCESS_KEY: AKIA_MINIO_ACCESS_KEY
-      MINIO_SECRET_KEY: minio
-    command: server /export
     networks:
       - shalust-network 
+    environment:
+      MINIO_ACCESS_KEY: AKIA_MINIO_ACCESS_KEY
+      MINIO_SECRET_KEY: minio_secret_key
+    command: server /export 
   createbuckets:
     image: minio/mc
     depends_on:
