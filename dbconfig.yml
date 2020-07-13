@@ -1,0 +1,4 @@
+development:
+    dialect: mysql 
+    datasource: root:root@tcp([mysql]:3306)/shalust?parseTime=true
+    dir: api/db/migrations 

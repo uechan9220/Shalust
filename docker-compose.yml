@@ -10,4 +10,8 @@ services:
     working_dir: /app
     tty: true
     networks:
-      - illustgram-network 
+      - shalust-network
+
+networks:
+  shalust-network:
+    external: true
