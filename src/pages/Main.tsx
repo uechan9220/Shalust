@@ -4,7 +4,7 @@ import styled from 'styled-components'
 /**
  * components
  */
-import Item from '../components/Item'
+import Item from '../components/Items'
 
 const Container = styled.div`
   min-height: 80vh; /* 後で消す */
