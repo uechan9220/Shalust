@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, Props } from 'react'
 import styled from 'styled-components'
 
 /**
@@ -82,22 +82,18 @@ const LikeContainer = styled.div`
   margin-left: 0.5rem;
 `
 
-const OffLikeImage = styled.svg`
+const LikeImage = styled.svg<onLikeProps>`
   height: 14px;
   width: 14px;
+  & > path {
+    fill: ${(props: any) => (props.onLike ? '#FA4893' : '#9E9EA7')};
+  }
 `
 
-const OnLikeImage = styled(OffLikeImage)`
-  color: #fa4893;
-`
-
-export const OffLikeCount = styled.p`
+const LikeCount = styled.p<onLikeProps>`
   margin-left: 4px;
   font-size: 9px;
-`
-
-const OnLikeCount = styled(OffLikeCount)`
-  color: #fa4893;
+  color: ${(props: any) => (props.onLike ? '#FA4893' : '#9E9EA7')};
 `
 
 const InfoContent = styled.div`
@@ -157,18 +153,25 @@ const HoverLikeButton = styled.div`
   height: 34px;
 `
 
-const OffHoverLike = styled.svg`
+const HoverLike = styled.svg<onLikeProps>`
   width: 16px;
   height: 16px;
-`
-const OnHoverLike = styled.svg`
-  width: 16px;
-  height: 16px;
+  & > path {
+    fill: ${(props: any) => (props.onLike ? '#FA4893' : '#9E9EA7')};
+  }
 `
 
 const HoverButton = styled.div`
   display: flex;
 `
+
+/**
+ * interface
+ */
+
+interface onLikeProps {
+  onLike: boolean
+}
 
 interface ItemProps {
   item: {
@@ -183,7 +186,7 @@ interface ItemProps {
   }
 }
 
-const Item: React.FC<ItemProps> = (props) => {
+const Item: React.FC<ItemProps> = (props: any) => {
   const [like, isLike] = useState(props.item.isLike)
   const [likeCount, setLikeCount] = useState(props.item.like)
   const [commentCount, setCommentCount] = useState(props.item.comment)
@@ -204,29 +207,14 @@ const Item: React.FC<ItemProps> = (props) => {
               <HoverBookmark src={Bookmark} />
             </HoverBookmarkButton>
             <HoverLikeButton onClick={() => likeFunc()}>
-              {like ? (
-                <OnHoverLike
-                  viewBox="0 0 14 14"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M6.99996 12.4542L6.15413 11.6842C3.14996 8.96 1.16663 7.16333 1.16663 4.95833C1.16663 3.16167 2.57829 1.75 4.37496 1.75C5.38996 1.75 6.36413 2.2225 6.99996 2.96917C7.63579 2.2225 8.60996 1.75 9.62496 1.75C11.4216 1.75 12.8333 3.16167 12.8333 4.95833C12.8333 7.16333 10.85 8.96 7.84579 11.69L6.99996 12.4542Z"
-                    fill="#FA4893"
-                  />
-                </OnHoverLike>
-              ) : (
-                <OffHoverLike
-                  viewBox="0 0 14 14"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M6.99996 12.4542L6.15413 11.6842C3.14996 8.96 1.16663 7.16333 1.16663 4.95833C1.16663 3.16167 2.57829 1.75 4.37496 1.75C5.38996 1.75 6.36413 2.2225 6.99996 2.96917C7.63579 2.2225 8.60996 1.75 9.62496 1.75C11.4216 1.75 12.8333 3.16167 12.8333 4.95833C12.8333 7.16333 10.85 8.96 7.84579 11.69L6.99996 12.4542Z"
-                    fill="#9E9EA7"
-                  />
-                </OffHoverLike>
-              )}
+              <HoverLike
+                viewBox="0 0 14 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                onLike={like}
+              >
+                <path d="M6.99996 12.4542L6.15413 11.6842C3.14996 8.96 1.16663 7.16333 1.16663 4.95833C1.16663 3.16167 2.57829 1.75 4.37496 1.75C5.38996 1.75 6.36413 2.2225 6.99996 2.96917C7.63579 2.2225 8.60996 1.75 9.62496 1.75C11.4216 1.75 12.8333 3.16167 12.8333 4.95833C12.8333 7.16333 10.85 8.96 7.84579 11.69L6.99996 12.4542Z" />
+              </HoverLike>
             </HoverLikeButton>
           </HoverButton>
         </HoverContent>
@@ -242,35 +230,15 @@ const Item: React.FC<ItemProps> = (props) => {
             <CommentCount>{commentCount}</CommentCount>
           </CommentContainer>
           <LikeContainer onClick={() => likeFunc()}>
-            {like ? (
-              <>
-                <OnLikeImage
-                  viewBox="0 0 14 14"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M6.99996 12.4542L6.15413 11.6842C3.14996 8.96 1.16663 7.16333 1.16663 4.95833C1.16663 3.16167 2.57829 1.75 4.37496 1.75C5.38996 1.75 6.36413 2.2225 6.99996 2.96917C7.63579 2.2225 8.60996 1.75 9.62496 1.75C11.4216 1.75 12.8333 3.16167 12.8333 4.95833C12.8333 7.16333 10.85 8.96 7.84579 11.69L6.99996 12.4542Z"
-                    fill="#FA4893"
-                  />
-                </OnLikeImage>
-                <OnLikeCount>{likeCount}</OnLikeCount>
-              </>
-            ) : (
-              <>
-                <OffLikeImage
-                  viewBox="0 0 14 14"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M6.99996 12.4542L6.15413 11.6842C3.14996 8.96 1.16663 7.16333 1.16663 4.95833C1.16663 3.16167 2.57829 1.75 4.37496 1.75C5.38996 1.75 6.36413 2.2225 6.99996 2.96917C7.63579 2.2225 8.60996 1.75 9.62496 1.75C11.4216 1.75 12.8333 3.16167 12.8333 4.95833C12.8333 7.16333 10.85 8.96 7.84579 11.69L6.99996 12.4542Z"
-                    fill="#9E9EA7"
-                  />
-                </OffLikeImage>
-                <OffLikeCount>{likeCount}</OffLikeCount>
-              </>
-            )}
+            <LikeImage
+              viewBox="0 0 14 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              onLike={like}
+            >
+              <path d="M6.99996 12.4542L6.15413 11.6842C3.14996 8.96 1.16663 7.16333 1.16663 4.95833C1.16663 3.16167 2.57829 1.75 4.37496 1.75C5.38996 1.75 6.36413 2.2225 6.99996 2.96917C7.63579 2.2225 8.60996 1.75 9.62496 1.75C11.4216 1.75 12.8333 3.16167 12.8333 4.95833C12.8333 7.16333 10.85 8.96 7.84579 11.69L6.99996 12.4542Z" />
+            </LikeImage>
+            <LikeCount onLike={like}>{likeCount}</LikeCount>
           </LikeContainer>
         </InfoContent>
       </InfoContainer>
