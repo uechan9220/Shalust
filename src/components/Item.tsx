@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 /**
@@ -7,8 +7,6 @@ import styled from 'styled-components'
 import Comment from '../assets/svg/comment.svg'
 import Like from '../assets/svg/like.svg'
 import Bookmark from '../assets/svg/bookmark.svg'
-
-const Container = styled.div``
 
 const Content = styled.div`
   height: 16rem;
@@ -84,14 +82,22 @@ const LikeContainer = styled.div`
   margin-left: 0.5rem;
 `
 
-const LikeImage = styled.img`
+const OffLikeImage = styled.svg`
   height: 14px;
   width: 14px;
 `
 
-const LikeCount = styled.p`
+const OnLikeImage = styled(OffLikeImage)`
+  color: #fa4893;
+`
+
+export const OffLikeCount = styled.p`
   margin-left: 4px;
   font-size: 9px;
+`
+
+const OnLikeCount = styled(OffLikeCount)`
+  color: #fa4893;
 `
 
 const InfoContent = styled.div`
@@ -151,7 +157,11 @@ const HoverLikeButton = styled.div`
   height: 34px;
 `
 
-const HoverLike = styled.img`
+const OffHoverLike = styled.svg`
+  width: 16px;
+  height: 16px;
+`
+const OnHoverLike = styled.svg`
   width: 16px;
   height: 16px;
 `
@@ -160,42 +170,111 @@ const HoverButton = styled.div`
   display: flex;
 `
 
-const Item: React.FC = () => {
+interface ItemProps {
+  item: {
+    id: number
+    image: string
+    title: string
+    userImage: string
+    userName: string
+    comment: number
+    like: number
+    isLike: boolean
+  }
+}
+
+const Item: React.FC<ItemProps> = (props) => {
+  const [like, isLike] = useState(props.item.isLike)
+  const [likeCount, setLikeCount] = useState(props.item.like)
+  const [commentCount, setCommentCount] = useState(props.item.comment)
+
+  const likeFunc = () => {
+    like ? setLikeCount(likeCount - 1) : setLikeCount(likeCount + 1)
+    isLike(!like)
+  }
+
   return (
-    <Container>
-      <Content>
-        <ImageContainer>
-          <Image src="https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512" />
-          <HoverContent>
-            <Title>モーグリーとロアちゃんが二人でお昼中なのだ</Title>
-            <HoverButton>
-              <HoverBookmarkButton>
-                <HoverBookmark src={Bookmark} />
-              </HoverBookmarkButton>
-              <HoverLikeButton>
-                <HoverLike src={Like} />
-              </HoverLikeButton>
-            </HoverButton>
-          </HoverContent>
-        </ImageContainer>
-        <InfoContainer>
-          <UserContainer>
-            <UserImage src="https://ca.slack-edge.com/T0G4VRKJA-U51V91129-5340348de13a-512" />
-            <UserName>Moke</UserName>
-          </UserContainer>
-          <InfoContent>
-            <CommentContainer>
-              <CommentImage src={Comment} />
-              <CommentCount>22</CommentCount>
-            </CommentContainer>
-            <LikeContainer>
-              <LikeImage src={Like} />
-              <LikeCount>22</LikeCount>
-            </LikeContainer>
-          </InfoContent>
-        </InfoContainer>
-      </Content>
-    </Container>
+    <Content key={props.item.id}>
+      <ImageContainer>
+        <Image src={props.item.image} />
+        <HoverContent>
+          <Title>モーグリーとロアちゃんが二人でお昼中なのだ</Title>
+          <HoverButton>
+            <HoverBookmarkButton onClick={() => console.log('Bookmark')}>
+              <HoverBookmark src={Bookmark} />
+            </HoverBookmarkButton>
+            <HoverLikeButton onClick={() => likeFunc()}>
+              {like ? (
+                <OnHoverLike
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6.99996 12.4542L6.15413 11.6842C3.14996 8.96 1.16663 7.16333 1.16663 4.95833C1.16663 3.16167 2.57829 1.75 4.37496 1.75C5.38996 1.75 6.36413 2.2225 6.99996 2.96917C7.63579 2.2225 8.60996 1.75 9.62496 1.75C11.4216 1.75 12.8333 3.16167 12.8333 4.95833C12.8333 7.16333 10.85 8.96 7.84579 11.69L6.99996 12.4542Z"
+                    fill="#FA4893"
+                  />
+                </OnHoverLike>
+              ) : (
+                <OffHoverLike
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6.99996 12.4542L6.15413 11.6842C3.14996 8.96 1.16663 7.16333 1.16663 4.95833C1.16663 3.16167 2.57829 1.75 4.37496 1.75C5.38996 1.75 6.36413 2.2225 6.99996 2.96917C7.63579 2.2225 8.60996 1.75 9.62496 1.75C11.4216 1.75 12.8333 3.16167 12.8333 4.95833C12.8333 7.16333 10.85 8.96 7.84579 11.69L6.99996 12.4542Z"
+                    fill="#9E9EA7"
+                  />
+                </OffHoverLike>
+              )}
+            </HoverLikeButton>
+          </HoverButton>
+        </HoverContent>
+      </ImageContainer>
+      <InfoContainer>
+        <UserContainer>
+          <UserImage src={props.item.userImage} />
+          <UserName>{props.item.userName}</UserName>
+        </UserContainer>
+        <InfoContent>
+          <CommentContainer onClick={() => setCommentCount(commentCount + 1)}>
+            <CommentImage src={Comment} />
+            <CommentCount>{commentCount}</CommentCount>
+          </CommentContainer>
+          <LikeContainer onClick={() => likeFunc()}>
+            {like ? (
+              <>
+                <OnLikeImage
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6.99996 12.4542L6.15413 11.6842C3.14996 8.96 1.16663 7.16333 1.16663 4.95833C1.16663 3.16167 2.57829 1.75 4.37496 1.75C5.38996 1.75 6.36413 2.2225 6.99996 2.96917C7.63579 2.2225 8.60996 1.75 9.62496 1.75C11.4216 1.75 12.8333 3.16167 12.8333 4.95833C12.8333 7.16333 10.85 8.96 7.84579 11.69L6.99996 12.4542Z"
+                    fill="#FA4893"
+                  />
+                </OnLikeImage>
+                <OnLikeCount>{likeCount}</OnLikeCount>
+              </>
+            ) : (
+              <>
+                <OffLikeImage
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6.99996 12.4542L6.15413 11.6842C3.14996 8.96 1.16663 7.16333 1.16663 4.95833C1.16663 3.16167 2.57829 1.75 4.37496 1.75C5.38996 1.75 6.36413 2.2225 6.99996 2.96917C7.63579 2.2225 8.60996 1.75 9.62496 1.75C11.4216 1.75 12.8333 3.16167 12.8333 4.95833C12.8333 7.16333 10.85 8.96 7.84579 11.69L6.99996 12.4542Z"
+                    fill="#9E9EA7"
+                  />
+                </OffLikeImage>
+                <OffLikeCount>{likeCount}</OffLikeCount>
+              </>
+            )}
+          </LikeContainer>
+        </InfoContent>
+      </InfoContainer>
+    </Content>
   )
 }
 
