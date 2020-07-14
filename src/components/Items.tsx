@@ -20,6 +20,7 @@ const Items: React.FC = () => {
       comment: 22,
       like: 22,
       isLike: false,
+      isBookmark: true,
     },
     {
       id: 2,
@@ -31,6 +32,7 @@ const Items: React.FC = () => {
       comment: 22,
       like: 23,
       isLike: true,
+      isBookmark: false,
     },
   ]
 
