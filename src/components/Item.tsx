@@ -21,6 +21,15 @@ const ImageContainer = styled.div`
   width: 100%;
   max-height: 224px;
   position: relative;
+  &:hover {
+    & > div {
+      opacity: 1;
+    }
+  }
+  & > div {
+    opacity: 0;
+    transition: opacity 300ms ease;
+  }
 `
 
 const Image = styled.img`
