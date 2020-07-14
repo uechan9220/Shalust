@@ -121,7 +121,7 @@ const Title = styled.p`
   color: #fff;
   font-weight: bold;
   font-size: 14px;
-  width: 11rem;
+  width: 100%;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -137,9 +137,12 @@ const HoverBookmarkButton = styled.div`
   height: 34px;
 `
 
-const HoverBookmark = styled.img`
+const HoverBookmark = styled.svg<onBookmarkProps>`
   width: 16px;
   height: 16px;
+  & > path {
+    fill: ${(props: any) => (props.onBookmark ? '#55ACEE' : '#9E9EA7')};
+  }
 `
 
 const HoverLikeButton = styled.div`
@@ -166,11 +169,15 @@ const HoverButton = styled.div`
 `
 
 /**
- * interface
+ * interface, type
  */
 
-interface onLikeProps {
+type onLikeProps = {
   onLike: boolean
+}
+
+type onBookmarkProps = {
+  onBookmark: boolean
 }
 
 interface ItemProps {
@@ -183,17 +190,23 @@ interface ItemProps {
     comment: number
     like: number
     isLike: boolean
+    isBookmark: boolean
   }
 }
 
 const Item: React.FC<ItemProps> = (props: any) => {
   const [like, isLike] = useState(props.item.isLike)
+  const [bookmark, isBookmark] = useState(props.item.isBookmark)
   const [likeCount, setLikeCount] = useState(props.item.like)
   const [commentCount, setCommentCount] = useState(props.item.comment)
 
   const likeFunc = () => {
     like ? setLikeCount(likeCount - 1) : setLikeCount(likeCount + 1)
     isLike(!like)
+  }
+
+  const bookmarkFunc = () => {
+    isBookmark(!bookmark)
   }
 
   return (
@@ -203,8 +216,15 @@ const Item: React.FC<ItemProps> = (props: any) => {
         <HoverContent>
           <Title>モーグリーとロアちゃんが二人でお昼中なのだ</Title>
           <HoverButton>
-            <HoverBookmarkButton onClick={() => console.log('Bookmark')}>
-              <HoverBookmark src={Bookmark} />
+            <HoverBookmarkButton onClick={() => bookmarkFunc()}>
+              <HoverBookmark
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                onBookmark={bookmark}
+              >
+                <path d="M11.3334 2H4.66671C3.93337 2 3.34004 2.6 3.34004 3.33333L3.33337 14L8.00004 12L12.6667 14V3.33333C12.6667 2.6 12.0667 2 11.3334 2ZM11.3334 12L8.00004 10.5467L4.66671 12V3.33333H11.3334V12Z" />
+              </HoverBookmark>
             </HoverBookmarkButton>
             <HoverLikeButton onClick={() => likeFunc()}>
               <HoverLike
