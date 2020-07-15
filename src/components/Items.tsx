@@ -6,29 +6,11 @@ import styled, { css } from 'styled-components'
  */
 import Item from './Item'
 
-/* media Queryの実装を修正必要 */
 const Container = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  @media (max-width: 1200px) {
-    justify-content: space-around;
-  }
-  @media (min-width: 1349px) {
-    & > div:nth-child(4n + 2):last-child {
-      margin-right: 44rem;
-    }
-  }
-  @media (min-width: 1349px) {
-    & > div:nth-child(4n + 3):last-child {
-      margin-right: 22rem;
-    }
-  }
-  @media (min-width: 962px) {
-    & > div:nth-child(3n + 1):last-child {
-      margin-right: 22rem;
-    }
-  }
+  display: grid;
+  list-style: none;
+  grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
+  grid-gap: 1rem;
 `
 
 const Items: React.FC = () => {
