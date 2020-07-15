@@ -8,7 +8,7 @@ import Item from '../components/Items'
 
 const Container = styled.div`
   min-height: 80vh; /* 後で消す */
-  padding: 3rem 2rem;
+  padding: 2rem 1rem;
 `
 const Content = styled.div`
   padding: 2rem 1rem;
@@ -26,8 +26,7 @@ const NavText = styled.p`
   -webkit-box-align: center;
   align-items: center;
   height: 46px;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding: 0 1.5rem;
   font-weight: bold;
   font-size: 16px;
   line-height: 24px;
