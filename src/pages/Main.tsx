@@ -15,6 +15,7 @@ const Content = styled.div`
   background-color: #fff;
 `
 
+/* SPサイズの時の対策を考えて実装する */
 const Nav = styled.nav`
   display: flex;
   -webkit-box-pack: start;
@@ -43,16 +44,20 @@ const NavText = styled.p`
   }
 `
 
+const NavContainer = styled.div``
+
 const Main: React.FC = () => {
   return (
     <Container>
       <Content>
-        <Nav>
-          <NavText>イラスト</NavText>
-          <NavText>ラフ</NavText>
-          <NavText>マンガ</NavText>
-          <NavText>落書き</NavText>
-        </Nav>
+        <NavContainer>
+          <Nav>
+            <NavText>イラスト</NavText>
+            <NavText>ラフ</NavText>
+            <NavText>マンガ</NavText>
+            <NavText>落書き</NavText>
+          </Nav>
+        </NavContainer>
         <Item />
       </Content>
     </Container>
