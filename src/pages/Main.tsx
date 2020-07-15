@@ -15,11 +15,17 @@ const Content = styled.div`
   background-color: #fff;
 `
 
-/* SPサイズの時の対策を考えて実装する */
 const Nav = styled.nav`
   display: flex;
   -webkit-box-pack: start;
   justify-content: start;
+  @media (max-width: 450px) {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    white-space: nowrap;
+    height: 48px;
+    text-align: center;
+  }
 `
 
 const NavText = styled.p`
@@ -41,6 +47,12 @@ const NavText = styled.p`
   &:first-child {
     color: rgba(0, 0, 0, 0.88);
     border-top: 4px solid rgb(0, 150, 250);
+  }
+  @media (max-width: 450px) {
+    -webkit-box-flex: 1;
+    flex: 1 0;
+    justify-content: center;
+    padding: 0;
   }
 `
 
