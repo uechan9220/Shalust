@@ -8,18 +8,13 @@ import Comment from '../assets/svg/comment.svg'
 import Like from '../assets/svg/like.svg'
 import Bookmark from '../assets/svg/bookmark.svg'
 
-/* media Queryの実装を修正必要 */
 const Content = styled.div`
-  @media (max-width: 1348px) {
-    height: 19rem;
-    width: 23rem;
-  }
-  @media (max-width: 1200px) {
-    width: 26rem;
-    height: 22rem;
-  }
-  height: 16rem;
-  width: 18rem;
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  border: 0;
+  background: transparent;
 
   display: flex;
   flex-direction: column;
@@ -27,13 +22,6 @@ const Content = styled.div`
 
 const ImageContainer = styled.div`
   width: 100%;
-  @media (max-width: 1348px) {
-    max-height: 272px;
-  }
-  @media (max-width: 1200px) {
-    max-height: 320px;
-  }
-  max-height: 224px;
   position: relative;
   &:hover {
     & > div {
@@ -48,8 +36,6 @@ const ImageContainer = styled.div`
 
 const Image = styled.img`
   width: 100%;
-  height: 100%;
-  object-fit: cover;
 `
 
 const InfoContainer = styled.div`
