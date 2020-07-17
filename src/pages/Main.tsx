@@ -26,6 +26,9 @@ const Nav = styled.nav`
     height: 48px;
     text-align: center;
   }
+  & > p:hover:nth-child(n + 1) {
+    color: rgba(0, 0, 0, 0.44);
+  }
 `
 
 const NavText = styled.p`
