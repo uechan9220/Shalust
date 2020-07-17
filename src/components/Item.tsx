@@ -186,14 +186,16 @@ type onBookmarkProps = {
 interface ItemProps {
   item: {
     id: number
-    image: string
+    image_url: string
     title: string
-    userImage: string
-    userName: string
     comment: number
     like: number
     isLike: boolean
     isBookmark: boolean
+    User: {
+      userImage: string
+      userName: string
+    }[]
   }
 }
 
@@ -215,7 +217,7 @@ const Item: React.FC<ItemProps> = (props: any) => {
   return (
     <Content key={props.item.id}>
       <ImageContainer>
-        <Image src={props.item.image} />
+        <Image src={props.item.image_url} />
         <HoverContent>
           <Title>モーグリーとロアちゃんが二人でお昼中なのだ</Title>
           <HoverButton>
@@ -243,10 +245,20 @@ const Item: React.FC<ItemProps> = (props: any) => {
         </HoverContent>
       </ImageContainer>
       <InfoContainer>
-        <UserContainer>
-          <UserImage src={props.item.userImage} />
-          <UserName>{props.item.userName}</UserName>
-        </UserContainer>
+        {props.item.User.map(
+          (
+            userItem: { userImage: string; userName: string },
+            index: number
+          ) => {
+            return (
+              <UserContainer>
+                {console.log(userItem)}
+                <UserImage src={userItem.userImage} />
+                <UserName>{userItem.userName}</UserName>
+              </UserContainer>
+            )
+          }
+        )}
         <InfoContent>
           <CommentContainer onClick={() => setCommentCount(commentCount + 1)}>
             <CommentImage src={Comment} />
