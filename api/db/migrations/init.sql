@@ -36,6 +36,7 @@ IF NOT EXISTS commic
     create_at VARCHAR(128),
     title  VARCHAR(128), 
     image_index INT,
+    adult BOOLEAN,
     
         FOREIGN KEY (user_id)
         REFERENCES user(user_id)
@@ -51,7 +52,8 @@ IF NOT EXISTS graffiti
     caption VARCHAR(128),
     image_url VARCHAR(128),
     create_at VARCHAR(128),
-    title  VARCHAR(128), 
+    title  VARCHAR(128),
+    adult BOOLEAN,
     image_index INT,
    
         FOREIGN KEY (user_id)
@@ -70,6 +72,7 @@ IF NOT EXISTS rough
     create_at VARCHAR(128),
     title  VARCHAR(128), 
     image_index INT,
+    adult BOOLEAN,
  
     FOREIGN KEY (user_id)
     REFERENCES user(user_id)
@@ -88,6 +91,7 @@ IF NOT EXISTS illustratio
     create_at VARCHAR(128),
     title  VARCHAR(128), 
     image_index INT,
+    adult BOOLEAN,
     
     FOREIGN KEY (user_id)
     REFERENCES user(user_id)
