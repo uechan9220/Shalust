@@ -16,6 +16,7 @@ const Container = styled.div`
   align-items: center;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1), 0px 4px 8px rgba(0, 0, 0, 0.1);
   height: 4.2rem;
+  z-index: 1;
 `
 
 const Title = styled.p`
