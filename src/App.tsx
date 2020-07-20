@@ -38,7 +38,6 @@ const GlobalStyle = createGlobalStyle`
 
 const Container = styled.div`
   padding-top: 4.2rem;
-  background-color: #e6ecf0;
 `
 
 function App() {
