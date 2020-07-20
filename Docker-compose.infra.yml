@@ -3,7 +3,7 @@ services:
   minio:
     image: minio/minio:latest
     ports:
-      - 19000:9000
+      - 9000:9000
     volumes:
       - ./data/minio/data:/export
       - ./data/minio/config:/root/.minio
