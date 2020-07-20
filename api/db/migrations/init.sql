@@ -36,6 +36,7 @@ IF NOT EXISTS commic
     create_at VARCHAR(128),
     title  VARCHAR(128), 
     image_index INT,
+    adult BOOLEAN,
     
         FOREIGN KEY (user_id)
         REFERENCES user(user_id)
@@ -51,7 +52,8 @@ IF NOT EXISTS graffiti
     caption VARCHAR(128),
     image_url VARCHAR(128),
     create_at VARCHAR(128),
-    title  VARCHAR(128), 
+    title  VARCHAR(128),
+    adult BOOLEAN,
     image_index INT,
    
         FOREIGN KEY (user_id)
@@ -70,6 +72,7 @@ IF NOT EXISTS rough
     create_at VARCHAR(128),
     title  VARCHAR(128), 
     image_index INT,
+    adult BOOLEAN,
  
     FOREIGN KEY (user_id)
     REFERENCES user(user_id)
@@ -88,6 +91,7 @@ IF NOT EXISTS illustratio
     create_at VARCHAR(128),
     title  VARCHAR(128), 
     image_index INT,
+    adult BOOLEAN,
     
     FOREIGN KEY (user_id)
     REFERENCES user(user_id)
@@ -133,6 +137,22 @@ IF NOT EXISTS Included_tags
     FOREIGN KEY (id)
     REFERENCES tags(id)
 );
+
+
+CREATE TABLE
+IF NOT EXISTS comment
+(
+    id INT AUTO_INCREMENT  NOT NULL PRIMARY KEY,
+    post_id VARCHAR(128),
+    post_userid VARCHAR(128),
+    comment VARCHAR(128),
+    create_date VARCHAR(128),    
+    FOREIGN KEY (post_id)
+    REFERENCES user(user_id),
+    FOREIGN KEY (post_userid)
+    REFERENCES user(user_id)
+);
+
 
 
 
