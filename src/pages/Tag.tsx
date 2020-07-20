@@ -7,7 +7,7 @@ import { AuthContext } from '../AuthProvider'
 /**
  * testData
  */
-import { Data } from '../data/testData'
+import { Data } from '../data/Data'
 
 /**
  * components
