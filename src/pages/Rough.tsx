@@ -26,7 +26,7 @@ const Rough: React.FC = () => {
   return (
     <Container>
       <Content>
-        <Navbar />
+        <Navbar selectNumber={2} />
         <Items datas={RoughData} />
       </Content>
     </Container>
