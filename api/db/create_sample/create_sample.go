@@ -9,7 +9,8 @@ import (
 )
 
 type SampleData struct {
-	User model.User `json:"user"`
+	User      model.User        `json:"user"`
+	ImageData model.Illustratio `json:"imageData"`
 }
 
 func Create_sample() {
@@ -25,4 +26,5 @@ func Create_sample() {
 	}
 	fmt.Println(data)
 	model.CreateUser(data.User)
+	model.CreateIllustratio(data.ImageData)
 }
