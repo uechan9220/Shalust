@@ -87,7 +87,7 @@ const Navbar: React.FC<NavbarProps> = ({ selectNumber }) => {
           <NavText>ラフ</NavText>
         </StyledLink>
 
-        <StyledLink to="/">
+        <StyledLink to="/commic">
           <NavText>マンガ</NavText>
         </StyledLink>
 
