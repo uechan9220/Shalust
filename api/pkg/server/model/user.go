@@ -14,5 +14,4 @@ func CreateUser(data User) {
 		fmt.Println(err)
 	}
 	client.From("user").Create(&data)
-
 }

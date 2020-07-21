@@ -18,7 +18,7 @@ type Follow struct {
 	Follow_id    string `json:"follow_id"`
 	Following_id string `json:"following_id"`
 }
-type Commment struct {
+type Comment struct {
 	Id          int    `json:"id"`
 	Post_id     string `json:"post_id"`
 	Post_userid string `json:"post_userid"`
@@ -27,7 +27,7 @@ type Illustratio struct {
 	Id          int       `json:"id"`
 	Content_id  string    `json:"content_id"`
 	User_id     string    `json:"user_id"`
-	Commment    string    `json:"comment"`
+	Comment     string    `json:"comment"`
 	Image_url   string    `json:"image_url"`
 	Create_at   time.Time `json:"create_at"`
 	Title       string    `json:"title"`
@@ -38,7 +38,7 @@ type Commic struct {
 	Id          int       `json:"id"`
 	Content_id  string    `json:"content_id"`
 	User_id     string    `json:"user_id"`
-	Commment    string    `json:"comment"`
+	Comment     string    `json:"comment"`
 	Image_url   string    `json:"image_url"`
 	Create_at   time.Time `json:"create_at"`
 	Title       string    `json:"title"`
@@ -49,7 +49,7 @@ type Graffiti struct {
 	Id          int       `json:"id"`
 	Content_id  string    `json:"content_id"`
 	User_id     string    `json:"user_id"`
-	Commment    string    `json:"comment"`
+	Comment     string    `json:"comment"`
 	Image_url   string    `json:"image_url"`
 	Create_at   time.Time `json:"create_at"`
 	Title       string    `json:"title"`
@@ -60,7 +60,7 @@ type Rough struct {
 	Id          int       `json:"id"`
 	Content_id  string    `json:"content_id"`
 	User_id     string    `json:"user_id"`
-	Commment    string    `json:"comment"`
+	Comment     string    `json:"comment"`
 	Image_url   string    `json:"image_url"`
 	Create_at   time.Time `json:"create_at"`
 	Title       string    `json:"title"`
