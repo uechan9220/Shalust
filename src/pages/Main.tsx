@@ -26,7 +26,7 @@ const Main: React.FC = () => {
   return (
     <Container>
       <Content>
-        <Navbar />
+        <Navbar selectNumber={1} />
         <Items datas={IllustData} />
       </Content>
     </Container>
