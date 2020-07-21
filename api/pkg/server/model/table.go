@@ -7,7 +7,7 @@ import (
 type User struct {
 	User_id   string    `json:"user_id"`
 	Name      string    `json:"name"`
-	Icon_url  string    `json:" icon_url"`
+	Icon_url  string    `json:"icon_url"`
 	Comment   string    `json:"comment"`
 	Acount_id string    `json:"acount_id"`
 	Last_seen time.Time `json:"last_seen"`
