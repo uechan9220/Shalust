@@ -7,7 +7,7 @@ import { AuthContext } from '../AuthProvider'
 /**
  * testData
  */
-import { Data } from '../data/Data'
+import { IllustData } from '../data/Data'
 
 /**
  * components
@@ -80,7 +80,7 @@ const Tag: React.FC = (props: any) => {
           <Title># {tag}</Title>
           <Count>114514作品</Count>
         </TitleContainer>
-        <Items />
+        <Items datas={IllustData} />
       </Content>
     </Container>
   )
