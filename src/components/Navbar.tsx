@@ -91,7 +91,7 @@ const Navbar: React.FC<NavbarProps> = ({ selectNumber }) => {
           <NavText>マンガ</NavText>
         </StyledLink>
 
-        <StyledLink to="/">
+        <StyledLink to="/graffiti">
           <NavText>落書き</NavText>
         </StyledLink>
       </Nav>
