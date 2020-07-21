@@ -23,7 +23,7 @@ type Comment struct {
 	Post_id     string `json:"post_id"`
 	Post_userid string `json:"post_userid"`
 }
-type Illustratio struct {
+type Content struct {
 	Id          int       `json:"id"`
 	Content_id  string    `json:"content_id"`
 	User_id     string    `json:"user_id"`
@@ -34,39 +34,7 @@ type Illustratio struct {
 	Image_index int       `json:"image_index"`
 	Adult       bool      `json:"adult"`
 }
-type Commic struct {
-	Id          int       `json:"id"`
-	Content_id  string    `json:"content_id"`
-	User_id     string    `json:"user_id"`
-	Comment     string    `json:"comment"`
-	Image_url   string    `json:"image_url"`
-	Create_at   time.Time `json:"create_at"`
-	Title       string    `json:"title"`
-	Image_index int       `json:"image_index"`
-	Adult       bool      `json:"adult"`
-}
-type Graffiti struct {
-	Id          int       `json:"id"`
-	Content_id  string    `json:"content_id"`
-	User_id     string    `json:"user_id"`
-	Comment     string    `json:"comment"`
-	Image_url   string    `json:"image_url"`
-	Create_at   time.Time `json:"create_at"`
-	Title       string    `json:"title"`
-	Image_index int       `json:"image_index"`
-	Adult       bool      `json:"adult"`
-}
-type Rough struct {
-	Id          int       `json:"id"`
-	Content_id  string    `json:"content_id"`
-	User_id     string    `json:"user_id"`
-	Comment     string    `json:"comment"`
-	Image_url   string    `json:"image_url"`
-	Create_at   time.Time `json:"create_at"`
-	Title       string    `json:"title"`
-	Image_index int       `json:"image_index"`
-	Adult       bool      `json:"adult"`
-}
+
 type Like struct {
 	Id         int    `json:"id"`
 	User_id    string `json:"user_id"`
