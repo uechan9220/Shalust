@@ -1,10 +1,35 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 /**
- * style
+ * interface
  */
-const Nav = styled.nav`
+interface SelectProps {
+  Number: number
+}
+
+interface NavbarProps {
+  selectNumber: number
+}
+
+/**
+ * animation function
+ */
+const getAnimation = (Number: number) => {
+  return `
+    & > a:nth-child(${Number}) {
+    color: rgba(0, 0, 0, 0.88);
+    border-top: 4px solid rgb(0, 150, 250);
+  }
+  `
+}
+
+/**
+ * styled-components
+ */
+
+const Nav = styled.nav<Pick<SelectProps, 'Number'>>`
   display: flex;
   -webkit-box-pack: start;
   justify-content: start;
@@ -15,12 +40,14 @@ const Nav = styled.nav`
     height: 48px;
     text-align: center;
   }
-  & > p:hover:nth-child(n + 1) {
-    color: rgba(0, 0, 0, 0.44);
+  & > a:hover:nth-child(n + 1) {
+    color: rgba(0, 0, 0, 0.88);
   }
+  ${({ Number }) => getAnimation(Number)};
 `
 
-const NavText = styled.p`
+const StyledLink = styled(Link)`
+  text-decoration: none;
   display: flex;
   -webkit-box-align: center;
   align-items: center;
@@ -36,10 +63,6 @@ const NavText = styled.p`
   text-decoration: none;
   border-top: 4px solid transparent;
   transition: color 0.2s ease 0s;
-  &:first-child {
-    color: rgba(0, 0, 0, 0.88);
-    border-top: 4px solid rgb(0, 150, 250);
-  }
   @media (max-width: 450px) {
     -webkit-box-flex: 1;
     flex: 1 0;
@@ -48,16 +71,29 @@ const NavText = styled.p`
   }
 `
 
+const NavText = styled.p``
+
 const NavContainer = styled.div``
 
-const Navbar: React.FC = () => {
+const Navbar: React.FC<NavbarProps> = ({ selectNumber }) => {
   return (
     <NavContainer>
-      <Nav>
-        <NavText>イラスト</NavText>
-        <NavText>ラフ</NavText>
-        <NavText>マンガ</NavText>
-        <NavText>落書き</NavText>
+      <Nav Number={selectNumber}>
+        <StyledLink to="/">
+          <NavText>イラスト</NavText>
+        </StyledLink>
+
+        <StyledLink to="/rough">
+          <NavText>ラフ</NavText>
+        </StyledLink>
+
+        <StyledLink to="/">
+          <NavText>マンガ</NavText>
+        </StyledLink>
+
+        <StyledLink to="/">
+          <NavText>落書き</NavText>
+        </StyledLink>
       </Nav>
     </NavContainer>
   )
