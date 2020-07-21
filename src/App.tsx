@@ -25,6 +25,7 @@ import Header from './components/Header'
  * pages
  */
 import Main from './pages/Main'
+import Rough from './pages/Rough'
 import Tag from './pages/Tag'
 import Tags from './pages/Tags'
 import MyPage from './pages/MyPage'
@@ -91,6 +92,9 @@ function App() {
               <Switch>
                 <Route exact path="/">
                   <Main />
+                </Route>
+                <Route exact path="/rough">
+                  <Rough />
                 </Route>
                 <Route path="/login">
                   <Login />
