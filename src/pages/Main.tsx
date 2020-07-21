@@ -4,8 +4,13 @@ import styled from 'styled-components'
 /**
  * components
  */
-import Item from '../components/Items'
+import Items from '../components/Items'
 import Navbar from '../components/Navbar'
+
+/**
+ * testData
+ */
+import { IllustData } from '../data/Data'
 
 const Container = styled.div`
   min-height: 80vh; /* 後で消す */
@@ -22,7 +27,7 @@ const Main: React.FC = () => {
     <Container>
       <Content>
         <Navbar />
-        <Item />
+        <Items datas={IllustData} />
       </Content>
     </Container>
   )
