@@ -75,7 +75,7 @@ const Tag: React.FC = (props: any) => {
     // </Query>
     <Container>
       <Content>
-        <Navbar />
+        <Navbar selectNumber={1} />
         <TitleContainer>
           <Title># {tag}</Title>
           <Count>114514作品</Count>
