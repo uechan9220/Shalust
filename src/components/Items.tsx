@@ -2,11 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 
 /**
- * testData
- */
-import { Data } from '../data/Data'
-
-/**
  * comopnents
  */
 import Item from './Item'
@@ -18,10 +13,26 @@ const Container = styled.div`
   grid-gap: 1rem;
 `
 
-const Items: React.FC = () => {
+interface ItemsProps {
+  datas: {
+    id: number
+    image_url: string
+    title: string
+    comment: number
+    like: number
+    isLike: boolean
+    isBookmark: boolean
+    User: {
+      userImage: string
+      userName: string
+    }[]
+  }[]
+}
+
+const Items: React.FC<ItemsProps> = (props: any) => {
   return (
     <Container>
-      {Data.map((items: any, index: number) => {
+      {props.datas.map((items: any, index: number) => {
         return <Item item={items} />
       })}
     </Container>
