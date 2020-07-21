@@ -2,10 +2,15 @@ package create_sample
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"shalust/api/pkg/server/model"
 )
+
+type SampleData struct {
+	User model.User `json:"user"`
+}
 
 func Create_sample() {
 
@@ -14,9 +19,10 @@ func Create_sample() {
 		log.Fatal(err.Error())
 	}
 
-	var data model.User
+	var data SampleData
 	if err := json.Unmarshal(data_json, &data); err != nil {
 		log.Fatal(err)
 	}
-	model.CreateUser(data)
+	fmt.Println(data)
+	model.CreateUser(data.User)
 }
