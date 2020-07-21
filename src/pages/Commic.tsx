@@ -1,0 +1,36 @@
+import React from 'react'
+import styled from 'styled-components'
+
+/**
+ * components
+ */
+import Items from '../components/Items'
+import Navbar from '../components/Navbar'
+
+/**
+ * testData
+ */
+import { CommicData } from '../data/Data'
+
+const Container = styled.div`
+  min-height: 80vh; /* 後で消す */
+  padding: 2rem 1rem;
+  background-color: #e6ecf0;
+`
+const Content = styled.div`
+  padding: 2rem 1rem;
+  background-color: #fff;
+`
+
+const Commic: React.FC = () => {
+  return (
+    <Container>
+      <Content>
+        <Navbar selectNumber={3} />
+        <Items datas={CommicData} />
+      </Content>
+    </Container>
+  )
+}
+
+export default Commic
