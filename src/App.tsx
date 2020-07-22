@@ -25,6 +25,9 @@ import Header from './components/Header'
  * pages
  */
 import Main from './pages/Main'
+import Rough from './pages/Rough'
+import Commic from './pages/Commic'
+import Graffiti from './pages/Graffiti'
 import Tag from './pages/Tag'
 import Tags from './pages/Tags'
 import MyPage from './pages/MyPage'
@@ -38,7 +41,6 @@ const GlobalStyle = createGlobalStyle`
 
 const Container = styled.div`
   padding-top: 4.2rem;
-  background-color: #e6ecf0;
 `
 
 function App() {
@@ -92,6 +94,15 @@ function App() {
               <Switch>
                 <Route exact path="/">
                   <Main />
+                </Route>
+                <Route exact path="/rough">
+                  <Rough />
+                </Route>
+                <Route exact path="/commic">
+                  <Commic />
+                </Route>
+                <Route exact path="/graffiti">
+                  <Graffiti />
                 </Route>
                 <Route path="/login">
                   <Login />

@@ -10,7 +10,7 @@ import Navbar from '../components/Navbar'
 /**
  * testData
  */
-import { IllustData } from '../data/Data'
+import { GraffitiData } from '../data/Data'
 
 const Container = styled.div`
   min-height: 80vh; /* 後で消す */
@@ -22,15 +22,15 @@ const Content = styled.div`
   background-color: #fff;
 `
 
-const Main: React.FC = () => {
+const Graffiti: React.FC = () => {
   return (
     <Container>
       <Content>
-        <Navbar selectNumber={1} />
-        <Items datas={IllustData} />
+        <Navbar selectNumber={4} />
+        <Items datas={GraffitiData} />
       </Content>
     </Container>
   )
 }
 
-export default Main
+export default Graffiti

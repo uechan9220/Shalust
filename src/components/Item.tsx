@@ -35,7 +35,10 @@ const ImageContainer = styled.div`
 `
 
 const Image = styled.img`
+  object-fit: cover;
   width: 100%;
+  min-width: 16rem;
+  min-height: 16rem;
 `
 
 const InfoContainer = styled.div`
@@ -219,7 +222,7 @@ const Item: React.FC<ItemProps> = (props: any) => {
       <ImageContainer>
         <Image src={props.item.image_url} />
         <HoverContent>
-          <Title>モーグリーとロアちゃんが二人でお昼中なのだ</Title>
+          <Title>{props.item.title}</Title>
           <HoverButton>
             <HoverBookmarkButton onClick={() => bookmarkFunc()}>
               <HoverBookmark
