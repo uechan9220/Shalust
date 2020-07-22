@@ -61,13 +61,13 @@ const Tag: React.FC = (props: any) => {
     // <Container>
     //   <Content>
     //     <Navbar />
-    //   {({ loading, data, error }: QueryResult<PostQueryProps>) => {
-    //     return (
-    //       <Container>
+    //       <TitleContainer>
     //         <Title># {tag}</Title>
     //         <Count>{data.length}</Count>
+    //        </TitleContainer >
+    //   {({ loading, data, error }: QueryResult<PostQueryProps>) => {
+    //     return (
     //         {/* <Items datas={data} /> */}
-    //       </Container>
     //     )
     //   }}
     // </Content >
@@ -78,7 +78,7 @@ const Tag: React.FC = (props: any) => {
         <Navbar selectNumber={1} />
         <TitleContainer>
           <Title># {tag}</Title>
-          <Count>114514作品</Count>
+          <Count>{IllustData.length}作品</Count>
         </TitleContainer>
         <Items datas={IllustData} />
       </Content>
