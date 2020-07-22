@@ -9,6 +9,6 @@ import (
 func Serve(r *gin.Engine, port string) {
 
 	r.GET("/", handler.Test)
-
+	r.GET("/test", handler.GetIllustratio)
 	r.Run(port)
 }
