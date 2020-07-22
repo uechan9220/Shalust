@@ -1,17 +1,14 @@
 package model
 
 import (
-	"fmt"
 	"shalust/api/pkg/db"
-
-	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
-func CreateUser(data User) {
-	fmt.Println(data)
+func CreateUser(data User) error {
 	client, err := db.Init_mysql()
 	if err != nil {
-		fmt.Println(err)
+		return err
 	}
 	client.From("user").Create(&data)
+	return err
 }

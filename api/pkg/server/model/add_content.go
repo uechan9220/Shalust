@@ -1,44 +1,41 @@
 package model
 
 import (
-	"fmt"
 	"shalust/api/pkg/db"
-
-	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
-func CreateIllustratio(data Content) {
-	fmt.Println(data)
+func CreateIllustratio(data Content) error {
 	client, err := db.Init_mysql()
 	if err != nil {
-		fmt.Println(err)
+		return err
 	}
 	client.From("illustratio").Create(&data)
+	return err
 }
 
-func CreateGraffiti(data Content) {
+func CreateGraffiti(data Content) error {
 
-	fmt.Println(data)
 	client, err := db.Init_mysql()
 	if err != nil {
-		fmt.Println(err)
+		return err
 	}
 	client.From("graffiti").Create(&data)
+	return err
 }
 
-func CreateRough(data Content) {
-	fmt.Println(data)
+func CreateRough(data Content) error {
 	client, err := db.Init_mysql()
 	if err != nil {
-		fmt.Println(err)
+		return err
 	}
 	client.From("rough").Create(&data)
+	return err
 }
-func CreateCommic(data Content) {
-	fmt.Println(data)
+func CreateCommic(data Content) error {
 	client, err := db.Init_mysql()
 	if err != nil {
-		fmt.Println(err)
+		return err
 	}
 	client.From("commic").Create(&data)
+	return err
 }
