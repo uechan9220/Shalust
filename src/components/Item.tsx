@@ -4,7 +4,7 @@ import styled from 'styled-components'
 /**
  * SVG
  */
-import Comment from '../assets/svg/comment.svg'
+import views from '../assets/svg/views.svg'
 import Like from '../assets/svg/like.svg'
 import Bookmark from '../assets/svg/bookmark.svg'
 
@@ -65,18 +65,18 @@ const UserName = styled.p`
   font-size: 14px;
 `
 
-const CommentContainer = styled.div`
+const ViewContainer = styled.div`
   align-items: center;
   display: flex;
   height: 1rem;
 `
 
-const CommentImage = styled.img`
+const ViewImage = styled.img`
   height: 14px;
   width: 14px;
 `
 
-const CommentCount = styled.p`
+const ViewCount = styled.p`
   margin-left: 4px;
   font-size: 9px;
 `
@@ -191,7 +191,7 @@ interface ItemProps {
     id: number
     image_url: string
     title: string
-    comment: number
+    views: number
     like: number
     isLike: boolean
     isBookmark: boolean
@@ -206,7 +206,6 @@ const Item: React.FC<ItemProps> = (props: any) => {
   const [like, isLike] = useState(props.item.isLike)
   const [bookmark, isBookmark] = useState(props.item.isBookmark)
   const [likeCount, setLikeCount] = useState(props.item.like)
-  const [commentCount, setCommentCount] = useState(props.item.comment)
 
   const likeFunc = () => {
     like ? setLikeCount(likeCount - 1) : setLikeCount(likeCount + 1)
@@ -263,10 +262,10 @@ const Item: React.FC<ItemProps> = (props: any) => {
           }
         )}
         <InfoContent>
-          <CommentContainer onClick={() => setCommentCount(commentCount + 1)}>
-            <CommentImage src={Comment} />
-            <CommentCount>{commentCount}</CommentCount>
-          </CommentContainer>
+          <ViewContainer>
+            <ViewImage src={views} />
+            <ViewCount>{props.item.views}</ViewCount>
+          </ViewContainer>
           <LikeContainer onClick={() => likeFunc()}>
             <LikeImage
               viewBox="0 0 14 14"
