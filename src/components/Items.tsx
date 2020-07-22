@@ -18,7 +18,7 @@ interface ItemsProps {
     id: number
     image_url: string
     title: string
-    comment: number
+    views: number
     like: number
     isLike: boolean
     isBookmark: boolean
