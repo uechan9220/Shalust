@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
  * interface
  */
 interface SelectProps {
-  Number: number
+  index: number
 }
 
 interface NavbarProps {
@@ -16,9 +16,9 @@ interface NavbarProps {
 /**
  * animation function
  */
-const getAnimation = (Number: number) => {
+const getAnimation = (index: number) => {
   return `
-    & > a:nth-child(${Number}) {
+    & > a:nth-child(${index}) {
     color: rgba(0, 0, 0, 0.88);
     border-top: 4px solid rgb(0, 150, 250);
   }
@@ -29,7 +29,7 @@ const getAnimation = (Number: number) => {
  * styled-components
  */
 
-const Nav = styled.nav<Pick<SelectProps, 'Number'>>`
+const Nav = styled.nav<Pick<SelectProps, 'index'>>`
   display: flex;
   -webkit-box-pack: start;
   justify-content: start;
@@ -43,7 +43,7 @@ const Nav = styled.nav<Pick<SelectProps, 'Number'>>`
   & > a:hover:nth-child(n + 1) {
     color: rgba(0, 0, 0, 0.88);
   }
-  ${({ Number }) => getAnimation(Number)};
+  ${({ index }) => getAnimation(index)};
 `
 
 const StyledLink = styled(Link)`
@@ -78,7 +78,7 @@ const NavContainer = styled.div``
 const Navbar: React.FC<NavbarProps> = ({ selectNumber }) => {
   return (
     <NavContainer>
-      <Nav Number={selectNumber}>
+      <Nav index={selectNumber}>
         <StyledLink to="/">
           <NavText>イラスト</NavText>
         </StyledLink>
