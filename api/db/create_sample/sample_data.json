@@ -9,11 +9,14 @@
     },
     "imageData": {
         "content_id": "test",
-        "user_id": "testid",
-        "comment": "雪だるまにはジャージを被せる派",
         "image_url": "https://www.pixiv.net/artworks/83109854",
+        "image_index": 1
+    },
+    "content_handling": {
+        "content_id": "test",
+        "user_id": "testid",
+        "detail": "雪だるまにはジャージを被せる派",
         "title": "testt itle",
-        "image_index": 1,
         "adlut": false
     }
 }

@@ -39,3 +39,12 @@ func CreateCommic(data Content) error {
 	client.From("commic").Create(&data)
 	return err
 }
+func CreateContentHandling(data ContentHandling) error {
+
+	client, err := db.Init_mysql()
+	if err != nil {
+		return err
+	}
+	client.From("content_handling").Create(&data)
+	return err
+}
