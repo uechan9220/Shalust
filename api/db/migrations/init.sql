@@ -12,6 +12,22 @@ IF NOT EXISTS user
 );
 
 CREATE TABLE
+IF NOT EXISTS content_handling
+( 
+    content_id VARCHAR(128) NOT NULL PRIMARY KEY,
+    user_id VARCHAR(128),
+    detail VARCHAR(128),
+    create_at VARCHAR(128),
+    title  VARCHAR(128), 
+    adult BOOLEAN,
+    views INT,
+    
+    FOREIGN KEY (user_id)
+    REFERENCES user(user_id)
+);
+
+
+CREATE TABLE
 IF NOT EXISTS follow
 (
     id INT AUTO_INCREMENT  NOT NULL PRIMARY KEY,
@@ -75,20 +91,6 @@ IF NOT EXISTS illustratio
     
 );
 
-CREATE TABLE
-IF NOT EXISTS content_handling
-( 
-    content_id VARCHAR(128) NOT NULL PRIMARY KEY,
-    user_id VARCHAR(128),
-    detail VARCHAR(128),
-    create_at VARCHAR(128),
-    title  VARCHAR(128), 
-    adult BOOLEAN,
-    views INT,
-    
-    FOREIGN KEY (user_id)
-    REFERENCES user(user_id)
-);
 
 CREATE TABLE
 IF NOT EXISTS likes
