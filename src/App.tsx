@@ -114,16 +114,16 @@ function App() {
                 <Route path="/signin">
                   <Signin />
                 </Route>
+                <Route exact path="/tags">
+                  <Tags />
+                </Route>
+                <Route path="/tags/:content/:tag">
+                  <Tag />
+                </Route>
                 <Auth>
                   <Switch>
                     <Route path="/mypage/:id">
                       <MyPage />
-                    </Route>
-                    <Route exact path="/tags">
-                      <Tags />
-                    </Route>
-                    <Route path="/tags/:content/:tag">
-                      <Tag />
                     </Route>
                   </Switch>
                 </Auth>
