@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { useParams } from 'react-router-dom'
 import { Query, QueryResult } from 'react-apollo'
@@ -52,8 +52,28 @@ const Count = styled.p`
 `
 
 const Tag: React.FC = (props: any) => {
-  let { tag } = useParams()
+  let { content, tag } = useParams()
   const { currentUser } = useContext(AuthContext)
+  const [selectNumber, setNumber] = useState(1)
+
+  useEffect(() => {
+    switch (content) {
+      case 'illust':
+        setNumber(1)
+        break
+      case 'rough':
+        setNumber(2)
+        break
+      case 'commic':
+        setNumber(3)
+        break
+      case 'graffiti':
+        setNumber(4)
+        break
+      default:
+        break
+    }
+  }, [content])
 
   return (
     // APIとの接続の時にはこれを使う。
@@ -75,9 +95,10 @@ const Tag: React.FC = (props: any) => {
     // </Query>
     <Container>
       <Content>
-        <Navbar selectNumber={1} />
+        <Navbar selectNumber={selectNumber} tagName={tag} />
         <TitleContainer>
           <Title># {tag}</Title>
+          <p>{content}</p>
           <Count>{IllustData.length}作品</Count>
         </TitleContainer>
         <Items datas={IllustData} />
