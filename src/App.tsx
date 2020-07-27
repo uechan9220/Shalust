@@ -25,6 +25,7 @@ import Header from './components/Header'
  * pages
  */
 import Main from './pages/Main'
+import Illust from './pages/Illust'
 import Rough from './pages/Rough'
 import Commic from './pages/Commic'
 import Graffiti from './pages/Graffiti'
@@ -95,6 +96,9 @@ function App() {
                 <Route exact path="/">
                   <Main />
                 </Route>
+                <Route exact path="/illust">
+                  <Illust />
+                </Route>
                 <Route exact path="/rough">
                   <Rough />
                 </Route>
@@ -118,7 +122,7 @@ function App() {
                     <Route exact path="/tags">
                       <Tags />
                     </Route>
-                    <Route path="/tags/:tag">
+                    <Route path="/tags/:content/:tag">
                       <Tag />
                     </Route>
                   </Switch>
