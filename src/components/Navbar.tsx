@@ -11,6 +11,7 @@ interface SelectProps {
 
 interface NavbarProps {
   selectNumber: number
+  tagName?: string
 }
 
 /**
@@ -75,25 +76,49 @@ const NavText = styled.p``
 
 const NavContainer = styled.div``
 
-const Navbar: React.FC<NavbarProps> = ({ selectNumber }) => {
+const Navbar: React.FC<NavbarProps> = ({ selectNumber, tagName }) => {
   return (
     <NavContainer>
       <Nav index={selectNumber}>
-        <StyledLink to="/">
-          <NavText>イラスト</NavText>
-        </StyledLink>
+        {tagName === undefined ? (
+          <>
+            {console.log(tagName)}
+            <StyledLink to="/illust">
+              <NavText>イラスト</NavText>
+            </StyledLink>
 
-        <StyledLink to="/rough">
-          <NavText>ラフ</NavText>
-        </StyledLink>
+            <StyledLink to="/rough">
+              <NavText>ラフ</NavText>
+            </StyledLink>
 
-        <StyledLink to="/commic">
-          <NavText>マンガ</NavText>
-        </StyledLink>
+            <StyledLink to="/commic">
+              <NavText>マンガ</NavText>
+            </StyledLink>
 
-        <StyledLink to="/graffiti">
-          <NavText>落書き</NavText>
-        </StyledLink>
+            <StyledLink to="/graffiti">
+              <NavText>落書き</NavText>
+            </StyledLink>
+          </>
+        ) : (
+          <>
+            {console.log(tagName)}
+            <StyledLink to={`/tags/illust/${tagName}`}>
+              <NavText>イラスト</NavText>
+            </StyledLink>
+
+            <StyledLink to={`/tags/rough/${tagName}`}>
+              <NavText>ラフ</NavText>
+            </StyledLink>
+
+            <StyledLink to={`/tags/commic/${tagName}`}>
+              <NavText>マンガ</NavText>
+            </StyledLink>
+
+            <StyledLink to={`/tags/graffiti/${tagName}`}>
+              <NavText>落書き</NavText>
+            </StyledLink>
+          </>
+        )}
       </Nav>
     </NavContainer>
   )
