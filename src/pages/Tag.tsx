@@ -98,7 +98,6 @@ const Tag: React.FC = (props: any) => {
         <Navbar selectNumber={selectNumber} tagName={tag} />
         <TitleContainer>
           <Title># {tag}</Title>
-          <p>{content}</p>
           <Count>{IllustData.length}作品</Count>
         </TitleContainer>
         <Items datas={IllustData} />
