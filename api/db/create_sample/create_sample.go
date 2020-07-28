@@ -2,6 +2,7 @@ package create_sample
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"shalust/api/pkg/server/model"
@@ -24,6 +25,7 @@ func Create_sample() {
 	if err := json.Unmarshal(data_json, &data); err != nil {
 		log.Fatal(err)
 	}
+	fmt.Println(data)
 	_ = model.CreateUser(data.User)
 	_ = model.CreateContentHandling(data.ContentData)
 	_ = model.CreateIllustratio(data.ImageData)
