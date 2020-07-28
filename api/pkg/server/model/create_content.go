@@ -45,6 +45,7 @@ func CreateContentHandling(data ContentHandling) error {
 	if err != nil {
 		return err
 	}
+
 	client.From("content_handling").Create(&data)
 	return err
 }
