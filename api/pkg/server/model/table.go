@@ -18,11 +18,7 @@ type Follow struct {
 	Follow_id    string `json:"follow_id"`
 	Following_id string `json:"following_id"`
 }
-type Comment struct {
-	Id          int    `json:"id"`
-	Post_id     string `json:"post_id"`
-	Post_userid string `json:"post_userid"`
-}
+
 type Content struct {
 	Id          int    `json:"id"`
 	Content_id  string `json:"content_id"`
@@ -37,6 +33,29 @@ type ContentHandling struct {
 	Title      string    `json:"title"`
 	Views      int       `json:"views"`
 	Adult      bool      `json:"adult"`
+}
+
+type ContentData struct {
+	Content_id  string    `json:"content_id"`
+	User_id     string    `json:"user_id"`
+	Detail      string    `json:"detail"`
+	Create_at   time.Time `json:"create_at"`
+	Title       string    `json:"title"`
+	Views       int       `json:"views"`
+	Adult       bool      `json:"adult"`
+	Image_url   string    `json:"image_url"`
+	Image_index int       `json:"image_index"`
+}
+
+type RturnContent struct {
+	Content_id   string    `json:"content_id"`
+	User_id      string    `json:"user_id"`
+	Detail       string    `json:"detail"`
+	Create_at    time.Time `json:"create_at"`
+	Title        string    `json:"title"`
+	Views        int       `json:"views"`
+	Adult        bool      `json:"adult"`
+	Content_data []Content `json:"content_data"`
 }
 
 type Like struct {

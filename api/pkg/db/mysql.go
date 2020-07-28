@@ -70,3 +70,16 @@ func (db *Db) NewRecord(key interface{}) {
 	db.client.NewRecord(key)
 
 }
+func (db *Db) Join(key string, param ...interface{}) *Db {
+	db.client.Joins(key, param)
+	return db
+}
+
+func (db *Db) Select(key string) *Db {
+	db.client.Select(key)
+	return db
+}
+func (db *Db) Rows() *Db {
+	db.client.Rows()
+	return db
+}
