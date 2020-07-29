@@ -31,6 +31,10 @@ func Init_mysql() (Db, error) {
 func (db *Db) Find(shell interface{}) {
 	db.client.Find(shell)
 }
+
+func (db *Db) Scan(shell interface{}) {
+	db.client.Scan(shell)
+}
 func (db *Db) Where(key string, param ...interface{}) *Db {
 	db.client = db.client.Where(key, param...)
 	return db
@@ -75,11 +79,20 @@ func (db *Db) Join(key string, param ...interface{}) *Db {
 	return db
 }
 
-func (db *Db) Select(key string) *Db {
-	db.client.Select(key)
+func (db *Db) Select(key string, param ...interface{}) *Db {
+	db.client.Select(key, param)
 	return db
 }
 func (db *Db) Rows() *Db {
 	db.client.Rows()
+	return db
+}
+func (db *Db) Raw(sql string, param ...interface{}) *Db {
+	db.client.Raw(sql, param)
+	return db
+}
+
+func (db *Db) Preload(colum string, param ...interface{}) *Db {
+	db.client.Preload(colum, param)
 	return db
 }
