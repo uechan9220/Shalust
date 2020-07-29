@@ -17,7 +17,7 @@ IF NOT EXISTS content_handling
     content_id VARCHAR(128) NOT NULL PRIMARY KEY,
     user_id VARCHAR(128),
     detail VARCHAR(128),
-    create_at VARCHAR(128),
+    create_at TIMESTAMP,
     title  VARCHAR(128), 
     adult BOOLEAN,
     views INT,
