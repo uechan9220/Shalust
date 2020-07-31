@@ -30,7 +30,7 @@ import Commic from './pages/Commic'
 import Graffiti from './pages/Graffiti'
 import Tag from './pages/Tag'
 import Tags from './pages/Tags'
-import MyPage from './pages/MyPage'
+import User from './pages/User'
 import Login from './pages/Login'
 import Signin from './pages/Signin'
 
@@ -110,11 +110,11 @@ function App() {
                 <Route path="/signin">
                   <Signin />
                 </Route>
+                <Route path="/user/:user_id">
+                  <User />
+                </Route>
                 <Auth>
                   <Switch>
-                    <Route path="/mypage/:id">
-                      <MyPage />
-                    </Route>
                     <Route exact path="/tags">
                       <Tags />
                     </Route>
