@@ -466,3 +466,33 @@ export const GraffitiData = [
     ],
   },
 ]
+
+export const TestUserData = [
+  {
+    user_id: 1,
+    name: 'rin',
+    last_seen: '2020-07-30',
+    icon_url: '',
+    location: '',
+    comment: '',
+    account_id: 'yuuki_rinrin'
+  },
+  {
+    user_id: 2,
+    name: 'moke',
+    last_seen: '2020-04-01',
+    icon_url: '',
+    location: '',
+    comment: '',
+    account_id: 'moooooooooooke'
+  },
+  {
+    user_id: 3,
+    name: 'john',
+    last_seen: '2020-07-30',
+    icon_url: '',
+    location: '',
+    comment: '',
+    account_id: 'watashi_mirai_jin'
+  },
+]
