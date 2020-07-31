@@ -13,7 +13,7 @@ func GetAllIllustratio() ([]ContentData, error) {
 		return data, err
 	}
 
-	clientt := client.From("content_handling, illustratio").Select("content_handling.*, illustratio.image_url, illustratio.image_index")
+	clientt := client.From("content_handling, illustratio")
 
 	clientt.Join("JOIN illustratio ON illustratio.content_id = content_handling.content_id").Scan(&data)
 

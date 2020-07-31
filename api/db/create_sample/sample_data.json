@@ -3,11 +3,27 @@
         "user_id": "testid",
         "user_name": "rin1208",
         "icon_url": "https://twitter.com/rin_kannzaki/photo",
+        "header_url": "https://twitter.com/rin_kannzaki/photo",
         "comment": "雪だるまにはジャージを被せる派",
         "user_location": "ブータン王国",
         "acount_id": "rin1208"
     },
-    "imageData": {
+    "illustratio": {
+        "content_id": "test",
+        "image_url": "https://www.pixiv.net/artworks/83109854",
+        "image_index": 1
+    },
+    "rough": {
+        "content_id": "test",
+        "image_url": "https://www.pixiv.net/artworks/83109854",
+        "image_index": 1
+    },
+    "commic": {
+        "content_id": "test",
+        "image_url": "https://www.pixiv.net/artworks/83109854",
+        "image_index": 1
+    },
+    "graffiti": {
         "content_id": "test",
         "image_url": "https://www.pixiv.net/artworks/83109854",
         "image_index": 1
