@@ -39,6 +39,7 @@ type ContentHandling struct {
 	Title      string    `json:"title"`
 	Views      int       `json:"views"`
 	Adult      bool      `json:"adult"`
+	Like_count int       `json:"like_count"`
 }
 
 type ContentData struct {
@@ -51,21 +52,15 @@ type ContentData struct {
 	Adult       bool      `json:"adult"`
 	Image_url   string    `json:"image_url"`
 	Image_index int       `json:"image_index"`
+	Like_count  int       `json:"like_count"`
 	Commic      bool      `json:"commic"`
 	Graffiti    bool      `json:"graffiti"`
 	Rough       bool      `json:"rough"`
 	Illustratio bool      `json:"illustratio"`
 }
 
-type RturnContent struct {
-	Content_id   string    `json:"content_id"`
-	User_id      string    `json:"user_id"`
-	Detail       string    `json:"detail"`
-	Create_at    time.Time `json:"create_at"`
-	Title        string    `json:"title"`
-	Views        int       `json:"views"`
-	Adult        bool      `json:"adult"`
-	Content_data []Content `json:"content_data"`
+type RturnIllustratio struct {
+	illustratio []Content `json:"illustratio"`
 }
 
 type Like struct {
