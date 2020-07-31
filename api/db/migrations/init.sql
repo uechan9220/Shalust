@@ -43,59 +43,24 @@ IF NOT EXISTS follow
 );
 
 CREATE TABLE
-IF NOT EXISTS commic
+IF NOT EXISTS content_data
 (
     id INT AUTO_INCREMENT  NOT NULL PRIMARY KEY,
     content_id VARCHAR(128),
     image_url VARCHAR(128),
     image_index INT,
     commic BOOLEAN,
-
-    
-    FOREIGN KEY (content_id)
-    REFERENCES content_handling(content_id)
-);
-
-
-CREATE TABLE
-IF NOT EXISTS graffiti
-(
-    id INT AUTO_INCREMENT  NOT NULL PRIMARY KEY,
-    content_id VARCHAR(128),
-    image_url VARCHAR(128),
-    image_index INT,
-    graffiti BOOLEAN,
-    FOREIGN KEY (content_id)
-    REFERENCES content_handling(content_id)
-);
-
-
-CREATE TABLE
-IF NOT EXISTS rough
-(
-    id INT AUTO_INCREMENT  NOT NULL PRIMARY KEY,
-    content_id VARCHAR(128),
-    image_url VARCHAR(128),
-    image_index INT,
-    rough BOOLEAN,
-    FOREIGN KEY (content_id)
-    REFERENCES content_handling(content_id)
-
-);
-
-
-CREATE TABLE
-IF NOT EXISTS illustratio
-(
-    id INT AUTO_INCREMENT  NOT NULL PRIMARY KEY,
-    content_id VARCHAR(128),
-    image_url VARCHAR(128),
-    image_index INT,
     illustratio BOOLEAN,
+    rough BOOLEAN,
+    graffiti BOOLEAN,
+
+    
     FOREIGN KEY (content_id)
     REFERENCES content_handling(content_id)
-    
 );
+
+
+
 
 
 CREATE TABLE
