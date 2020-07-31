@@ -22,7 +22,7 @@ IF NOT EXISTS content_handling
     title  VARCHAR(128), 
     adult BOOLEAN,
     views INT,
-    
+    like_count  INT,
     FOREIGN KEY (user_id)
     REFERENCES user(user_id)
 );
