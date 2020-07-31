@@ -8,6 +8,7 @@ IF NOT EXISTS user
     user_location VARCHAR(128),
     comment VARCHAR(128),
     icon_url VARCHAR(128),
+    header_url VARCHAR(128),
     acount_id VARCHAR(128)
 );
 
