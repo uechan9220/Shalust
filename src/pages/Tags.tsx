@@ -35,7 +35,7 @@ const Tags: React.FC = () => {
                   return (
                     <Link
                       style={{ textDecoration: 'none', marginRight: '1rem' }}
-                      to={`/tags/${items.name}`}
+                      to={`/tags/illust/${items.name}`}
                     >
                       <Tag key={index}>{items.name}</Tag>
                     </Link>
