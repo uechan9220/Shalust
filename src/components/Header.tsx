@@ -80,22 +80,24 @@ const Header: React.FC = () => {
           </Link>
           {data.User.map((items: any, index: number) => {
             return (
-              <Link to={`/mypage/${items.uniqueID}`}>
-                <Signin>MyPage</Signin>
+              // test Link
+              // <Link to={`/user/${items.uniqueID}`}>
+              <Link to={`/user/moooooooooooke`}>
+                <Signin>user</Signin>
               </Link>
             )
           })}
         </Content>
       ) : (
-        <Content>
-          <Link to="/signin">
-            <Signin>Sign in</Signin>
-          </Link>
-          <Link to="/login">
-            <Login>Login</Login>
-          </Link>
-        </Content>
-      )}
+          <Content>
+            <Link to="/signin">
+              <Signin>Sign in</Signin>
+            </Link>
+            <Link to="/login">
+              <Login>Login</Login>
+            </Link>
+          </Content>
+        )}
     </Container>
   )
 }
