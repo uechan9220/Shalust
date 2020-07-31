@@ -11,10 +11,6 @@ type SampleData struct {
 	User        model.User            `json:"user"`
 	ImageData   model.Content         `json:"imageData"`
 	ContentData model.ContentHandling `json:"content_handling"`
-	Illustratio model.Illustratio     `json:"illustratio"`
-	Rough       model.Rough           `json:"rough"`
-	Commic      model.Commic          `json:"commic"`
-	Graffiti    model.Graffiti        `json:"graffiti"`
 }
 
 func Create_sample() {
@@ -31,8 +27,8 @@ func Create_sample() {
 
 	_ = model.CreateUser(data.User)
 	_ = model.CreateContentHandling(data.ContentData)
-	_ = model.CreateIllustratio(data.Illustratio)
-	_ = model.CreateRough(data.Rough)
-	_ = model.CreateCommic(data.Commic)
-	_ = model.CreateGraffiti(data.Graffiti)
+	_ = model.CreateIllustratio(data.ImageData)
+	_ = model.CreateRough(data.ImageData)
+	_ = model.CreateCommic(data.ImageData)
+	_ = model.CreateGraffiti(data.ImageData)
 }

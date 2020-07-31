@@ -30,34 +30,6 @@ type Content struct {
 	Rough       bool   `json:"rough"`
 	Illustratio bool   `json:"illustratio"`
 }
-type Commic struct {
-	Id          int    `json:"id"`
-	Content_id  string `json:"content_id"`
-	Image_url   string `json:"image_url"`
-	Image_index int    `json:"image_index"`
-	Commic      bool   `json:"commic"`
-}
-type Graffiti struct {
-	Id          int    `json:"id"`
-	Content_id  string `json:"content_id"`
-	Image_url   string `json:"image_url"`
-	Image_index int    `json:"image_index"`
-	Graffiti    bool   `json:"graffiti"`
-}
-type Rough struct {
-	Id          int    `json:"id"`
-	Content_id  string `json:"content_id"`
-	Image_url   string `json:"image_url"`
-	Image_index int    `json:"image_index"`
-	Rough       bool   `json:"rough"`
-}
-type Illustratio struct {
-	Id          int    `json:"id"`
-	Content_id  string `json:"content_id"`
-	Image_url   string `json:"image_url"`
-	Image_index int    `json:"image_index"`
-	Illustratio bool   `json:"illustratio"`
-}
 
 type ContentHandling struct {
 	Content_id string    `json:"content_id"`
