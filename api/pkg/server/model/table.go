@@ -45,6 +45,10 @@ type ContentData struct {
 	Adult       bool      `json:"adult"`
 	Image_url   string    `json:"image_url"`
 	Image_index int       `json:"image_index"`
+	Commic      bool      `json:"commic"`
+	Graffiti    bool      `json:"graffiti"`
+	Rough       bool      `json:"rough"`
+	Illustratio bool      `json:"illustratio"`
 }
 
 type RturnContent struct {
