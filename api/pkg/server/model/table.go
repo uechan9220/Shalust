@@ -8,6 +8,7 @@ type User struct {
 	User_id       string    `json:"user_id"`
 	User_name     string    `json:"user_name"`
 	Icon_url      string    `json:"icon_url"`
+	Header_url    string    `json:"header_url"`
 	Comment       string    `json:"comment"`
 	Acount_id     string    `json:"acount_id"`
 	Last_seen     time.Time `json:"last_seen"`
@@ -24,7 +25,40 @@ type Content struct {
 	Content_id  string `json:"content_id"`
 	Image_url   string `json:"image_url"`
 	Image_index int    `json:"image_index"`
+	Commic      bool   `json:"commic"`
+	Graffiti    bool   `json:"graffiti"`
+	Rough       bool   `json:"rough"`
+	Illustratio bool   `json:"illustratio"`
 }
+type Commic struct {
+	Id          int    `json:"id"`
+	Content_id  string `json:"content_id"`
+	Image_url   string `json:"image_url"`
+	Image_index int    `json:"image_index"`
+	Commic      bool   `json:"commic"`
+}
+type Graffiti struct {
+	Id          int    `json:"id"`
+	Content_id  string `json:"content_id"`
+	Image_url   string `json:"image_url"`
+	Image_index int    `json:"image_index"`
+	Graffiti    bool   `json:"graffiti"`
+}
+type Rough struct {
+	Id          int    `json:"id"`
+	Content_id  string `json:"content_id"`
+	Image_url   string `json:"image_url"`
+	Image_index int    `json:"image_index"`
+	Rough       bool   `json:"rough"`
+}
+type Illustratio struct {
+	Id          int    `json:"id"`
+	Content_id  string `json:"content_id"`
+	Image_url   string `json:"image_url"`
+	Image_index int    `json:"image_index"`
+	Illustratio bool   `json:"illustratio"`
+}
+
 type ContentHandling struct {
 	Content_id string    `json:"content_id"`
 	User_id    string    `json:"user_id"`

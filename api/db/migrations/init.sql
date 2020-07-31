@@ -49,6 +49,8 @@ IF NOT EXISTS commic
     content_id VARCHAR(128),
     image_url VARCHAR(128),
     image_index INT,
+    commic BOOLEAN,
+
     
     FOREIGN KEY (content_id)
     REFERENCES content_handling(content_id)
@@ -62,6 +64,7 @@ IF NOT EXISTS graffiti
     content_id VARCHAR(128),
     image_url VARCHAR(128),
     image_index INT,
+    graffiti BOOLEAN,
     FOREIGN KEY (content_id)
     REFERENCES content_handling(content_id)
 );
@@ -74,6 +77,7 @@ IF NOT EXISTS rough
     content_id VARCHAR(128),
     image_url VARCHAR(128),
     image_index INT,
+    rough BOOLEAN,
     FOREIGN KEY (content_id)
     REFERENCES content_handling(content_id)
 
@@ -87,6 +91,7 @@ IF NOT EXISTS illustratio
     content_id VARCHAR(128),
     image_url VARCHAR(128),
     image_index INT,
+    illustratio BOOLEAN,
     FOREIGN KEY (content_id)
     REFERENCES content_handling(content_id)
     

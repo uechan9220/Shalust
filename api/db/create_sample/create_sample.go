@@ -2,7 +2,6 @@ package create_sample
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"shalust/api/pkg/server/model"
@@ -12,6 +11,10 @@ type SampleData struct {
 	User        model.User            `json:"user"`
 	ImageData   model.Content         `json:"imageData"`
 	ContentData model.ContentHandling `json:"content_handling"`
+	Illustratio model.Illustratio     `json:"illustratio"`
+	Rough       model.Rough           `json:"rough"`
+	Commic      model.Commic          `json:"commic"`
+	Graffiti    model.Graffiti        `json:"graffiti"`
 }
 
 func Create_sample() {
@@ -25,11 +28,11 @@ func Create_sample() {
 	if err := json.Unmarshal(data_json, &data); err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println(data)
+
 	_ = model.CreateUser(data.User)
 	_ = model.CreateContentHandling(data.ContentData)
-	_ = model.CreateIllustratio(data.ImageData)
-	_ = model.CreateRough(data.ImageData)
-	_ = model.CreateCommic(data.ImageData)
-	_ = model.CreateGraffiti(data.ImageData)
+	_ = model.CreateIllustratio(data.Illustratio)
+	_ = model.CreateRough(data.Rough)
+	_ = model.CreateCommic(data.Commic)
+	_ = model.CreateGraffiti(data.Graffiti)
 }
