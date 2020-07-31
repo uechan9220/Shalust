@@ -4,44 +4,44 @@ import (
 	"shalust/api/pkg/db"
 )
 
-func CreateIllustratio(data Illustratio) error {
+func CreateIllustratio(data Content) error {
 	client, err := db.Init_mysql()
 	if err != nil {
 		return err
 	}
 	data.Illustratio = true
-	client.From("illustratio").Create(&data)
+	client.From("content_data").Create(&data)
 	return err
 }
 
-func CreateGraffiti(data Graffiti) error {
+func CreateGraffiti(data Content) error {
 
 	client, err := db.Init_mysql()
 	if err != nil {
 		return err
 	}
 	data.Graffiti = true
-	client.From("graffiti").Create(&data)
+	client.From("content_data").Create(&data)
 	return err
 }
 
-func CreateRough(data Rough) error {
+func CreateRough(data Content) error {
 	client, err := db.Init_mysql()
 	if err != nil {
 		return err
 	}
 	data.Rough = true
-	client.From("rough").Create(&data)
+	client.From("content_data").Create(&data)
 	return err
 }
-func CreateCommic(data Commic) error {
+func CreateCommic(data Content) error {
 	client, err := db.Init_mysql()
 	if err != nil {
 		return err
 	}
 
 	data.Commic = true
-	client.From("commic").Create(&data)
+	client.From("content_data").Create(&data)
 	return err
 }
 func CreateContentHandling(data ContentHandling) error {
