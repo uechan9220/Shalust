@@ -15,6 +15,7 @@ func GetAllIllustratio() ([]ContentData, error) {
 
 	client.From("content_handling, content_data").
 		Join("JOIN content_data ON content_data.content_id = content_handling.content_id").
+		Where("illustratio = 1").
 		Scan(&data)
 
 	log.Println(data)
