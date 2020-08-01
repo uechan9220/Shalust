@@ -8,9 +8,13 @@ import (
 )
 
 type SampleData struct {
-	User        model.User            `json:"user"`
-	ImageData   model.Content         `json:"imageData"`
-	ContentData model.ContentHandling `json:"content_handling"`
+	User      model.User    `json:"user"`
+	ImageData model.Content `json:"imageData"`
+
+	Content_commic      model.ContentHandling `json:"content_commic"`
+	Content_graffiti    model.ContentHandling `json:"content_graffiti"`
+	Content_rough       model.ContentHandling `json:"content_rough"`
+	Content_illustratio model.ContentHandling `json:"content_illustratio"`
 }
 
 func Create_sample() {
@@ -26,7 +30,10 @@ func Create_sample() {
 	}
 
 	_ = model.CreateUser(data.User)
-	_ = model.CreateContentHandling(data.ContentData)
+	_ = model.CreateContentHandling(data.Content_commic)
+	_ = model.CreateContentHandling(data.Content_graffiti)
+	_ = model.CreateContentHandling(data.Content_illustratio)
+	_ = model.CreateContentHandling(data.Content_rough)
 	_ = model.CreateIllustratio(data.ImageData)
 	_ = model.CreateRough(data.ImageData)
 	_ = model.CreateCommic(data.ImageData)
