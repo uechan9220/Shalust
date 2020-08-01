@@ -30,12 +30,10 @@ func Create_sample() {
 	}
 
 	_ = model.CreateUser(data.User)
-	_ = model.CreateContentHandling(data.Content_commic)
-	_ = model.CreateContentHandling(data.Content_graffiti)
-	_ = model.CreateContentHandling(data.Content_illustratio)
-	_ = model.CreateContentHandling(data.Content_rough)
-	_ = model.CreateIllustratio(data.ImageData)
-	_ = model.CreateRough(data.ImageData)
-	_ = model.CreateCommic(data.ImageData)
-	_ = model.CreateGraffiti(data.ImageData)
+	_ = model.CreateCommicHandling(data.Content_commic)
+	_ = model.CreateGraffitiHandling(data.Content_graffiti)
+	_ = model.CreateIllustratioHandling(data.Content_illustratio)
+	_ = model.CreateRoughtHandling(data.Content_rough)
+
+	_ = model.CreateContentData(data.ImageData)
 }
