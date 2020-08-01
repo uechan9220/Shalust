@@ -12,7 +12,7 @@ func Serve(r *gin.Engine, port string) {
 	r.GET("/test", handler.GetIllustratio)
 	v1 := r.Group("/api")
 	{
-		v1.GET("/getIllustratio", handler.GetIllustratio)
+		v1.POST("/getIllustratio", handler.GetIllustratio)
 
 	}
 
