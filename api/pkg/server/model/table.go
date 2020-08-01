@@ -45,6 +45,8 @@ type ContentHandling struct {
 type ContentData struct {
 	Content_id  string    `json:"content_id"`
 	User_id     string    `json:"user_id"`
+	User_name   string    `json:"user_name"`
+	Icon_url    string    `json:"icon_url"`
 	Detail      string    `json:"detail"`
 	Create_at   time.Time `json:"create_at"`
 	Title       string    `json:"title"`
