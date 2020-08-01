@@ -1,4 +1,4 @@
-<mxfile host="0cc7a6f3-2c33-4150-b0d6-921a68e7a487" modified="2020-07-31T16:53:02.373Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.47.3 Chrome/78.0.3904.130 Electron/7.3.2 Safari/537.36" etag="jaHmBKyMAgNlGVMcLuOm" version="13.1.3">
+<mxfile host="0cc7a6f3-2c33-4150-b0d6-921a68e7a487" modified="2020-08-01T10:58:36.619Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.47.3 Chrome/78.0.3904.130 Electron/7.3.2 Safari/537.36" etag="xWzvzkEVn-1ifBBci-MB" version="13.1.3">
     <diagram id="6hGFLwfOUW9BJ-s0fimq" name="Page-1">
         <mxGraphModel dx="1042" dy="679" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
@@ -32,7 +32,7 @@
                     <mxGeometry y="224" width="140" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="133" value="content_handling" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-                    <mxGeometry x="240" y="40" width="140" height="254" as="geometry"/>
+                    <mxGeometry x="240" y="40" width="140" height="374" as="geometry"/>
                 </mxCell>
                 <mxCell id="134" value="content_id: String(PK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="133" vertex="1">
                     <mxGeometry y="26" width="140" height="26" as="geometry"/>
@@ -46,20 +46,32 @@
                 <mxCell id="138" value="&lt;span style=&quot;color: rgb(240 , 240 , 240) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 12px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: left ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(42 , 42 , 42) ; float: none ; display: inline&quot;&gt;&amp;nbsp;create_date: Timestamp&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" parent="133" vertex="1">
                     <mxGeometry y="108" width="140" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="137" value="&lt;span style=&quot;color: rgb(240 , 240 , 240) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 12px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: left ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(42 , 42 , 42) ; float: none ; display: inline&quot;&gt;&amp;nbsp;detail: String&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" parent="133" vertex="1">
+                <mxCell id="172" value="&lt;span style=&quot;text-align: center&quot;&gt;&amp;nbsp;graffiti : bool&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" parent="133" vertex="1">
                     <mxGeometry y="138" width="140" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="141" value="&lt;span style=&quot;color: rgb(240 , 240 , 240) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 12px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: left ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(42 , 42 , 42) ; float: none ; display: inline&quot;&gt;&amp;nbsp;adult&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: left ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; float: none ; display: inline&quot;&gt;&lt;font face=&quot;helvetica&quot;&gt;&lt;span style=&quot;background-color: rgb(42 , 42 , 42)&quot;&gt;: Bool&lt;/span&gt;&lt;/font&gt;&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" parent="133" vertex="1">
+                <mxCell id="170" value="&lt;span style=&quot;color: rgb(240 , 240 , 240) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 12px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: left ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(42 , 42 , 42) ; float: none ; display: inline&quot;&gt;&amp;nbsp;rough:&amp;nbsp; bool&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" parent="133" vertex="1">
                     <mxGeometry y="168" width="140" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="147" value="views: Int " style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="133" vertex="1">
-                    <mxGeometry y="198" width="140" height="26" as="geometry"/>
+                <mxCell id="169" value="&lt;span style=&quot;color: rgb(240 , 240 , 240) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 12px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: left ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(42 , 42 , 42) ; float: none ; display: inline&quot;&gt;&amp;nbsp;commic:&amp;nbsp; bool&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" parent="133" vertex="1">
+                    <mxGeometry y="198" width="140" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="173" value="&lt;span style=&quot;color: rgb(240 , 240 , 240) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 12px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: left ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(42 , 42 , 42) ; float: none ; display: inline&quot;&gt;&amp;nbsp;like_count: Int&amp;nbsp;&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="133">
-                    <mxGeometry y="224" width="140" height="30" as="geometry"/>
+                <mxCell id="137" value="&lt;span style=&quot;color: rgb(240 , 240 , 240) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 12px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: left ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(42 , 42 , 42) ; float: none ; display: inline&quot;&gt;&amp;nbsp;detail: String&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" parent="133" vertex="1">
+                    <mxGeometry y="228" width="140" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="171" value="&lt;span style=&quot;color: rgb(240 , 240 , 240) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 12px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: left ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(42 , 42 , 42) ; float: none ; display: inline&quot;&gt;&amp;nbsp;&lt;span style=&quot;font-family: &amp;#34;helvetica&amp;#34; ; text-align: center&quot;&gt;illustratio&lt;/span&gt;:&amp;nbsp; bool&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" parent="133" vertex="1">
+                    <mxGeometry y="258" width="140" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="141" value="&lt;span style=&quot;color: rgb(240 , 240 , 240) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 12px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: left ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(42 , 42 , 42) ; float: none ; display: inline&quot;&gt;&amp;nbsp;adult&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: left ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; float: none ; display: inline&quot;&gt;&lt;font face=&quot;helvetica&quot;&gt;&lt;span style=&quot;background-color: rgb(42 , 42 , 42)&quot;&gt;: Bool&lt;/span&gt;&lt;/font&gt;&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" parent="133" vertex="1">
+                    <mxGeometry y="288" width="140" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="147" value="views: Int " style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="133" vertex="1">
+                    <mxGeometry y="318" width="140" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="173" value="&lt;span style=&quot;color: rgb(240 , 240 , 240) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 12px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: left ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(42 , 42 , 42) ; float: none ; display: inline&quot;&gt;&amp;nbsp;like_count: Int&amp;nbsp;&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" parent="133" vertex="1">
+                    <mxGeometry y="344" width="140" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="55" value="commic" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-                    <mxGeometry x="640" y="40" width="140" height="258" as="geometry"/>
+                    <mxGeometry x="640" y="40" width="140" height="138" as="geometry"/>
                 </mxCell>
                 <mxCell id="74" value="id: Int (PK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="55" vertex="1">
                     <mxGeometry y="26" width="140" height="26" as="geometry"/>
@@ -72,18 +84,6 @@
                 </mxCell>
                 <mxCell id="75" value="&lt;span style=&quot;color: rgb(240 , 240 , 240) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 12px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: left ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(42 , 42 , 42) ; float: none ; display: inline&quot;&gt;&amp;nbsp;image_index:&amp;nbsp; Int&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" parent="55" vertex="1">
                     <mxGeometry y="108" width="140" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="171" value="&lt;span style=&quot;color: rgb(240 , 240 , 240) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 12px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: left ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(42 , 42 , 42) ; float: none ; display: inline&quot;&gt;&amp;nbsp;&lt;span style=&quot;font-family: &amp;#34;helvetica&amp;#34; ; text-align: center&quot;&gt;illustratio&lt;/span&gt;:&amp;nbsp; bool&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" parent="55" vertex="1">
-                    <mxGeometry y="138" width="140" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="169" value="&lt;span style=&quot;color: rgb(240 , 240 , 240) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 12px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: left ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(42 , 42 , 42) ; float: none ; display: inline&quot;&gt;&amp;nbsp;commic:&amp;nbsp; bool&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" parent="55" vertex="1">
-                    <mxGeometry y="168" width="140" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="172" value="&lt;span style=&quot;text-align: center&quot;&gt;&amp;nbsp;graffiti : bool&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" parent="55" vertex="1">
-                    <mxGeometry y="198" width="140" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="170" value="&lt;span style=&quot;color: rgb(240 , 240 , 240) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 12px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: left ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(42 , 42 , 42) ; float: none ; display: inline&quot;&gt;&amp;nbsp;rough:&amp;nbsp; bool&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" parent="55" vertex="1">
-                    <mxGeometry y="228" width="140" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="128" value="&lt;span style=&quot;color: rgba(0 , 0 , 0 , 0) ; font-family: monospace ; font-size: 0px&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%22%26lt%3Bspan%20style%3D%26quot%3Bcolor%3A%20rgb(240%20%2C%20240%20%2C%20240)%20%3B%20font-family%3A%20%26amp%3B%2334%3Bhelvetica%26amp%3B%2334%3B%20%3B%20font-size%3A%2012px%20%3B%20font-style%3A%20normal%20%3B%20font-weight%3A%20400%20%3B%20letter-spacing%3A%20normal%20%3B%20text-align%3A%20left%20%3B%20text-indent%3A%200px%20%3B%20text-transform%3A%20none%20%3B%20word-spacing%3A%200px%20%3B%20background-color%3A%20rgb(42%20%2C%2042%20%2C%2042)%20%3B%20float%3A%20none%20%3B%20display%3A%20inline%26quot%3B%26gt%3B%26amp%3Bnbsp%3B%20adult%20%3A%20boollean%26lt%3B%2Fspan%26gt%3B%22%20style%3D%22text%3BwhiteSpace%3Dwrap%3Bhtml%3D1%3B%22%20vertex%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20x%3D%22290%22%20y%3D%221264%22%20width%3D%22140%22%20height%3D%2230%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="1" vertex="1">
                     <mxGeometry x="557" y="923" width="20" height="20" as="geometry"/>

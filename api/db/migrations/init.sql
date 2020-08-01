@@ -23,6 +23,10 @@ IF NOT EXISTS content_handling
     adult BOOLEAN,
     views INT,
     like_count  INT,
+    commic BOOLEAN,
+    illustratio BOOLEAN,
+    rough BOOLEAN,
+    graffiti BOOLEAN,
     FOREIGN KEY (user_id)
     REFERENCES user(user_id)
 );
@@ -49,10 +53,7 @@ IF NOT EXISTS content_data
     content_id VARCHAR(128),
     image_url VARCHAR(128),
     image_index INT,
-    commic BOOLEAN,
-    illustratio BOOLEAN,
-    rough BOOLEAN,
-    graffiti BOOLEAN,
+
 
     
     FOREIGN KEY (content_id)
