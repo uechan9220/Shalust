@@ -6,19 +6,20 @@ import { Link } from 'react-router-dom'
  * interface
  */
 interface SelectProps {
-  Number: number
+  index: number
 }
 
 interface NavbarProps {
   selectNumber: number
+  tagName?: string
 }
 
 /**
  * animation function
  */
-const getAnimation = (Number: number) => {
+const getAnimation = (index: number) => {
   return `
-    & > a:nth-child(${Number}) {
+    & > a:nth-child(${index}) {
     color: rgba(0, 0, 0, 0.88);
     border-top: 4px solid rgb(0, 150, 250);
   }
@@ -29,7 +30,7 @@ const getAnimation = (Number: number) => {
  * styled-components
  */
 
-const Nav = styled.nav<Pick<SelectProps, 'Number'>>`
+const Nav = styled.nav<Pick<SelectProps, 'index'>>`
   display: flex;
   -webkit-box-pack: start;
   justify-content: start;
@@ -43,7 +44,7 @@ const Nav = styled.nav<Pick<SelectProps, 'Number'>>`
   & > a:hover:nth-child(n + 1) {
     color: rgba(0, 0, 0, 0.88);
   }
-  ${({ Number }) => getAnimation(Number)};
+  ${({ index }) => getAnimation(index)};
 `
 
 const StyledLink = styled(Link)`
@@ -75,25 +76,49 @@ const NavText = styled.p``
 
 const NavContainer = styled.div``
 
-const Navbar: React.FC<NavbarProps> = ({ selectNumber }) => {
+const Navbar: React.FC<NavbarProps> = ({ selectNumber, tagName }) => {
   return (
     <NavContainer>
-      <Nav Number={selectNumber}>
-        <StyledLink to="/">
-          <NavText>イラスト</NavText>
-        </StyledLink>
+      <Nav index={selectNumber}>
+        {tagName === undefined ? (
+          <>
+            {console.log(tagName)}
+            <StyledLink to="/illust">
+              <NavText>イラスト</NavText>
+            </StyledLink>
 
-        <StyledLink to="/rough">
-          <NavText>ラフ</NavText>
-        </StyledLink>
+            <StyledLink to="/rough">
+              <NavText>ラフ</NavText>
+            </StyledLink>
 
-        <StyledLink to="/commic">
-          <NavText>マンガ</NavText>
-        </StyledLink>
+            <StyledLink to="/commic">
+              <NavText>マンガ</NavText>
+            </StyledLink>
 
-        <StyledLink to="/graffiti">
-          <NavText>落書き</NavText>
-        </StyledLink>
+            <StyledLink to="/graffiti">
+              <NavText>落書き</NavText>
+            </StyledLink>
+          </>
+        ) : (
+          <>
+            {console.log(tagName)}
+            <StyledLink to={`/tags/illust/${tagName}`}>
+              <NavText>イラスト</NavText>
+            </StyledLink>
+
+            <StyledLink to={`/tags/rough/${tagName}`}>
+              <NavText>ラフ</NavText>
+            </StyledLink>
+
+            <StyledLink to={`/tags/commic/${tagName}`}>
+              <NavText>マンガ</NavText>
+            </StyledLink>
+
+            <StyledLink to={`/tags/graffiti/${tagName}`}>
+              <NavText>落書き</NavText>
+            </StyledLink>
+          </>
+        )}
       </Nav>
     </NavContainer>
   )

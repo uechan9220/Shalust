@@ -69,3 +69,28 @@ export const myUserQuery = gql`
     }
   }
 `
+
+/**
+ * illustratio query
+ */
+// export const IllustratioQuery = gql`
+//   query illustratio($myUserId: String) {
+//     Illustratio {
+//       id
+//       image_url
+//       title
+//       comment
+//       like_count #Likeされている数をnumber型でほしい
+//       Like(where: { user_id: { _eq: $myUserId } }) {
+//         isLike #自身がお気に入りしているか知りたい boolean型
+//       }
+//       bookmark(where: { user_id: { _eq: $myUserId } }) {
+//         isBookmark #自身がブックマークしているか知りたい boolean型
+//       }
+//       User {
+//         name
+//         icon_url
+//       }
+//     }
+//   }
+// `
