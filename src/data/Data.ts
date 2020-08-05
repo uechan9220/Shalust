@@ -6,6 +6,7 @@ import React from 'react'
 import Rough from '../assets/images/rough.png'
 import Commic from '../assets/images/Commic.jpg'
 import Graffiti from '../assets/images/Graffiti.jpg'
+import Header from '../assets/images/header.png'
 
 export const IllustData = [
   {
@@ -472,7 +473,8 @@ export const TestUserData = [
     user_id: 1,
     name: 'rin',
     last_seen: '2020-07-30',
-    icon_url: '',
+    icon_url: 'https://ca.slack-edge.com/TH9SKRH3N-UKC3M4T24-c8e7a971cd6b-512',
+    header_url: Header,
     location: '',
     comment: '',
     account_id: 'yuuki_rinrin'
@@ -481,7 +483,8 @@ export const TestUserData = [
     user_id: 2,
     name: 'moke',
     last_seen: '2020-04-01',
-    icon_url: '',
+    icon_url: 'https://ca.slack-edge.com/T0G4VRKJA-U51V91129-5340348de13a-512',
+    header_url: Header,
     location: '',
     comment: '',
     account_id: 'moooooooooooke'
@@ -490,7 +493,8 @@ export const TestUserData = [
     user_id: 3,
     name: 'john',
     last_seen: '2020-07-30',
-    icon_url: '',
+    icon_url: 'https://ca.slack-edge.com/TH9SKRH3N-UKD7J523Y-gccd9b5d614a-512',
+    header_url: Header,
     location: '',
     comment: '',
     account_id: 'watashi_mirai_jin'
