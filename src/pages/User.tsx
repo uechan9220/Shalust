@@ -23,6 +23,7 @@ interface UserProps {
   name: string;
   last_seen: string;
   icon_url: string;
+  header_url: string;
   location: string;
   comment: string;
   account_id: string;
@@ -43,7 +44,7 @@ const User: React.FC = () => {
           break;
       }
     })
-  }, [])
+  }, [user_id])
 
   return (
     // <Query query={userQuery} variables={{ uniqueid: user_id }}>
@@ -68,9 +69,11 @@ const User: React.FC = () => {
     <Container>
       {/* Userが存在しているかを判別 */}
       {userData ?
-        // ここでログインしているUserかどうかを判別する
-        <UserContent item={userData} myUserAuth={true} />
-        : null}
+        // 自分自身かどうかを判別する
+        (userData.account_id == "moooooooooooke" ?
+          <UserContent item={userData} myUserAuth={true} />
+          : <UserContent item={userData} myUserAuth={false} />)
+        : <p>このアカウントは存在しません</p>}
     </Container>
   )
 }
