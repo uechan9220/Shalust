@@ -23,13 +23,17 @@ func Init_mysql() (Db, error) {
 
 	database := os.Getenv("MYSQL_DATABASE")
 
-	client, err := gorm.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?	charset=utf8mb4&parseTime=true", user, password, host, port, database))
+	client, err := gorm.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=true", user, password, host, port, database))
 
 	return Db{client: client}, err
 }
 
 func (db *Db) Find(shell interface{}) {
 	db.client.Find(shell)
+}
+
+func (db *Db) Scan(shell interface{}) {
+	db.client.Scan(shell)
 }
 func (db *Db) Where(key string, param ...interface{}) *Db {
 	db.client = db.client.Where(key, param...)
@@ -62,7 +66,33 @@ func (db *Db) Limit(key interface{}) *Db {
 	db.client = db.client.Limit(key)
 	return db
 }
-func (db *Db) Select(raw string, param ...interface{}) *Db {
-	db.client = db.client.Select(raw, param...)
+func (db *Db) From(raw string) *Db {
+	db.client = db.client.Table(raw)
+	return db
+}
+func (db *Db) NewRecord(key interface{}) {
+	db.client.NewRecord(key)
+
+}
+func (db *Db) Join(key string, param ...interface{}) *Db {
+	db.client.Joins(key, param)
+	return db
+}
+
+func (db *Db) Select(key string, param ...interface{}) *Db {
+	db.client.Select(key, param)
+	return db
+}
+func (db *Db) Rows() *Db {
+	db.client.Rows()
+	return db
+}
+func (db *Db) Raw(sql string, param ...interface{}) *Db {
+	db.client.Raw(sql, param)
+	return db
+}
+
+func (db *Db) Preload(colum string, param ...interface{}) *Db {
+	db.client.Preload(colum, param)
 	return db
 }

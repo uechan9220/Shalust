@@ -14,6 +14,10 @@ docker-compose -f docker-compose.yml -f docker-compose.infra.yml up -d
 ### `DBのセットアップ`
 docker-compose exec api bash -c "sql-migrate up"
 
+#### `サンプルデータの挿入`
+
+docker-compose exec api bash -c "go run api/cmd/create_sample.go"
+
 ### `概要`
 
 #### `phpmyadmin`
@@ -23,4 +27,4 @@ http://localhost:8000/
 http://localhost:8080/
 
 #### `minio`
-http://localhost:19000/
+http://localhost:9000/
