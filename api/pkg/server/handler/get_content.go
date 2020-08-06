@@ -17,9 +17,9 @@ func GetUserMainPage(c *gin.Context) {
 
 	user_id := c.Param("user_id")
 
-	var data model.User
+	var data model.UserMainPage
 
-	_ = model.GetUserData(user_id, &data)
+	_ = model.GetUserData(user_id, &data.UserData)
 
 	c.JSON(200, data)
 }
