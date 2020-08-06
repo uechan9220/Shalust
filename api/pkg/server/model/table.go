@@ -65,6 +65,10 @@ type RturnIllustratio struct {
 	illustratio []Content `json:"illustratio"`
 }
 
+type UserMainPage struct {
+	UserData    User          `json:"userData"`
+	Illustratio []ContentData `json:"illustratio"`
+}
 type Like struct {
 	Id         int    `json:"id"`
 	User_id    string `json:"user_id"`

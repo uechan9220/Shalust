@@ -12,3 +12,14 @@ func GetIllustratio(c *gin.Context) {
 
 	c.JSON(200, data)
 }
+
+func GetUserMainPage(c *gin.Context) {
+
+	user_id := c.Param("user_id")
+
+	var data model.User
+
+	_ = model.GetUserData(user_id, &data)
+
+	c.JSON(200, data)
+}
