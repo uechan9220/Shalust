@@ -10,6 +10,7 @@ func CreateContentData(data Content) error {
 		return err
 	}
 	client.From("content_data").Create(&data)
+	defer client.Close()
 	return err
 }
 
@@ -21,6 +22,7 @@ func CreateGraffitiHandling(data ContentHandling) error {
 	}
 	data.Graffiti = true
 	client.From("content_handling").Create(&data)
+	defer client.Close()
 	return err
 }
 
@@ -33,6 +35,7 @@ func CreateIllustratioHandling(data ContentHandling) error {
 
 	data.Illustratio = true
 	client.From("content_handling").Create(&data)
+	defer client.Close()
 	return err
 }
 
@@ -45,6 +48,7 @@ func CreateRoughtHandling(data ContentHandling) error {
 	data.Rough = true
 
 	client.From("content_handling").Create(&data)
+	defer client.Close()
 	return err
 }
 func CreateCommicHandling(data ContentHandling) error {
@@ -56,5 +60,6 @@ func CreateCommicHandling(data ContentHandling) error {
 	data.Commic = true
 
 	client.From("content_handling").Create(&data)
+	defer client.Close()
 	return err
 }

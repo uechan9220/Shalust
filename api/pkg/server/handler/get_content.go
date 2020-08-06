@@ -20,6 +20,7 @@ func GetUserMainPage(c *gin.Context) {
 	var data model.UserMainPage
 
 	_ = model.GetUserData(user_id, &data.UserData)
+	_ = model.GetUserIllustratio(user_id, &data.Illustratio)
 
 	c.JSON(200, data)
 }
