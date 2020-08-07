@@ -8,7 +8,8 @@ import (
 
 func GetIllustratio(c *gin.Context) {
 
-	data, _ := model.GetAllIllustratio()
+	var data []model.ContentData
+	_ = model.GetAllIllustratio(&data)
 
 	c.JSON(200, data)
 }

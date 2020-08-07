@@ -4,22 +4,22 @@ import (
 	"shalust/api/pkg/db"
 )
 
-func GetAllIllustratio() ([]ContentData, error) {
-	var data []ContentData
+func GetAllIllustratio(data *[]ContentData) error {
 
 	client, err := db.Init_mysql()
 	if err != nil {
-		return data, err
+		return err
 	}
 
-	client.From("content_handling, content_data, user").
+	client.From("content_handling, content_data, user, likes").
 		Join("JOIN content_data ON content_data.content_id = content_handling.content_id").
 		Join("JOIN user ON user.user_id = content_handling.user_id").
+		// Join("JOIN likes ON user.user_id = like.user_id AND  content_data.content_id =  like.content_id").
 		Where("illustratio = 1").
-		Scan(&data)
+		Scan(data)
 
 	defer client.Close()
-	return data, err
+	return err
 }
 
 func GetUserIllustratio(user_id string, data *[]ContentData) error {
