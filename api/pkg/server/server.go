@@ -8,11 +8,11 @@ import (
 
 func Serve(r *gin.Engine, port string) {
 
-	r.GET("/", handler.Test)
-	r.GET("/test", handler.GetIllustratio)
+	r.POST("/test", handler.CreateUser)
 	v1 := r.Group("/api")
 	{
 		v1.POST("/getIllustratio", handler.GetIllustratio)
+		v1.POST("/createUser", handler.CreateUser)
 
 	}
 
