@@ -59,8 +59,8 @@ type ContentData struct {
 	Graffiti        bool      `json:"graffiti"`
 	Rough           bool      `json:"rough"`
 	Illustratio     bool      `json:"illustratio"`
-	user_bookmarked bool      `json:"user_bookmarked"`
-	user_liked      bool      `json:"user_liked"`
+	User_bookmarked bool      `json:"user_bookmarked"`
+	User_liked      bool      `json:"user_liked"`
 }
 
 type RturnIllustratio struct {

@@ -14,7 +14,7 @@ func GetAllIllustratio(data *[]ContentData) error {
 	client.From("content_handling, content_data, user, likes").
 		Join("JOIN content_data ON content_data.content_id = content_handling.content_id").
 		Join("JOIN user ON user.user_id = content_handling.user_id").
-		// Join("JOIN likes ON user.user_id = like.user_id AND  content_data.content_id =  like.content_id").
+		Join("LEFT OUTER JOIN likes ON content_handling.content_id = likes.content_id AND user_id = ?", "testid").
 		Where("illustratio = 1").
 		Scan(data)
 
