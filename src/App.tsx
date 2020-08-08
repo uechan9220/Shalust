@@ -122,8 +122,12 @@ function App() {
                 </Route>
                 <Auth>
                   <Switch>
-                    <Route path="/mypage/:id">
-                      <MyPage />
+
+                    <Route path="/user/:user_id/:content">
+                      <User />
+                    </Route>
+                    <Route path="/user/:user_id/">
+                      <User />
                     </Route>
                   </Switch>
                 </Auth>
