@@ -36,6 +36,7 @@ const User: React.FC = () => {
 
   useEffect(() => {
     TestUserData.filter((items: any, index: number) => {
+      console.log(items.account_id)
       switch (items.account_id) {
         case user_id:
           setUserData(items)
@@ -68,6 +69,7 @@ const User: React.FC = () => {
     // </Query>
     <Container>
       {/* Userが存在しているかを判別 */}
+      {console.log(userData)}
       {userData ?
         // 自分自身かどうかを判別する
         (userData.account_id == "moooooooooooke" ?
