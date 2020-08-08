@@ -27,7 +27,7 @@ const Graffiti: React.FC = () => {
     <Container>
       <Content>
         <Navbar selectNumber={4} />
-        <Items datas={GraffitiData} />
+        <Items datas={GraffitiData} isInfo={true} />
       </Content>
     </Container>
   )
