@@ -476,7 +476,7 @@ export const TestUserData = [
     icon_url: 'https://ca.slack-edge.com/TH9SKRH3N-UKC3M4T24-c8e7a971cd6b-512',
     header_url: Header,
     location: '',
-    comment: '',
+    comment: '最近絵を描き始めました！！\nいいねがたくさんもらえるように頑張っていきたいと思います！！\nよろしくお願いします。',
     account_id: 'yuuki_rinrin'
   },
   {
@@ -486,7 +486,7 @@ export const TestUserData = [
     icon_url: 'https://ca.slack-edge.com/T0G4VRKJA-U51V91129-5340348de13a-512',
     header_url: Header,
     location: '',
-    comment: '',
+    comment: '最近絵を描き始めました！！\nいいねがたくさんもらえるように頑張っていきたいと思います！！\nよろしくお願いします。',
     account_id: 'moooooooooooke'
   },
   {
@@ -496,7 +496,7 @@ export const TestUserData = [
     icon_url: 'https://ca.slack-edge.com/TH9SKRH3N-UKD7J523Y-gccd9b5d614a-512',
     header_url: Header,
     location: '',
-    comment: '',
+    comment: '最近絵を描き始めました！！\nいいねがたくさんもらえるように頑張っていきたいと思います！！\nよろしくお願いします。',
     account_id: 'watashi_mirai_jin'
   },
 ]
