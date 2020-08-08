@@ -31,21 +31,16 @@ const AuthProvider = (props: any) => {
       if (user) {
         const token = await user.getIdToken()
         const idTokenResult = await user.getIdTokenResult()
-        const hasuraClaim = idTokenResult.claims['https://hasura.io/jwt/claims']
         const db = firebase.database()
 
-        if (hasuraClaim) {
-          setCurrentUser({ status: 'in', user, token })
-        } else {
-          // Check if refresh is required.
-          const metadataRef = db.ref('metadata/' + user.uid + '/refreshTime')
+        // Check if refresh is required.
+        const metadataRef = db.ref('metadata/' + user.uid + '/refreshTime')
 
-          metadataRef.on('value', async () => {
-            // Force refresh to pick up the latest custom claims changes.
-            const token = await user.getIdToken(true)
-            setCurrentUser({ status: 'in', user, token })
-          })
-        }
+        metadataRef.on('value', async () => {
+          // Force refresh to pick up the latest custom claims changes.
+          const token = await user.getIdToken(true)
+          setCurrentUser({ status: 'in', user, token })
+        })
       } else {
         setCurrentUser({ status: 'out' })
       }
