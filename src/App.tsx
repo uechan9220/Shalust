@@ -94,6 +94,7 @@ function App() {
             <Container>
               <Switch>
                 <Route exact path="/">
+                  {/* ここ分ける必要ないかも */}
                   <Main />
                 </Route>
                 <Route exact path="/illust">
