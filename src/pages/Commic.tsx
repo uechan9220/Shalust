@@ -27,7 +27,7 @@ const Commic: React.FC = () => {
     <Container>
       <Content>
         <Navbar selectNumber={3} />
-        <Items datas={CommicData} />
+        <Items datas={CommicData} isInfo={true} />
       </Content>
     </Container>
   )
