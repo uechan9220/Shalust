@@ -1,5 +1,17 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
+
+/**
+ * components
+ */
+import Items from '../components/Items'
+import UserNavbar from '../components/UserNavbar'
+
+/**
+ * testData
+ */
+import { IllustData, RoughData, CommicData, GraffitiData } from '../data/Data'
 
 interface UserContentProps {
   item: {
@@ -19,68 +31,132 @@ const Container = styled.div``
 
 const HeaderContainer = styled.div`
   width: 100vw;
+  height: 100%;
 
 `
 
 const HeaderImage = styled.img`
   width: 100%;
+  height: 100%;
 `
 
-const SettingButton = styled.button`
+const Button = styled.button`
   background-color: #fff;
   border: 1px solid #55ACEE;
   border-radius: 8px;
   color: #55ACEE;
-  margin: 5rem 0;
   font-weight: bold;
   font-size: 1.5rem;
-  flex: 2;
+  padding: 1rem 4rem;
+  @media (max-width: 450px) {
+    padding: .5rem 2rem;
+  }
 `
-
-const FollowButton = styled.button`
-
-  background-color: #fff;
-  border: 1px solid #55ACEE;
-  border-radius: 8px;
-  color: #55ACEE;
-  margin: 5rem 0;
-  font-weight: bold;
-  font-size: 1.5rem;
-  flex: 2;
-  `
 
 const InfoContainer = styled.div`
+  margin: 1rem 0 2rem 0;
   padding: 0 3rem;
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
 `
 
 const UserContainer = styled.div`
   display: flex;
+  position: relative;
+  justify-content: space-between;
+`
+
+const AccountImageContainer = styled.div`
+  position: absolute;
+  bottom: 0;
+  max-width: 10rem;
+  max-height: 10rem;
+  @media (max-width: 450px) {
+    max-width: 6rem;
+    max-height: 6rem;
+  }
 `
 
 const AccountImage = styled.img`
-  width: 15rem;
-  height: 15rem;
+  width: 100%;
   border-radius: 90%;
   border: 1px solid #000;
-  flex:1;
 `
 
 const UserName = styled.p`
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: bold;
+  @media (max-width: 450px){
+    font-size: 2rem;
+  }
 `
 
 const UserAccountId = styled.p`
   font-size: 1.5rem;
   color: rgba(0, 0, 0, 0.5);
+  @media (max-width: 450px){
+    font-size: 1rem;
+  }
 `
 
 const UserInfo = styled.div`
-    margin: 3rem 0 0 2rem;
-  flex: 7;
+  margin: 0.5rem 0;
 `
 
+const DetailContainer = styled.div`
+  width: 100%;
+`
+
+const Detail = styled.p`
+  white-space: pre-wrap;
+  font-size: 24px;
+  line-height: 48px;
+  @media  (max-width: 768px){
+    font-size: 16px;
+    line-height: 24px;
+  }
+`
+
+const AccountButtonConatiner = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+`
+
+
+
 const UserContent: React.FC<UserContentProps> = ({ item, myUserAuth }) => {
+  let { content } = useParams()
+  const [selectNumber, setNumber] = useState(1)
+  const [Data, setData] = useState(IllustData)
+
+  useEffect(() => {
+    console.log(content)
+    switch (content) {
+      case 'illust':
+        setNumber(1)
+        setData(IllustData)
+        break
+      case 'rough':
+        setNumber(2)
+        setData(RoughData)
+        break
+      case 'commic':
+        setNumber(3)
+        setData(CommicData)
+        break
+      case 'graffiti':
+        setNumber(4)
+        setData(GraffitiData)
+        break
+      default:
+        setNumber(1)
+        setData(IllustData)
+        break
+    }
+  }, [content])
+
   return (
     <Container>
       <HeaderContainer>
@@ -88,16 +164,26 @@ const UserContent: React.FC<UserContentProps> = ({ item, myUserAuth }) => {
       </HeaderContainer>
       <InfoContainer>
         <UserContainer>
-          <AccountImage src={item.icon_url} />
-          <UserInfo>
-            <UserName>{item.name}</UserName>
-            <UserAccountId>@{item.account_id}</UserAccountId>
-          </UserInfo>
-          {myUserAuth ? <SettingButton>設定</SettingButton> : <FollowButton>フォロー</FollowButton>}
+          <AccountImageContainer>
+            <AccountImage src={item.icon_url} />
+          </AccountImageContainer>
+          <AccountButtonConatiner>
+            {myUserAuth ? <Button onClick={() => console.log('設定')}>設定</Button> : <Button onClick={() => console.log("フォローしました。")}>フォロー</Button>}
+          </AccountButtonConatiner>
         </UserContainer>
+        <UserInfo>
+          <UserName>{item.name}</UserName>
+          <UserAccountId>@{item.account_id}</UserAccountId>
+        </UserInfo>
+        <DetailContainer>
+          <Detail>{item.comment}</Detail>
+        </DetailContainer>
+
+        <UserNavbar selectNumber={selectNumber} accountId={item.account_id} />
+        <Items datas={Data} />
       </InfoContainer>
 
-    </Container>
+    </Container >
   )
 }
 
