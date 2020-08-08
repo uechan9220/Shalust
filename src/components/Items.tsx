@@ -11,6 +11,9 @@ const Container = styled.div`
   list-style: none;
   grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
   grid-gap: 1rem;
+  @media (max-width: 450px){
+    grid-template-columns: repeat(auto-fill, minmax(128px, 1fr));
+  }
 `
 
 interface ItemsProps {
@@ -27,13 +30,14 @@ interface ItemsProps {
       userName: string
     }[]
   }[]
+  isInfo?: boolean
 }
 
 const Items: React.FC<ItemsProps> = (props: any) => {
   return (
     <Container>
       {props.datas.map((items: any, index: number) => {
-        return <Item item={items} />
+        return <Item item={items} isInfo={props.isInfo} />
       })}
     </Container>
   )
