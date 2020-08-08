@@ -180,7 +180,7 @@ const UserContent: React.FC<UserContentProps> = ({ item, myUserAuth }) => {
         </DetailContainer>
 
         <UserNavbar selectNumber={selectNumber} accountId={item.account_id} />
-        <Items datas={Data} />
+        <Items datas={Data} isInfo={false} />
       </InfoContainer>
 
     </Container >
