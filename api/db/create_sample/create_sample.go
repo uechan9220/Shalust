@@ -15,6 +15,9 @@ type SampleData struct {
 	Content_graffiti    model.ContentHandling `json:"content_graffiti"`
 	Content_rough       model.ContentHandling `json:"content_rough"`
 	Content_illustratio model.ContentHandling `json:"content_illustratio"`
+
+	ImageData2           model.Content         `json:"imageData2"`
+	Content_illustratio2 model.ContentHandling `json:"content_illustratio2"`
 }
 
 func Create_sample() {
@@ -36,4 +39,7 @@ func Create_sample() {
 	_ = model.CreateRoughtHandling(data.Content_rough)
 
 	_ = model.CreateContentData(data.ImageData)
+
+	_ = model.CreateContentData(data.ImageData2)
+	_ = model.CreateIllustratioHandling(data.Content_illustratio2)
 }
