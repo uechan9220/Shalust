@@ -31,7 +31,7 @@ import Commic from './pages/Commic'
 import Graffiti from './pages/Graffiti'
 import Tag from './pages/Tag'
 import Tags from './pages/Tags'
-import MyPage from './pages/MyPage'
+import User from './pages/User'
 import Login from './pages/Login'
 import Signin from './pages/Signin'
 
@@ -94,6 +94,7 @@ function App() {
             <Container>
               <Switch>
                 <Route exact path="/">
+                  {/* ここ分ける必要ないかも */}
                   <Main />
                 </Route>
                 <Route exact path="/illust">
@@ -122,8 +123,11 @@ function App() {
                 </Route>
                 <Auth>
                   <Switch>
-                    <Route path="/mypage/:id">
-                      <MyPage />
+                    <Route path="/user/:user_id/:content">
+                      <User />
+                    </Route>
+                    <Route path="/user/:user_id/">
+                      <User />
                     </Route>
                   </Switch>
                 </Auth>

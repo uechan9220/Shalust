@@ -27,7 +27,7 @@ const Illust: React.FC = () => {
     <Container>
       <Content>
         <Navbar selectNumber={1} />
-        <Items datas={IllustData} />
+        <Items datas={IllustData} isInfo={true} />
       </Content>
     </Container>
   )

@@ -39,6 +39,10 @@ const Image = styled.img`
   width: 100%;
   min-width: 16rem;
   min-height: 16rem;
+  @media (max-width: 450px){
+    min-width: 9rem;
+    min-height: 9rem;
+  }
 `
 
 const InfoContainer = styled.div`
@@ -200,6 +204,7 @@ interface ItemProps {
       userName: string
     }[]
   }
+  isInfo?: boolean
 }
 
 const Item: React.FC<ItemProps> = (props: any) => {
@@ -246,39 +251,41 @@ const Item: React.FC<ItemProps> = (props: any) => {
           </HoverButton>
         </HoverContent>
       </ImageContainer>
-      <InfoContainer>
-        {props.item.User.map(
-          (
-            userItem: { userImage: string; userName: string },
-            index: number
-          ) => {
-            return (
-              <UserContainer>
-                {console.log(userItem)}
-                <UserImage src={userItem.userImage} />
-                <UserName>{userItem.userName}</UserName>
-              </UserContainer>
-            )
-          }
-        )}
-        <InfoContent>
-          <ViewContainer>
-            <ViewImage src={views} />
-            <ViewCount>{props.item.views}</ViewCount>
-          </ViewContainer>
-          <LikeContainer onClick={() => likeFunc()}>
-            <LikeImage
-              viewBox="0 0 14 14"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              onLike={like}
-            >
-              <path d="M6.99996 12.4542L6.15413 11.6842C3.14996 8.96 1.16663 7.16333 1.16663 4.95833C1.16663 3.16167 2.57829 1.75 4.37496 1.75C5.38996 1.75 6.36413 2.2225 6.99996 2.96917C7.63579 2.2225 8.60996 1.75 9.62496 1.75C11.4216 1.75 12.8333 3.16167 12.8333 4.95833C12.8333 7.16333 10.85 8.96 7.84579 11.69L6.99996 12.4542Z" />
-            </LikeImage>
-            <LikeCount onLike={like}>{likeCount}</LikeCount>
-          </LikeContainer>
-        </InfoContent>
-      </InfoContainer>
+      {props.isInfo ?
+        <InfoContainer>
+          {props.item.User.map(
+            (
+              userItem: { userImage: string; userName: string },
+              index: number
+            ) => {
+              return (
+                <UserContainer>
+                  {console.log(userItem)}
+                  <UserImage src={userItem.userImage} />
+                  <UserName>{userItem.userName}</UserName>
+                </UserContainer>
+              )
+            }
+          )}
+          <InfoContent>
+            <ViewContainer>
+              <ViewImage src={views} />
+              <ViewCount>{props.item.views}</ViewCount>
+            </ViewContainer>
+            <LikeContainer onClick={() => likeFunc()}>
+              <LikeImage
+                viewBox="0 0 14 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                onLike={like}
+              >
+                <path d="M6.99996 12.4542L6.15413 11.6842C3.14996 8.96 1.16663 7.16333 1.16663 4.95833C1.16663 3.16167 2.57829 1.75 4.37496 1.75C5.38996 1.75 6.36413 2.2225 6.99996 2.96917C7.63579 2.2225 8.60996 1.75 9.62496 1.75C11.4216 1.75 12.8333 3.16167 12.8333 4.95833C12.8333 7.16333 10.85 8.96 7.84579 11.69L6.99996 12.4542Z" />
+              </LikeImage>
+              <LikeCount onLike={like}>{likeCount}</LikeCount>
+            </LikeContainer>
+          </InfoContent>
+        </InfoContainer>
+        : null}
     </Content>
   )
 }
