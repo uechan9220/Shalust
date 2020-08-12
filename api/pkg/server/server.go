@@ -10,7 +10,12 @@ func Serve(r *gin.Engine, port string) {
 
 	r.GET("/", handler.Test)
 	r.GET("/test", handler.GetIllustratio)
-	r.GET("/user/:user_id", handler.GetUserMainPage)
+
+	r.GET("/user/:user_id", handler.GetUserIllustratio)
+	r.GET("/user/:user_id/Illustratio", handler.GetUserIllustratio)
+	r.GET("/user/:user_id/commic", handler.GetUserCommic)
+	r.GET("/user/:user_id/graffiti", handler.GetUserGraffiti)
+	r.GET("/user/:user_id/rough", handler.GetUserRough)
 	v1 := r.Group("/api")
 	{
 
