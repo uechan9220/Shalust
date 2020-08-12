@@ -20,7 +20,7 @@ func GetUserData(user_id string, data *User) error {
 	if err != nil {
 		return err
 	}
-	client.From("user").Where("user_id = ?", user_id).Scan(data)
+	client.From("user").Where("acount_id = ?", user_id).Scan(data)
 	defer client.Close()
 	return err
 }

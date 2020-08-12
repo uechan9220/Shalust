@@ -27,11 +27,12 @@ func Create_sample() {
 	if err := json.Unmarshal(data_json, &data); err != nil {
 		log.Fatal(err)
 	}
-
-	for i := 0; i < 10; i++ {
+	acount_id := []string{"hoge", "huga", "piyo", "hunga", "rin", "momo"}
+	for _, key := range acount_id {
 		uuidObj, _ := uuid.NewUUID()
 		data.User.User_id = uuidObj.String()
 		data.Content.User_id = uuidObj.String()
+		data.User.Acount_id = key
 		_ = model.CreateUser(data.User)
 
 		for i := 0; i < 10; i++ {
