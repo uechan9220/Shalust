@@ -32,8 +32,9 @@ func (db *Db) Find(shell interface{}) {
 	db.client.Find(shell)
 }
 
-func (db *Db) Scan(shell interface{}) {
-	db.client.Scan(shell)
+func (db *Db) Scan(shell interface{}) *Db {
+	db.client = db.client.Scan(shell)
+	return db
 }
 func (db *Db) Where(key string, param ...interface{}) *Db {
 	db.client = db.client.Where(key, param...)
@@ -75,12 +76,12 @@ func (db *Db) NewRecord(key interface{}) {
 
 }
 func (db *Db) Join(key string, param ...interface{}) *Db {
-	db.client.Joins(key, param)
+	db.client = db.client.Joins(key, param)
 	return db
 }
 
-func (db *Db) Select(key string, param ...interface{}) *Db {
-	db.client.Select(key, param)
+func (db *Db) Select(key interface{}, param ...interface{}) *Db {
+	db.client = db.client.Select(key, param)
 	return db
 }
 func (db *Db) Rows() *Db {
