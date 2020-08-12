@@ -42,29 +42,41 @@ type ContentHandling struct {
 	Illustratio bool      `json:"illustratio"`
 }
 
+type TesttData struct {
+	Content_id string `json:"content_id"`
+	User_name  string `json:"user_name"`
+	Icon_url   string `json:"icon_url"`
+}
+
 type ContentData struct {
-	Content_id  string    `json:"content_id"`
-	User_id     string    `json:"user_id"`
-	User_name   string    `json:"user_name"`
-	Icon_url    string    `json:"icon_url"`
-	Detail      string    `json:"detail"`
-	Create_at   time.Time `json:"create_at"`
-	Title       string    `json:"title"`
-	Views       int       `json:"views"`
-	Adult       bool      `json:"adult"`
-	Image_url   string    `json:"image_url"`
-	Image_index int       `json:"image_index"`
-	Like_count  int       `json:"like_count"`
-	Commic      bool      `json:"commic"`
-	Graffiti    bool      `json:"graffiti"`
-	Rough       bool      `json:"rough"`
-	Illustratio bool      `json:"illustratio"`
+	Content_id      string    `json:"content_id"`
+	User_id         string    `json:"user_id"`
+	User_name       string    `json:"user_name"`
+	Icon_url        string    `json:"icon_url"`
+	Detail          string    `json:"detail"`
+	Create_at       time.Time `json:"create_at"`
+	Title           string    `json:"title"`
+	Views           int       `json:"views"`
+	Adult           bool      `json:"adult"`
+	Image_url       string    `json:"image_url"`
+	Image_index     int       `json:"image_index"`
+	Like_count      int       `json:"like_count"`
+	Commic          bool      `json:"commic"`
+	Graffiti        bool      `json:"graffiti"`
+	Rough           bool      `json:"rough"`
+	Illustratio     bool      `json:"illustratio"`
+	User_bookmarked bool      `json:"user_bookmarked"`
+	User_liked      bool      `json:"user_liked"`
 }
 
 type RturnIllustratio struct {
 	illustratio []Content `json:"illustratio"`
 }
 
+type UserMainPage struct {
+	UserData    User          `json:"userData"`
+	Illustratio []ContentData `json:"illustratio"`
+}
 type Like struct {
 	Id         int    `json:"id"`
 	User_id    string `json:"user_id"`

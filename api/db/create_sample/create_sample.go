@@ -5,16 +5,15 @@ import (
 	"io/ioutil"
 	"log"
 	"shalust/api/pkg/server/model"
+
+	"github.com/google/uuid"
 )
 
 type SampleData struct {
 	User      model.User    `json:"user"`
 	ImageData model.Content `json:"imageData"`
 
-	Content_commic      model.ContentHandling `json:"content_commic"`
-	Content_graffiti    model.ContentHandling `json:"content_graffiti"`
-	Content_rough       model.ContentHandling `json:"content_rough"`
-	Content_illustratio model.ContentHandling `json:"content_illustratio"`
+	Content model.ContentHandling `json:"content"`
 }
 
 func Create_sample() {
@@ -28,12 +27,45 @@ func Create_sample() {
 	if err := json.Unmarshal(data_json, &data); err != nil {
 		log.Fatal(err)
 	}
+	acount_id := []string{"hoge", "huga", "piyo", "hunga", "rin", "momo"}
+	for _, key := range acount_id {
+		uuidObj, _ := uuid.NewUUID()
+		data.User.User_id = uuidObj.String()
+		data.Content.User_id = uuidObj.String()
+		data.User.Acount_id = key
+		_ = model.CreateUser(data.User)
 
-	_ = model.CreateUser(data.User)
-	_ = model.CreateCommicHandling(data.Content_commic)
-	_ = model.CreateGraffitiHandling(data.Content_graffiti)
-	_ = model.CreateIllustratioHandling(data.Content_illustratio)
-	_ = model.CreateRoughtHandling(data.Content_rough)
+		for i := 0; i < 10; i++ {
+			uuidObj, _ := uuid.NewUUID()
+			data.ImageData.Content_id = uuidObj.String()
+			data.Content.Content_id = uuidObj.String()
 
-	_ = model.CreateContentData(data.ImageData)
+			_ = model.CreateGraffitiHandling(data.Content)
+			_ = model.CreateContentData(data.ImageData)
+		}
+		for i := 0; i < 10; i++ {
+			uuidObj, _ := uuid.NewUUID()
+			data.ImageData.Content_id = uuidObj.String()
+			data.Content.Content_id = uuidObj.String()
+
+			_ = model.CreateCommicHandling(data.Content)
+			_ = model.CreateContentData(data.ImageData)
+		}
+		for i := 0; i < 10; i++ {
+			uuidObj, _ := uuid.NewUUID()
+			data.ImageData.Content_id = uuidObj.String()
+			data.Content.Content_id = uuidObj.String()
+
+			_ = model.CreateIllustratioHandling(data.Content)
+			_ = model.CreateContentData(data.ImageData)
+		}
+		for i := 0; i < 10; i++ {
+			uuidObj, _ := uuid.NewUUID()
+			data.ImageData.Content_id = uuidObj.String()
+			data.Content.Content_id = uuidObj.String()
+
+			_ = model.CreateRoughtHandling(data.Content)
+			_ = model.CreateContentData(data.ImageData)
+		}
+	}
 }

@@ -70,20 +70,22 @@ IF NOT EXISTS likes
     id INT AUTO_INCREMENT  NOT NULL PRIMARY KEY,
     content_id VARCHAR(128),
     user_id VARCHAR(128),
-   
+    user_liked BOOLEAN, 
     FOREIGN KEY (user_id)
     REFERENCES user(user_id)
+
 );
 
 CREATE TABLE
-IF NOT EXISTS bookmark
+IF NOT EXISTS bookmarks
 (
-    id INT AUTO_INCREMENT  NOT NULL PRIMARY KEY,
     content_id VARCHAR(128),
     user_id VARCHAR(128),
-
+    user_bookmarked BOOLEAN, 
     FOREIGN KEY (user_id)
-    REFERENCES user(user_id)
+    REFERENCES user(user_id),
+    FOREIGN KEY (content_id)
+    REFERENCES content_handling(content_id)
 );
 
 CREATE TABLE
