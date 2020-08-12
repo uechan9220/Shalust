@@ -28,39 +28,43 @@ func Create_sample() {
 		log.Fatal(err)
 	}
 
-	_ = model.CreateUser(data.User)
-
 	for i := 0; i < 10; i++ {
 		uuidObj, _ := uuid.NewUUID()
-		data.ImageData.Content_id = uuidObj.String()
-		data.Content.Content_id = uuidObj.String()
+		data.User.User_id = uuidObj.String()
+		data.Content.User_id = uuidObj.String()
+		_ = model.CreateUser(data.User)
 
-		_ = model.CreateGraffitiHandling(data.Content)
-		_ = model.CreateContentData(data.ImageData)
+		for i := 0; i < 10; i++ {
+			uuidObj, _ := uuid.NewUUID()
+			data.ImageData.Content_id = uuidObj.String()
+			data.Content.Content_id = uuidObj.String()
+
+			_ = model.CreateGraffitiHandling(data.Content)
+			_ = model.CreateContentData(data.ImageData)
+		}
+		for i := 0; i < 10; i++ {
+			uuidObj, _ := uuid.NewUUID()
+			data.ImageData.Content_id = uuidObj.String()
+			data.Content.Content_id = uuidObj.String()
+
+			_ = model.CreateCommicHandling(data.Content)
+			_ = model.CreateContentData(data.ImageData)
+		}
+		for i := 0; i < 10; i++ {
+			uuidObj, _ := uuid.NewUUID()
+			data.ImageData.Content_id = uuidObj.String()
+			data.Content.Content_id = uuidObj.String()
+
+			_ = model.CreateIllustratioHandling(data.Content)
+			_ = model.CreateContentData(data.ImageData)
+		}
+		for i := 0; i < 10; i++ {
+			uuidObj, _ := uuid.NewUUID()
+			data.ImageData.Content_id = uuidObj.String()
+			data.Content.Content_id = uuidObj.String()
+
+			_ = model.CreateRoughtHandling(data.Content)
+			_ = model.CreateContentData(data.ImageData)
+		}
 	}
-	for i := 0; i < 10; i++ {
-		uuidObj, _ := uuid.NewUUID()
-		data.ImageData.Content_id = uuidObj.String()
-		data.Content.Content_id = uuidObj.String()
-
-		_ = model.CreateCommicHandling(data.Content)
-		_ = model.CreateContentData(data.ImageData)
-	}
-	for i := 0; i < 10; i++ {
-		uuidObj, _ := uuid.NewUUID()
-		data.ImageData.Content_id = uuidObj.String()
-		data.Content.Content_id = uuidObj.String()
-
-		_ = model.CreateIllustratioHandling(data.Content)
-		_ = model.CreateContentData(data.ImageData)
-	}
-	for i := 0; i < 10; i++ {
-		uuidObj, _ := uuid.NewUUID()
-		data.ImageData.Content_id = uuidObj.String()
-		data.Content.Content_id = uuidObj.String()
-
-		_ = model.CreateRoughtHandling(data.Content)
-		_ = model.CreateContentData(data.ImageData)
-	}
-
 }
