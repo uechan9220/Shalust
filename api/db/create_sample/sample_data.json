@@ -9,53 +9,15 @@
         "acount_id": "rin1208"
     },
     "imageData": {
-        "content_id": "test",
+        "content_id": "",
         "image_url": "https://www.pixiv.net/artworks/83109854",
         "image_index": 1
     },
-    "imageData2": {
-        "content_id": "test2",
-        "image_url": "https://www.pixiv.net/artworks/83109854",
-        "image_index": 1
-    },
-    "content_commic": {
-        "content_id": "test1",
+    "content": {
+        "content_id": "",
         "user_id": "testid",
         "detail": "雪だるまにはジャージを被せる派",
         "title": "testt itle",
-        "adlut": false,
-        "commic": true
-    },
-    "content_graffiti": {
-        "content_id": "test22",
-        "user_id": "testid",
-        "detail": "雪だるまにはジャージを被せる派",
-        "title": "testt itle",
-        "adlut": false,
-        "graffiti": true
-    },
-    "content_rough": {
-        "content_id": "test3",
-        "user_id": "testid",
-        "detail": "雪だるまにはジャージを被せる派",
-        "title": "testt itle",
-        "adlut": false,
-        "rough": true
-    },
-    "content_illustratio": {
-        "content_id": "test",
-        "user_id": "testid",
-        "detail": "雪だるまにはジャージを被せる派",
-        "title": "testt itle",
-        "adlut": false,
-        "illustratio": true
-    },
-    "content_illustratio2": {
-        "content_id": "test2",
-        "user_id": "testid",
-        "detail": "雪だるまにはジャージを被せる派",
-        "title": "testt itle",
-        "adlut": false,
-        "illustratio": true
+        "adlut": false
     }
 }
