@@ -1,22 +1,26 @@
 # shalust
 
-## コンテナの起動
+## コンテナの起動準備
 
-### `ビルド`
-docker-compose -f docker-compose.yml -f docker-compose.infra.yml build  
+cp docker-compose.sample.yml docker-compose.yml
 
-### `ネットワークの作成`
-docker create network shalust-network  
+cp docker-compose.infra.sample.yml docker-compose.infra.yml
+
+### `コンテナ関係のセットアップ（初回のみ）`
+
+make build
 
 ### `起動`
-docker-compose -f docker-compose.yml -f docker-compose.infra.yml up -d  
+make up
 
-### `DBのセットアップ`
-docker-compose exec api bash -c "sql-migrate up"
+### `停止`
+make down
 
-#### `サンプルデータの挿入`
+#### `起動してもdbが空だった場合(基本的にupで解決します)`
+make init/mysql 
 
-docker-compose exec api bash -c "go run api/cmd/create_sample.go"
+
+
 
 ### `概要`
 
