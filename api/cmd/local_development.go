@@ -2,6 +2,7 @@ package main
 
 import (
 	"shalust/api/pkg/server"
+	"time"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -9,9 +10,28 @@ import (
 
 func main() {
 	r := gin.Default()
-	config := cors.DefaultConfig()
-	config.AllowOrigins = []string{"http://localhost:3000/"}
-	r.Use(cors.New(config))
+	r.Use(cors.New(cors.Config{
+		// 許可したいHTTPメソッドの一覧
+		AllowMethods: []string{
+			"POST",
+			"GET",
+			"OPTIONS",
+			"PUT",
+			"DELETE",
+		},
+		// 許可したいHTTPリクエストヘッダの一覧
+		AllowHeaders: []string{
+			"Content-Type",
+			"Content-Length",
+			"cache-control",
+			"user_id",
+		},
+		// 許可したいアクセス元の一覧
+		AllowOrigins: []string{
+			"http://localhost:3000",
+		},
+		MaxAge: 24 * time.Hour,
+	}))
 
 	server.Serve(r, ":8080")
 }
