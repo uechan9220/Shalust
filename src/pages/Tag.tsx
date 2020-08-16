@@ -7,7 +7,7 @@ import { AuthContext } from '../AuthProvider'
 /**
  * testData
  */
-import { IllustData } from '../data/Data'
+import { IllustDataTest } from '../data/Data'
 
 /**
  * components
@@ -98,9 +98,9 @@ const Tag: React.FC = (props: any) => {
         <Navbar selectNumber={selectNumber} tagName={tag} />
         <TitleContainer>
           <Title># {tag}</Title>
-          <Count>{IllustData.length}作品</Count>
+          <Count>{IllustDataTest.length}作品</Count>
         </TitleContainer>
-        <Items datas={IllustData} />
+        <Items datas={IllustDataTest} />
       </Content>
     </Container>
   )
