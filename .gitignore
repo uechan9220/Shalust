@@ -26,3 +26,5 @@ yarn-error.log*
 
 /data
 local_development
+docker-compose.yml
+docker-compose.infra.yml
