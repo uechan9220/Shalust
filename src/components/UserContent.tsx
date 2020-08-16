@@ -11,7 +11,7 @@ import UserNavbar from '../components/UserNavbar'
 /**
  * testData
  */
-import { IllustData, RoughData, CommicData, GraffitiData } from '../data/Data'
+import { IllustDataTest, RoughData, CommicData, GraffitiData } from '../data/Data'
 
 interface UserContentProps {
   item: {
@@ -129,14 +129,14 @@ const AccountButtonConatiner = styled.div`
 const UserContent: React.FC<UserContentProps> = ({ item, myUserAuth }) => {
   let { content } = useParams()
   const [selectNumber, setNumber] = useState(1)
-  const [Data, setData] = useState(IllustData)
+  const [Data, setData] = useState(IllustDataTest)
 
   useEffect(() => {
     console.log(content)
     switch (content) {
       case 'illust':
         setNumber(1)
-        setData(IllustData)
+        setData(IllustDataTest)
         break
       case 'rough':
         setNumber(2)
@@ -152,7 +152,7 @@ const UserContent: React.FC<UserContentProps> = ({ item, myUserAuth }) => {
         break
       default:
         setNumber(1)
-        setData(IllustData)
+        setData(IllustDataTest)
         break
     }
   }, [content])
