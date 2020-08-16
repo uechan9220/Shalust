@@ -10,7 +10,7 @@ import Navbar from '../components/Navbar'
 /**
  * testData
  */
-import { IllustData } from '../data/Data'
+import { IllustDataTest } from '../data/Data'
 
 const Container = styled.div`
   min-height: 80vh; /* 後で消す */
@@ -27,7 +27,7 @@ const Main: React.FC = () => {
     <Container>
       <Content>
         <Navbar selectNumber={1} />
-        <Items datas={IllustData} isInfo={true} />
+        <Items datas={IllustDataTest} isInfo={true} />
       </Content>
     </Container>
   )
