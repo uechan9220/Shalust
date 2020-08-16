@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { GetIllustQuery } from '../data/queries'
+
 /**
  * components
  */
@@ -10,7 +12,8 @@ import Navbar from '../components/Navbar'
 /**
  * testData
  */
-import { IllustData } from '../data/Data'
+import { Query, Mutation } from 'react-apollo'
+import { IllustDataTest } from '../data/Data'
 
 const Container = styled.div`
   min-height: 80vh; /* 後で消す */
@@ -24,12 +27,29 @@ const Content = styled.div`
 
 const Illust: React.FC = () => {
   return (
-    <Container>
-      <Content>
-        <Navbar selectNumber={1} />
-        <Items datas={IllustData} isInfo={true} />
-      </Content>
-    </Container>
+    <Query query={GetIllustQuery}>
+      {({ loading, data }: any) => {
+        if (loading) { return <p>...loading</p> }
+        console.log(data)
+        const IllustData: any[] = data
+
+        return (
+          <Container>
+            <Content>
+              <Navbar selectNumber={1} />
+              <Items datas={IllustData} isInfo={true} />
+            </Content>
+          </Container>
+        )
+      }}
+
+    </Query >
+    // <Container>
+    //   <Content>
+    //     <Navbar selectNumber={1} />
+    //     <Items datas={IllustDataTest} isInfo={true} />
+    //   </Content>
+    // </Container>
   )
 }
 
