@@ -73,12 +73,13 @@ const Header: React.FC = () => {
       <Link to="/">
         <Title>Illustgram</Title>
       </Link>
+      {console.log(currentUser)}
       {currentUser.user ? (
         <Content>
           <Link to="/tags">
             <Signin>Tags</Signin>
           </Link>
-          {data.User.map((items: any, index: number) => {
+          {/* {data.User.map((items: any, index: number) => {
             return (
               // test Link
               // <Link to={`/user/${items.uniqueID}`}>
@@ -86,7 +87,10 @@ const Header: React.FC = () => {
                 <Signin>user</Signin>
               </Link>
             )
-          })}
+          })} */}
+          <Link to={`/user/moooooooooooke`}>
+            <Signin>user</Signin>
+          </Link>
         </Content>
       ) : (
           <Content>
