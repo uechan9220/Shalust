@@ -94,3 +94,23 @@ export const myUserQuery = gql`
 //     }
 //   }
 // `
+
+
+export const GetIllustQuery = gql`
+  query getIllustQuery{
+    illust @rest(type: "Illust", path: "api/getIllustratio" ){
+      content_id
+      user_id
+      user_name
+      icon_url
+      detail
+      create_at
+      title
+      views
+      adult
+      image_url
+      image_index
+      like_count
+    }
+  }
+`;
