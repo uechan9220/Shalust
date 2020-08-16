@@ -8,463 +8,441 @@ import Commic from '../assets/images/Commic.jpg'
 import Graffiti from '../assets/images/Graffiti.jpg'
 import Header from '../assets/images/header.png'
 
-export const IllustData = [
+export const IllustDataTest = [
   {
-    id: 1,
-    image_url: 'https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512',
-    title: 'モーグリーとロアちゃんが二人でお昼中なのだ',
-    views: 220000,
-    like: 22,
-    isLike: false,
-    isBookmark: true,
-    User: [
-      {
-        userImage:
-          'https://ca.slack-edge.com/T0G4VRKJA-U51V91129-5340348de13a-512',
-        userName: 'fuga',
-      },
-    ],
+    content_id: "c19a5130-dd6a-11ea-81e1-0242ac120002",
+    user_id: "c189d91c-dd6a-11ea-81e1-0242ac120002",
+    user_name: "rin1208",
+    icon_url: "https://twitter.com/rin_kannzaki/photo",
+    detail: "雪だるまにはジャージを被せる派",
+    create_at: "0001-01-01T00:00:00Z",
+    title: "testt itle",
+    views: 0,
+    adult: false,
+    image_url: "https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512",
+    image_index: 1,
+    like_count: 0,
+    user_bookmarked: false,
+    user_liked: false
   },
   {
-    id: 2,
-    image_url: 'https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512',
-    title: 'モーグリーとロアちゃんが二人でお昼中なのだ',
-    views: 22,
-    like: 23,
-    isLike: true,
-    isBookmark: false,
-    User: [
-      {
-        userImage:
-          'https://ca.slack-edge.com/T0G4VRKJA-U51V91129-5340348de13a-512',
-        userName: 'moke',
-      },
-    ],
+    content_id: "c19a5130-dd6a-11ea-81e1-0242ac120002",
+    user_id: "c189d91c-dd6a-11ea-81e1-0242ac120002",
+    user_name: "rin1208",
+    icon_url: "https://twitter.com/rin_kannzaki/photo",
+    detail: "雪だるまにはジャージを被せる派",
+    create_at: "0001-01-01T00:00:00Z",
+    title: "testt itle",
+    views: 0,
+    adult: false,
+    image_url: "https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512",
+    image_index: 1,
+    like_count: 0,
+    user_bookmarked: false,
+    user_liked: false
   },
   {
-    id: 3,
-    image_url: 'https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512',
-    title: 'モーグリーとロアちゃんが二人でお昼中なのだ',
-    views: 22,
-    like: 23,
-    isLike: true,
-    isBookmark: false,
-    User: [
-      {
-        userImage:
-          'https://ca.slack-edge.com/T0G4VRKJA-U51V91129-5340348de13a-512',
-        userName: 'moke',
-      },
-    ],
-  },
-  {
-    id: 4,
-    image_url: 'https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512',
-    title: 'モーグリーとロアちゃんが二人でお昼中なのだ',
-    views: 22,
-    like: 23,
-    isLike: true,
-    isBookmark: false,
-    User: [
-      {
-        userImage:
-          'https://ca.slack-edge.com/T0G4VRKJA-U51V91129-5340348de13a-512',
-        userName: 'moke',
-      },
-    ],
-  },
-  {
-    id: 5,
-    image_url: 'https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512',
-    title: 'モーグリーとロアちゃんが二人でお昼中なのだ',
-    views: 22,
-    like: 23,
-    isLike: true,
-    isBookmark: false,
-    User: [
-      {
-        userImage:
-          'https://ca.slack-edge.com/T0G4VRKJA-U51V91129-5340348de13a-512',
-        userName: 'moke',
-      },
-    ],
-  },
-  {
-    id: 6,
-    image_url: 'https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512',
-    title: 'モーグリーとロアちゃんが二人でお昼中なのだ',
-    views: 22,
-    like: 23,
-    isLike: true,
-    isBookmark: false,
-    User: [
-      {
-        userImage:
-          'https://ca.slack-edge.com/T0G4VRKJA-U51V91129-5340348de13a-512',
-        userName: 'moke',
-      },
-    ],
-  },
-  {
-    id: 7,
-    image_url: 'https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512',
-    title: 'モーグリーとロアちゃんが二人でお昼中なのだ',
-    views: 22,
-    like: 23,
-    isLike: true,
-    isBookmark: false,
-    User: [
-      {
-        userImage:
-          'https://ca.slack-edge.com/T0G4VRKJA-U51V91129-5340348de13a-512',
-        userName: 'moke',
-      },
-    ],
+    content_id: "c19a5130-dd6a-11ea-81e1-0242ac120002",
+    user_id: "c189d91c-dd6a-11ea-81e1-0242ac120002",
+    user_name: "rin1208",
+    icon_url: "https://twitter.com/rin_kannzaki/photo",
+    detail: "雪だるまにはジャージを被せる派",
+    create_at: "0001-01-01T00:00:00Z",
+    title: "testt itle",
+    views: 0,
+    adult: false,
+    image_url: "https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512",
+    image_index: 1,
+    like_count: 0,
+    user_bookmarked: false,
+    user_liked: false
+  }, {
+    content_id: "c19a5130-dd6a-11ea-81e1-0242ac120002",
+    user_id: "c189d91c-dd6a-11ea-81e1-0242ac120002",
+    user_name: "rin1208",
+    icon_url: "https://twitter.com/rin_kannzaki/photo",
+    detail: "雪だるまにはジャージを被せる派",
+    create_at: "0001-01-01T00:00:00Z",
+    title: "testt itle",
+    views: 0,
+    adult: false,
+    image_url: "https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512",
+    image_index: 1,
+    like_count: 0,
+    user_bookmarked: false,
+    user_liked: false
+  }, {
+    content_id: "c19a5130-dd6a-11ea-81e1-0242ac120002",
+    user_id: "c189d91c-dd6a-11ea-81e1-0242ac120002",
+    user_name: "rin1208",
+    icon_url: "https://twitter.com/rin_kannzaki/photo",
+    detail: "雪だるまにはジャージを被せる派",
+    create_at: "0001-01-01T00:00:00Z",
+    title: "testt itle",
+    views: 0,
+    adult: false,
+    image_url: "https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512",
+    image_index: 1,
+    like_count: 0,
+    user_bookmarked: false,
+    user_liked: false
   },
 ]
 
 export const RoughData = [
   {
-    id: 1,
-    image_url: Rough,
-    title: '女の子がわちゃわちゃといい感じのラフです',
-    views: 10,
-    like: 50,
-    isLike: false,
-    isBookmark: true,
-    User: [
-      {
-        userImage:
-          'https://ca.slack-edge.com/T0G4VRKJA-U51V91129-5340348de13a-512',
-        userName: 'fuga',
-      },
-    ],
-  },
-  {
-    id: 2,
-    image_url: Rough,
-    title: '女の子がわちゃわちゃといい感じのラフです',
-    views: 10,
-    like: 44,
-    isLike: true,
-    isBookmark: false,
-    User: [
-      {
-        userImage:
-          'https://ca.slack-edge.com/T0G4VRKJA-U51V91129-5340348de13a-512',
-        userName: 'moke',
-      },
-    ],
-  },
-  {
-    id: 3,
-    image_url: Rough,
-    title: '女の子がわちゃわちゃといい感じのラフです',
-    views: 10,
-    like: 44,
-    isLike: true,
-    isBookmark: false,
-    User: [
-      {
-        userImage:
-          'https://ca.slack-edge.com/T0G4VRKJA-U51V91129-5340348de13a-512',
-        userName: 'moke',
-      },
-    ],
-  },
-  {
-    id: 4,
-    image_url: Rough,
-    title: '女の子がわちゃわちゃといい感じのラフです',
-    views: 10,
-    like: 44,
-    isLike: true,
-    isBookmark: false,
-    User: [
-      {
-        userImage:
-          'https://ca.slack-edge.com/T0G4VRKJA-U51V91129-5340348de13a-512',
-        userName: 'moke',
-      },
-    ],
-  },
-  {
-    id: 5,
-    image_url: Rough,
-    title: '女の子がわちゃわちゃといい感じのラフです',
-    views: 10,
-    like: 44,
-    isLike: true,
-    isBookmark: false,
-    User: [
-      {
-        userImage:
-          'https://ca.slack-edge.com/T0G4VRKJA-U51V91129-5340348de13a-512',
-        userName: 'moke',
-      },
-    ],
-  },
-  {
-    id: 6,
-    image_url: Rough,
-    title: '女の子がわちゃわちゃといい感じのラフです',
-    views: 10,
-    like: 44,
-    isLike: true,
-    isBookmark: false,
-    User: [
-      {
-        userImage:
-          'https://ca.slack-edge.com/T0G4VRKJA-U51V91129-5340348de13a-512',
-        userName: 'moke',
-      },
-    ],
-  },
-  {
-    id: 7,
-    image_url: Rough,
-    title: '女の子がわちゃわちゃといい感じのラフです',
-    views: 10,
-    like: 44,
-    isLike: true,
-    isBookmark: false,
-    User: [
-      {
-        userImage:
-          'https://ca.slack-edge.com/T0G4VRKJA-U51V91129-5340348de13a-512',
-        userName: 'moke',
-      },
-    ],
+    content_id: "c19a5130-dd6a-11ea-81e1-0242ac120002",
+    user_id: "c189d91c-dd6a-11ea-81e1-0242ac120002",
+    user_name: "rin1208",
+    icon_url: "https://twitter.com/rin_kannzaki/photo",
+    detail: "雪だるまにはジャージを被せる派",
+    create_at: "0001-01-01T00:00:00Z",
+    title: "testt itle",
+    views: 0,
+    adult: false,
+    image_url: "https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512",
+    image_index: 1,
+    like_count: 0,
+    user_bookmarked: false,
+    user_liked: false
+  }, {
+    content_id: "c19a5130-dd6a-11ea-81e1-0242ac120002",
+    user_id: "c189d91c-dd6a-11ea-81e1-0242ac120002",
+    user_name: "rin1208",
+    icon_url: "https://twitter.com/rin_kannzaki/photo",
+    detail: "雪だるまにはジャージを被せる派",
+    create_at: "0001-01-01T00:00:00Z",
+    title: "testt itle",
+    views: 0,
+    adult: false,
+    image_url: "https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512",
+    image_index: 1,
+    like_count: 0,
+    user_bookmarked: false,
+    user_liked: false
+  }, {
+    content_id: "c19a5130-dd6a-11ea-81e1-0242ac120002",
+    user_id: "c189d91c-dd6a-11ea-81e1-0242ac120002",
+    user_name: "rin1208",
+    icon_url: "https://twitter.com/rin_kannzaki/photo",
+    detail: "雪だるまにはジャージを被せる派",
+    create_at: "0001-01-01T00:00:00Z",
+    title: "testt itle",
+    views: 0,
+    adult: false,
+    image_url: "https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512",
+    image_index: 1,
+    like_count: 0,
+    user_bookmarked: false,
+    user_liked: false
+  }, {
+    content_id: "c19a5130-dd6a-11ea-81e1-0242ac120002",
+    user_id: "c189d91c-dd6a-11ea-81e1-0242ac120002",
+    user_name: "rin1208",
+    icon_url: "https://twitter.com/rin_kannzaki/photo",
+    detail: "雪だるまにはジャージを被せる派",
+    create_at: "0001-01-01T00:00:00Z",
+    title: "testt itle",
+    views: 0,
+    adult: false,
+    image_url: "https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512",
+    image_index: 1,
+    like_count: 0,
+    user_bookmarked: false,
+    user_liked: false
+  }, {
+    content_id: "c19a5130-dd6a-11ea-81e1-0242ac120002",
+    user_id: "c189d91c-dd6a-11ea-81e1-0242ac120002",
+    user_name: "rin1208",
+    icon_url: "https://twitter.com/rin_kannzaki/photo",
+    detail: "雪だるまにはジャージを被せる派",
+    create_at: "0001-01-01T00:00:00Z",
+    title: "testt itle",
+    views: 0,
+    adult: false,
+    image_url: "https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512",
+    image_index: 1,
+    like_count: 0,
+    user_bookmarked: false,
+    user_liked: false
+  }, {
+    content_id: "c19a5130-dd6a-11ea-81e1-0242ac120002",
+    user_id: "c189d91c-dd6a-11ea-81e1-0242ac120002",
+    user_name: "rin1208",
+    icon_url: "https://twitter.com/rin_kannzaki/photo",
+    detail: "雪だるまにはジャージを被せる派",
+    create_at: "0001-01-01T00:00:00Z",
+    title: "testt itle",
+    views: 0,
+    adult: false,
+    image_url: "https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512",
+    image_index: 1,
+    like_count: 0,
+    user_bookmarked: false,
+    user_liked: false
+  }, {
+    content_id: "c19a5130-dd6a-11ea-81e1-0242ac120002",
+    user_id: "c189d91c-dd6a-11ea-81e1-0242ac120002",
+    user_name: "rin1208",
+    icon_url: "https://twitter.com/rin_kannzaki/photo",
+    detail: "雪だるまにはジャージを被せる派",
+    create_at: "0001-01-01T00:00:00Z",
+    title: "testt itle",
+    views: 0,
+    adult: false,
+    image_url: "https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512",
+    image_index: 1,
+    like_count: 0,
+    user_bookmarked: false,
+    user_liked: false
+  }, {
+    content_id: "c19a5130-dd6a-11ea-81e1-0242ac120002",
+    user_id: "c189d91c-dd6a-11ea-81e1-0242ac120002",
+    user_name: "rin1208",
+    icon_url: "https://twitter.com/rin_kannzaki/photo",
+    detail: "雪だるまにはジャージを被せる派",
+    create_at: "0001-01-01T00:00:00Z",
+    title: "testt itle",
+    views: 0,
+    adult: false,
+    image_url: "https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512",
+    image_index: 1,
+    like_count: 0,
+    user_bookmarked: false,
+    user_liked: false
   },
 ]
 
 export const CommicData = [
   {
-    id: 1,
-    image_url: Commic,
-    title: 'Comic backgrounds Free Vector',
-    views: 10,
-    like: 50,
-    isLike: false,
-    isBookmark: true,
-    User: [
-      {
-        userImage:
-          'https://ca.slack-edge.com/T0G4VRKJA-U51V91129-5340348de13a-512',
-        userName: 'fuga',
-      },
-    ],
-  },
-  {
-    id: 2,
-    image_url: Commic,
-    title: 'Comic backgrounds Free Vector',
-    views: 10,
-    like: 44,
-    isLike: true,
-    isBookmark: false,
-    User: [
-      {
-        userImage:
-          'https://ca.slack-edge.com/T0G4VRKJA-U51V91129-5340348de13a-512',
-        userName: 'moke',
-      },
-    ],
-  },
-  {
-    id: 3,
-    image_url: Commic,
-    title: 'Comic backgrounds Free Vector',
-    views: 10,
-    like: 44,
-    isLike: true,
-    isBookmark: false,
-    User: [
-      {
-        userImage:
-          'https://ca.slack-edge.com/T0G4VRKJA-U51V91129-5340348de13a-512',
-        userName: 'moke',
-      },
-    ],
-  },
-  {
-    id: 4,
-    image_url: Commic,
-    title: 'Comic backgrounds Free Vector',
-    views: 10,
-    like: 44,
-    isLike: true,
-    isBookmark: false,
-    User: [
-      {
-        userImage:
-          'https://ca.slack-edge.com/T0G4VRKJA-U51V91129-5340348de13a-512',
-        userName: 'moke',
-      },
-    ],
-  },
-  {
-    id: 5,
-    image_url: Commic,
-    title: 'Comic backgrounds Free Vector',
-    views: 10,
-    like: 44,
-    isLike: true,
-    isBookmark: false,
-    User: [
-      {
-        userImage:
-          'https://ca.slack-edge.com/T0G4VRKJA-U51V91129-5340348de13a-512',
-        userName: 'moke',
-      },
-    ],
-  },
-  {
-    id: 6,
-    image_url: Commic,
-    title: 'Comic backgrounds Free Vector',
-    views: 10,
-    like: 44,
-    isLike: true,
-    isBookmark: false,
-    User: [
-      {
-        userImage:
-          'https://ca.slack-edge.com/T0G4VRKJA-U51V91129-5340348de13a-512',
-        userName: 'moke',
-      },
-    ],
-  },
-  {
-    id: 7,
-    image_url: Commic,
-    title: 'Comic backgrounds Free Vector',
-    views: 10,
-    like: 44,
-    isLike: true,
-    isBookmark: false,
-    User: [
-      {
-        userImage:
-          'https://ca.slack-edge.com/T0G4VRKJA-U51V91129-5340348de13a-512',
-        userName: 'moke',
-      },
-    ],
+    content_id: "c19a5130-dd6a-11ea-81e1-0242ac120002",
+    user_id: "c189d91c-dd6a-11ea-81e1-0242ac120002",
+    user_name: "rin1208",
+    icon_url: "https://twitter.com/rin_kannzaki/photo",
+    detail: "雪だるまにはジャージを被せる派",
+    create_at: "0001-01-01T00:00:00Z",
+    title: "testt itle",
+    views: 0,
+    adult: false,
+    image_url: "https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512",
+    image_index: 1,
+    like_count: 0,
+    user_bookmarked: false,
+    user_liked: false
+  }, {
+    content_id: "c19a5130-dd6a-11ea-81e1-0242ac120002",
+    user_id: "c189d91c-dd6a-11ea-81e1-0242ac120002",
+    user_name: "rin1208",
+    icon_url: "https://twitter.com/rin_kannzaki/photo",
+    detail: "雪だるまにはジャージを被せる派",
+    create_at: "0001-01-01T00:00:00Z",
+    title: "testt itle",
+    views: 0,
+    adult: false,
+    image_url: "https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512",
+    image_index: 1,
+    like_count: 0,
+    user_bookmarked: false,
+    user_liked: false
+  }, {
+    content_id: "c19a5130-dd6a-11ea-81e1-0242ac120002",
+    user_id: "c189d91c-dd6a-11ea-81e1-0242ac120002",
+    user_name: "rin1208",
+    icon_url: "https://twitter.com/rin_kannzaki/photo",
+    detail: "雪だるまにはジャージを被せる派",
+    create_at: "0001-01-01T00:00:00Z",
+    title: "testt itle",
+    views: 0,
+    adult: false,
+    image_url: "https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512",
+    image_index: 1,
+    like_count: 0,
+    user_bookmarked: false,
+    user_liked: false
+  }, {
+    content_id: "c19a5130-dd6a-11ea-81e1-0242ac120002",
+    user_id: "c189d91c-dd6a-11ea-81e1-0242ac120002",
+    user_name: "rin1208",
+    icon_url: "https://twitter.com/rin_kannzaki/photo",
+    detail: "雪だるまにはジャージを被せる派",
+    create_at: "0001-01-01T00:00:00Z",
+    title: "testt itle",
+    views: 0,
+    adult: false,
+    image_url: "https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512",
+    image_index: 1,
+    like_count: 0,
+    user_bookmarked: false,
+    user_liked: false
+  }, {
+    content_id: "c19a5130-dd6a-11ea-81e1-0242ac120002",
+    user_id: "c189d91c-dd6a-11ea-81e1-0242ac120002",
+    user_name: "rin1208",
+    icon_url: "https://twitter.com/rin_kannzaki/photo",
+    detail: "雪だるまにはジャージを被せる派",
+    create_at: "0001-01-01T00:00:00Z",
+    title: "testt itle",
+    views: 0,
+    adult: false,
+    image_url: "https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512",
+    image_index: 1,
+    like_count: 0,
+    user_bookmarked: false,
+    user_liked: false
+  }, {
+    content_id: "c19a5130-dd6a-11ea-81e1-0242ac120002",
+    user_id: "c189d91c-dd6a-11ea-81e1-0242ac120002",
+    user_name: "rin1208",
+    icon_url: "https://twitter.com/rin_kannzaki/photo",
+    detail: "雪だるまにはジャージを被せる派",
+    create_at: "0001-01-01T00:00:00Z",
+    title: "testt itle",
+    views: 0,
+    adult: false,
+    image_url: "https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512",
+    image_index: 1,
+    like_count: 0,
+    user_bookmarked: false,
+    user_liked: false
   },
 ]
 
 export const GraffitiData = [
   {
-    id: 1,
-    image_url: Graffiti,
-    title: 'しょうこおねーさんのすぷーを書いてみました!!',
-    views: 10,
-    like: 50,
-    isLike: false,
-    isBookmark: true,
-    User: [
-      {
-        userImage:
-          'https://ca.slack-edge.com/T0G4VRKJA-U51V91129-5340348de13a-512',
-        userName: 'fuga',
-      },
-    ],
-  },
-  {
-    id: 2,
-    image_url: Graffiti,
-    title: 'しょうこおねーさんのすぷーを書いてみました!!',
-    views: 10,
-    like: 44,
-    isLike: true,
-    isBookmark: false,
-    User: [
-      {
-        userImage:
-          'https://ca.slack-edge.com/T0G4VRKJA-U51V91129-5340348de13a-512',
-        userName: 'moke',
-      },
-    ],
-  },
-  {
-    id: 3,
-    image_url: Graffiti,
-    title: 'しょうこおねーさんのすぷーを書いてみました!!',
-    views: 10,
-    like: 44,
-    isLike: true,
-    isBookmark: false,
-    User: [
-      {
-        userImage:
-          'https://ca.slack-edge.com/T0G4VRKJA-U51V91129-5340348de13a-512',
-        userName: 'moke',
-      },
-    ],
-  },
-  {
-    id: 4,
-    image_url: Graffiti,
-    title: 'しょうこおねーさんのすぷーを書いてみました!!',
-    views: 10,
-    like: 44,
-    isLike: true,
-    isBookmark: false,
-    User: [
-      {
-        userImage:
-          'https://ca.slack-edge.com/T0G4VRKJA-U51V91129-5340348de13a-512',
-        userName: 'moke',
-      },
-    ],
-  },
-  {
-    id: 5,
-    image_url: Graffiti,
-    title: 'しょうこおねーさんのすぷーを書いてみました!!',
-    views: 10,
-    like: 44,
-    isLike: true,
-    isBookmark: false,
-    User: [
-      {
-        userImage:
-          'https://ca.slack-edge.com/T0G4VRKJA-U51V91129-5340348de13a-512',
-        userName: 'moke',
-      },
-    ],
-  },
-  {
-    id: 6,
-    image_url: Graffiti,
-    title: 'しょうこおねーさんのすぷーを書いてみました!!',
-    views: 10,
-    like: 44,
-    isLike: true,
-    isBookmark: false,
-    User: [
-      {
-        userImage:
-          'https://ca.slack-edge.com/T0G4VRKJA-U51V91129-5340348de13a-512',
-        userName: 'moke',
-      },
-    ],
-  },
-  {
-    id: 7,
-    image_url: Graffiti,
-    title: 'しょうこおねーさんのすぷーを書いてみました!!',
-    views: 10,
-    like: 44,
-    isLike: true,
-    isBookmark: false,
-    User: [
-      {
-        userImage:
-          'https://ca.slack-edge.com/T0G4VRKJA-U51V91129-5340348de13a-512',
-        userName: 'moke',
-      },
-    ],
+    content_id: "c19a5130-dd6a-11ea-81e1-0242ac120002",
+    user_id: "c189d91c-dd6a-11ea-81e1-0242ac120002",
+    user_name: "rin1208",
+    icon_url: "https://twitter.com/rin_kannzaki/photo",
+    detail: "雪だるまにはジャージを被せる派",
+    create_at: "0001-01-01T00:00:00Z",
+    title: "testt itle",
+    views: 0,
+    adult: false,
+    image_url: "https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512",
+    image_index: 1,
+    like_count: 0,
+    user_bookmarked: false,
+    user_liked: false
+  }, {
+    content_id: "c19a5130-dd6a-11ea-81e1-0242ac120002",
+    user_id: "c189d91c-dd6a-11ea-81e1-0242ac120002",
+    user_name: "rin1208",
+    icon_url: "https://twitter.com/rin_kannzaki/photo",
+    detail: "雪だるまにはジャージを被せる派",
+    create_at: "0001-01-01T00:00:00Z",
+    title: "testt itle",
+    views: 0,
+    adult: false,
+    image_url: "https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512",
+    image_index: 1,
+    like_count: 0,
+    user_bookmarked: false,
+    user_liked: false
+  }, {
+    content_id: "c19a5130-dd6a-11ea-81e1-0242ac120002",
+    user_id: "c189d91c-dd6a-11ea-81e1-0242ac120002",
+    user_name: "rin1208",
+    icon_url: "https://twitter.com/rin_kannzaki/photo",
+    detail: "雪だるまにはジャージを被せる派",
+    create_at: "0001-01-01T00:00:00Z",
+    title: "testt itle",
+    views: 0,
+    adult: false,
+    image_url: "https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512",
+    image_index: 1,
+    like_count: 0,
+    user_bookmarked: false,
+    user_liked: false
+  }, {
+    content_id: "c19a5130-dd6a-11ea-81e1-0242ac120002",
+    user_id: "c189d91c-dd6a-11ea-81e1-0242ac120002",
+    user_name: "rin1208",
+    icon_url: "https://twitter.com/rin_kannzaki/photo",
+    detail: "雪だるまにはジャージを被せる派",
+    create_at: "0001-01-01T00:00:00Z",
+    title: "testt itle",
+    views: 0,
+    adult: false,
+    image_url: "https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512",
+    image_index: 1,
+    like_count: 0,
+    user_bookmarked: false,
+    user_liked: false
+  }, {
+    content_id: "c19a5130-dd6a-11ea-81e1-0242ac120002",
+    user_id: "c189d91c-dd6a-11ea-81e1-0242ac120002",
+    user_name: "rin1208",
+    icon_url: "https://twitter.com/rin_kannzaki/photo",
+    detail: "雪だるまにはジャージを被せる派",
+    create_at: "0001-01-01T00:00:00Z",
+    title: "testt itle",
+    views: 0,
+    adult: false,
+    image_url: "https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512",
+    image_index: 1,
+    like_count: 0,
+    user_bookmarked: false,
+    user_liked: false
+  }, {
+    content_id: "c19a5130-dd6a-11ea-81e1-0242ac120002",
+    user_id: "c189d91c-dd6a-11ea-81e1-0242ac120002",
+    user_name: "rin1208",
+    icon_url: "https://twitter.com/rin_kannzaki/photo",
+    detail: "雪だるまにはジャージを被せる派",
+    create_at: "0001-01-01T00:00:00Z",
+    title: "testt itle",
+    views: 0,
+    adult: false,
+    image_url: "https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512",
+    image_index: 1,
+    like_count: 0,
+    user_bookmarked: false,
+    user_liked: false
+  }, {
+    content_id: "c19a5130-dd6a-11ea-81e1-0242ac120002",
+    user_id: "c189d91c-dd6a-11ea-81e1-0242ac120002",
+    user_name: "rin1208",
+    icon_url: "https://twitter.com/rin_kannzaki/photo",
+    detail: "雪だるまにはジャージを被せる派",
+    create_at: "0001-01-01T00:00:00Z",
+    title: "testt itle",
+    views: 0,
+    adult: false,
+    image_url: "https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512",
+    image_index: 1,
+    like_count: 0,
+    user_bookmarked: false,
+    user_liked: false
+  }, {
+    content_id: "c19a5130-dd6a-11ea-81e1-0242ac120002",
+    user_id: "c189d91c-dd6a-11ea-81e1-0242ac120002",
+    user_name: "rin1208",
+    icon_url: "https://twitter.com/rin_kannzaki/photo",
+    detail: "雪だるまにはジャージを被せる派",
+    create_at: "0001-01-01T00:00:00Z",
+    title: "testt itle",
+    views: 0,
+    adult: false,
+    image_url: "https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512",
+    image_index: 1,
+    like_count: 0,
+    user_bookmarked: false,
+    user_liked: false
+  }, {
+    content_id: "c19a5130-dd6a-11ea-81e1-0242ac120002",
+    user_id: "c189d91c-dd6a-11ea-81e1-0242ac120002",
+    user_name: "rin1208",
+    icon_url: "https://twitter.com/rin_kannzaki/photo",
+    detail: "雪だるまにはジャージを被せる派",
+    create_at: "0001-01-01T00:00:00Z",
+    title: "testt itle",
+    views: 0,
+    adult: false,
+    image_url: "https://ca.slack-edge.com/TH9SKRH3N-UH7F80B6C-c0365f443d8f-512",
+    image_index: 1,
+    like_count: 0,
+    user_bookmarked: false,
+    user_liked: false
   },
 ]
 
