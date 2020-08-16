@@ -18,17 +18,20 @@ const Container = styled.div`
 
 interface ItemsProps {
   datas: {
-    id: number
-    image_url: string
+    content_id: string
+    user_id: string
+    user_name: string
+    icon_url: string
+    detail: string
+    create_at: string
     title: string
     views: number
-    like: number
-    isLike: boolean
-    isBookmark: boolean
-    User: {
-      userImage: string
-      userName: string
-    }[]
+    adult: boolean
+    image_url: string
+    image_index: number
+    like_count: number
+    user_bookmarked: boolean,
+    user_liked: boolean
   }[]
   isInfo?: boolean
 }
@@ -36,9 +39,10 @@ interface ItemsProps {
 const Items: React.FC<ItemsProps> = (props: any) => {
   return (
     <Container>
-      {props.datas.map((items: any, index: number) => {
+      {console.log(props)}
+      {/* {props.datas.map((items: any, index: number) => {
         return <Item item={items} isInfo={props.isInfo} />
-      })}
+      })} */}
     </Container>
   )
 }
