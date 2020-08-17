@@ -20,19 +20,19 @@ export const deleteLikePost = gql`
 export const GetIllustQuery = gql`
   mutation getIllustQuery($type: String!){
     getIllustQuery(type: $type)
-      @rest(type: "Post", path: "getIllustratio", method: "POST"){
+      @rest(type: "illust", path: "getIllustratio", method: "POST"){
       content_id
-      # user_id
-      # user_name
-      # icon_url
-      # detail
-      # create_at
-      # title
-      # views
-      # adult
-      # image_url
-      # image_index
-      # like_count
+      user_id
+      user_name
+      icon_url
+      detail
+      create_at
+      title
+      views
+      adult
+      image_url
+      image_index
+      like_count
     }
   }
 `
