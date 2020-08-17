@@ -12,6 +12,8 @@ import UserNavbar from '../components/UserNavbar'
  * testData
  */
 import { IllustDataTest, RoughData, CommicData, GraffitiData } from '../data/Data'
+import { GetUserIllustQuery, GetIllustQuery, GetUserRoughQuery } from '../data/queries'
+import { useQuery, Query } from 'react-apollo'
 
 interface UserContentProps {
   item: {
@@ -127,8 +129,9 @@ const AccountButtonConatiner = styled.div`
 
 
 const UserContent: React.FC<UserContentProps> = ({ item, myUserAuth }) => {
-  let { content } = useParams()
+  let { user_id, content } = useParams()
   const [selectNumber, setNumber] = useState(1)
+  const [getQuery, setQuery] = useState(GetUserIllustQuery)
   const [Data, setData] = useState(IllustDataTest)
 
   useEffect(() => {
@@ -136,10 +139,11 @@ const UserContent: React.FC<UserContentProps> = ({ item, myUserAuth }) => {
     switch (content) {
       case 'illust':
         setNumber(1)
-        setData(IllustDataTest)
+        setQuery(GetUserIllustQuery)
         break
       case 'rough':
         setNumber(2)
+        setQuery(GetUserRoughQuery)
         setData(RoughData)
         break
       case 'commic':
@@ -158,32 +162,44 @@ const UserContent: React.FC<UserContentProps> = ({ item, myUserAuth }) => {
   }, [content])
 
   return (
-    <Container>
-      <HeaderContainer>
-        <HeaderImage src={item.header_url} />
-      </HeaderContainer>
-      <InfoContainer>
-        <UserContainer>
-          <AccountImageContainer>
-            <AccountImage src={item.icon_url} />
-          </AccountImageContainer>
-          <AccountButtonConatiner>
-            {myUserAuth ? <Button onClick={() => console.log('設定')}>設定</Button> : <Button onClick={() => console.log("フォローしました。")}>フォロー</Button>}
-          </AccountButtonConatiner>
-        </UserContainer>
-        <UserInfo>
-          <UserName>{item.name}</UserName>
-          <UserAccountId>@{item.account_id}</UserAccountId>
-        </UserInfo>
-        <DetailContainer>
-          <Detail>{item.comment}</Detail>
-        </DetailContainer>
+    <Query query={getQuery} variables={{ user_id }}>
+      {({ loading, data, err }: any) => {
+        console.log(err)
+        if (loading) { return <p>...loading</p> }
+        if (data.userData.illustratio) {
+          setData(data.userData.illustratio)
+        }
+        console.log(data.userData)
+        return (
+          <Container>
+            <HeaderContainer>
+              <HeaderImage src={item.header_url} />
+            </HeaderContainer>
+            <InfoContainer>
+              <UserContainer>
+                <AccountImageContainer>
+                  <AccountImage src={item.icon_url} />
+                </AccountImageContainer>
+                <AccountButtonConatiner>
+                  {myUserAuth ? <Button onClick={() => console.log('設定')}>設定</Button> : <Button onClick={() => console.log("フォローしました。")}>フォロー</Button>}
+                </AccountButtonConatiner>
+              </UserContainer>
+              <UserInfo>
+                <UserName>{item.name}</UserName>
+                <UserAccountId>@{item.account_id}</UserAccountId>
+              </UserInfo>
+              <DetailContainer>
+                <Detail>{item.comment}</Detail>
+              </DetailContainer>
 
-        <UserNavbar selectNumber={selectNumber} accountId={item.account_id} />
-        <Items datas={Data} isInfo={false} />
-      </InfoContainer>
+              <UserNavbar selectNumber={selectNumber} accountId={item.account_id} />
+              <Items datas={Data} isInfo={false} />
+            </InfoContainer>
 
-    </Container >
+          </Container >
+        )
+      }}
+    </Query>
   )
 }
 
