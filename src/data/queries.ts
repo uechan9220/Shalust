@@ -98,7 +98,7 @@ export const myUserQuery = gql`
 
 export const GetIllustQuery = gql`
   query getIllustQuery{
-    illust @rest(type: "Illust", path: "api/getIllustratio" ){
+    illust @rest(type: "Illust", path: "getIllustratio" ){
       content_id
       user_id
       user_name
@@ -114,3 +114,23 @@ export const GetIllustQuery = gql`
     }
   }
 `;
+
+
+// UserPageQuery
+export const GetUserIllustQuery = gql`
+  query getUserIllustQuery($user_id: String!){
+    userData(user_id: $user_id)
+     @rest(type: "userData", path: "user/{args.user_id}/Illustratio"){
+       illustratio
+     }
+  }
+`
+
+export const GetUserRoughQuery = gql`
+  query getUserRoughQuery($user_id: String!){
+    userData(user_id: $user_id)
+     @rest(type: "userData", path: "user/{args.user_id}/rough"){
+       user_id
+     }
+  }
+`
