@@ -40,9 +40,9 @@ const Items: React.FC<ItemsProps> = (props: any) => {
   return (
     <Container>
       {console.log(props)}
-      {/* {props.datas.map((items: any, index: number) => {
+      {props.datas.map((items: any, index: number) => {
         return <Item item={items} isInfo={props.isInfo} />
-      })} */}
+      })}
     </Container>
   )
 }
