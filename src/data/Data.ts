@@ -94,7 +94,7 @@ export const RoughData = [
     content_id: "c19a5130-dd6a-11ea-81e1-0242ac120002",
     user_id: "c189d91c-dd6a-11ea-81e1-0242ac120002",
     user_name: "rin1208",
-    icon_url: "https://twitter.com/rin_kannzaki/photo",
+    icon_url: "https://pbs.twimg.com/profile_images/1069455527845888000/WCh2KKPR_400x400.jpg",
     detail: "雪だるまにはジャージを被せる派",
     create_at: "0001-01-01T00:00:00Z",
     title: "testt itle",
@@ -475,6 +475,6 @@ export const TestUserData = [
     header_url: Header,
     location: '',
     comment: '最近絵を描き始めました！！\nいいねがたくさんもらえるように頑張っていきたいと思います！！\nよろしくお願いします。',
-    account_id: 'watashi_mirai_jin'
+    account_id: 'hoge'
   },
 ]
