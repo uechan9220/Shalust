@@ -62,11 +62,11 @@ function App() {
     credentials: 'same-origin',
     headers: {
       'Content-Type': 'application/json',
-      'authorization': `Bearer ${BearerToken}`,
+      'user_id': `Bearer ${BearerToken}`,
       'Accept': 'application/json',
       'cache-control': 'no-cache'
     },
-    uri: `http://localhost:8080/`
+    uri: `http://localhost:8080/api/`
   })
 
   // const wsLink = new WebSocketLink({
