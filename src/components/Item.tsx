@@ -39,12 +39,20 @@ const HoverContent = styled.div`
 const ImageContainer = styled.div`
   width: 100%;
   position: relative;
+  min-width: 16rem;
+  min-height: 16rem;
+  line-height: 0;
+  @media (max-width: 450px){
+    min-width: 9rem;
+    min-height: 9rem;
+  }
   &:hover {
     & > ${HoverContent} {
       opacity: 1;
     }
   }
   & > ${HoverContent} {
+    line-height: 1;
     opacity: 0;
     transition: opacity 300ms ease;
   }
@@ -53,6 +61,7 @@ const ImageContainer = styled.div`
 const Image = styled.img`
   object-fit: cover;
   width: 100%;
+  height: 100%;
   min-width: 16rem;
   min-height: 16rem;
   @media (max-width: 450px){
