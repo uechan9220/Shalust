@@ -28,16 +28,17 @@ const Content = styled.div`
 const Illust: React.FC = () => {
   return (
     <Query query={GetIllustQuery}>
-      {({ loading, data }: any) => {
+      {({ loading, data, err }: any) => {
+        console.log(err)
         if (loading) { return <p>...loading</p> }
-        console.log(data)
-        const IllustData: any[] = data
+        console.log(data.illust)
+        console.log(IllustDataTest)
 
         return (
           <Container>
             <Content>
               <Navbar selectNumber={1} />
-              <Items datas={IllustData} isInfo={true} />
+              <Items datas={data.illust} isInfo={true} />
             </Content>
           </Container>
         )
@@ -47,6 +48,7 @@ const Illust: React.FC = () => {
     // <Container>
     //   <Content>
     //     <Navbar selectNumber={1} />
+
     //     <Items datas={IllustDataTest} isInfo={true} />
     //   </Content>
     // </Container>
