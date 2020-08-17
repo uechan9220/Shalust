@@ -88,7 +88,7 @@ const Header: React.FC = () => {
               </Link>
             )
           })} */}
-          <Link to={`/user/moooooooooooke`}>
+          <Link to={`/user/hoge`}>
             <Signin>user</Signin>
           </Link>
         </Content>
