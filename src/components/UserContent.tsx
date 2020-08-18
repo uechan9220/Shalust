@@ -166,7 +166,14 @@ const UserContent: React.FC<UserContentProps> = ({ item, myUserAuth }) => {
         console.log(err)
         if (loading) { return <p>...loading</p> }
         // setData(data.userData.content)
-        setData(data.userData[`${content}`])
+        console.log(data)
+        console.log(content)
+        if (content !== undefined) {
+          setData(data.userData[`${content}`])
+        } else {
+          setData(data.userData['illustratio'])
+        }
+
         return (
           <Container>
             <HeaderContainer>
