@@ -26,7 +26,7 @@ import Header from './components/Header'
  * pages
  */
 import Main from './pages/Main'
-import Illust from './pages/Illust'
+import Illust from './pages/Illustratio'
 import Rough from './pages/Rough'
 import Commic from './pages/Commic'
 import Graffiti from './pages/Graffiti'
@@ -111,7 +111,7 @@ function App() {
                   {/* ここ分ける必要ないかも */}
                   <Main />
                 </Route>
-                <Route exact path="/illust">
+                <Route exact path="/illustratio">
                   <Illust />
                 </Route>
                 <Route exact path="/rough">
