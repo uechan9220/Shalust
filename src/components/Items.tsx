@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import Item from './Item'
 
 const Container = styled.div`
+  position: relative;
   display: grid;
   list-style: none;
   grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
@@ -14,6 +15,18 @@ const Container = styled.div`
   @media (max-width: 450px){
     grid-template-columns: repeat(auto-fill, minmax(128px, 1fr));
   }
+`
+
+const NotPostText = styled.p`
+  font-size: 7vw;
+`
+
+const NotPostContainr = styled.div`
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 4rem 0;
 `
 
 interface ItemsProps {
@@ -40,9 +53,15 @@ const Items: React.FC<ItemsProps> = (props: any) => {
   return (
     <Container>
       {console.log(props)}
-      {props.datas.map((items: any, index: number) => {
-        return <Item item={items} isInfo={props.isInfo} />
-      })}
+      {props.datas !== undefined && props.datas !== null ?
+        props.datas.map((items: any, index: number) => {
+          return <Item item={items} isInfo={props.isInfo} />
+        })
+        :
+        <NotPostContainr>
+          <NotPostText>まだ投稿が無いようです。</NotPostText>
+        </NotPostContainr>
+      }
     </Container>
   )
 }
