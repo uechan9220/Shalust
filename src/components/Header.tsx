@@ -71,7 +71,7 @@ const Header: React.FC = () => {
     <Container>
       {/* {console.log(data)} */}
       <Link to="/">
-        <Title>Illustgram</Title>
+        <Title>Shalust</Title>
       </Link>
       {console.log(currentUser)}
       {currentUser.user ? (
