@@ -12,7 +12,7 @@ import UserNavbar from '../components/UserNavbar'
  * testData
  */
 import { IllustDataTest, RoughData, CommicData, GraffitiData } from '../data/Data'
-import { GetUserIllustQuery, GetIllustQuery, GetUserRoughQuery } from '../data/queries'
+import { GetUserIllustQuery, GetUserRoughQuery, GetUserCommicQuery, GetUserGraffitiQuery } from '../data/queries'
 import { useQuery, Query } from 'react-apollo'
 
 interface UserContentProps {
@@ -137,39 +137,36 @@ const UserContent: React.FC<UserContentProps> = ({ item, myUserAuth }) => {
   useEffect(() => {
     console.log(content)
     switch (content) {
-      case 'illust':
+      case 'illustratio':
         setNumber(1)
         setQuery(GetUserIllustQuery)
         break
       case 'rough':
         setNumber(2)
         setQuery(GetUserRoughQuery)
-        setData(RoughData)
         break
       case 'commic':
         setNumber(3)
-        setData(CommicData)
+        setQuery(GetUserCommicQuery)
         break
       case 'graffiti':
         setNumber(4)
-        setData(GraffitiData)
+        setQuery(GetUserGraffitiQuery)
         break
       default:
         setNumber(1)
-        setData(IllustDataTest)
+        setQuery(GetUserIllustQuery)
         break
     }
-  }, [content])
+  }, [content, Data])
 
   return (
     <Query query={getQuery} variables={{ user_id }}>
       {({ loading, data, err }: any) => {
         console.log(err)
         if (loading) { return <p>...loading</p> }
-        if (data.userData.illustratio) {
-          setData(data.userData.illustratio)
-        }
-        console.log(data.userData)
+        // setData(data.userData.content)
+        setData(data.userData[`${content}`])
         return (
           <Container>
             <HeaderContainer>
