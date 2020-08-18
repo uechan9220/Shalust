@@ -130,7 +130,25 @@ export const GetUserRoughQuery = gql`
   query getUserRoughQuery($user_id: String!){
     userData(user_id: $user_id)
      @rest(type: "userData", path: "user/{args.user_id}/rough"){
-       user_id
+       rough
+     }
+  }
+`
+
+export const GetUserCommicQuery = gql`
+  query getUserCommicQuery($user_id: String!){
+    userData(user_id: $user_id)
+     @rest(type: "userData", path: "user/{args.user_id}/commic"){
+       commic
+     }
+  }
+`
+
+export const GetUserGraffitiQuery = gql`
+  query getUserGraffitiQuery($user_id: String!){
+    userData(user_id: $user_id)
+     @rest(type: "userData", path: "user/{args.user_id}/graffiti"){
+       graffiti
      }
   }
 `
