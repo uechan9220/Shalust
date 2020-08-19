@@ -18,7 +18,7 @@ func Serve(r *gin.Engine, port string) {
 		v1.GET("/user/:user_id/commic", handler.GetUserCommic)
 		v1.GET("/user/:user_id/graffiti", handler.GetUserGraffiti)
 		v1.GET("/user/:user_id/rough", handler.GetUserRough)
-		v1.POST("/getIllustratio", handler.GetIllustratio)
+		v1.GET("/getIllustratio", handler.GetIllustratio)
 		v1.POST("/createUser", handler.CreateUser)
 
 	}

@@ -83,7 +83,7 @@ const Navbar: React.FC<NavbarProps> = ({ selectNumber, tagName }) => {
         {tagName === undefined ? (
           <>
             {console.log(tagName)}
-            <StyledLink to="/illust">
+            <StyledLink to="/illustratio">
               <NavText>イラスト</NavText>
             </StyledLink>
 
@@ -100,25 +100,25 @@ const Navbar: React.FC<NavbarProps> = ({ selectNumber, tagName }) => {
             </StyledLink>
           </>
         ) : (
-          <>
-            {console.log(tagName)}
-            <StyledLink to={`/tags/illust/${tagName}`}>
-              <NavText>イラスト</NavText>
-            </StyledLink>
+            <>
+              {console.log(tagName)}
+              <StyledLink to={`/tags/illustratio/${tagName}`}>
+                <NavText>イラスト</NavText>
+              </StyledLink>
 
-            <StyledLink to={`/tags/rough/${tagName}`}>
-              <NavText>ラフ</NavText>
-            </StyledLink>
+              <StyledLink to={`/tags/rough/${tagName}`}>
+                <NavText>ラフ</NavText>
+              </StyledLink>
 
-            <StyledLink to={`/tags/commic/${tagName}`}>
-              <NavText>マンガ</NavText>
-            </StyledLink>
+              <StyledLink to={`/tags/commic/${tagName}`}>
+                <NavText>マンガ</NavText>
+              </StyledLink>
 
-            <StyledLink to={`/tags/graffiti/${tagName}`}>
-              <NavText>落書き</NavText>
-            </StyledLink>
-          </>
-        )}
+              <StyledLink to={`/tags/graffiti/${tagName}`}>
+                <NavText>落書き</NavText>
+              </StyledLink>
+            </>
+          )}
       </Nav>
     </NavContainer>
   )

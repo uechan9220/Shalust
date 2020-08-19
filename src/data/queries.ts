@@ -94,3 +94,61 @@ export const myUserQuery = gql`
 //     }
 //   }
 // `
+
+
+export const GetIllustQuery = gql`
+  query getIllustQuery{
+    illust @rest(type: "Illust", path: "getIllustratio" ){
+      content_id
+      user_id
+      user_name
+      icon_url
+      detail
+      create_at
+      title
+      views
+      adult
+      image_url
+      image_index
+      like_count
+    }
+  }
+`;
+
+
+// UserPageQuery
+export const GetUserIllustQuery = gql`
+  query getUserIllustQuery($user_id: String!){
+    userData(user_id: $user_id)
+     @rest(type: "userData", path: "user/{args.user_id}/Illustratio"){
+       illustratio
+     }
+  }
+`
+
+export const GetUserRoughQuery = gql`
+  query getUserRoughQuery($user_id: String!){
+    userData(user_id: $user_id)
+     @rest(type: "userData", path: "user/{args.user_id}/rough"){
+       rough
+     }
+  }
+`
+
+export const GetUserCommicQuery = gql`
+  query getUserCommicQuery($user_id: String!){
+    userData(user_id: $user_id)
+     @rest(type: "userData", path: "user/{args.user_id}/commic"){
+       commic
+     }
+  }
+`
+
+export const GetUserGraffitiQuery = gql`
+  query getUserGraffitiQuery($user_id: String!){
+    userData(user_id: $user_id)
+     @rest(type: "userData", path: "user/{args.user_id}/graffiti"){
+       graffiti
+     }
+  }
+`

@@ -11,7 +11,9 @@ import UserNavbar from '../components/UserNavbar'
 /**
  * testData
  */
-import { IllustData, RoughData, CommicData, GraffitiData } from '../data/Data'
+import { IllustDataTest, RoughData, CommicData, GraffitiData } from '../data/Data'
+import { GetUserIllustQuery, GetUserRoughQuery, GetUserCommicQuery, GetUserGraffitiQuery } from '../data/queries'
+import { useQuery, Query } from 'react-apollo'
 
 interface UserContentProps {
   item: {
@@ -127,63 +129,81 @@ const AccountButtonConatiner = styled.div`
 
 
 const UserContent: React.FC<UserContentProps> = ({ item, myUserAuth }) => {
-  let { content } = useParams()
+  let { user_id, content } = useParams()
   const [selectNumber, setNumber] = useState(1)
-  const [Data, setData] = useState(IllustData)
+  const [getQuery, setQuery] = useState(GetUserIllustQuery)
+  const [Data, setData] = useState(IllustDataTest)
 
   useEffect(() => {
     console.log(content)
     switch (content) {
-      case 'illust':
+      case 'illustratio':
         setNumber(1)
-        setData(IllustData)
+        setQuery(GetUserIllustQuery)
         break
       case 'rough':
         setNumber(2)
-        setData(RoughData)
+        setQuery(GetUserRoughQuery)
         break
       case 'commic':
         setNumber(3)
-        setData(CommicData)
+        setQuery(GetUserCommicQuery)
         break
       case 'graffiti':
         setNumber(4)
-        setData(GraffitiData)
+        setQuery(GetUserGraffitiQuery)
         break
       default:
         setNumber(1)
-        setData(IllustData)
+        setQuery(GetUserIllustQuery)
         break
     }
-  }, [content])
+  }, [content, Data])
 
   return (
-    <Container>
-      <HeaderContainer>
-        <HeaderImage src={item.header_url} />
-      </HeaderContainer>
-      <InfoContainer>
-        <UserContainer>
-          <AccountImageContainer>
-            <AccountImage src={item.icon_url} />
-          </AccountImageContainer>
-          <AccountButtonConatiner>
-            {myUserAuth ? <Button onClick={() => console.log('設定')}>設定</Button> : <Button onClick={() => console.log("フォローしました。")}>フォロー</Button>}
-          </AccountButtonConatiner>
-        </UserContainer>
-        <UserInfo>
-          <UserName>{item.name}</UserName>
-          <UserAccountId>@{item.account_id}</UserAccountId>
-        </UserInfo>
-        <DetailContainer>
-          <Detail>{item.comment}</Detail>
-        </DetailContainer>
+    <Query query={getQuery} variables={{ user_id }}>
+      {({ loading, data, err }: any) => {
+        console.log(err)
+        if (loading) { return <p>...loading</p> }
+        // setData(data.userData.content)
+        console.log(data)
+        console.log(content)
+        if (content !== undefined) {
+          setData(data.userData[`${content}`])
+        } else {
+          setData(data.userData['illustratio'])
+        }
 
-        <UserNavbar selectNumber={selectNumber} accountId={item.account_id} />
-        <Items datas={Data} isInfo={false} />
-      </InfoContainer>
+        return (
+          <Container>
+            <HeaderContainer>
+              <HeaderImage src={item.header_url} />
+            </HeaderContainer>
+            <InfoContainer>
+              <UserContainer>
+                <AccountImageContainer>
+                  <AccountImage src={item.icon_url} />
+                </AccountImageContainer>
+                <AccountButtonConatiner>
+                  {myUserAuth ? <Button onClick={() => console.log('設定')}>設定</Button> : <Button onClick={() => console.log("フォローしました。")}>フォロー</Button>}
+                </AccountButtonConatiner>
+              </UserContainer>
+              <UserInfo>
+                <UserName>{item.name}</UserName>
+                <UserAccountId>@{item.account_id}</UserAccountId>
+              </UserInfo>
+              <DetailContainer>
+                <Detail>{item.comment}</Detail>
+              </DetailContainer>
 
-    </Container >
+              <UserNavbar selectNumber={selectNumber} accountId={item.account_id} />
+              <Items datas={Data} isInfo={false} />
+            </InfoContainer>
+
+          </Container >
+        )
+      }}
+    </Query>
   )
 }
 

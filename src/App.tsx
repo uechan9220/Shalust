@@ -10,9 +10,10 @@ import Auth from './Auth'
 
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { HttpLink } from 'apollo-link-http'
+import { RestLink } from 'apollo-link-rest'
 import { ApolloProvider } from '@apollo/react-hooks'
 import { WebSocketLink } from 'apollo-link-ws'
-import ApolloClient from 'apollo-client'
+import { ApolloClient } from 'apollo-client'
 import { split } from 'apollo-link'
 import { getMainDefinition } from 'apollo-utilities'
 
@@ -25,7 +26,7 @@ import Header from './components/Header'
  * pages
  */
 import Main from './pages/Main'
-import Illust from './pages/Illust'
+import Illust from './pages/Illustratio'
 import Rough from './pages/Rough'
 import Commic from './pages/Commic'
 import Graffiti from './pages/Graffiti'
@@ -49,38 +50,51 @@ function App() {
 
   const isIn = currentUser.status === 'in'
 
-  const headers = isIn ? { Authorization: `Bearer ${currentUser.token}` } : {}
+  const BearerToken = isIn ? currentUser.token : null
 
-  const httpLink = new HttpLink({
-    uri: `http://${process.env.REACT_APP_HASURA_ENDPOINT}`,
-    headers,
+  // const httpLink = new HttpLink({
+  //   // uri: `http://${process.env.REACT_APP_HASURA_ENDPOINT}`,
+  //   uri: `http://localhost:8080/api/`,
+  //   headers,
+  // })
+
+  const restLink = new RestLink({
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json',
+      'user_id': `Bearer ${BearerToken}`,
+      'Accept': 'application/json',
+      'cache-control': 'no-cache'
+    },
+    uri: `http://localhost:8080/api/`
   })
 
-  const wsLink = new WebSocketLink({
-    uri: `wss://${process.env.REACT_APP_HASURA_ENDPOINT}`,
-    options: {
-      reconnect: true,
-      connectionParams: {
-        headers,
-      },
-    },
-  })
+  // const wsLink = new WebSocketLink({
+  //   // uri: `wss://${process.env.REACT_APP_HASURA_ENDPOINT}`,
+  //   uri: `wss://localhost:8080/api/`,
+  //   options: {
+  //     reconnect: true,
+  //     connectionParams: {
+  //       headers,
+  //     },
+  //   },
+  // })
 
-  const link = split(
-    // split based on operation type
-    ({ query }) => {
-      const definition = getMainDefinition(query)
-      return (
-        definition.kind === 'OperationDefinition' &&
-        definition.operation === 'subscription'
-      )
-    },
-    wsLink,
-    httpLink
-  )
+  // const link = split(
+  //   // split based on operation type
+  //   ({ query }) => {
+  //     const definition = getMainDefinition(query)
+  //     return (
+  //       definition.kind === 'OperationDefinition' &&
+  //       definition.operation === 'subscription'
+  //     )
+  //   },
+  //   wsLink,
+  //   restLink
+  // )
 
   const client = new ApolloClient({
-    link,
+    link: restLink,
     cache: new InMemoryCache(),
   })
 
@@ -97,7 +111,7 @@ function App() {
                   {/* ここ分ける必要ないかも */}
                   <Main />
                 </Route>
-                <Route exact path="/illust">
+                <Route exact path="/illustratio">
                   <Illust />
                 </Route>
                 <Route exact path="/rough">

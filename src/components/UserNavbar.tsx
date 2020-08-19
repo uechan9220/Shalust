@@ -87,7 +87,7 @@ const UserNavbar: React.FC<NavbarProps> = ({ selectNumber, accountId }) => {
   return (
     <NavContainer>
       <Nav index={selectNumber}>
-        <StyledLink to={`/user/${accountId}/illust`}>
+        <StyledLink to={`/user/${accountId}/illustratio`}>
           <NavText>イラスト</NavText>
         </StyledLink>
 

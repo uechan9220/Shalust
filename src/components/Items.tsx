@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import Item from './Item'
 
 const Container = styled.div`
+  position: relative;
   display: grid;
   list-style: none;
   grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
@@ -16,19 +17,34 @@ const Container = styled.div`
   }
 `
 
+const NotPostText = styled.p`
+  font-size: 7vw;
+`
+
+const NotPostContainr = styled.div`
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 4rem 0;
+`
+
 interface ItemsProps {
   datas: {
-    id: number
-    image_url: string
+    content_id: string
+    user_id: string
+    user_name: string
+    icon_url: string
+    detail: string
+    create_at: string
     title: string
     views: number
-    like: number
-    isLike: boolean
-    isBookmark: boolean
-    User: {
-      userImage: string
-      userName: string
-    }[]
+    adult: boolean
+    image_url: string
+    image_index: number
+    like_count: number
+    user_bookmarked: boolean,
+    user_liked: boolean
   }[]
   isInfo?: boolean
 }
@@ -36,9 +52,16 @@ interface ItemsProps {
 const Items: React.FC<ItemsProps> = (props: any) => {
   return (
     <Container>
-      {props.datas.map((items: any, index: number) => {
-        return <Item item={items} isInfo={props.isInfo} />
-      })}
+      {console.log(props)}
+      {props.datas !== undefined && props.datas !== null ?
+        props.datas.map((items: any, index: number) => {
+          return <Item item={items} isInfo={props.isInfo} />
+        })
+        :
+        <NotPostContainr>
+          <NotPostText>まだ投稿が無いようです。</NotPostText>
+        </NotPostContainr>
+      }
     </Container>
   )
 }
