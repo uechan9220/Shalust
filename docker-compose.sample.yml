@@ -11,6 +11,9 @@ services:
       - MYSQL_HOST=[mysql]
       - MYSQL_PORT=3306
       - MYSQL_DATABASE=shalust
+      - MINIO_SECRET_KEY= minio_secret_key
+      - MINIO_ACCESS_KEY= AKIA_MINIO_ACCESS_KEY
+      - S3_BUCKET = mybucket
     volumes:
       - ./:/app
     working_dir: /app
