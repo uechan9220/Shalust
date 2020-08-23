@@ -14,6 +14,7 @@ services:
       - MINIO_SECRET_KEY=minio_secret_key
       - MINIO_ACCESS_KEY=AKIA_MINIO_ACCESS_KEY
       - S3_BUCKET_NAME=mybucket
+    env_file: [./.env]
     volumes:
       - ./:/app
     working_dir: /app

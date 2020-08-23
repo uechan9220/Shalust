@@ -2,7 +2,6 @@ package create_sample
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"shalust/api/pkg/server/model"
@@ -28,9 +27,7 @@ func Create_sample() {
 	if err := json.Unmarshal(data_json, &data); err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("hogehoge", err)
 	err = model.Upload_S3("/app/api/db/create_sample/icon_sample.jpg", "icon_sample.jpg")
-	fmt.Println("hoge", err)
 
 	acount_id := []string{"hoge", "huga", "piyo", "hunga", "rin", "momo"}
 	for _, key := range acount_id {
