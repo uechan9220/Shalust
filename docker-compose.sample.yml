@@ -10,7 +10,20 @@ services:
       - ./:/app
     working_dir: /app
     tty: true
-  
+    networks:
+      - shalust-network
+      - default
+  front:
+    build: .
+    dockerfile: Dockerfile.front
+    ports:
+      - "3000:3000"
+    env_file: [./.env]
+    volumes:
+      - ./:/app
+    working_dir: /app
+    tty: true 
+    command: yarn start
     networks:
       - shalust-network
       - default
