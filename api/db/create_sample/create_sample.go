@@ -27,8 +27,11 @@ func Create_sample() {
 	if err := json.Unmarshal(data_json, &data); err != nil {
 		log.Fatal(err)
 	}
-	err = model.Upload_S3("/app/api/db/create_sample/icon_sample.jpg", "icon_sample.jpg")
 
+	icon_url, _ := model.Upload_S3("/app/api/db/create_sample/icon_sample.jpg", "icon_sample.jpg")
+	imagesample, _ := model.Upload_S3("/app/api/db/create_sample/image_sample.jpg", "image_sample.jpg")
+	data.User.Icon_url = icon_url
+	data.ImageData.Image_url = imagesample
 	acount_id := []string{"hoge", "huga", "piyo", "hunga", "rin", "momo"}
 	for _, key := range acount_id {
 		uuidObj, _ := uuid.NewUUID()
