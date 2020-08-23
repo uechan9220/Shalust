@@ -16,9 +16,9 @@ const Signin: React.FC = (props: any) => {
 
   useEffect(() => {
     if (currentUser.user) {
-      props.history.push('/')
+      props.history.push("/create_user")
     }
-    console.log(currentUser)
+    // console.log(currentUser)
   }, [currentUser])
 
   return (
