@@ -5,15 +5,6 @@ services:
     build: .
     ports:
       - "8080:8080"
-    environment:
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=root
-      - MYSQL_HOST=[mysql]
-      - MYSQL_PORT=3306
-      - MYSQL_DATABASE=shalust
-      - MINIO_SECRET_KEY=minio_secret_key
-      - MINIO_ACCESS_KEY=AKIA_MINIO_ACCESS_KEY
-      - S3_BUCKET_NAME=mybucket
     env_file: [./.env]
     volumes:
       - ./:/app
