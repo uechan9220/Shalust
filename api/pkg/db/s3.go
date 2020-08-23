@@ -1,7 +1,6 @@
 package db
 
 import (
-	"fmt"
 	"os"
 
 	"github.com/aws/aws-sdk-go/aws"
@@ -38,21 +37,17 @@ func Init_s3() (S3, error) {
 }
 
 func (s3 *S3) Upload_s3(filepath string, filename string) error {
-	fmt.Println("hogehoge1")
 	file, err := os.Open(filepath)
-	fmt.Println("hogehoge2")
 	if err != nil {
 		return err
 	}
 	defer file.Close()
 
 	uploader := s3manager.NewUploader(s3.session)
-	fmt.Println("hoge2222", uploader)
 	_, err = uploader.Upload(&s3manager.UploadInput{
 		Bucket: aws.String(os.Getenv("S3_BUCKET")),
 		Key:    aws.String(filename),
 		Body:   file,
 	})
-	fmt.Println("hogehoge3")
 	return err
 }
