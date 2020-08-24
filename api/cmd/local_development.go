@@ -5,11 +5,13 @@ import (
 	"time"
 
 	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/contrib/static"
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
 	r := gin.Default()
+	r.Use(static.Serve("/", static.LocalFile("/app/build", true)))
 	r.Use(cors.New(cors.Config{
 		// 許可したいHTTPメソッドの一覧
 		AllowMethods: []string{
