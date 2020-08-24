@@ -1,6 +1,7 @@
 package db
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/aws/aws-sdk-go/aws"
@@ -50,6 +51,14 @@ func (s3 *S3) Upload_s3(filepath string, filename string) (S3, error) {
 		Key:    aws.String(filename),
 		Body:   file,
 	})
+
+	if os.Getenv("MINIO_URL") != "" {
+		s3_url := os.Getenv("MINIO_URL")
+		s3_bucket := os.Getenv("S3_BUCKET_NAME")
+		output := fmt.Sprintf("%s/%s/%s", s3_url, s3_bucket, filename)
+		uploadOutput.Location = output
+		return S3{UploadOutput: uploadOutput}, err
+	}
 
 	return S3{UploadOutput: uploadOutput}, err
 }

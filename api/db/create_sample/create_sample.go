@@ -28,8 +28,8 @@ func Create_sample() {
 		log.Fatal(err)
 	}
 
-	icon_url, _ := model.Upload_S3("/app/api/db/create_sample/icon_sample.jpg", "icon_sample.jpg")
-	imagesample, _ := model.Upload_S3("/app/api/db/create_sample/image_sample.jpg", "image_sample.jpg")
+	icon_url, _ := model.Upload_S3("/app/api/db/create_sample/icon_sample.jpg", "hoge/icon_sample.jpg")
+	imagesample, _ := model.Upload_S3("/app/api/db/create_sample/image_sample.jpg", "hoge/image_sample.jpg")
 	data.User.Icon_url = icon_url
 	data.ImageData.Image_url = imagesample
 	acount_id := []string{"hoge", "huga", "piyo", "hunga", "rin", "momo"}
