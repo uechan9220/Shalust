@@ -55,8 +55,7 @@ func (s3 *S3) Upload_s3(filepath string, filename string) (S3, error) {
 	if os.Getenv("MINIO_URL") != "" {
 		s3_url := os.Getenv("MINIO_URL")
 		s3_bucket := os.Getenv("S3_BUCKET_NAME")
-		output := fmt.Sprintf("%s/%s/%s", s3_url, s3_bucket, filename)
-		uploadOutput.Location = output
+		uploadOutput.Location = fmt.Sprintf("%s/%s/%s", s3_url, s3_bucket, filename)
 		return S3{UploadOutput: uploadOutput}, err
 	}
 
