@@ -29,15 +29,23 @@ const Img = styled.img`
 `
 
 const Subtitle = styled.p`
-  color: #90CAF9;
   font-size: 14px;
   font-weight: bold;
   margin-bottom: .5rem;
 `
 
+const SubTitleUserName = styled(Subtitle) <{ NameValidation: boolean }> `
+  color: ${props => props.NameValidation ? "#90CAF9" : "#f50057"};
+`
+
+const SubTitleUserId = styled(Subtitle) <{ IdValidation: boolean }>`
+  color: ${props => props.IdValidation ? "#90CAF9" : "#f50057"};
+`
+
 const HeaderImageContainer = styled.div`
   height: 120px;
   border: 1px solid;
+  padding: 4px;
 `
 
 const HeaderGetProps = styled.div`
@@ -55,6 +63,7 @@ const IconImageContainer = styled.div`
   height: 120px;
   width: 120px;
   border: 1px solid;
+  padding: 4px;
 `
 
 const IconGetProps = styled.div`
@@ -95,6 +104,8 @@ const CreateUser: React.FC = (props: any) => {
   const { currentUser } = useContext(AuthContext)
   const [header, setHeader] = useState<any>([])
   const [icon, setIcon] = useState<any>([])
+  const [userIdValidation, setUserIdValidation] = useState(true)
+  const [userNameValidation, setUserNameValidation] = useState(true)
 
   useEffect(() => {
     if (currentUser.status === "in") setUserInfo({ ...userInfo, user_id: currentUser.user?.uid, icon_image: currentUser.user?.photoURL, user_name: currentUser.user?.displayName })
@@ -118,6 +129,20 @@ const CreateUser: React.FC = (props: any) => {
 
   const handleInputChange = (e: any) => {
     const { name, value } = e.target
+    let reg = new RegExp(/^[a-zA-Z0-9-_]+$/)
+    switch (name) {
+      case "account_id":
+        let res = reg.test(value)
+        setUserIdValidation(res)
+        break;
+
+      case "user_name":
+        value !== '' ? setUserNameValidation(true) : setUserNameValidation(false)
+        break
+
+      default:
+        break;
+    }
     setUserInfo({ ...userInfo, [name]: value })
   }
 
@@ -184,16 +209,60 @@ const CreateUser: React.FC = (props: any) => {
       </Content>
       {/* <p>user_id: {userInfo.user_id}</p> */}
       <Content>
-        <Subtitle>名前 (必須)</Subtitle>
-        <TextField name="user_name" required id="standard-required" onChange={handleInputChange} value={userInfo.user_name} />
+        <SubTitleUserName NameValidation={userNameValidation}>名前 (必須)</SubTitleUserName>
+        {userNameValidation ?
+          <TextField
+            name="user_name"
+            required id="standard-required"
+            onChange={handleInputChange}
+            value={userInfo.user_name}
+            fullWidth
+            inputProps={{ maxLength: 20 }}
+            helperText={`${userInfo.user_name?.length}/20`}
+          />
+          :
+          <TextField
+            name="user_name"
+            required id="standard-required"
+            onChange={handleInputChange}
+            value={userInfo.user_name}
+            color={'secondary'}
+            fullWidth
+            inputProps={{ maxLength: 20 }}
+            helperText={`${userInfo.user_name?.length}/20`}
+          />
+        }
+
         <Caption>全体に表示される名前になります。後から変更も可能です。</Caption>
       </Content>
       <Content>
-        <Subtitle>ユーザID (必須)</Subtitle>
-        <TextField name="account_id" required id="standard-required" onChange={handleInputChange} value={userInfo.account_id} InputProps={{
-          startAdornment: <InputAdornment position="start">@</InputAdornment>,
-        }} />
-        <Caption>ユーザIIDは英数字と’_’(アンダーバー)と’-’(ハイフン)が使えます</Caption>
+        <SubTitleUserId IdValidation={userIdValidation}>ユーザID (必須)</SubTitleUserId>
+        {userIdValidation ? <TextField
+          name="account_id"
+          required id="standard-required"
+          onChange={handleInputChange}
+          value={userInfo.account_id}
+          fullWidth
+          InputProps={{
+            startAdornment: <InputAdornment position="start">@</InputAdornment>,
+          }}
+          inputProps={{ maxLength: 20 }}
+          helperText={`${userInfo.account_id?.length}/20`}
+        /> : <TextField
+            name="account_id"
+            required id="standard-required"
+            onChange={handleInputChange}
+            value={userInfo.account_id}
+            fullWidth
+            color={'secondary'}
+            InputProps={{
+              startAdornment: <InputAdornment position="start">@</InputAdornment>,
+            }}
+            inputProps={{ maxLength: 20 }}
+            helperText={`${userInfo.account_id?.length}/20`}
+          />}
+
+        <Caption>ユーザIDは英数字と’_’(アンダーバー)と’-’(ハイフン)が使えます</Caption>
       </Content>
       <Content>
         <Subtitle>コメント (任意)</Subtitle>
@@ -207,7 +276,7 @@ const CreateUser: React.FC = (props: any) => {
           inputProps={{ maxLength: 120 }}
           helperText={`${userInfo.comment?.length}/120`}
           value={userInfo.comment}
-          style={{ width: '100%' }}
+          fullWidth
         />
       </Content>
       {/* <p>icon_url: {currentUser.user?.photoURL}</p> */}
