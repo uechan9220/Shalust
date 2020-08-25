@@ -36,3 +36,31 @@ export const GetIllustQuery = gql`
     }
   }
 `
+
+// export const UserRegistrationQuery = gql`
+//   mutation userRegistrationQuery($)
+// `
+
+// export const CreateUserQuery = gql`
+//   mutation createUserQuery($user_id: String, $user_name: String, $last_seen: String, $comment: String, $icon_image: Any, $header_image: Any, $account_id: String){
+//     createUserQuery(user_id: $user_id, user_name: $user_name, last_seen: $last_seen, comment: $comment, icon_image: $icon_image, header_image: $header_image, account_id: $account_id)
+//       @rest(type: "createUser", path: "createUser", method: "POST" bodySerializer: "text"){
+//         user_id
+//         user_name
+//         last_seen
+//         comment
+//         icon_image
+//         header_image
+//         account_id
+//     }
+//   }
+// `
+
+export const CreateUserQuery = gql`
+  mutation createUserQuery($input: userInfo!){
+    createUserQuery(input: $userInfo)
+      @rest(type: "createUser", path: "createUser", method: "POST"){
+        user_id
+    }
+  }
+`
