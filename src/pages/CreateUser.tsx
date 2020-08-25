@@ -4,6 +4,9 @@ import { AuthContext } from '../AuthProvider'
 import TextField from '@material-ui/core/TextField'
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Dropzone from 'react-dropzone'
+import { Button } from '@material-ui/core';
+import { useMutation } from 'react-apollo';
+import { CreateUserQuery } from '../data/mutation'
 
 /**
  * styled-componets
@@ -81,6 +84,10 @@ const Caption = styled.p`
   margin-top: .5rem;
   color: rgba(0,0,0,0.5);
 `
+const TestImage = styled.img`
+  width: 100%;
+  height: 100%;
+`
 
 
 /**
@@ -104,13 +111,13 @@ const CreateUser: React.FC = (props: any) => {
   const { currentUser } = useContext(AuthContext)
   const [header, setHeader] = useState<any>([])
   const [icon, setIcon] = useState<any>([])
-  const [userIdValidation, setUserIdValidation] = useState(true)
+  const [userIdValidation, setUserIdValidation] = useState(false)
   const [userNameValidation, setUserNameValidation] = useState(true)
+  const [createUserQuery] = useMutation(CreateUserQuery)
 
   useEffect(() => {
     if (currentUser.status === "in") setUserInfo({ ...userInfo, user_id: currentUser.user?.uid, icon_image: currentUser.user?.photoURL, user_name: currentUser.user?.displayName })
   }, [currentUser])
-
 
   const getNowTime = () => {
     const date = new Date()
@@ -126,6 +133,28 @@ const CreateUser: React.FC = (props: any) => {
   const [nowTime, setNowTime] = useState(getNowTime())
   const [userInfo, setUserInfo] = useState<userInfoProps>({ user_id: '', user_name: '', last_seen: nowTime, comment: '', icon_image: '', header_image: '', account_id: '' })
 
+
+  const CreateUserFunction = () => {
+    if (userIdValidation === false || userNameValidation === false || userInfo.user_name === "" || userInfo.account_id === '') {
+      alert("入力情報を確認してください")
+      return
+    }
+    console.log(userInfo)
+
+    //ここが送信の処理
+    // createUserQuery({
+    //   variables: { userInfo }
+    // }).then((res) => {
+    //   if (!res.errors) {
+    //     console.log(res)
+    //     console.log('登録しました')
+    //   } else {
+    //     console.log(res.errors)
+    //   }
+    // })
+
+    // リダイレクト処理を書く
+  }
 
   const handleInputChange = (e: any) => {
     const { name, value } = e.target
@@ -176,7 +205,7 @@ const CreateUser: React.FC = (props: any) => {
                     {header.map((file: any) => (<Img alt="Preview" src={URL.createObjectURL(file)} />))}
                   </HeaderContent>
                   :
-                  <p>クリック又は画像をドラッグ&ドロップしてください。</p>
+                  <TestImage src="https://physicsworld.com/wp-content/uploads/2019/11/M-CC-BN-Header-twitter-1500x500.jpg" />
                 }
               </HeaderGetProps>
             </HeaderImageContainer>
@@ -278,6 +307,16 @@ const CreateUser: React.FC = (props: any) => {
           value={userInfo.comment}
           fullWidth
         />
+      </Content>
+      <Content>
+        <Button onClick={() => CreateUserFunction()} size="large" variant="outlined" color="primary">
+          ユーザ登録する
+        </Button>
+      </Content>
+      <Content>
+        <Button size="small" variant="outlined" color="secondary">
+          トップページに戻る
+        </Button>
       </Content>
       {/* <p>icon_url: {currentUser.user?.photoURL}</p> */}
     </Container>
