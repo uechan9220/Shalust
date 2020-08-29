@@ -16,15 +16,21 @@ const Signin: React.FC = (props: any) => {
 
   useEffect(() => {
     if (currentUser.user) {
-      props.history.push("/create_user")
+      props.history.push('/create_user')
     }
     // console.log(currentUser)
   }, [currentUser])
 
   return (
     <Container>
-      <p>Signin</p>
-      <button onClick={() => login()}>Login</button>
+      {currentUser.status === 'loading' ? (
+        <p>loading</p>
+      ) : (
+        <div>
+          <p>Signin</p>
+          <button onClick={() => login()}>Login</button>
+        </div>
+      )}
     </Container>
   )
 }
