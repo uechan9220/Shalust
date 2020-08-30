@@ -1,56 +1,57 @@
-import React, { useContext } from 'react'
-import { ThemeProvider, createGlobalStyle } from 'styled-components'
-import * as BaseTheme from './themes/BaseStyle'
-import reset from 'styled-reset'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import styled from 'styled-components'
+import React, { useContext } from 'react';
+import { ThemeProvider, createGlobalStyle } from 'styled-components';
+import * as BaseTheme from './themes/BaseStyle';
+import reset from 'styled-reset';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import styled from 'styled-components';
 
-import { AuthProvider, AuthContext } from './AuthProvider'
-import Auth from './Auth'
+import { AuthProvider, AuthContext } from './AuthProvider';
+import Auth from './Auth';
 
-import { InMemoryCache } from 'apollo-cache-inmemory'
-import { HttpLink } from 'apollo-link-http'
-import { RestLink } from 'apollo-link-rest'
-import { ApolloProvider } from '@apollo/react-hooks'
-import { WebSocketLink } from 'apollo-link-ws'
-import { ApolloClient } from 'apollo-client'
-import { split } from 'apollo-link'
-import { getMainDefinition } from 'apollo-utilities'
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { HttpLink } from 'apollo-link-http';
+import { RestLink } from 'apollo-link-rest';
+import { ApolloProvider } from '@apollo/react-hooks';
+import { WebSocketLink } from 'apollo-link-ws';
+import { ApolloClient } from 'apollo-client';
+import { split } from 'apollo-link';
+import { getMainDefinition } from 'apollo-utilities';
 
 /**
  * Header
  */
-import Header from './components/Header'
+import Header from './components/Header';
 
 /**
  * pages
  */
-import Main from './pages/Main'
-import Illust from './pages/Illustratio'
-import Rough from './pages/Rough'
-import Commic from './pages/Commic'
-import Graffiti from './pages/Graffiti'
-import Tag from './pages/Tag'
-import Tags from './pages/Tags'
-import User from './pages/User'
-import Login from './pages/Login'
-import Signin from './pages/Signin'
+import Main from './pages/Main';
+import Illust from './pages/Illustratio';
+import Rough from './pages/Rough';
+import Commic from './pages/Commic';
+import Graffiti from './pages/Graffiti';
+import Tag from './pages/Tag';
+import Tags from './pages/Tags';
+import User from './pages/User';
+import Login from './pages/Login';
+import Signin from './pages/Signin';
+import Content from './pages/Content';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
   /* other styles */
-`
+`;
 
 const Container = styled.div`
   padding-top: 4.2rem;
-`
+`;
 
 function App() {
-  const { currentUser } = useContext(AuthContext)
+  const { currentUser } = useContext(AuthContext);
 
-  const isIn = currentUser.status === 'in'
+  const isIn = currentUser.status === 'in';
 
-  const BearerToken = isIn ? currentUser.token : null
+  const BearerToken = isIn ? currentUser.token : null;
 
   // const httpLink = new HttpLink({
   //   // uri: `http://${process.env.REACT_APP_HASURA_ENDPOINT}`,
@@ -62,12 +63,12 @@ function App() {
     credentials: 'same-origin',
     headers: {
       'Content-Type': 'application/json',
-      'user_id': `Bearer ${BearerToken}`,
-      'Accept': 'application/json',
-      'cache-control': 'no-cache'
+      user_id: `Bearer ${BearerToken}`,
+      Accept: 'application/json',
+      'cache-control': 'no-cache',
     },
-    uri: `http://localhost:8080/api/`
-  })
+    uri: `http://localhost:8080/api/`,
+  });
 
   // const wsLink = new WebSocketLink({
   //   // uri: `wss://${process.env.REACT_APP_HASURA_ENDPOINT}`,
@@ -96,7 +97,7 @@ function App() {
   const client = new ApolloClient({
     link: restLink,
     cache: new InMemoryCache(),
-  })
+  });
 
   return (
     <ApolloProvider client={client}>
@@ -107,40 +108,52 @@ function App() {
             <Header />
             <Container>
               <Switch>
-                <Route exact path="/">
+                <Route exact path='/'>
                   {/* ここ分ける必要ないかも */}
                   <Main />
                 </Route>
-                <Route exact path="/illustratio">
+                <Route exact path='/illustratio'>
                   <Illust />
                 </Route>
-                <Route exact path="/rough">
+                <Route exact path='/rough'>
                   <Rough />
                 </Route>
-                <Route exact path="/commic">
+                <Route exact path='/commic'>
                   <Commic />
                 </Route>
-                <Route exact path="/graffiti">
+                <Route exact path='/graffiti'>
                   <Graffiti />
                 </Route>
-                <Route path="/login">
+                <Route exact path='/illustratio/:content_id'>
+                  <Content />
+                </Route>
+                <Route exact path='/rough/:content_id'>
+                  <Content />
+                </Route>
+                <Route exact path='/commic/:content_id'>
+                  <Content />
+                </Route>
+                <Route exact path='/graffiti/:content_id'>
+                  <Content />
+                </Route>
+                <Route path='/login'>
                   <Login />
                 </Route>
-                <Route path="/signin">
+                <Route path='/signin'>
                   <Signin />
                 </Route>
-                <Route exact path="/tags">
+                <Route exact path='/tags'>
                   <Tags />
                 </Route>
-                <Route path="/tags/:content/:tag">
+                <Route path='/tags/:content/:tag'>
                   <Tag />
                 </Route>
                 <Auth>
                   <Switch>
-                    <Route path="/user/:user_id/:content">
+                    <Route exact path='/user/:user_id/:content'>
                       <User />
                     </Route>
-                    <Route path="/user/:user_id/">
+                    <Route exact path='/user/:user_id/'>
                       <User />
                     </Route>
                   </Switch>
@@ -151,7 +164,7 @@ function App() {
         </Router>
       </ThemeProvider>
     </ApolloProvider>
-  )
+  );
 }
 
-export default App
+export default App;
