@@ -62,27 +62,33 @@ const Subtitle = styled.p`
   margin-bottom: 0.5rem;
 `
 
-const SubTitleUserName = styled(Subtitle)<{ NameValidation: boolean }>`
+const SubTitleUserName = styled(Subtitle) <{ NameValidation: boolean }>`
   color: ${(props) => (props.NameValidation ? '#90CAF9' : '#f50057')};
 `
 
-const SubTitleUserId = styled(Subtitle)<{ IdValidation: boolean }>`
+const SubTitleUserId = styled(Subtitle) <{ IdValidation: boolean }>`
   color: ${(props) => (props.IdValidation ? '#90CAF9' : '#f50057')};
 `
 
 const HeaderImageContainer = styled.div`
-  height: 200px;
+  padding-top: 33%;
+  position: relative;
+  width: 100%;
+  height: auto;
   border: 1px solid;
-  padding: 4px;
   &:hover {
     & ${HoverMask} {
       opacity: 1;
-      padding-top: 80px;
+      padding-top: 13%;
     }
   }
 `
 
 const HeaderGetProps = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   height: 100%;
   width: 100%;
   display: flex;
@@ -128,6 +134,15 @@ const Caption = styled.p`
   margin-top: 0.5rem;
   color: rgba(0, 0, 0, 0.5);
 `
+
+const CancelContainer = styled.div`
+  margin-top: .5rem;
+  display: flex;
+  justify-content: flex-end;
+`
+
+
+
 
 /**
  * typescript
@@ -271,8 +286,8 @@ const CreateUser: React.FC = (props: any) => {
                       </HoverMask>
                     </HeaderContent>
                   ) : (
-                    <p>クリックすると画像を追加することができます</p>
-                  )}
+                      <p>クリックすると画像を追加することができます</p>
+                    )}
                 </HeaderGetProps>
               </HeaderImageContainer>
             )}
@@ -302,17 +317,17 @@ const CreateUser: React.FC = (props: any) => {
                       </HoverMask>
                     </IconContent>
                   ) : (
-                    <IconContent>
-                      <Img alt="Preview" src={userInfo.icon_image} />
-                      <HoverMask>
-                        <HoverText>
-                          アイコン
+                      <IconContent>
+                        <Img alt="Preview" src={userInfo.icon_image} />
+                        <HoverMask>
+                          <HoverText>
+                            アイコン
                           <br />
                           変更
                         </HoverText>
-                      </HoverMask>
-                    </IconContent>
-                  )}
+                        </HoverMask>
+                      </IconContent>
+                    )}
                 </IconGetProps>
               </IconImageContainer>
             )}
@@ -335,18 +350,18 @@ const CreateUser: React.FC = (props: any) => {
               helperText={`${userInfo.user_name?.length}/20`}
             />
           ) : (
-            <TextField
-              name="user_name"
-              required
-              id="standard-required"
-              onChange={handleInputChange}
-              value={userInfo.user_name}
-              color={'secondary'}
-              fullWidth
-              inputProps={{ maxLength: 20 }}
-              helperText={`${userInfo.user_name?.length}/20`}
-            />
-          )}
+              <TextField
+                name="user_name"
+                required
+                id="standard-required"
+                onChange={handleInputChange}
+                value={userInfo.user_name}
+                color={'secondary'}
+                fullWidth
+                inputProps={{ maxLength: 20 }}
+                helperText={`${userInfo.user_name?.length}/20`}
+              />
+            )}
 
           <Caption>
             全体に表示される名前になります。後から変更も可能です。
@@ -373,23 +388,23 @@ const CreateUser: React.FC = (props: any) => {
               helperText={`${userInfo.account_id?.length}/20`}
             />
           ) : (
-            <TextField
-              name="account_id"
-              required
-              id="standard-required"
-              onChange={handleInputChange}
-              value={userInfo.account_id}
-              fullWidth
-              color={'secondary'}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">@</InputAdornment>
-                ),
-              }}
-              inputProps={{ maxLength: 20 }}
-              helperText={`${userInfo.account_id?.length}/20`}
-            />
-          )}
+              <TextField
+                name="account_id"
+                required
+                id="standard-required"
+                onChange={handleInputChange}
+                value={userInfo.account_id}
+                fullWidth
+                color={'secondary'}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">@</InputAdornment>
+                  ),
+                }}
+                inputProps={{ maxLength: 20 }}
+                helperText={`${userInfo.account_id?.length}/20`}
+              />
+            )}
 
           <Caption>
             ユーザIDは英数字と’_’(アンダーバー)と’-’(ハイフン)が使えます
@@ -421,11 +436,11 @@ const CreateUser: React.FC = (props: any) => {
           >
             ユーザ登録する
           </Button>
-        </Content>
-        <Content>
-          <Button size="small" variant="outlined" color="secondary">
-            トップページに戻る
+          <CancelContainer>
+            <Button size="small" variant="text" color="inherit">
+              トップページに戻る
           </Button>
+          </CancelContainer>
         </Content>
         {/* <p>icon_url: {currentUser.user?.photoURL}</p> */}
       </Section>
