@@ -1,4 +1,4 @@
-package model
+package usecase
 
 import (
 	"shalust/api/pkg/infra"

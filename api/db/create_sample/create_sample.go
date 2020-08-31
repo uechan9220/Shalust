@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"log"
 	"shalust/api/pkg/server/model"
+	"shalust/api/pkg/server/usecase"
 
 	"github.com/google/uuid"
 )
@@ -28,8 +29,8 @@ func Create_sample() {
 		log.Fatal(err)
 	}
 
-	icon_url, _ := model.Upload_S3("/app/api/db/create_sample/icon_sample.jpg", "hoge/icon_sample.jpg")
-	imagesample, _ := model.Upload_S3("/app/api/db/create_sample/image_sample.jpg", "hoge/image_sample.jpg")
+	icon_url, _ := usecase.Upload_S3("/app/api/db/create_sample/icon_sample.jpg", "hoge/icon_sample.jpg")
+	imagesample, _ := usecase.Upload_S3("/app/api/db/create_sample/image_sample.jpg", "hoge/image_sample.jpg")
 	data.User.Icon_url = icon_url
 	data.User.Header_url = icon_url
 	data.ImageData.Image_url = imagesample
@@ -39,39 +40,39 @@ func Create_sample() {
 		data.User.User_id = uuidObj.String()
 		data.Content.User_id = uuidObj.String()
 		data.User.Acount_id = key
-		_ = model.CreateUser(data.User)
+		_ = usecase.CreateUser(data.User)
 
 		for i := 0; i < 10; i++ {
 			uuidObj, _ := uuid.NewUUID()
 			data.ImageData.Content_id = uuidObj.String()
 			data.Content.Content_id = uuidObj.String()
 
-			_ = model.CreateGraffitiHandling(data.Content)
-			_ = model.CreateContentData(data.ImageData)
+			_ = usecase.CreateGraffitiHandling(data.Content)
+			_ = usecase.CreateContentData(data.ImageData)
 		}
 		for i := 0; i < 10; i++ {
 			uuidObj, _ := uuid.NewUUID()
 			data.ImageData.Content_id = uuidObj.String()
 			data.Content.Content_id = uuidObj.String()
 
-			_ = model.CreateCommicHandling(data.Content)
-			_ = model.CreateContentData(data.ImageData)
+			_ = usecase.CreateCommicHandling(data.Content)
+			_ = usecase.CreateContentData(data.ImageData)
 		}
 		for i := 0; i < 10; i++ {
 			uuidObj, _ := uuid.NewUUID()
 			data.ImageData.Content_id = uuidObj.String()
 			data.Content.Content_id = uuidObj.String()
 
-			_ = model.CreateIllustratioHandling(data.Content)
-			_ = model.CreateContentData(data.ImageData)
+			_ = usecase.CreateIllustratioHandling(data.Content)
+			_ = usecase.CreateContentData(data.ImageData)
 		}
 		for i := 0; i < 10; i++ {
 			uuidObj, _ := uuid.NewUUID()
 			data.ImageData.Content_id = uuidObj.String()
 			data.Content.Content_id = uuidObj.String()
 
-			_ = model.CreateRoughtHandling(data.Content)
-			_ = model.CreateContentData(data.ImageData)
+			_ = usecase.CreateRoughtHandling(data.Content)
+			_ = usecase.CreateContentData(data.ImageData)
 		}
 	}
 }
