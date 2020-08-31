@@ -1,7 +1,7 @@
 package model
 
 import (
-	"shalust/api/pkg/db"
+	db "shalust/api/pkg/infra"
 )
 
 func CreateUser(data User) error {
