@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { AuthContext } from '../AuthProvider'
 import { useQuery } from 'react-apollo'
 import { myUserQuery } from '../data/queries'
+import firebase from '../Firebase'
 
 const Container = styled.div`
   position: fixed;
@@ -58,7 +59,17 @@ const Signin = styled.p`
   text-decoration: none;
 `
 
-const Header: React.FC = () => {
+const LogoutButton = styled.p`
+  color: #000;
+  margin-left: 0.5rem;
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+`
+
+const Header: React.FC = (props: any) => {
   const { currentUser } = useContext(AuthContext)
 
   // useStateのところに currentUser.user.email を入れたい
@@ -66,6 +77,18 @@ const Header: React.FC = () => {
   const { loading, error, data } = useQuery(myUserQuery, {
     variables: { email: userEmail },
   })
+
+  const logout = () => {
+    firebase.auth().onAuthStateChanged((user) => {
+      firebase.auth().signOut().then(() => {
+        console.log("ログアウトしました");
+        props.history.push('/signin')
+      })
+        .catch((error) => {
+          console.log(`ログアウト時にエラーが発生しました (${error})`);
+        });
+    });
+  }
 
   return (
     <Container>
@@ -91,6 +114,7 @@ const Header: React.FC = () => {
           <Link to={`/user/hoge`}>
             <Signin>user</Signin>
           </Link>
+          <LogoutButton onClick={() => logout()}>Logout</LogoutButton>
         </Content>
       ) : (
           <Content>
