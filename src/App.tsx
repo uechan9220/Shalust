@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useContext } from 'react';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import * as BaseTheme from './themes/BaseStyle';
@@ -17,27 +16,7 @@ import { WebSocketLink } from 'apollo-link-ws';
 import { ApolloClient } from 'apollo-client';
 import { split } from 'apollo-link';
 import { getMainDefinition } from 'apollo-utilities';
-=======
-import React, { useContext } from 'react'
-import { ThemeProvider, createGlobalStyle } from 'styled-components'
-import * as BaseTheme from './themes/BaseStyle'
-import reset from 'styled-reset'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import styled from 'styled-components'
-
-import { AuthProvider, AuthContext } from './AuthProvider'
-import Auth from './Auth'
-
-import { InMemoryCache } from 'apollo-cache-inmemory'
-import { HttpLink } from 'apollo-link-http'
-import { RestLink } from 'apollo-link-rest'
-import { ApolloProvider } from '@apollo/react-hooks'
-import { WebSocketLink } from 'apollo-link-ws'
-import { ApolloClient } from 'apollo-client'
-import { split } from 'apollo-link'
-import { getMainDefinition } from 'apollo-utilities'
-import { MuiThemeProvider } from '@material-ui/core/styles'
->>>>>>> 650f31137aa3211b14630db033cbc1b06f2e5d77
+import { MuiThemeProvider } from '@material-ui/core/styles';
 
 /**
  * Header
@@ -47,7 +26,6 @@ import Header from './components/Header';
 /**
  * pages
  */
-<<<<<<< HEAD
 import Main from './pages/Main';
 import Illust from './pages/Illustratio';
 import Rough from './pages/Rough';
@@ -59,20 +37,8 @@ import User from './pages/User';
 import Login from './pages/Login';
 import Signin from './pages/Signin';
 import Content from './pages/Content';
-=======
-import Main from './pages/Main'
-import Illust from './pages/Illustratio'
-import Rough from './pages/Rough'
-import Commic from './pages/Commic'
-import Graffiti from './pages/Graffiti'
-import Tag from './pages/Tag'
-import Tags from './pages/Tags'
-import User from './pages/User'
-import Login from './pages/Login'
-import Signin from './pages/Signin'
-import CreateUser from './pages/CreateUser'
-import { MaterialTheme } from './themes/MaterialTheme'
->>>>>>> 650f31137aa3211b14630db033cbc1b06f2e5d77
+import CreateUser from './pages/CreateUser';
+import { MaterialTheme } from './themes/MaterialTheme';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -138,68 +104,73 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-      <ThemeProvider theme={BaseTheme}>
-        <GlobalStyle />
-        <Router>
-          <AuthProvider>
-            <Header />
-            <Container>
-              <Switch>
-                <Route exact path='/'>
-                  {/* ここ分ける必要ないかも */}
-                  <Main />
-                </Route>
-                <Route exact path='/illustratio'>
-                  <Illust />
-                </Route>
-                <Route exact path='/rough'>
-                  <Rough />
-                </Route>
-                <Route exact path='/commic'>
-                  <Commic />
-                </Route>
-                <Route exact path='/graffiti'>
-                  <Graffiti />
-                </Route>
-                <Route exact path='/illustratio/:content_id'>
-                  <Content />
-                </Route>
-                <Route exact path='/rough/:content_id'>
-                  <Content />
-                </Route>
-                <Route exact path='/commic/:content_id'>
-                  <Content />
-                </Route>
-                <Route exact path='/graffiti/:content_id'>
-                  <Content />
-                </Route>
-                <Route path='/login'>
-                  <Login />
-                </Route>
-                <Route path='/signin'>
-                  <Signin />
-                </Route>
-                <Route exact path='/tags'>
-                  <Tags />
-                </Route>
-                <Route path='/tags/:content/:tag'>
-                  <Tag />
-                </Route>
-                <Auth>
-                  <Switch>
-                    <Route exact path='/user/:user_id/:content'>
-                      <User />
-                    </Route>
-                    <Route exact path='/user/:user_id/'>
-                      <User />
-                    </Route>
-                  </Switch>
-                </Auth>
-              </Switch>
-            </Container>
-          </AuthProvider>
-        </Router>
-      </ThemeProvider>
+      <MuiThemeProvider theme={MaterialTheme}>
+        <ThemeProvider theme={BaseTheme}>
+          <GlobalStyle />
+          <Router>
+            <AuthProvider>
+              <Header />
+              <Container>
+                <Switch>
+                  <Route exact path='/'>
+                    {/* ここ分ける必要ないかも */}
+                    <Main />
+                  </Route>
+                  <Route exact path='/illustratio'>
+                    <Illust />
+                  </Route>
+                  <Route exact path='/rough'>
+                    <Rough />
+                  </Route>
+                  <Route exact path='/commic'>
+                    <Commic />
+                  </Route>
+                  <Route exact path='/graffiti'>
+                    <Graffiti />
+                  </Route>
+                  <Route exact path='/illustratio/:content_id'>
+                    <Content />
+                  </Route>
+                  <Route exact path='/rough/:content_id'>
+                    <Content />
+                  </Route>
+                  <Route exact path='/commic/:content_id'>
+                    <Content />
+                  </Route>
+                  <Route exact path='/graffiti/:content_id'>
+                    <Content />
+                  </Route>
+                  <Route path='/login'>
+                    <Login />
+                  </Route>
+                  <Route path='/signin'>
+                    <Signin />
+                  </Route>
+                  <Route exact path='/tags'>
+                    <Tags />
+                  </Route>
+                  <Route path='/tags/:content/:tag'>
+                    <Tag />
+                  </Route>
+                  <Auth>
+                    <Switch>
+                      <Route path='/create_user'>
+                        <CreateUser />
+                      </Route>
+                      <Route exact path='/user/:user_id/:content'>
+                        <User />
+                      </Route>
+                      <Route exact path='/user/:user_id/'>
+                        <User />
+                      </Route>
+                    </Switch>
+                  </Auth>
+                </Switch>
+              </Container>
+            </AuthProvider>
+          </Router>
+        </ThemeProvider>
+      </MuiThemeProvider>
     </ApolloProvider>
   );
 }
