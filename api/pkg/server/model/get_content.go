@@ -1,12 +1,12 @@
 package model
 
 import (
-	db "shalust/api/pkg/infra"
+	"shalust/api/pkg/infra"
 )
 
 func GetAllIllustratio(data *[]ContentData) error {
 
-	client, err := db.Init_mysql()
+	client, err := infra.Init_mysql()
 	if err != nil {
 		return err
 	}
@@ -26,7 +26,7 @@ func GetAllIllustratio(data *[]ContentData) error {
 }
 
 func GetUserIllustratio(user_id string, data *[]ContentData) error {
-	client, err := db.Init_mysql()
+	client, err := infra.Init_mysql()
 	if err != nil {
 
 		return err
@@ -47,7 +47,7 @@ func GetUserIllustratio(user_id string, data *[]ContentData) error {
 }
 
 func GetUserCommic(user_id string, data *[]ContentData) error {
-	client, err := db.Init_mysql()
+	client, err := infra.Init_mysql()
 	if err != nil {
 
 		return err
@@ -68,7 +68,7 @@ func GetUserCommic(user_id string, data *[]ContentData) error {
 }
 
 func GetUserGraffiti(user_id string, data *[]ContentData) error {
-	client, err := db.Init_mysql()
+	client, err := infra.Init_mysql()
 	if err != nil {
 
 		return err
@@ -88,7 +88,7 @@ func GetUserGraffiti(user_id string, data *[]ContentData) error {
 	return err
 }
 func GetUserRough(user_id string, data *[]ContentData) error {
-	client, err := db.Init_mysql()
+	client, err := infra.Init_mysql()
 	if err != nil {
 
 		return err

@@ -1,11 +1,11 @@
 package model
 
 import (
-	db "shalust/api/pkg/infra"
+	"shalust/api/pkg/infra"
 )
 
 func CreateContentData(data Content) error {
-	client, err := db.Init_mysql()
+	client, err := infra.Init_mysql()
 	if err != nil {
 		return err
 	}
@@ -16,7 +16,7 @@ func CreateContentData(data Content) error {
 
 func CreateGraffitiHandling(data ContentHandling) error {
 
-	client, err := db.Init_mysql()
+	client, err := infra.Init_mysql()
 	if err != nil {
 		return err
 	}
@@ -28,7 +28,7 @@ func CreateGraffitiHandling(data ContentHandling) error {
 
 func CreateIllustratioHandling(data ContentHandling) error {
 
-	client, err := db.Init_mysql()
+	client, err := infra.Init_mysql()
 	if err != nil {
 		return err
 	}
@@ -41,7 +41,7 @@ func CreateIllustratioHandling(data ContentHandling) error {
 
 func CreateRoughtHandling(data ContentHandling) error {
 
-	client, err := db.Init_mysql()
+	client, err := infra.Init_mysql()
 	if err != nil {
 		return err
 	}
@@ -53,7 +53,7 @@ func CreateRoughtHandling(data ContentHandling) error {
 }
 func CreateCommicHandling(data ContentHandling) error {
 
-	client, err := db.Init_mysql()
+	client, err := infra.Init_mysql()
 	if err != nil {
 		return err
 	}
