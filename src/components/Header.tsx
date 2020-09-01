@@ -41,6 +41,7 @@ const Content = styled.div`
 const HeaderUserContent = styled.div`
   display: flex;
   align-items: center;
+  cursor: pointer;
 `;
 
 const Login = styled.p`
