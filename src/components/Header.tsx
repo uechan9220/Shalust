@@ -27,7 +27,7 @@ const Title = styled.p`
   }
 `;
 
-const Content = styled.div`
+const InfoContent = styled.div`
   height: 2.2rem;
   position: relative;
   display: flex;
@@ -108,12 +108,15 @@ const HoverContainer = styled.div`
   top: 0;
   margin-top: 4.2rem;
   background-color: #fff;
-  width: 18rem;
+  width: 16rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
+  padding: 1rem 2rem;
   opacity: 1;
+
+  max-height: calc((100vh - 4rem) - 4px);
+  overflow: auto;
 `;
 
 const HoverUserName = styled.p`
@@ -131,7 +134,7 @@ const UserId = styled.p`
 
 const FollowFollowerContainer = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
   margin: 1rem 0;
 `;
@@ -148,6 +151,32 @@ const Overlay = styled.div`
   left: 0px;
   width: 100%;
   height: 100%;
+`;
+
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 2rem 0;
+`;
+
+const Text = styled.p`
+  font-size: 18px;
+  color: #555;
+  cursor: pointer;
+  &:hover {
+    color: #000000;
+    font-weight: bold;
+  }
+  line-height: 1.7rem;
+`;
+
+const ManegementContainer = styled.div`
+  margin: 1rem 0;
+`;
+
+const SettingContainer = styled.div`
+  margin-bottom: 1rem;
 `;
 
 const Header: React.FC = (props: any) => {
@@ -182,7 +211,7 @@ const Header: React.FC = (props: any) => {
   return (
     <Container>
       {menuCheck ? <Overlay onClick={() => menuCheckFunc()}></Overlay> : null}
-      <Content>
+      <InfoContent>
         {/* {console.log(data)} */}
         <Link to='/'>
           <Title>Shalust</Title>
@@ -217,7 +246,8 @@ const Header: React.FC = (props: any) => {
             </Link>
           </LoginContainer>
         )}
-      </Content>
+      </InfoContent>
+
       {currentUser.user && menuCheck ? (
         <HoverContainer>
           <UserIconContainer>
@@ -237,6 +267,19 @@ const Header: React.FC = (props: any) => {
               </FollowFollowerText>
             </FollowFollowerContent>
           </FollowFollowerContainer>
+          <Content>
+            <Text>投稿</Text>
+            <ManegementContainer>
+              <Text>作品管理</Text>
+              <Text>ブックマーク</Text>
+              <Text>いいね</Text>
+            </ManegementContainer>
+            <SettingContainer>
+              <Text>設定</Text>
+              <Text>フィードバックを送る</Text>
+            </SettingContainer>
+            <Text onClick={() => logout()}>ログアウト</Text>
+          </Content>
         </HoverContainer>
       ) : null}
     </Container>
