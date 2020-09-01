@@ -243,16 +243,24 @@ const CreateUser: React.FC = (props: any) => {
     setUserInfo({ ...userInfo, [name]: value });
   };
 
-  const handleInputHeaderImage = (e: any) => {
-    let firstImage = e[0];
-    setHeader([firstImage]);
-    setUserInfo({ ...userInfo, ['header_image']: [firstImage] });
-  };
-
   const handleInputIconImage = (e: any) => {
     let firstImage = e[0];
-    setIcon([firstImage]);
-    setUserInfo({ ...userInfo, ['icon_image']: [firstImage] });
+    const reader = new FileReader();
+    reader.onload = (event: any) => {
+      setIcon([firstImage]);
+      setUserInfo({ ...userInfo, ['icon_image']: event.target.result });
+    };
+    reader.readAsDataURL(firstImage);
+  };
+
+  const handleInputHeaderImage = (e: any) => {
+    let firstImage = e[0];
+    const reader = new FileReader();
+    reader.onload = (event: any) => {
+      setHeader([firstImage]);
+      setUserInfo({ ...userInfo, ['header_image']: event.target.result });
+    };
+    reader.readAsDataURL(firstImage);
   };
 
   return (

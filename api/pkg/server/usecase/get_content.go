@@ -1,12 +1,13 @@
-package model
+package usecase
 
 import (
-	"shalust/api/pkg/db"
+	"shalust/api/pkg/infra"
+	"shalust/api/pkg/server/model"
 )
 
-func GetAllIllustratio(data *[]ContentData) error {
+func GetAllIllustratio(data *[]model.ContentData) error {
 
-	client, err := db.Init_mysql()
+	client, err := infra.Init_mysql()
 	if err != nil {
 		return err
 	}
@@ -25,8 +26,8 @@ func GetAllIllustratio(data *[]ContentData) error {
 	return err
 }
 
-func GetUserIllustratio(user_id string, data *[]ContentData) error {
-	client, err := db.Init_mysql()
+func GetUserIllustratio(user_id string, data *[]model.ContentData) error {
+	client, err := infra.Init_mysql()
 	if err != nil {
 
 		return err
@@ -46,8 +47,8 @@ func GetUserIllustratio(user_id string, data *[]ContentData) error {
 	return err
 }
 
-func GetUserCommic(user_id string, data *[]ContentData) error {
-	client, err := db.Init_mysql()
+func GetUserCommic(user_id string, data *[]model.ContentData) error {
+	client, err := infra.Init_mysql()
 	if err != nil {
 
 		return err
@@ -67,8 +68,8 @@ func GetUserCommic(user_id string, data *[]ContentData) error {
 	return err
 }
 
-func GetUserGraffiti(user_id string, data *[]ContentData) error {
-	client, err := db.Init_mysql()
+func GetUserGraffiti(user_id string, data *[]model.ContentData) error {
+	client, err := infra.Init_mysql()
 	if err != nil {
 
 		return err
@@ -87,8 +88,8 @@ func GetUserGraffiti(user_id string, data *[]ContentData) error {
 	defer client.Close()
 	return err
 }
-func GetUserRough(user_id string, data *[]ContentData) error {
-	client, err := db.Init_mysql()
+func GetUserRough(user_id string, data *[]model.ContentData) error {
+	client, err := infra.Init_mysql()
 	if err != nil {
 
 		return err
