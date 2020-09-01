@@ -1,12 +1,13 @@
-package model
+package usecase
 
 import (
-	"shalust/api/pkg/db"
+	"shalust/api/pkg/infra"
+	"shalust/api/pkg/server/model"
 )
 
-func CreateUser(data User) error {
+func CreateUser(data model.User) error {
 
-	client, err := db.Init_mysql()
+	client, err := infra.Init_mysql()
 	if err != nil {
 		return err
 	}
@@ -14,9 +15,9 @@ func CreateUser(data User) error {
 	defer client.Close()
 	return err
 }
-func GetUserData(user_id string, data *User) error {
+func GetUserData(user_id string, data *model.User) error {
 
-	client, err := db.Init_mysql()
+	client, err := infra.Init_mysql()
 	if err != nil {
 		return err
 	}

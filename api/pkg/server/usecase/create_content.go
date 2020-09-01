@@ -1,11 +1,12 @@
-package model
+package usecase
 
 import (
-	"shalust/api/pkg/db"
+	"shalust/api/pkg/infra"
+	"shalust/api/pkg/server/model"
 )
 
-func CreateContentData(data Content) error {
-	client, err := db.Init_mysql()
+func CreateContentData(data model.Content) error {
+	client, err := infra.Init_mysql()
 	if err != nil {
 		return err
 	}
@@ -14,9 +15,9 @@ func CreateContentData(data Content) error {
 	return err
 }
 
-func CreateGraffitiHandling(data ContentHandling) error {
+func CreateGraffitiHandling(data model.ContentHandling) error {
 
-	client, err := db.Init_mysql()
+	client, err := infra.Init_mysql()
 	if err != nil {
 		return err
 	}
@@ -26,9 +27,9 @@ func CreateGraffitiHandling(data ContentHandling) error {
 	return err
 }
 
-func CreateIllustratioHandling(data ContentHandling) error {
+func CreateIllustratioHandling(data model.ContentHandling) error {
 
-	client, err := db.Init_mysql()
+	client, err := infra.Init_mysql()
 	if err != nil {
 		return err
 	}
@@ -39,9 +40,9 @@ func CreateIllustratioHandling(data ContentHandling) error {
 	return err
 }
 
-func CreateRoughtHandling(data ContentHandling) error {
+func CreateRoughtHandling(data model.ContentHandling) error {
 
-	client, err := db.Init_mysql()
+	client, err := infra.Init_mysql()
 	if err != nil {
 		return err
 	}
@@ -51,9 +52,9 @@ func CreateRoughtHandling(data ContentHandling) error {
 	defer client.Close()
 	return err
 }
-func CreateCommicHandling(data ContentHandling) error {
+func CreateCommicHandling(data model.ContentHandling) error {
 
-	client, err := db.Init_mysql()
+	client, err := infra.Init_mysql()
 	if err != nil {
 		return err
 	}

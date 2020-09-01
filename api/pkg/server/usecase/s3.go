@@ -1,11 +1,11 @@
-package model
+package usecase
 
 import (
-	"shalust/api/pkg/db"
+	"shalust/api/pkg/infra"
 )
 
 func Upload_S3(filepath string, filename string) (string, error) {
-	client, err := db.Init_s3()
+	client, err := infra.Init_s3()
 
 	if err != nil {
 		return "", err
