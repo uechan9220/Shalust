@@ -42,7 +42,7 @@ const AuthProvider = (props: any) => {
         const idTokenResult = await user.getIdTokenResult();
         const db = firebase.database();
         const userData = {
-          user_id: 'hoge',
+          user_id: 'yuuki_rinrin',
           user_name: 'Rin',
           follow: 20,
           follower: 10,
