@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"fmt"
 	"shalust/api/pkg/server/usecase"
 
 	"github.com/gin-gonic/gin"
@@ -8,7 +9,7 @@ import (
 	_ "golang.org/x/image/tiff"
 )
 
-type User struct {
+type UserData struct {
 	User_id       string `json:"user_id"`
 	User_name     string `json:"user_name"`
 	Comment       string `json:"comment"`
@@ -20,13 +21,16 @@ type User struct {
 }
 
 func CreateUser(c *gin.Context) {
-	var data User
-	c.BindJSON(&data)
+	var requestData UserData
+	// var userData model.User
+	c.BindJSON(&requestData)
 	// _ = usecase.CreateUser(data)
 
 	// fmt.Println(data.Header_image)
-	hoge := data.Header_image[23:]
-	_ = usecase.SaveImage(hoge)
+	icon_imageData := requestData.Header_image[23:]
+
+	icon_url, _ := usecase.SaveImage(icon_imageData, requestData.User_id)
+	fmt.Println(icon_url)
 
 	c.JSON(200, "ko")
 }
