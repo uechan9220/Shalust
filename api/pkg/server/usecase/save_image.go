@@ -25,6 +25,7 @@ func SaveImage(data string) error {
 	if err != nil {
 		return err
 	}
+	defer os.Remove(tmpFile.Name())
 
 	tmpFile.Write(encodeData)
 	tmpFile.Close()
@@ -35,7 +36,7 @@ func SaveImage(data string) error {
 	}
 	defer f.Close()
 
-	_, format, err := image.DecodeConfig(tmpFile)
+	_, format, err := image.DecodeConfig(f)
 	if err != nil {
 		fmt.Println(err)
 	}
