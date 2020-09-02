@@ -30,17 +30,21 @@ func SaveImage(data string) error {
 	tmpFile.Write(encodeData)
 	tmpFile.Close()
 
-	f, err := os.Open(tmpFile.Name())
+	file, err := os.Open(tmpFile.Name())
 	if err != nil {
 		fmt.Println(err)
 	}
-	defer f.Close()
+	defer file.Close()
 
-	_, format, err := image.DecodeConfig(f)
+	_, format, err := image.DecodeConfig(file)
 	if err != nil {
 		fmt.Println(err)
 	}
 	fmt.Println(format)
 
 	return nil
+}
+
+func saveTmpFile() {
+
 }
