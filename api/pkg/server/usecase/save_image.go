@@ -14,7 +14,7 @@ import (
 	_ "golang.org/x/image/tiff"
 )
 
-func SaveImage(data string, user_id string) (string, error) {
+func SaveImageIcon(data string, user_id string) (string, error) {
 
 	encodeData, err := base64.StdEncoding.DecodeString(data)
 	if err != nil {
