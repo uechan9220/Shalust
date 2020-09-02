@@ -26,11 +26,17 @@ func CreateUser(c *gin.Context) {
 	c.BindJSON(&requestData)
 	// _ = usecase.CreateUser(data)
 
-	// fmt.Println(data.Header_image)
-	icon_imageData := requestData.Header_image[23:]
+	header_imageData := requestData.Header_image[23:]
 
-	icon_url, _ := usecase.SaveImage(icon_imageData, requestData.User_id)
-	fmt.Println(icon_url)
+	header_url, _ := usecase.SaveImage(header_imageData, requestData.User_id)
+
+	// match, _ := regexp.MatchString("http", requestData.Icon_image)
+	// if match {
+	// 	userData.Icon_url = requestData.Icon_image
+	// } else {
+	// 	userData.Icon_url, _ = usecase.SaveImage(icon_imageData, requestData.User_id)
+	// }
+	fmt.Println(header_url)
 
 	c.JSON(200, "ko")
 }
