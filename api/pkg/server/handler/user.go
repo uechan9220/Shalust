@@ -28,7 +28,7 @@ func CreateUser(c *gin.Context) {
 
 	header_imageData := requestData.Header_image[23:]
 
-	header_url, _ := usecase.SaveImageIcon(header_imageData, requestData.User_id)
+	header_url, _ := usecase.SaveIconImage(header_imageData, requestData.User_id)
 
 	// match, _ := regexp.MatchString("http", requestData.Icon_image)
 	// if match {
