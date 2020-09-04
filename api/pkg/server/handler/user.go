@@ -38,7 +38,7 @@ func CreateUser(c *gin.Context) {
 		icon_imageData := requestData.Header_image[23:]
 		userData.Icon_url, _ = usecase.SaveIconImage(icon_imageData, requestData.User_id)
 	}
-	userData.Acount_id = requestData.Account_id
+	userData.Account_id = requestData.Account_id
 	userData.Comment = requestData.Comment
 	// userData.Last_seen = requestData.Last_seen
 	userData.User_id = requestData.User_id

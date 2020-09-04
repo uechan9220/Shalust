@@ -10,7 +10,7 @@ type User struct {
 	Icon_url      string    `json:"icon_url"`
 	Header_url    string    `json:"header_url"`
 	Comment       string    `json:"comment"`
-	Acount_id     string    `json:"acount_id"`
+	Account_id    string    `json:"account_id"`
 	Last_seen     time.Time `json:"last_seen"`
 	User_location string    `json:"user_location"`
 }

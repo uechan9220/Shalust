@@ -9,7 +9,7 @@ IF NOT EXISTS user
     comment VARCHAR(128),
     icon_url VARCHAR(128),
     header_url VARCHAR(128),
-    acount_id VARCHAR(128)
+    account_id VARCHAR(128)
 );
 
 CREATE TABLE

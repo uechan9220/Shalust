@@ -34,12 +34,12 @@ func Create_sample() {
 	data.User.Icon_url = icon_url
 	data.User.Header_url = icon_url
 	data.ImageData.Image_url = imagesample
-	acount_id := []string{"hoge", "huga", "piyo", "hunga", "rin", "momo"}
-	for _, key := range acount_id {
+	account_id := []string{"hoge", "huga", "piyo", "hunga", "rin", "momo"}
+	for _, key := range account_id {
 		uuidObj, _ := uuid.NewUUID()
 		data.User.User_id = uuidObj.String()
 		data.Content.User_id = uuidObj.String()
-		data.User.Acount_id = key
+		data.User.Account_id = key
 		_ = usecase.CreateUser(data.User)
 
 		for i := 0; i < 10; i++ {
