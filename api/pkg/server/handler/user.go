@@ -2,6 +2,8 @@ package handler
 
 import (
 	"fmt"
+	"regexp"
+	"shalust/api/pkg/server/model"
 	"shalust/api/pkg/server/usecase"
 
 	"github.com/gin-gonic/gin"
@@ -22,21 +24,22 @@ type UserData struct {
 
 func CreateUser(c *gin.Context) {
 	var requestData UserData
-	// var userData model.User
+	var userData model.User
 	c.BindJSON(&requestData)
 	// _ = usecase.CreateUser(data)
 
 	header_imageData := requestData.Header_image[23:]
 
-	header_url, _ := usecase.SaveIconImage(header_imageData, requestData.User_id)
+	userData.Header_url, _ = usecase.SaveHeaderImage(header_imageData, requestData.User_id)
 
-	// match, _ := regexp.MatchString("http", requestData.Icon_image)
-	// if match {
-	// 	userData.Icon_url = requestData.Icon_image
-	// } else {
-	// 	userData.Icon_url, _ = usecase.SaveImage(icon_imageData, requestData.User_id)
-	// }
-	fmt.Println(header_url)
+	match, _ := regexp.MatchString("http", requestData.Icon_image)
+	if match {
+		userData.Icon_url = requestData.Icon_image
+	} else {
+		icon_imageData := requestData.Header_image[23:]
+		userData.Icon_url, _ = usecase.SaveIconImage(icon_imageData, requestData.User_id)
+	}
+	fmt.Println(userData)
 
 	c.JSON(200, "ko")
 }
