@@ -1,18 +1,14 @@
 package model
 
-import (
-	"time"
-)
-
 type User struct {
-	User_id       string    `json:"user_id"`
-	User_name     string    `json:"user_name"`
-	Icon_url      string    `json:"icon_url"`
-	Header_url    string    `json:"header_url"`
-	Comment       string    `json:"comment"`
-	Account_id    string    `json:"account_id"`
-	Last_seen     time.Time `json:"last_seen"`
-	User_location string    `json:"user_location"`
+	User_id       string `json:"user_id"`
+	User_name     string `json:"user_name"`
+	Icon_url      string `json:"icon_url"`
+	Header_url    string `json:"header_url"`
+	Comment       string `json:"comment"`
+	Account_id    string `json:"account_id"`
+	Last_seen     string `json:"last_seen"`
+	User_location string `json:"user_location"`
 }
 type Follow struct {
 	Id           int    `json:"id"`
@@ -28,18 +24,18 @@ type Content struct {
 }
 
 type ContentHandling struct {
-	Content_id  string    `json:"content_id"`
-	User_id     string    `json:"user_id"`
-	Detail      string    `json:"detail"`
-	Create_at   time.Time `json:"create_at"`
-	Title       string    `json:"title"`
-	Views       int       `json:"views"`
-	Adult       bool      `json:"adult"`
-	Like_count  int       `json:"like_count"`
-	Commic      bool      `json:"commic"`
-	Graffiti    bool      `json:"graffiti"`
-	Rough       bool      `json:"rough"`
-	Illustratio bool      `json:"illustratio"`
+	Content_id  string `json:"content_id"`
+	User_id     string `json:"user_id"`
+	Detail      string `json:"detail"`
+	Create_at   string `json:"create_at"`
+	Title       string `json:"title"`
+	Views       int    `json:"views"`
+	Adult       bool   `json:"adult"`
+	Like_count  int    `json:"like_count"`
+	Commic      bool   `json:"commic"`
+	Graffiti    bool   `json:"graffiti"`
+	Rough       bool   `json:"rough"`
+	Illustratio bool   `json:"illustratio"`
 }
 
 type TesttData struct {
@@ -49,24 +45,24 @@ type TesttData struct {
 }
 
 type ContentData struct {
-	Content_id      string    `json:"content_id"`
-	User_id         string    `json:"user_id"`
-	User_name       string    `json:"user_name"`
-	Icon_url        string    `json:"icon_url"`
-	Detail          string    `json:"detail"`
-	Create_at       time.Time `json:"create_at"`
-	Title           string    `json:"title"`
-	Views           int       `json:"views"`
-	Adult           bool      `json:"adult"`
-	Image_url       string    `json:"image_url"`
-	Image_index     int       `json:"image_index"`
-	Like_count      int       `json:"like_count"`
-	Commic          bool      `json:"commic"`
-	Graffiti        bool      `json:"graffiti"`
-	Rough           bool      `json:"rough"`
-	Illustratio     bool      `json:"illustratio"`
-	User_bookmarked bool      `json:"user_bookmarked"`
-	User_liked      bool      `json:"user_liked"`
+	Content_id      string `json:"content_id"`
+	User_id         string `json:"user_id"`
+	User_name       string `json:"user_name"`
+	Icon_url        string `json:"icon_url"`
+	Detail          string `json:"detail"`
+	Create_at       string `json:"create_at"`
+	Title           string `json:"title"`
+	Views           int    `json:"views"`
+	Adult           bool   `json:"adult"`
+	Image_url       string `json:"image_url"`
+	Image_index     int    `json:"image_index"`
+	Like_count      int    `json:"like_count"`
+	Commic          bool   `json:"commic"`
+	Graffiti        bool   `json:"graffiti"`
+	Rough           bool   `json:"rough"`
+	Illustratio     bool   `json:"illustratio"`
+	User_bookmarked bool   `json:"user_bookmarked"`
+	User_liked      bool   `json:"user_liked"`
 }
 
 type RturnIllustratio struct {

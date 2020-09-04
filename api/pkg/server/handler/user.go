@@ -25,7 +25,6 @@ func CreateUser(c *gin.Context) {
 	var requestData UserData
 	var userData model.User
 	c.BindJSON(&requestData)
-	// _ = usecase.CreateUser(data)
 
 	header_imageData := requestData.Header_image[23:]
 
@@ -40,10 +39,11 @@ func CreateUser(c *gin.Context) {
 	}
 	userData.Account_id = requestData.Account_id
 	userData.Comment = requestData.Comment
-	// userData.Last_seen = requestData.Last_seen
+
+	userData.Last_seen = requestData.Last_seen
 	userData.User_id = requestData.User_id
 	userData.User_location = requestData.User_location
 	userData.User_name = requestData.User_name
 	_ = usecase.CreateUser(userData)
-	c.JSON(200, "ko")
+	c.JSON(200, userData)
 }

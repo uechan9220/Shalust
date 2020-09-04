@@ -4,7 +4,7 @@ IF NOT EXISTS user
 (
     user_id VARCHAR(128) NOT NULL PRIMARY KEY,
     user_name VARCHAR(128),
-    last_seen TIMESTAMP,
+    last_seen VARCHAR(128),
     user_location VARCHAR(128),
     comment VARCHAR(128),
     icon_url VARCHAR(128),
@@ -18,7 +18,7 @@ IF NOT EXISTS content_handling
     content_id VARCHAR(128) NOT NULL PRIMARY KEY,
     user_id VARCHAR(128),
     detail VARCHAR(128),
-    create_at TIMESTAMP,
+    create_at VARCHAR(128),
     title  VARCHAR(128), 
     adult BOOLEAN,
     views INT,
