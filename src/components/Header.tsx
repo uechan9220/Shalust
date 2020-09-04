@@ -6,6 +6,10 @@ import { useQuery } from 'react-apollo';
 import { myUserQuery } from '../data/queries';
 import firebase from '../Firebase';
 
+interface isCheckMenuProps {
+  check: boolean;
+}
+
 const Container = styled.div`
   position: fixed;
   background-color: #fff;
@@ -85,9 +89,11 @@ const UserName = styled.p`
   margin: 0 0.5rem;
 `;
 
-const DownArrowSVG = styled.svg`
+const DownArrowSVG = styled.svg<isCheckMenuProps>`
   width: 24px;
   height: 24px;
+  transition: all 300ms 0s ease;
+  transform: ${(props: any) => (props.check ? null : 'rotate(-90deg)')};
 `;
 
 const HeaderUserIconContainer = styled.div`
@@ -224,6 +230,7 @@ const Header: React.FC = (props: any) => {
             </HeaderUserIconContainer>
             <UserName>{currentUser.userData?.user_name}さん</UserName>
             <DownArrowSVG
+              check={menuCheck}
               width='24'
               height='24'
               viewBox='0 0 24 24'
@@ -268,7 +275,7 @@ const Header: React.FC = (props: any) => {
             </FollowFollowerContent>
           </FollowFollowerContainer>
           <Content>
-            <Text>投稿</Text>
+            <Text>投稿する</Text>
             <ManegementContainer>
               <Text>作品管理</Text>
               <Text>ブックマーク</Text>
