@@ -39,7 +39,7 @@ func GetUserIllustratio(user_id string, data *[]model.ContentData) error {
 		Join("JOIN user ON user.user_id = content_handling.user_id").
 		Join("LEFT JOIN likes ON likes.content_id = content_handling.content_id AND likes.user_id = ?", user_id).
 		Join("LEFT JOIN bookmarks ON bookmarks.content_id = content_handling.content_id AND bookmarks.user_id = ?", user_id).
-		Where("content_handling.user_id = (SELECT user_id FROM user WHERE acount_id =?)", user_id).
+		Where("content_handling.user_id = (SELECT user_id FROM user WHERE account_id =?)", user_id).
 		Where("illustratio = 1").
 		Scan(data)
 
@@ -60,7 +60,7 @@ func GetUserCommic(user_id string, data *[]model.ContentData) error {
 		Join("JOIN user ON user.user_id = content_handling.user_id").
 		Join("LEFT JOIN likes ON likes.content_id = content_handling.content_id AND likes.user_id = ?", user_id).
 		Join("LEFT JOIN bookmarks ON bookmarks.content_id = content_handling.content_id AND bookmarks.user_id = ?", user_id).
-		Where("content_handling.user_id = (SELECT user_id FROM user WHERE acount_id =?)", user_id).
+		Where("content_handling.user_id = (SELECT user_id FROM user WHERE account_id =?)", user_id).
 		Where("commic = 1").
 		Scan(data)
 
@@ -81,7 +81,7 @@ func GetUserGraffiti(user_id string, data *[]model.ContentData) error {
 		Join("JOIN user ON user.user_id = content_handling.user_id").
 		Join("LEFT JOIN likes ON likes.content_id = content_handling.content_id AND likes.user_id = ?", user_id).
 		Join("LEFT JOIN bookmarks ON bookmarks.content_id = content_handling.content_id AND bookmarks.user_id = ?", user_id).
-		Where("content_handling.user_id = (SELECT user_id FROM user WHERE acount_id =?)", user_id).
+		Where("content_handling.user_id = (SELECT user_id FROM user WHERE account_id =?)", user_id).
 		Where("graffiti = 1").
 		Scan(data)
 
@@ -100,7 +100,7 @@ func GetUserRough(user_id string, data *[]model.ContentData) error {
 		Join("JOIN user ON user.user_id = content_handling.user_id").
 		Join("LEFT JOIN likes ON likes.content_id = content_handling.content_id AND likes.user_id = ?", user_id).
 		Join("LEFT JOIN bookmarks ON bookmarks.content_id = content_handling.content_id AND bookmarks.user_id = ?", user_id).
-		Where("content_handling.user_id = (SELECT user_id FROM user WHERE acount_id =?)", user_id).
+		Where("content_handling.user_id = (SELECT user_id FROM user WHERE account_id =?)", user_id).
 		Where("rough = 1").
 		Scan(data)
 
