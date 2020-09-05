@@ -64,3 +64,47 @@ func CreateCommicHandling(data model.ContentHandling) error {
 	defer client.Close()
 	return err
 }
+
+func PostContent() {
+
+}
+
+func PostContentHandling(data model.PostContentData) (string, error) {
+	var content_handling model.ContentHandling
+
+	contentId := Uuid4()
+
+	content_handling.Create_at = GetDateInTokyo()
+	content_handling.Content_id = contentId
+	content_handling.Title = data.Title
+	content_handling.User_id = data.User_id
+	content_handling.Detail = data.Detail
+	content_handling.Adult = data.Adult
+
+	if data.Illustratio {
+		err := CreateIllustratioHandling(content_handling)
+		if err != nil {
+			return "", err
+		}
+		return contentId, nil
+	} else if data.Graffiti {
+		err := CreateGraffitiHandling(content_handling)
+		if err != nil {
+			return "", err
+		}
+		return contentId, nil
+	} else if data.Rough {
+		err := CreateRoughtHandling(content_handling)
+		if err != nil {
+			return "", err
+		}
+		return contentId, nil
+	} else if data.Commic {
+		err := CreateCommicHandling(content_handling)
+		if err != nil {
+			return "", err
+		}
+		return contentId, nil
+	}
+	return contentId, nil
+}
