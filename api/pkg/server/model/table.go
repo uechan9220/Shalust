@@ -92,3 +92,8 @@ type tags struct {
 	Id   int    `json:"id"`
 	name string `json:"name"`
 }
+
+type ContentImages struct {
+	Image_Url string
+	Index     string
+}

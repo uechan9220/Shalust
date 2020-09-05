@@ -65,7 +65,7 @@ func CreateCommicHandling(data model.ContentHandling) error {
 	return err
 }
 
-func PostContent() {
+func PostContent(imageData []model.Images, contentId string) {
 
 }
 
@@ -74,7 +74,7 @@ func PostContentHandling(data model.PostContentData) (string, error) {
 
 	contentId := Uuid4()
 
-	content_handling.Create_at = GetDateInTokyo()
+	content_handling.Create_at = GetDeteInTokyo()
 	content_handling.Content_id = contentId
 	content_handling.Title = data.Title
 	content_handling.User_id = data.User_id
