@@ -66,6 +66,14 @@ func CreateCommicHandling(data model.ContentHandling) error {
 }
 
 func PostContent(imageData []model.Images, contentId string) {
+	var images []model.ContentImages
+	for _, v := range imageData {
+		var data model.ContentImages
+		url, _ := SaveContentImage(v.Image, contentId, v.Index)
+		data.Image_Url = url
+		data.Index = v.Index
+		images = append(images, data)
+	}
 
 }
 

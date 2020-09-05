@@ -19,5 +19,5 @@ type Tag struct {
 }
 type Images struct {
 	Image string `json:"image`
-	Index string `json:"index`
+	Index int    `json:"index`
 }

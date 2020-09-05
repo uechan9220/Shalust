@@ -89,11 +89,16 @@ func (db *Db) Rows() *Db {
 	return db
 }
 func (db *Db) Raw(sql string, param ...interface{}) *Db {
-	db.client.Raw(sql, param)
+	db.client = db.client.Raw(sql, param)
 	return db
 }
 
 func (db *Db) Preload(colum string, param ...interface{}) *Db {
-	db.client.Preload(colum, param)
+	db.client = db.client.Preload(colum, param)
+	return db
+}
+
+func (db *Db) Exec(sql string, values ...interface{}) *Db {
+	db.client = db.client.Exec(sql, values)
 	return db
 }

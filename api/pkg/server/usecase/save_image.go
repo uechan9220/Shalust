@@ -14,7 +14,7 @@ import (
 	_ "golang.org/x/image/tiff"
 )
 
-func SaveIconImage(data string, user_id string) (string, error) {
+func SaveIconImage(data string) (string, error) {
 
 	encodeData, err := base64.StdEncoding.DecodeString(data)
 	if err != nil {
@@ -36,17 +36,17 @@ func SaveIconImage(data string, user_id string) (string, error) {
 	}
 
 	if format == "jpeg" {
-		result_path, err := Upload_S3(tmpFile.Name(), fmt.Sprintf("user_icons/%s.jpg", user_id))
+		result_path, err := Upload_S3(tmpFile.Name(), fmt.Sprintf("user_icons/%s.jpg", Uuid4))
 		return result_path, err
 	} else if format == "png" {
-		result_path, err := Upload_S3(tmpFile.Name(), fmt.Sprintf("user_icons/%s.png", user_id))
+		result_path, err := Upload_S3(tmpFile.Name(), fmt.Sprintf("user_icons/%s.png", Uuid4))
 		return result_path, err
 	}
 
 	return "", nil
 }
 
-func SaveHeaderImage(data string, user_id string) (string, error) {
+func SaveHeaderImage(data string) (string, error) {
 
 	encodeData, err := base64.StdEncoding.DecodeString(data)
 	if err != nil {
@@ -67,10 +67,41 @@ func SaveHeaderImage(data string, user_id string) (string, error) {
 	}
 
 	if format == "jpeg" {
-		result_path, err := Upload_S3(tmpFile.Name(), fmt.Sprintf("user_header/%s.jpg", user_id))
+		result_path, err := Upload_S3(tmpFile.Name(), fmt.Sprintf("user_header/%s.jpg", Uuid4))
 		return result_path, err
 	} else if format == "png" {
-		result_path, err := Upload_S3(tmpFile.Name(), fmt.Sprintf("user_header/%s.png", user_id))
+		result_path, err := Upload_S3(tmpFile.Name(), fmt.Sprintf("user_header/%s.png", Uuid4))
+		return result_path, err
+	}
+
+	return "", nil
+}
+
+func SaveContentImage(data string, content_id string, index int) (string, error) {
+
+	encodeData, err := base64.StdEncoding.DecodeString(data)
+	if err != nil {
+		return "", err
+	}
+
+	tmpFile, err := ioutil.TempFile("", "")
+	if err != nil {
+		return "", err
+	}
+	defer os.Remove(tmpFile.Name())
+
+	tmpFile.Write(encodeData)
+	tmpFile.Close()
+	format, err := AnalyzeFormat(tmpFile.Name())
+	if err != nil {
+		return "", err
+	}
+
+	if format == "jpeg" {
+		result_path, err := Upload_S3(tmpFile.Name(), fmt.Sprintf("content/%s/%s.jpg", content_id, index))
+		return result_path, err
+	} else if format == "png" {
+		result_path, err := Upload_S3(tmpFile.Name(), fmt.Sprintf("content/%s/%s.png", content_id, index))
 		return result_path, err
 	}
 

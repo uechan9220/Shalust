@@ -95,5 +95,5 @@ type tags struct {
 
 type ContentImages struct {
 	Image_Url string
-	Index     string
+	Index     int
 }
