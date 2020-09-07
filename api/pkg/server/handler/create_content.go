@@ -13,7 +13,7 @@ func PostContent(c *gin.Context) {
 	var requestData model.PostContentData
 	c.BindJSON(&requestData)
 	content_id, _ := usecase.PostContentHandling(requestData)
-	usecase.PostContent(requestData.Images, content_id)
+	_ = usecase.PostContent(requestData.Images, content_id)
 
-	c.JSON(200, requestData)
+	c.JSON(200, "ok")
 }

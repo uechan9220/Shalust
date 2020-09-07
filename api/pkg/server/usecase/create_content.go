@@ -64,17 +64,29 @@ func CreateCommicHandling(data model.ContentHandling) error {
 	defer client.Close()
 	return err
 }
+func CreateContent(data model.Content) error {
 
-func PostContent(imageData []model.Images, contentId string) {
-	var images []model.ContentImages
-	for _, v := range imageData {
-		var data model.ContentImages
-		url, _ := SaveContentImage(v.Image, contentId, v.Index)
-		data.Image_Url = url
-		data.Index = v.Index
-		images = append(images, data)
+	client, err := infra.Init_mysql()
+	if err != nil {
+		return err
 	}
 
+	client.From("content_data").Create(&data)
+	defer client.Close()
+	return err
+}
+
+func PostContent(imageData []model.Images, contentId string) error {
+	var images []model.Content
+	for _, v := range imageData {
+		var data model.Content
+		url, _ := SaveContentImage(v.Image, contentId, v.Index)
+		data.Image_url = url
+		data.Image_index = v.Index
+		_ = CreateContent(data)
+		images = append(images, data)
+	}
+	return nil
 }
 
 func PostContentHandling(data model.PostContentData) (string, error) {
