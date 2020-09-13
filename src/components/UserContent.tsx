@@ -39,6 +39,11 @@ interface UserContentProps {
   myUserAuth: boolean;
 }
 
+interface paramsProps {
+  user_id: string;
+  content: string;
+}
+
 const Container = styled.div``;
 
 const HeaderContainer = styled.div`
@@ -136,7 +141,7 @@ const AccountButtonConatiner = styled.div`
 `;
 
 const UserContent: React.FC<UserContentProps> = ({ item, myUserAuth }) => {
-  let { user_id, content } = useParams();
+  let { user_id, content } = useParams<paramsProps>();
   const [selectNumber, setNumber] = useState(1);
   const [getQuery, setQuery] = useState(GetUserIllustQuery);
   const [Data, setData] = useState(IllustDataTest);
