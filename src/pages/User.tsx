@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from 'react'
-import styled from 'styled-components'
-import { useParams } from 'react-router-dom'
-import { Query, QueryResult } from 'react-apollo'
-import { userQuery } from '../data/queries'
-import { UserQueryProps } from '../generated/TagProps'
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import { useParams } from 'react-router-dom';
+import { Query, QueryResult } from 'react-apollo';
+import { userQuery } from '../data/queries';
+import { UserQueryProps } from '../generated/TagProps';
 
 /**
  * component
  */
 
-import UserContent from '../components/UserContent'
+import UserContent from '../components/UserContent';
 
 /**
- * test Data 
+ * test Data
  */
-import { TestUserData } from '../data/Data'
+import { TestUserData } from '../data/Data';
 
-const Container = styled.div``
+const Container = styled.div``;
 
 interface UserProps {
   user_id: number;
@@ -29,23 +29,26 @@ interface UserProps {
   account_id: string;
 }
 
+interface paramsProps {
+  user_id: string;
+}
 
 const User: React.FC = () => {
-  let { user_id } = useParams()
-  const [userData, setUserData] = useState<UserProps>()
+  let { user_id } = useParams<paramsProps>();
+  const [userData, setUserData] = useState<UserProps>();
 
   useEffect(() => {
     TestUserData.filter((items: any, index: number) => {
-      console.log(items.account_id)
+      console.log(items.account_id);
       switch (items.account_id) {
         case user_id:
-          setUserData(items)
+          setUserData(items);
           break;
         default:
           break;
       }
-    })
-  }, [user_id])
+    });
+  }, [user_id]);
 
   return (
     // <Query query={userQuery} variables={{ uniqueid: user_id }}>
@@ -70,14 +73,18 @@ const User: React.FC = () => {
     <Container>
       {/* Userが存在しているかを判別 */}
       {console.log(userData)}
-      {userData ?
+      {userData ? (
         // 自分自身かどうかを判別する
-        (userData.account_id == "moooooooooooke" ?
+        userData.account_id == 'moooooooooooke' ? (
           <UserContent item={userData} myUserAuth={true} />
-          : <UserContent item={userData} myUserAuth={false} />)
-        : <p>このアカウントは存在しません</p>}
+        ) : (
+          <UserContent item={userData} myUserAuth={false} />
+        )
+      ) : (
+        <p>このアカウントは存在しません</p>
+      )}
     </Container>
-  )
-}
+  );
+};
 
-export default User
+export default User;
