@@ -64,6 +64,59 @@ const CancelContainer = styled.div`
   justify-content: flex-end;
 `;
 
+const TagContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+`;
+
+const TagContent = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 0 1rem 0 0;
+  border-bottom: 1px solid;
+  border-style: dashed;
+`;
+
+const TagText = styled.p`
+  margin-right: 0.3rem;
+`;
+
+const TagCanncel = styled.span`
+  position: relative;
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  overflow: hidden;
+  &:hover {
+    &::before,
+    &::after {
+      background: #f00;
+    }
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    margin-top: -1px;
+    background: #000;
+    border-radius: 5px;
+    height: 2px;
+    margin-top: -2px;
+  }
+  &::before {
+    transform: rotate(45deg);
+  }
+  &::after {
+    transform: rotate(-45deg);
+  }
+`;
+
 /**
  * interface
  */
@@ -192,6 +245,7 @@ const Post: React.FC = () => {
     }
     if (tagName !== '') {
       setPostData({ ...postData, tags: [...postData.tags, tagName] });
+      setTagName('');
     }
   };
 
@@ -294,14 +348,19 @@ const Post: React.FC = () => {
           </FormControl>
         </Content>
         <Content>
-          {postData.tags.map((item: string, index: number) => {
-            return (
-              <>
-                <p key={index}>・{item}</p>
-                <span onClick={() => handleRemoveItem(index)}>x</span>
-              </>
-            );
-          })}
+          <Subtitle>タグ (任意)</Subtitle>
+          <TagContainer>
+            {postData.tags.map((item: string, index: number) => {
+              return (
+                <TagContent>
+                  <TagText key={index}>{item}</TagText>
+                  <TagCanncel
+                    onClick={() => handleRemoveItem(index)}
+                  ></TagCanncel>
+                </TagContent>
+              );
+            })}
+          </TagContainer>
           <TextField
             name='tagName'
             required
