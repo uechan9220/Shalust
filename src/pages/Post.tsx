@@ -312,7 +312,7 @@ const Post: React.FC = () => {
         <Content>
           <FormControl component='fieldset'>
             <SubTitleCategory categoryValidation={categoryValidation}>
-              タイトル (必須)
+              カテゴリー (必須)
             </SubTitleCategory>
             <RadioGroup
               aria-label='category'
