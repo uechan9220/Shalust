@@ -136,7 +136,11 @@ interface postDataProps {
   graffiti: boolean;
   tags: string[];
   isAgeLimit: boolean;
-  images: [imagesProps];
+  images: imagesProps[];
+}
+
+interface postImageData {
+  image: string;
 }
 
 const Post: React.FC = () => {
@@ -149,14 +153,16 @@ const Post: React.FC = () => {
     graffiti: false,
     tags: [],
     isAgeLimit: false,
-    images: [{}],
+    images: [],
   });
+
   const [postTitleValidation, setPostTitleValidation] = useState(false);
   const [category, setCategory] = useState('');
   const [categoryValidation, setCategotyValidation] = useState(false);
   const [ageLimit, isAgeLimit] = useState(false);
   const [tagName, setTagName] = useState('');
   const [tags, setTags] = useState<string[]>([]);
+  const [imageFiles, setImageFiles] = useState<string[]>([]);
 
   const handleInputChange = (e: any) => {
     const { name, value } = e.target;
@@ -251,6 +257,44 @@ const Post: React.FC = () => {
   };
 
   const postDataFunc = () => {
+    // console.log(imageFiles);
+    let imageObjectArray: imagesProps[] = [];
+    imageFiles.map((item: any, index: number) => {
+      // console.log(item.preview);
+      // console.log(index);
+      let imageObject = {
+        image: item.image,
+        index: index + 1,
+      };
+
+      imageObjectArray.push(imageObject);
+    });
+
+    setPostData({ ...postData, images: imageObjectArray });
+
+    // setPostData((imageFiles) => imageFiles.concat());
+    // imageFiles.map((item: any, index: number) => {
+    //   setHoge([
+    //     ...hoge,
+    //     {
+    //       image: item.preview,
+    //       index: index + 1,
+    //     },
+    //   ]);
+
+    //   // setPostData({
+    //   //   ...postData,
+    //   //   images: [
+    //   //     ...postData.images
+    //   //     {
+    //   //       index: index + 1,
+    //   //       image: item.preview,
+    //   //     },
+    //   //   ],
+    //   // });
+    // });
+    // console.log(hoge);
+
     console.log(postData);
   };
 
@@ -266,7 +310,11 @@ const Post: React.FC = () => {
   return (
     <Container>
       <ImageSection>
-        <ImagePost setPostData={setPostData} />
+        <ImagePost
+          setPostData={setPostData}
+          setImageFiles={setImageFiles}
+          imageFiles={imageFiles}
+        />
       </ImageSection>
       <DetailSection>
         <Content>
