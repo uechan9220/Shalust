@@ -10,6 +10,7 @@ import {
   Checkbox,
   Button,
 } from '@material-ui/core';
+import ImagePost from '../components/ImagePost';
 
 /**
  * styled-componets
@@ -23,7 +24,7 @@ const Container = styled.div`
 `;
 
 const ImageSection = styled.div`
-  padding: 1rem;
+  width: 100%;
 `;
 
 const DetailSection = styled.div`
@@ -264,7 +265,9 @@ const Post: React.FC = () => {
 
   return (
     <Container>
-      <ImageSection></ImageSection>
+      <ImageSection>
+        <ImagePost setPostData={setPostData} />
+      </ImageSection>
       <DetailSection>
         <Content>
           <SubTitlePostTitle NameValidation={postTitleValidation}>
