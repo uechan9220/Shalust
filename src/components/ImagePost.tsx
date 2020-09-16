@@ -11,7 +11,7 @@ const Container = styled.div`
   list-style: none;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 1rem;
-  @media (max-width: 450px) {
+  @media (max-width: 465px) {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
 `;
@@ -31,10 +31,31 @@ const Img = styled.img`
   object-fit: cover;
 `;
 
+const RemoveButton = styled.div`
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  opacity: 0;
+  transition: opacity 0.2s;
+  cursor: pointer;
+`;
+
+const Xmark = styled.svg`
+  height: 24px;
+  width: 24px;
+  cursor: pointer;
+`;
+
 const ImageContent = styled.div`
   width: 100%;
   height: 80%;
   border: 1px solid;
+  position: relative;
+  &:hover {
+    & ${RemoveButton} {
+      opacity: 0.5;
+    }
+  }
 `;
 
 const InfoBox = styled.div`
@@ -98,7 +119,6 @@ const PostImageContainer = styled.div`
   &:hover {
     & ${HoverMask} {
       opacity: 1;
-      padding-top: 50%;
     }
   }
 `;
@@ -117,12 +137,15 @@ const PostGetProps = styled.div`
 `;
 
 const HoverText = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
   font-size: 130%;
   text-align: center;
   color: #fff;
 `;
-
-const RemoveButton = styled.div``;
 
 /**
  * interface
@@ -132,10 +155,11 @@ interface ImagePostProps {
   setPostData: any;
   imageFiles: any;
   setImageFiles: any;
+  setThumbail: any;
+  thumbail: any;
 }
 
 const ImagePost: React.FC<ImagePostProps> = (props: any) => {
-  const [thumbail, setThumbail] = useState(1);
   const [postImages, setPostImages] = useState<any>([]);
 
   // useEffect(() => {
@@ -144,7 +168,7 @@ const ImagePost: React.FC<ImagePostProps> = (props: any) => {
   //   });
   // }, [props.imageFiles]);
   const thmbailFunc = (index: number) => {
-    setThumbail(index);
+    props.setThumbail(index);
   };
 
   const handleInputImage = (e: File[]) => {
@@ -169,11 +193,10 @@ const ImagePost: React.FC<ImagePostProps> = (props: any) => {
       //   setUserInfo({ ...userInfo, ['header_image']: event.target.result });
     };
     reader.readAsDataURL(image);
-    console.log(props.imageFiles);
   };
 
   const removeImage = (item: any) => {
-    if (item + 1 === thumbail) setThumbail(1);
+    if (item + 1 === props.thumbail) props.setThumbail(1);
     props.imageFiles.splice(item, 1);
     props.setImageFiles([...props.imageFiles]);
     postImages.splice(item, 1);
@@ -188,12 +211,9 @@ const ImagePost: React.FC<ImagePostProps> = (props: any) => {
             <InfoBox>
               <InfoContent>
                 <IndexNumber>{index + 1}</IndexNumber>
-                <RemoveButton onClick={() => removeImage(index)}>
-                  削除
-                </RemoveButton>
                 <ThumbailButton
                   index={index + 1}
-                  thumbail={thumbail}
+                  thumbail={props.thumbail}
                   onClick={() => thmbailFunc(index + 1)}
                 >
                   サムネイル
@@ -201,7 +221,21 @@ const ImagePost: React.FC<ImagePostProps> = (props: any) => {
               </InfoContent>
             </InfoBox>
             <ImageContent>
-              <Img src={item.preview} />
+              <RemoveButton onClick={() => removeImage(index)}>
+                <Xmark
+                  width='24'
+                  height='24'
+                  viewBox='0 0 24 24'
+                  fill='none'
+                  xmlns='http://www.w3.org/2000/svg'
+                >
+                  <path
+                    d='M14.59 8L12 10.59L9.41 8L8 9.41L10.59 12L8 14.59L9.41 16L12 13.41L14.59 16L16 14.59L13.41 12L16 9.41L14.59 8ZM12 2C6.47 2 2 6.47 2 12C2 17.53 6.47 22 12 22C17.53 22 22 17.53 22 12C22 6.47 17.53 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z'
+                    fill='black'
+                  />
+                </Xmark>
+              </RemoveButton>
+              <Img key={index} src={item.preview} />
             </ImageContent>
           </Content>
         );
@@ -218,9 +252,11 @@ const ImagePost: React.FC<ImagePostProps> = (props: any) => {
                 <p>+</p>
                 <HoverMask>
                   <HoverText>
-                    ドラッグ&ドロップ
+                    クリック
                     <br />
-                    でも追加できます
+                    or
+                    <br />
+                    Drug & Drop
                   </HoverText>
                 </HoverMask>
               </PostGetProps>
