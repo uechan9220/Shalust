@@ -173,6 +173,7 @@ const ImagePost: React.FC<ImagePostProps> = (props: any) => {
   };
 
   const removeImage = (item: any) => {
+    if (item + 1 === thumbail) setThumbail(1);
     props.imageFiles.splice(item, 1);
     props.setImageFiles([...props.imageFiles]);
     postImages.splice(item, 1);
@@ -219,7 +220,7 @@ const ImagePost: React.FC<ImagePostProps> = (props: any) => {
                   <HoverText>
                     ドラッグ&ドロップ
                     <br />
-                    で追加できます
+                    でも追加できます
                   </HoverText>
                 </HoverMask>
               </PostGetProps>
