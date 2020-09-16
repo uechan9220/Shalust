@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import styled from 'styled-components';
 import {
   TextField,
@@ -137,10 +137,7 @@ interface postDataProps {
   tags: string[];
   isAgeLimit: boolean;
   images: imagesProps[];
-}
-
-interface postImageData {
-  image: string;
+  thumbailNumber: number;
 }
 
 const Post: React.FC = () => {
@@ -154,6 +151,7 @@ const Post: React.FC = () => {
     tags: [],
     isAgeLimit: false,
     images: [],
+    thumbailNumber: 0,
   });
 
   const [postTitleValidation, setPostTitleValidation] = useState(false);
@@ -163,11 +161,16 @@ const Post: React.FC = () => {
   const [tagName, setTagName] = useState('');
   const [tags, setTags] = useState<string[]>([]);
   const [imageFiles, setImageFiles] = useState<string[]>([]);
+  const [thumbail, setThumbail] = useState<number>(1);
+
+  useEffect(() => {
+    console.log(postData);
+  }, [postData.images]);
 
   const handleInputChange = (e: any) => {
     const { name, value } = e.target;
-    console.log(name);
-    console.log(value);
+    // console.log(name);
+    // console.log(value);
     switch (name) {
       case 'title':
         value !== ''
@@ -184,7 +187,7 @@ const Post: React.FC = () => {
   };
 
   const handleCategotyChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target.name);
+    // console.log(event.target.name);
     switch (event.target.name) {
       case 'illustratio':
         setPostData({
@@ -258,6 +261,10 @@ const Post: React.FC = () => {
 
   const postDataFunc = () => {
     // console.log(imageFiles);
+    // console.log(postData.images.length);
+    if (imageFiles.length < 1) alert('画像を追加してください');
+    if (!postTitleValidation) alert('タイトルを入れてください。');
+    if (!categoryValidation) alert('カテゴリーを設定してください');
     let imageObjectArray: imagesProps[] = [];
     imageFiles.map((item: any, index: number) => {
       // console.log(item.preview);
@@ -270,32 +277,11 @@ const Post: React.FC = () => {
       imageObjectArray.push(imageObject);
     });
 
-    setPostData({ ...postData, images: imageObjectArray });
-
-    // setPostData((imageFiles) => imageFiles.concat());
-    // imageFiles.map((item: any, index: number) => {
-    //   setHoge([
-    //     ...hoge,
-    //     {
-    //       image: item.preview,
-    //       index: index + 1,
-    //     },
-    //   ]);
-
-    //   // setPostData({
-    //   //   ...postData,
-    //   //   images: [
-    //   //     ...postData.images
-    //   //     {
-    //   //       index: index + 1,
-    //   //       image: item.preview,
-    //   //     },
-    //   //   ],
-    //   // });
-    // });
-    // console.log(hoge);
-
-    console.log(postData);
+    setPostData({
+      ...postData,
+      images: imageObjectArray,
+      thumbailNumber: thumbail,
+    });
   };
 
   const handleRemoveItem = (props: number) => {
@@ -314,6 +300,8 @@ const Post: React.FC = () => {
           setPostData={setPostData}
           setImageFiles={setImageFiles}
           imageFiles={imageFiles}
+          setThumbail={setThumbail}
+          thumbail={thumbail}
         />
       </ImageSection>
       <DetailSection>
