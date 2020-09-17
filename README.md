@@ -8,7 +8,7 @@ cp docker-compose.infra.sample.yml docker-compose.infra.yml
 
 ### `コンテナ関係のセットアップ（初回のみ）`
 
-make build
+make compose/build
 
 ### `起動`
 make up

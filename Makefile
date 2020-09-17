@@ -1,4 +1,4 @@
-build:
+compose/build:
 	docker-compose -f docker-compose.yml -f docker-compose.infra.yml build
 	-docker network create shalust-networuk
 up:
