@@ -36,10 +36,10 @@ func SaveIconImage(data string) (string, error) {
 	}
 
 	if format == "jpeg" {
-		result_path, err := Upload_S3(tmpFile.Name(), fmt.Sprintf("user_icons/%s.jpg", Uuid4))
+		result_path, err := Upload_S3(tmpFile.Name(), fmt.Sprintf("user_icons/%s.jpg", Uuid4()))
 		return result_path, err
 	} else if format == "png" {
-		result_path, err := Upload_S3(tmpFile.Name(), fmt.Sprintf("user_icons/%s.png", Uuid4))
+		result_path, err := Upload_S3(tmpFile.Name(), fmt.Sprintf("user_icons/%s.png", Uuid4()))
 		return result_path, err
 	}
 
@@ -67,10 +67,10 @@ func SaveHeaderImage(data string) (string, error) {
 	}
 
 	if format == "jpeg" {
-		result_path, err := Upload_S3(tmpFile.Name(), fmt.Sprintf("user_header/%s.jpg", Uuid4))
+		result_path, err := Upload_S3(tmpFile.Name(), fmt.Sprintf("user_header/%s.jpg", Uuid4()))
 		return result_path, err
 	} else if format == "png" {
-		result_path, err := Upload_S3(tmpFile.Name(), fmt.Sprintf("user_header/%s.png", Uuid4))
+		result_path, err := Upload_S3(tmpFile.Name(), fmt.Sprintf("user_header/%s.png", Uuid4()))
 		return result_path, err
 	}
 
