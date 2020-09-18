@@ -38,6 +38,7 @@ import Login from './pages/Login';
 import Signin from './pages/Signin';
 import Content from './pages/Content';
 import CreateUser from './pages/CreateUser';
+import PostManagement from './pages/PostManagement';
 import { MaterialTheme } from './themes/MaterialTheme';
 
 const GlobalStyle = createGlobalStyle`
@@ -151,6 +152,9 @@ function App() {
                   </Route>
                   <Route path='/tags/:content/:tag'>
                     <Tag />
+                  </Route>
+                  <Route path='/post_management/:content'>
+                    <PostManagement />
                   </Route>
                   <Auth>
                     <Switch>
