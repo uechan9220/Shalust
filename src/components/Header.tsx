@@ -185,6 +185,10 @@ const SettingContainer = styled.div`
   margin-bottom: 1rem;
 `;
 
+const StyleLink = styled(Link)`
+  text-decoration: none;
+`;
+
 const Header: React.FC = (props: any) => {
   const { currentUser } = useContext(AuthContext);
 
@@ -277,7 +281,9 @@ const Header: React.FC = (props: any) => {
           <Content>
             <Text>投稿する</Text>
             <ManegementContainer>
-              <Text>作品管理</Text>
+              <StyleLink to='/post_management/illustratio'>
+                <Text>作品管理</Text>
+              </StyleLink>
               <Text>ブックマーク</Text>
               <Text>いいね</Text>
             </ManegementContainer>
