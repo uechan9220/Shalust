@@ -11,6 +11,8 @@ import {
   Button,
 } from '@material-ui/core';
 import ImagePost from '../components/ImagePost';
+import { PostQuery } from '../data/mutation';
+import { useMutation } from 'react-apollo';
 
 /**
  * styled-componets
@@ -154,6 +156,7 @@ const Post: React.FC = () => {
     thumbailNumber: 0,
   });
 
+  const [postQuery] = useMutation(PostQuery);
   const [postTitleValidation, setPostTitleValidation] = useState(false);
   const [category, setCategory] = useState('');
   const [categoryValidation, setCategotyValidation] = useState(false);
@@ -281,6 +284,17 @@ const Post: React.FC = () => {
       ...postData,
       images: imageObjectArray,
       thumbailNumber: thumbail,
+    });
+
+    postQuery({
+      variables: { postData },
+    }).then((res) => {
+      if (!res.errors) {
+        console.log(res);
+        console.log('登録しました');
+      } else {
+        console.log(res.errors);
+      }
     });
   };
 
