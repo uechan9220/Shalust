@@ -143,10 +143,14 @@ interface PostContentProps {
 }
 
 const PostContent: React.FC<PostContentProps> = (props) => {
-  const [postPublic, setPostPublic] = useState(props.items.is_public);
+  const [postPublic, isPostPublic] = useState<boolean>();
+
+  useEffect(() => {
+    isPostPublic(props.items.is_public);
+  }, [props.items.is_public]);
 
   const PublicFunc = () => {
-    setPostPublic(!postPublic);
+    isPostPublic(!postPublic);
     alert(postPublic ? '非公開にしました' : '公開しました');
   };
 
