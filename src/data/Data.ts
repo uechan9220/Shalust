@@ -570,9 +570,9 @@ export const ManagementRoughData = [
     content_id: 'c19a5130-dd6a-11ea-81e1-0242ac120002',
     user_id: 'c189d91c-dd6a-11ea-81e1-0242ac120002',
     detail:
-      '雪だるまにはジャージを被せる派雪だるまにはジャージを被せる派雪だるまにはジャージを被せる派雪だるまにはジャージを被せる派雪だるまにはジャージを被せる派雪だるまにはジャージを被せる派雪だるまにはジャージを被せる派雪だるまにはジャージを被せる派',
+      'hoge',
     create_at: '0001-01-01T00:00:00Z',
-    title: 'testt itle',
+    title: 'roughData',
     views: 114514,
     adult: false,
     image_url: 'http://localhost:9000/mybucket/hoge/image_sample.jpg',
