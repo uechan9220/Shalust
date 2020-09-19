@@ -1,4 +1,4 @@
-import gql from 'graphql-tag'
+import gql from 'graphql-tag';
 
 export const likePost = gql`
   mutation LikePost($postId: Int, $userId: Int) {
@@ -6,7 +6,7 @@ export const likePost = gql`
       affected_rows
     }
   }
-`
+`;
 export const deleteLikePost = gql`
   mutation DeleteLikePost($postId: Int, $userId: Int) {
     delete_Like(
@@ -15,12 +15,12 @@ export const deleteLikePost = gql`
       affected_rows
     }
   }
-`
+`;
 
 export const GetIllustQuery = gql`
-  mutation getIllustQuery($type: String!){
+  mutation getIllustQuery($type: String!) {
     getIllustQuery(type: $type)
-      @rest(type: "illust", path: "getIllustratio", method: "POST"){
+    @rest(type: "illust", path: "getIllustratio", method: "POST") {
       content_id
       user_id
       user_name
@@ -35,7 +35,7 @@ export const GetIllustQuery = gql`
       like_count
     }
   }
-`
+`;
 
 // export const UserRegistrationQuery = gql`
 //   mutation userRegistrationQuery($)
@@ -57,10 +57,19 @@ export const GetIllustQuery = gql`
 // `
 
 export const CreateUserQuery = gql`
-  mutation createUserQuery($input: userInfo!){
+  mutation createUserQuery($input: userInfo!) {
     createUserQuery(input: $userInfo)
-      @rest(type: "createUser", path: "createUser", method: "POST"){
-        user_id
+    @rest(type: "createUser", path: "createUser", method: "POST") {
+      user_id
     }
   }
-`
+`;
+
+export const PostQuery = gql`
+  mutation postQuery($input: postData!) {
+    postQuery(input: $postData)
+    @rest(type: "postContent", path: "postContent", method: "POST") {
+      user_id
+    }
+  }
+`;
