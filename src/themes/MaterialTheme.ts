@@ -1,4 +1,4 @@
-import { createMuiTheme } from '@material-ui/core/styles'
+import { createMuiTheme } from '@material-ui/core/styles';
 
 export const MaterialTheme = createMuiTheme({
   palette: {
@@ -9,4 +9,4 @@ export const MaterialTheme = createMuiTheme({
       contrastText: '#000000',
     },
   },
-})
+});

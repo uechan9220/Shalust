@@ -1,17 +1,17 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 /**
  * interface
  */
 interface SelectProps {
-  index: number
+  index: number;
 }
 
 interface NavbarProps {
-  selectNumber: number
-  tagName?: string
+  selectNumber: number;
+  tagName?: string;
 }
 
 /**
@@ -23,8 +23,8 @@ const getAnimation = (index: number) => {
     color: rgba(0, 0, 0, 0.88);
     border-top: 4px solid rgb(0, 150, 250);
   }
-  `
-}
+  `;
+};
 
 /**
  * styled-components
@@ -45,7 +45,7 @@ const Nav = styled.nav<Pick<SelectProps, 'index'>>`
     color: rgba(0, 0, 0, 0.88);
   }
   ${({ index }) => getAnimation(index)};
-`
+`;
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -61,7 +61,6 @@ const StyledLink = styled(Link)`
   cursor: pointer;
   box-sizing: border-box;
   white-space: nowrap;
-  text-decoration: none;
   border-top: 4px solid transparent;
   transition: color 0.2s ease 0s;
   @media (max-width: 450px) {
@@ -70,11 +69,11 @@ const StyledLink = styled(Link)`
     justify-content: center;
     padding: 0;
   }
-`
+`;
 
-const NavText = styled.p``
+const NavText = styled.p``;
 
-const NavContainer = styled.div``
+const NavContainer = styled.div``;
 
 const Navbar: React.FC<NavbarProps> = ({ selectNumber, tagName }) => {
   return (
@@ -83,45 +82,45 @@ const Navbar: React.FC<NavbarProps> = ({ selectNumber, tagName }) => {
         {tagName === undefined ? (
           <>
             {console.log(tagName)}
-            <StyledLink to="/illustratio">
+            <StyledLink to='/illustratio'>
               <NavText>イラスト</NavText>
             </StyledLink>
 
-            <StyledLink to="/rough">
+            <StyledLink to='/rough'>
               <NavText>ラフ</NavText>
             </StyledLink>
 
-            <StyledLink to="/commic">
+            <StyledLink to='/commic'>
               <NavText>マンガ</NavText>
             </StyledLink>
 
-            <StyledLink to="/graffiti">
+            <StyledLink to='/graffiti'>
               <NavText>落書き</NavText>
             </StyledLink>
           </>
         ) : (
-            <>
-              {console.log(tagName)}
-              <StyledLink to={`/tags/illustratio/${tagName}`}>
-                <NavText>イラスト</NavText>
-              </StyledLink>
+          <>
+            {console.log(tagName)}
+            <StyledLink to={`/tags/illustratio/${tagName}`}>
+              <NavText>イラスト</NavText>
+            </StyledLink>
 
-              <StyledLink to={`/tags/rough/${tagName}`}>
-                <NavText>ラフ</NavText>
-              </StyledLink>
+            <StyledLink to={`/tags/rough/${tagName}`}>
+              <NavText>ラフ</NavText>
+            </StyledLink>
 
-              <StyledLink to={`/tags/commic/${tagName}`}>
-                <NavText>マンガ</NavText>
-              </StyledLink>
+            <StyledLink to={`/tags/commic/${tagName}`}>
+              <NavText>マンガ</NavText>
+            </StyledLink>
 
-              <StyledLink to={`/tags/graffiti/${tagName}`}>
-                <NavText>落書き</NavText>
-              </StyledLink>
-            </>
-          )}
+            <StyledLink to={`/tags/graffiti/${tagName}`}>
+              <NavText>落書き</NavText>
+            </StyledLink>
+          </>
+        )}
       </Nav>
     </NavContainer>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

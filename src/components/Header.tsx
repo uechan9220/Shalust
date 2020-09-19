@@ -185,6 +185,10 @@ const SettingContainer = styled.div`
   margin-bottom: 1rem;
 `;
 
+const StyleLink = styled(Link)`
+  text-decoration: none;
+`;
+
 const Header: React.FC = (props: any) => {
   const { currentUser } = useContext(AuthContext);
 
@@ -275,7 +279,9 @@ const Header: React.FC = (props: any) => {
             </FollowFollowerContent>
           </FollowFollowerContainer>
           <Content>
-            <Text>投稿する</Text>
+            <StyleLink to='/post'>
+              <Text>投稿する</Text>
+            </StyleLink>
             <ManegementContainer>
               <Text>作品管理</Text>
               <Text>ブックマーク</Text>

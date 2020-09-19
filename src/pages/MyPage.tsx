@@ -1,14 +1,18 @@
-import React from 'react'
-import styled from 'styled-components'
-import { useParams } from 'react-router-dom'
-import { Query, QueryResult } from 'react-apollo'
-import { userQuery } from '../data/queries'
-import { UserQueryProps } from '../generated/TagProps'
+import React from 'react';
+import styled from 'styled-components';
+import { useParams } from 'react-router-dom';
+import { Query, QueryResult } from 'react-apollo';
+import { userQuery } from '../data/queries';
+import { UserQueryProps } from '../generated/TagProps';
 
-const Container = styled.div``
+const Container = styled.div``;
+
+interface paramsProps {
+  id: string;
+}
 
 const MyPage: React.FC = () => {
-  let { id } = useParams()
+  let { id } = useParams<paramsProps>();
 
   return (
     <Query query={userQuery} variables={{ uniqueid: id }}>
@@ -22,16 +26,16 @@ const MyPage: React.FC = () => {
                       {console.log(items)}
                       <p>{items.name}</p>
                     </div>
-                  )
+                  );
                 })
               : null}
             <p>MyPage</p>
             <p>{id}</p>
           </Container>
-        )
+        );
       }}
     </Query>
-  )
-}
+  );
+};
 
-export default MyPage
+export default MyPage;
