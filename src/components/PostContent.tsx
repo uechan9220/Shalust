@@ -177,7 +177,7 @@ const IsUploadTimeContainer = styled(UploadTimeContainer)`
 
 /**
  *
- * @param interface
+ * interface
  */
 
 interface PostContentProps {
