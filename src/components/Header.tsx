@@ -284,7 +284,9 @@ const Header: React.FC = (props: any) => {
             </StyleLink>
             <ManegementContainer>
               <Text>作品管理</Text>
-              <Text>ブックマーク</Text>
+              <StyleLink to='/bookmark'>
+                <Text>ブックマーク</Text>
+              </StyleLink>
               <Text>いいね</Text>
             </ManegementContainer>
             <SettingContainer>
