@@ -1,47 +1,47 @@
-import React, { useContext, useState, useEffect } from 'react'
-import styled from 'styled-components'
-import { useParams } from 'react-router-dom'
-import { Query, QueryResult } from 'react-apollo'
-import { AuthContext } from '../AuthProvider'
+import React, { useContext, useState, useEffect } from 'react';
+import styled from 'styled-components';
+import { useParams } from 'react-router-dom';
+import { Query, QueryResult } from 'react-apollo';
+import { AuthContext } from '../AuthProvider';
 
 /**
  * testData
  */
-import { IllustDataTest } from '../data/Data'
+import { IllustDataTest } from '../data/Data';
 
 /**
  * components
  */
-import Items from '../components/Items'
-import Navbar from '../components/Navbar'
+import Items from '../components/Items';
+import Navbar from '../components/Navbar';
 
 /**
  * query, Props
  */
-import { allPostQuery, fetchLikes } from '../data/queries'
-import { PostQueryProps } from '../generated/Props'
+import { allPostQuery, fetchLikes } from '../data/queries';
+import { PostQueryProps } from '../generated/Props';
 
 const Container = styled.div`
   padding: 2rem 1rem;
   min-height: 100vh;
   background-color: #e6ecf0;
-`
+`;
 
 const Title = styled.p`
   font-size: 3rem;
   font-weight: bold;
   margin-bottom: 1rem;
-`
+`;
 
 const TitleContainer = styled.div`
   text-align: center;
   margin: 2rem 0 4rem 0;
-`
+`;
 
 const Content = styled.div`
   padding: 2rem 1rem;
   background-color: #fff;
-`
+`;
 
 const Count = styled.p`
   font-family: Roboto;
@@ -49,31 +49,36 @@ const Count = styled.p`
   font-weight: bold;
   font-size: 14px;
   line-height: 16px;
-`
+`;
+
+interface paramsProps {
+  content: string;
+  tag: string;
+}
 
 const Tag: React.FC = (props: any) => {
-  let { content, tag } = useParams()
-  const { currentUser } = useContext(AuthContext)
-  const [selectNumber, setNumber] = useState(1)
+  let { content, tag } = useParams<paramsProps>();
+  const { currentUser } = useContext(AuthContext);
+  const [selectNumber, setNumber] = useState(1);
 
   useEffect(() => {
     switch (content) {
       case 'illust':
-        setNumber(1)
-        break
+        setNumber(1);
+        break;
       case 'rough':
-        setNumber(2)
-        break
+        setNumber(2);
+        break;
       case 'commic':
-        setNumber(3)
-        break
+        setNumber(3);
+        break;
       case 'graffiti':
-        setNumber(4)
-        break
+        setNumber(4);
+        break;
       default:
-        break
+        break;
     }
-  }, [content])
+  }, [content]);
 
   return (
     // APIとの接続の時にはこれを使う。
@@ -103,7 +108,7 @@ const Tag: React.FC = (props: any) => {
         <Items datas={IllustDataTest} />
       </Content>
     </Container>
-  )
-}
+  );
+};
 
-export default Tag
+export default Tag;
