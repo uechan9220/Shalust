@@ -168,7 +168,7 @@ function App() {
                       <Route exact path='/user/:user_id/'>
                         <User />
                       </Route>
-                      <Route exact path='/bookmark'>
+                      <Route exact path='/bookmark/:content'>
                         <BookMark />
                       </Route>
                     </Switch>
