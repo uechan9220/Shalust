@@ -39,6 +39,7 @@ import Signin from './pages/Signin';
 import Content from './pages/Content';
 import CreateUser from './pages/CreateUser';
 import Post from './pages/Post';
+import Like from './pages/Like';
 import { MaterialTheme } from './themes/MaterialTheme';
 
 const GlobalStyle = createGlobalStyle`
@@ -166,6 +167,9 @@ function App() {
                       </Route>
                       <Route exact path='/user/:user_id/'>
                         <User />
+                      </Route>
+                      <Route exact path='/like/:content'>
+                        <Like />
                       </Route>
                     </Switch>
                   </Auth>
