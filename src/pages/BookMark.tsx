@@ -46,9 +46,15 @@ const getAnimation = (index: number) => {
 /**
  * styled-components
  */
-
 const Container = styled.div`
+  min-height: 80vh; /* 後で消す */
+  padding: 2rem 1rem;
+  background-color: #e6ecf0;
+`;
+
+const Content = styled.div`
   padding: 1rem;
+  background-color: #fff;
 `;
 
 const Title = styled.p`
@@ -141,26 +147,28 @@ const BookMark: React.FC = () => {
   return (
     <Container>
       <Title>ブックマーク</Title>
-      <NavContainer>
-        <Nav index={selectNumber}>
-          <StyledLink to={`/bookmark/illustratio`}>
-            <NavText>イラスト</NavText>
-          </StyledLink>
+      <Content>
+        <NavContainer>
+          <Nav index={selectNumber}>
+            <StyledLink to={`/bookmark/illustratio`}>
+              <NavText>イラスト</NavText>
+            </StyledLink>
 
-          <StyledLink to={`/bookmark/rough`}>
-            <NavText>ラフ</NavText>
-          </StyledLink>
+            <StyledLink to={`/bookmark/rough`}>
+              <NavText>ラフ</NavText>
+            </StyledLink>
 
-          <StyledLink to={`/bookmark/commic`}>
-            <NavText>マンガ</NavText>
-          </StyledLink>
+            <StyledLink to={`/bookmark/commic`}>
+              <NavText>マンガ</NavText>
+            </StyledLink>
 
-          <StyledLink to={`/bookmark/graffiti`}>
-            <NavText>落書き</NavText>
-          </StyledLink>
-        </Nav>
-      </NavContainer>
-      <Items datas={data} isInfo={false} path={path} />
+            <StyledLink to={`/bookmark/graffiti`}>
+              <NavText>落書き</NavText>
+            </StyledLink>
+          </Nav>
+        </NavContainer>
+        <Items datas={data} isInfo={true} path={path} />
+      </Content>
     </Container>
   );
 };
