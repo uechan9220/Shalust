@@ -39,6 +39,7 @@ import Signin from './pages/Signin';
 import Content from './pages/Content';
 import CreateUser from './pages/CreateUser';
 import Post from './pages/Post';
+import BookMark from './pages/BookMark';
 import { MaterialTheme } from './themes/MaterialTheme';
 
 const GlobalStyle = createGlobalStyle`
@@ -166,6 +167,9 @@ function App() {
                       </Route>
                       <Route exact path='/user/:user_id/'>
                         <User />
+                      </Route>
+                      <Route exact path='/bookmark/:content'>
+                        <BookMark />
                       </Route>
                     </Switch>
                   </Auth>
