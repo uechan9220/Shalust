@@ -163,6 +163,14 @@ const UserPopularityTitle = styled.p`
   font-weight: bold;
 `;
 
+const ExternalLink = styled.a`
+  text-decoration: none;
+  color: #000000;
+  &:active {
+    color: #000000;
+  }
+`;
+
 /**
  * interface
  */
@@ -442,7 +450,13 @@ const Content: React.FC = () => {
                   </ActionButtonContent>
                 </ActionContainer>
                 <ReportContainer>
-                  <Report>運営に報告</Report>
+                  <ExternalLink
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    href='https://forms.gle/96VworLpwGBqLkXq8'
+                  >
+                    <Report>運営に報告</Report>
+                  </ExternalLink>
                 </ReportContainer>
                 <Detail>{item.detail}</Detail>
                 <UserContainer>
