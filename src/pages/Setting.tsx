@@ -142,6 +142,13 @@ const CancelContainer = styled.div`
   justify-content: flex-end;
 `;
 
+const BackValueContent = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 /**
  * typescript
  */
@@ -324,7 +331,19 @@ const Setting: React.FC = (props: any) => {
       <Section>
         <Title>設定ページ</Title>
         <Content>
-          <Subtitle>ヘッダー画像</Subtitle>
+          <BackValueContent>
+            <Subtitle>ヘッダー画像</Subtitle>
+            <Button
+              name='header_image'
+              onClick={backValue}
+              variant='contained'
+              color='secondary'
+              size='small'
+              startIcon={<ArrowBackIcon />}
+            >
+              元に戻す
+            </Button>
+          </BackValueContent>
           <Dropzone
             onDrop={(acceptedFiles) => handleInputHeaderImage(acceptedFiles)}
             accept='image/*'
@@ -356,18 +375,21 @@ const Setting: React.FC = (props: any) => {
               </HeaderImageContainer>
             )}
           </Dropzone>
-          <Button
-            name='header_image'
-            onClick={backValue}
-            variant='contained'
-            color='secondary'
-            startIcon={<ArrowBackIcon />}
-          >
-            元に戻す
-          </Button>
         </Content>
         <Content>
-          <Subtitle>アイコン画像</Subtitle>
+          <BackValueContent>
+            <Subtitle>アイコン画像</Subtitle>
+            <Button
+              name='icon_image'
+              onClick={backValue}
+              variant='contained'
+              color='secondary'
+              size='small'
+              startIcon={<ArrowBackIcon />}
+            >
+              元に戻す
+            </Button>
+          </BackValueContent>
           <Dropzone
             onDrop={(acceptedFiles) => handleInputIconImage(acceptedFiles)}
             accept='image/*'
@@ -399,21 +421,24 @@ const Setting: React.FC = (props: any) => {
               </IconImageContainer>
             )}
           </Dropzone>
-          <Button
-            name='icon_image'
-            onClick={backValue}
-            variant='contained'
-            color='secondary'
-            startIcon={<ArrowBackIcon />}
-          >
-            元に戻す
-          </Button>
         </Content>
         {/* <p>user_id: {userInfo.user_id}</p> */}
         <Content>
-          <SubTitleUserName NameValidation={userNameValidation}>
-            名前 (必須)
-          </SubTitleUserName>
+          <BackValueContent>
+            <SubTitleUserName NameValidation={userNameValidation}>
+              名前 (必須)
+            </SubTitleUserName>
+            <Button
+              name='user_name'
+              onClick={backValue}
+              variant='contained'
+              color='secondary'
+              size='small'
+              startIcon={<ArrowBackIcon />}
+            >
+              元に戻す
+            </Button>
+          </BackValueContent>
           {userNameValidation ? (
             <TextField
               name='user_name'
@@ -442,20 +467,23 @@ const Setting: React.FC = (props: any) => {
           <Caption>
             全体に表示される名前になります。後から変更も可能です。
           </Caption>
-          <Button
-            name='user_name'
-            onClick={backValue}
-            variant='contained'
-            color='secondary'
-            startIcon={<ArrowBackIcon />}
-          >
-            元に戻す
-          </Button>
         </Content>
         <Content>
-          <SubTitleUserId IdValidation={userIdValidation}>
-            ユーザID (必須)
-          </SubTitleUserId>
+          <BackValueContent>
+            <SubTitleUserId IdValidation={userIdValidation}>
+              ユーザID (必須)
+            </SubTitleUserId>
+            <Button
+              name='account_id'
+              onClick={backValue}
+              variant='contained'
+              color='secondary'
+              size='small'
+              startIcon={<ArrowBackIcon />}
+            >
+              元に戻す
+            </Button>
+          </BackValueContent>
           {userIdValidation ? (
             <TextField
               name='account_id'
@@ -494,18 +522,21 @@ const Setting: React.FC = (props: any) => {
           <Caption>
             ユーザIDは英数字と’_’(アンダーバー)と’-’(ハイフン)が使えます
           </Caption>
-          <Button
-            name='account_id'
-            onClick={backValue}
-            variant='contained'
-            color='secondary'
-            startIcon={<ArrowBackIcon />}
-          >
-            元に戻す
-          </Button>
         </Content>
         <Content>
-          <Subtitle>コメント (任意)</Subtitle>
+          <BackValueContent>
+            <Subtitle>コメント (任意)</Subtitle>
+            <Button
+              name='comment'
+              onClick={backValue}
+              variant='contained'
+              color='secondary'
+              size='small'
+              startIcon={<ArrowBackIcon />}
+            >
+              元に戻す
+            </Button>
+          </BackValueContent>
           <TextField
             name='comment'
             onChange={handleInputChange}
@@ -518,15 +549,6 @@ const Setting: React.FC = (props: any) => {
             value={userInfo.comment}
             fullWidth
           />
-          <Button
-            name='comment'
-            onClick={backValue}
-            variant='contained'
-            color='secondary'
-            startIcon={<ArrowBackIcon />}
-          >
-            元に戻す
-          </Button>
         </Content>
         <Content>
           <Button
