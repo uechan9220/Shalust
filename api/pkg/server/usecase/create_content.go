@@ -1,6 +1,7 @@
 package usecase
 
 import (
+	"fmt"
 	"shalust/api/pkg/infra"
 	"shalust/api/pkg/server/model"
 )
@@ -130,4 +131,11 @@ func PostContentHandling(data model.PostContentData) (string, error) {
 		return contentId, nil
 	}
 	return contentId, nil
+}
+
+func CreateTag(tagData []string) error {
+	for _, v := range tagData {
+		fmt.Println(v)
+	}
+	return nil
 }

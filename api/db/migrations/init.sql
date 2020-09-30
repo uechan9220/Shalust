@@ -60,16 +60,11 @@ CREATE TABLE IF NOT EXISTS bookmarks (
     FOREIGN KEY (content_id) REFERENCES content_handling(content_id)
 );
 
-CREATE TABLE IF NOT EXISTS tags (
-    id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    name VARCHAR(128)
-);
-
 CREATE TABLE IF NOT EXISTS Included_tags (
-    id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    id VARCHAR(128) NOT NULL PRIMARY KEY,
     content_id VARCHAR(128),
     tag_id VARCHAR(128),
-    FOREIGN KEY (id) REFERENCES tags(id)
+    name VARCHAR(128)
 );
 
 -- +migrate Down

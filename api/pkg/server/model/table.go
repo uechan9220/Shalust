@@ -86,13 +86,10 @@ type Bookmark struct {
 	Content_id string `json:"content_id"`
 }
 type Included_tags struct {
-	Id         int    `json:"id"`
+	Id         string `json:"id"`
 	tag_id     string `json:"tag_id"`
 	Content_id string `json:"content_id"`
-}
-type tags struct {
-	Id   int    `json:"id"`
-	name string `json:"name"`
+	name       string `json:"name"`
 }
 
 type ContentImages struct {
