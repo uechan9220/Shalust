@@ -159,6 +159,9 @@ function App() {
                   </Route>
                   <Auth>
                     <Switch>
+                      <Route path='/post'>
+                        <Post />
+                      </Route>
                       <Route path='/create_user'>
                         <CreateUser />
                       </Route>
@@ -167,9 +170,6 @@ function App() {
                       </Route>
                       <Route exact path='/user/:user_id/'>
                         <User />
-                      </Route>
-                      <Route path='/post'>
-                        <Post />
                       </Route>
                     </Switch>
                   </Auth>

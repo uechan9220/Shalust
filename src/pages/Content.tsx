@@ -157,6 +157,14 @@ const UserPopularityContainer = styled.div`
   margin: 2rem 0;
 `;
 
+const ExternalLink = styled.a`
+  text-decoration: none;
+  color: #000000;
+  &:active {
+    color: #000000;
+  }
+`;
+
 const UserPopularityTitle = styled.p`
   margin-bottom: 0.5rem;
   font-size: 24px;
@@ -378,7 +386,8 @@ const Content: React.FC = () => {
   const [follow, isFollow] = useState(Data[0].follow);
 
   const likeFunc = () => {
-    like ? setLikeCount(likeCount - 1) : setLikeCount(likeCount + 1);
+    // 表示してない。
+    // like ? setLikeCount(likeCount - 1) : setLikeCount(likeCount + 1);
     isLike(!like);
     like ? alert('いいねを解除しました') : alert('いいねしました！');
   };
@@ -442,7 +451,13 @@ const Content: React.FC = () => {
                   </ActionButtonContent>
                 </ActionContainer>
                 <ReportContainer>
-                  <Report>運営に報告</Report>
+                  <ExternalLink
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    href='https://forms.gle/96VworLpwGBqLkXq8'
+                  >
+                    <Report>運営に報告</Report>
+                  </ExternalLink>
                 </ReportContainer>
                 <Detail>{item.detail}</Detail>
                 <UserContainer>
