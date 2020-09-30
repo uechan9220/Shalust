@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import {
   TextField,
@@ -13,6 +13,7 @@ import {
 import ImagePost from '../components/ImagePost';
 import { PostQuery } from '../data/mutation';
 import { useMutation } from 'react-apollo';
+import { AuthContext } from '../AuthProvider';
 
 /**
  * styled-componets
@@ -130,6 +131,7 @@ interface imagesProps {
 }
 
 interface postDataProps {
+  user_id: string;
   title: string;
   detail: string;
   commic: boolean;
@@ -143,7 +145,9 @@ interface postDataProps {
 }
 
 const Post: React.FC = () => {
+  const { currentUser } = useContext(AuthContext);
   const [postData, setPostData] = useState<postDataProps>({
+    user_id: '',
     title: '',
     detail: '',
     commic: false,
@@ -168,14 +172,17 @@ const Post: React.FC = () => {
   const [isImageIndexAdd, setImageIndexAdd] = useState<boolean>(false);
 
   useEffect(() => {
+    if (currentUser.user)
+      setPostData({ ...postData, user_id: currentUser.user.uid });
     if (isImageIndexAdd) postFunction();
-  }, [isImageIndexAdd]);
+  }, [isImageIndexAdd, currentUser]);
 
   const postFunction = () => {
     postQuery({
       variables: { postData },
     }).then((res) => {
       if (!res.errors) {
+        console.log(postData);
         console.log(res);
         console.log('登録しました');
       } else {
