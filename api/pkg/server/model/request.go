@@ -10,7 +10,7 @@ type PostContentData struct {
 	Graffiti    bool     `json:"graffiti"`
 	Rough       bool     `json:"rough"`
 	Illustratio bool     `json:"illustratio"`
-	Tag         []Tag    `json:"tag"`
+	Tags        []string `json:"tags"`
 	Images      []Images `json:"images"`
 }
 
