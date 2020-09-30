@@ -31,6 +31,7 @@ func Create_sample() {
 
 	icon_url, _ := usecase.Upload_S3("/app/api/db/create_sample/icon_sample.jpg", "hoge/icon_sample.jpg")
 	imagesample, _ := usecase.Upload_S3("/app/api/db/create_sample/image_sample.jpg", "hoge/image_sample.jpg")
+	data.Content.Thumbnail_url = imagesample
 	data.User.Icon_url = icon_url
 	data.User.Header_url = icon_url
 	data.ImageData.Image_url = imagesample
