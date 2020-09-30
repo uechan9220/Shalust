@@ -36,7 +36,7 @@ type ContentHandling struct {
 	Graffiti      bool   `json:"graffiti"`
 	Rough         bool   `json:"rough"`
 	Illustratio   bool   `json:"illustratio"`
-	Release       bool   `json:"release"`
+	Disclose      bool   `json:"disclose"`
 	Thumbnail_url string `json:"thumbnail_url"`
 }
 

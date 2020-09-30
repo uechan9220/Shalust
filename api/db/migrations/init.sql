@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS content_handling (
     illustratio BOOLEAN,
     rough BOOLEAN,
     graffiti BOOLEAN,
-    release BOOLEAN,
+    disclose BOOLEAN,
     thumbnail_url VARCHAR(128),
     FOREIGN KEY (user_id) REFERENCES user(user_id)
 );
@@ -32,8 +32,8 @@ CREATE TABLE IF NOT EXISTS follow (
     id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     follower_id VARCHAR(128),
     following_id VARCHAR(128),
-    CONSTRAINT fk_Follower_id FOREIGN KEY (follower_id) REFERENCES user(user_id),
-    CONSTRAINT fk_Following_id FOREIGN KEY (following_id) REFERENCES user(user_id)
+    FOREIGN KEY (follower_id) REFERENCES user(user_id),
+    FOREIGN KEY (following_id) REFERENCES user(user_id)
 );
 
 CREATE TABLE IF NOT EXISTS content_data (
