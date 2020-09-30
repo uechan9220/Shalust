@@ -80,9 +80,10 @@ func PostContent(imageData []model.Images, contentId string) error {
 	var images []model.Content
 	for _, v := range imageData {
 		var data model.Content
-		url, _ := SaveContentImage(v.Image, contentId, v.Index)
+		url, _ := SaveContentImage(v.Image[23:], contentId, v.Index)
 		data.Image_url = url
 		data.Image_index = v.Index
+		data.Content_id = contentId
 		_ = CreateContent(data)
 		images = append(images, data)
 	}
@@ -93,6 +94,8 @@ func PostContentHandling(data model.PostContentData) (string, error) {
 	var content_handling model.ContentHandling
 
 	contentId := Uuid4()
+
+	content_handling.Disclose = true
 
 	content_handling.Create_at = GetDeteInTokyo()
 	content_handling.Content_id = contentId
