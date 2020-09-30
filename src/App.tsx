@@ -153,9 +153,6 @@ function App() {
                   <Route path='/tags/:content/:tag'>
                     <Tag />
                   </Route>
-                  <Route path='/post'>
-                    <Post />
-                  </Route>
                   <Auth>
                     <Switch>
                       <Route path='/create_user'>
@@ -166,6 +163,9 @@ function App() {
                       </Route>
                       <Route exact path='/user/:user_id/'>
                         <User />
+                      </Route>
+                      <Route path='/post'>
+                        <Post />
                       </Route>
                     </Switch>
                   </Auth>
