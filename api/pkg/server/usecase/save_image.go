@@ -98,10 +98,10 @@ func SaveContentImage(data string, content_id string, index int) (string, error)
 	}
 
 	if format == "jpeg" {
-		result_path, err := Upload_S3(tmpFile.Name(), fmt.Sprintf("content/%s/%s.jpg", content_id, index))
+		result_path, err := Upload_S3(tmpFile.Name(), fmt.Sprintf("content/%s/%d.jpg", content_id, index))
 		return result_path, err
 	} else if format == "png" {
-		result_path, err := Upload_S3(tmpFile.Name(), fmt.Sprintf("content/%s/%s.png", content_id, index))
+		result_path, err := Upload_S3(tmpFile.Name(), fmt.Sprintf("content/%s/%d.png", content_id, index))
 		return result_path, err
 	}
 
