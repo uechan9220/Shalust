@@ -11,6 +11,8 @@ import {
   Button,
 } from '@material-ui/core';
 import ImagePost from '../components/ImagePost';
+import { PostQuery } from '../data/mutation';
+import { useMutation } from 'react-apollo';
 
 /**
  * styled-componets
@@ -154,6 +156,7 @@ const Post: React.FC = () => {
     thumbailNumber: 0,
   });
 
+  const [postQuery] = useMutation(PostQuery);
   const [postTitleValidation, setPostTitleValidation] = useState(false);
   const [category, setCategory] = useState('');
   const [categoryValidation, setCategotyValidation] = useState(false);
@@ -162,10 +165,25 @@ const Post: React.FC = () => {
   const [tags, setTags] = useState<string[]>([]);
   const [imageFiles, setImageFiles] = useState<string[]>([]);
   const [thumbail, setThumbail] = useState<number>(1);
+  const [isImageIndexAdd, setImageIndexAdd] = useState<boolean>(false);
 
   useEffect(() => {
-    console.log(postData);
-  }, [postData.images]);
+    if (isImageIndexAdd) postFunction();
+  }, [isImageIndexAdd]);
+
+  const postFunction = () => {
+    postQuery({
+      variables: { postData },
+    }).then((res) => {
+      if (!res.errors) {
+        console.log(res);
+        console.log('登録しました');
+      } else {
+        console.log(res.errors);
+      }
+    });
+    setImageIndexAdd(false);
+  };
 
   const handleInputChange = (e: any) => {
     const { name, value } = e.target;
@@ -259,12 +277,7 @@ const Post: React.FC = () => {
     }
   };
 
-  const postDataFunc = () => {
-    // console.log(imageFiles);
-    // console.log(postData.images.length);
-    if (imageFiles.length < 1) alert('画像を追加してください');
-    if (!postTitleValidation) alert('タイトルを入れてください。');
-    if (!categoryValidation) alert('カテゴリーを設定してください');
+  const updateImageFiles = () => {
     let imageObjectArray: imagesProps[] = [];
     imageFiles.map((item: any, index: number) => {
       // console.log(item.preview);
@@ -282,6 +295,17 @@ const Post: React.FC = () => {
       images: imageObjectArray,
       thumbailNumber: thumbail,
     });
+    setImageIndexAdd(true);
+  };
+
+  const postDataFunc = () => {
+    // console.log(imageFiles);
+    // console.log(postData.images.length);
+    if (imageFiles.length < 1) alert('画像を追加してください');
+    if (!postTitleValidation) alert('タイトルを入れてください。');
+    if (!categoryValidation) alert('カテゴリーを設定してください');
+
+    updateImageFiles();
   };
 
   const handleRemoveItem = (props: number) => {
