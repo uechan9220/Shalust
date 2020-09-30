@@ -18,6 +18,7 @@
         "user_id": "testid",
         "detail": "雪だるまにはジャージを被せる派",
         "title": "testt itle",
-        "adlut": false
+        "adlut": false,
+        "disclose": true
     }
 }
