@@ -26,9 +26,10 @@ func CreateUser(c *gin.Context) {
 	var userData model.User
 	c.BindJSON(&requestData)
 
-	header_imageData := requestData.Header_image[23:]
-
-	userData.Header_url, _ = usecase.SaveHeaderImage(header_imageData)
+	if requestData.Header_image != "" {
+		header_imageData := requestData.Header_image[23:]
+		userData.Header_url, _ = usecase.SaveHeaderImage(header_imageData)
+	}
 
 	match, _ := regexp.MatchString("http", requestData.Icon_image)
 	if match {
