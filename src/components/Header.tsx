@@ -283,7 +283,9 @@ const Header: React.FC = (props: any) => {
               <Text>投稿する</Text>
             </StyleLink>
             <ManegementContainer>
-              <Text>作品管理</Text>
+              <StyleLink to='/post_management/illustratio'>
+                <Text>作品管理</Text>
+              </StyleLink>
               <Text>ブックマーク</Text>
               <Text>いいね</Text>
             </ManegementContainer>

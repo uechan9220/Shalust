@@ -38,6 +38,7 @@ import Login from './pages/Login';
 import Signin from './pages/Signin';
 import Content from './pages/Content';
 import CreateUser from './pages/CreateUser';
+import PostManagement from './pages/PostManagement';
 import Post from './pages/Post';
 import { MaterialTheme } from './themes/MaterialTheme';
 
@@ -153,8 +154,14 @@ function App() {
                   <Route path='/tags/:content/:tag'>
                     <Tag />
                   </Route>
+                  <Route exact path='/post_management/:content'>
+                    <PostManagement />
+                  </Route>
                   <Auth>
                     <Switch>
+                      <Route path='/post'>
+                        <Post />
+                      </Route>
                       <Route path='/create_user'>
                         <CreateUser />
                       </Route>
@@ -163,9 +170,6 @@ function App() {
                       </Route>
                       <Route exact path='/user/:user_id/'>
                         <User />
-                      </Route>
-                      <Route path='/post'>
-                        <Post />
                       </Route>
                     </Switch>
                   </Auth>
