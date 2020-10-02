@@ -27,16 +27,29 @@ func CreateUser(c *gin.Context) {
 	c.BindJSON(&requestData)
 
 	if requestData.Header_image != "" {
-		header_imageData := requestData.Header_image[23:]
-		userData.Header_url, _ = usecase.SaveHeaderImage(header_imageData)
+		match, _ := regexp.MatchString("jpeg", requestData.Header_image)
+		if match {
+			header_imageData := requestData.Header_image[23:]
+			userData.Header_url, _ = usecase.SaveHeaderImage(header_imageData)
+		} else {
+			header_imageData := requestData.Header_image[22:]
+			userData.Header_url, _ = usecase.SaveHeaderImage(header_imageData)
+		}
+
 	}
 
 	match, _ := regexp.MatchString("http", requestData.Icon_image)
 	if match {
 		userData.Icon_url = requestData.Icon_image
 	} else {
-		icon_imageData := requestData.Header_image[23:]
-		userData.Icon_url, _ = usecase.SaveIconImage(icon_imageData)
+		image_match, _ := regexp.MatchString("jpeg", requestData.Header_image)
+		if image_match {
+			icon_imageData := requestData.Header_image[23:]
+			userData.Icon_url, _ = usecase.SaveIconImage(icon_imageData)
+		} else {
+			icon_imageData := requestData.Header_image[22:]
+			userData.Icon_url, _ = usecase.SaveIconImage(icon_imageData)
+		}
 	}
 	userData.Account_id = requestData.Account_id
 	userData.Comment = requestData.Comment

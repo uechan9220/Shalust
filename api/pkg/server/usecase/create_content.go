@@ -2,6 +2,7 @@ package usecase
 
 import (
 	"fmt"
+	"regexp"
 	"shalust/api/pkg/infra"
 	"shalust/api/pkg/server/model"
 )
@@ -81,7 +82,13 @@ func PostContent(imageData []model.Images, contentId string) error {
 	var images []model.Content
 	for _, v := range imageData {
 		var data model.Content
-		url, _ := SaveContentImage(v.Image[23:], contentId, v.Index)
+		var url string
+		match, _ := regexp.MatchString("jpeg", v.Image)
+		if match {
+			url, _ = SaveContentImage(v.Image[23:], contentId, v.Index)
+		} else {
+			url, _ = SaveContentImage(v.Image[22:], contentId, v.Index)
+		}
 		data.Image_url = url
 		data.Image_index = v.Index
 		data.Content_id = contentId
