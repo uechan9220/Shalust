@@ -80,6 +80,7 @@ func CreateContent(data model.Content) error {
 
 func PostContent(imageData []model.Images, contentId string) error {
 	var images []model.Content
+
 	for _, v := range imageData {
 		var data model.Content
 		var url string
@@ -98,10 +99,8 @@ func PostContent(imageData []model.Images, contentId string) error {
 	return nil
 }
 
-func PostContentHandling(data model.PostContentData) (string, error) {
+func PostContentHandling(data model.PostContentData, contentId string) error {
 	var content_handling model.ContentHandling
-
-	contentId := Uuid4()
 
 	content_handling.Disclose = true
 
@@ -112,32 +111,42 @@ func PostContentHandling(data model.PostContentData) (string, error) {
 	content_handling.Detail = data.Detail
 	content_handling.Adult = data.Adult
 
+	thumbnail_url, _ := CreateThumbail(data.Images[data.ThumbailNumber-1].Image, contentId)
+
+	content_handling.Thumbnail_url = thumbnail_url
 	if data.Illustratio {
 		err := CreateIllustratioHandling(content_handling)
 		if err != nil {
-			return "", err
+			return err
 		}
-		return contentId, nil
 	} else if data.Graffiti {
 		err := CreateGraffitiHandling(content_handling)
 		if err != nil {
-			return "", err
+			return err
 		}
-		return contentId, nil
 	} else if data.Rough {
 		err := CreateRoughtHandling(content_handling)
 		if err != nil {
-			return "", err
+			return err
 		}
-		return contentId, nil
 	} else if data.Commic {
 		err := CreateCommicHandling(content_handling)
 		if err != nil {
-			return "", err
+			return err
 		}
-		return contentId, nil
 	}
-	return contentId, nil
+	return nil
+}
+
+func CreateThumbail(image, contentId string) (string, error) {
+	match, _ := regexp.MatchString("jpeg", image)
+	if match {
+		url, _ := SaveThumbailImage(image[23:], contentId)
+		return url, nil
+	}
+	url, _ := SaveThumbailImage(image[22:], contentId)
+	return url, nil
+
 }
 
 func CreateTag(tagData []string) error {

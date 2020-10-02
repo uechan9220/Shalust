@@ -13,6 +13,7 @@ type PostContentData struct {
 	Tags           []string `json:"tags"`
 	Images         []Images `json:"images"`
 	ThumbailNumber int      `json:"thumbailNumber"`
+	Thumbnail_url  string   `json:"thumbnail_url"`
 }
 
 type Tag struct {
