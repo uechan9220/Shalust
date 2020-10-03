@@ -107,6 +107,36 @@ func SaveContentImage(data string, content_id string, index int) (string, error)
 
 	return "", nil
 }
+func SaveThumbailImage(data string, content_id string) (string, error) {
+
+	encodeData, err := base64.StdEncoding.DecodeString(data)
+	if err != nil {
+		return "", err
+	}
+
+	tmpFile, err := ioutil.TempFile("", "")
+	if err != nil {
+		return "", err
+	}
+	defer os.Remove(tmpFile.Name())
+
+	tmpFile.Write(encodeData)
+	tmpFile.Close()
+	format, err := AnalyzeFormat(tmpFile.Name())
+	if err != nil {
+		return "", err
+	}
+
+	if format == "jpeg" {
+		result_path, err := Upload_S3(tmpFile.Name(), fmt.Sprintf("content/%s/Thumbail.jpg", content_id))
+		return result_path, err
+	} else if format == "png" {
+		result_path, err := Upload_S3(tmpFile.Name(), fmt.Sprintf("content/%s/Thumbail.png", content_id))
+		return result_path, err
+	}
+
+	return "", nil
+}
 
 func AnalyzeFormat(fileName string) (string, error) {
 	file, err := os.Open(fileName)

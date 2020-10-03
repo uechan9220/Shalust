@@ -1,6 +1,6 @@
 compose/build:
 	docker-compose -f docker-compose.yml -f docker-compose.infra.yml build
-	-docker network create shalust-networuk
+	-docker network create shalust-network
 up:
 	docker-compose -f docker-compose.yml -f docker-compose.infra.yml up -d
 	@sleep 10
