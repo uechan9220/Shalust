@@ -18,6 +18,7 @@ func Serve(r *gin.Engine, port string) {
 		v1.GET("/getIllustratio", handler.GetIllustratio)
 		v1.POST("/createUser", handler.CreateUser)
 		v1.POST("/postContent", handler.PostContent)
+		v1.POST("/post_management", handler.Post_management)
 
 	}
 
