@@ -51,7 +51,7 @@ func GetUserGraffiti(c *gin.Context) {
 
 	var data model.UserMainPage
 
-	_ = usecase.GetUserData(requesrequestData.User_idtData, &data.UserData)
+	_ = usecase.GetUserData(requestData.User_id, &data.UserData)
 	_ = usecase.GetUserGraffiti(requestData.User_id, &data.Illustratio)
 
 	c.JSON(200, data)
