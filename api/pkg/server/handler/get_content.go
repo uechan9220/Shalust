@@ -1,7 +1,6 @@
 package handler
 
 import (
-	"fmt"
 	"shalust/api/pkg/server/model"
 
 	"shalust/api/pkg/server/usecase"
@@ -68,9 +67,8 @@ func Post_management(c *gin.Context) {
 
 	c.BindJSON(&requestData)
 
-	var data []model.ContentData
+	var data []model.ContentHandling
 
-	err := usecase.GetUserContent("U3ttZo4hlBVs0Ui75vMxtyt378u1", &data)
-	fmt.Println(err)
+	_ = usecase.GetUserContent(requestData.User_id, &data)
 	c.JSON(200, data)
 }
