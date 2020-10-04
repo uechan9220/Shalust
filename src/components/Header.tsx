@@ -290,7 +290,9 @@ const Header: React.FC = (props: any) => {
               <Text>いいね</Text>
             </ManegementContainer>
             <SettingContainer>
-              <Text>設定</Text>
+              <StyleLink to='/setting'>
+                <Text>設定</Text>
+              </StyleLink>
               <Text>フィードバックを送る</Text>
             </SettingContainer>
             <Text onClick={() => logout()}>ログアウト</Text>
