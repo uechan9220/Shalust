@@ -19,8 +19,8 @@ func Serve(r *gin.Engine, port string) {
 		v1.POST("/createUser", handler.CreateUser)
 		v1.POST("/postContent", handler.PostContent)
 		v1.GET("/postManagement", handler.Post_management)
-		v1.PUT("/postManagement", handler.CahngeDiscloseContent)
-		v1.DELETE("/deleteContnt", handler.DeleteContent)
+		v1.PUT("/cahngeDiscloseContent", handler.CahngeDiscloseContent)
+		v1.GET("/deleteContnt", handler.DeleteContent)
 
 	}
 
