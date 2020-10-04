@@ -28,8 +28,8 @@ func Init_mysql() (Db, error) {
 	return Db{client: client}, err
 }
 
-func (db *Db) Find(shell interface{}) {
-	db.client.Find(shell)
+func (db *Db) Find(shell interface{}) *Db {
+	db.client = db.client.Find(shell)
 	return db
 }
 
