@@ -65,6 +65,7 @@ type ContentData struct {
 	Illustratio     bool   `json:"illustratio"`
 	User_bookmarked bool   `json:"user_bookmarked"`
 	User_liked      bool   `json:"user_liked"`
+	Thumbnail_url   string `json:"thumbnail_url"`
 }
 
 type RturnIllustratio struct {
