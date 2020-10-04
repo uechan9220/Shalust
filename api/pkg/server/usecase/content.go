@@ -1,8 +1,8 @@
 package usecase
 
 import (
+	"fmt"
 	"shalust/api/pkg/infra"
-	"shalust/api/pkg/server/model"
 )
 
 func CahngeDisclose(content_id string, disclose bool) error {
@@ -11,10 +11,11 @@ func CahngeDisclose(content_id string, disclose bool) error {
 	if err != nil {
 		return err
 	}
+	fmt.Println(content_id)
 	if disclose {
-		client.From("content_handling").Where("content_id = ?", content_id).Update("disclose", 1)
+		client.Exec("UPDATE content_handling SET disclose= 1 WHERE content_id = ?", content_id)
 	} else {
-		client.From("content_handling").Where("content_id = ?", content_id).Update("disclose", 0)
+		client.Exec("UPDATE content_handling SET disclose= 0 WHERE content_id = ?", content_id)
 	}
 	defer client.Close()
 	return err
@@ -26,8 +27,9 @@ func DeleteContent(content_id string) error {
 	if err != nil {
 		return err
 	}
+	client.Exec("DELETE FROM content_data WHERE content_id = ?", content_id)
+	client.Exec("DELETE FROM content_handling WHERE content_id = ?", content_id)
 
-	client.From("content_handling").Delete(&model.ContentHandling{Content_id: content_id})
 	defer client.Close()
 	return err
 }
