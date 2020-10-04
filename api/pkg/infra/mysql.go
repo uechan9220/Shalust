@@ -105,3 +105,7 @@ func (db *Db) Update(attrs ...interface{}) *Db {
 	db.client = db.client.Update(attrs)
 	return db
 }
+func (db *Db) Updates(values interface{}) *Db {
+	db.client = db.client.Updates(values)
+	return db
+}
