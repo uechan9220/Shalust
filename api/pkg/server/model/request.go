@@ -23,3 +23,13 @@ type Images struct {
 	Image string `json:"image`
 	Index int    `json:"index`
 }
+type UserData struct {
+	User_id       string `json:"user_id"`
+	User_name     string `json:"user_name"`
+	Comment       string `json:"comment"`
+	Last_seen     string `json:"last_seen"`
+	Account_id    string `json:"account_id"`
+	User_location string `json:"user_location"`
+	Icon_image    string `json:"icon_image"`
+	Header_image  string `json:"header_image"`
+}

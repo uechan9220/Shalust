@@ -18,9 +18,9 @@ func GetIllustratio(c *gin.Context) {
 
 func GetUserIllustratio(c *gin.Context) {
 
-	user_id := c.Param("user_id")
-
 	var data model.UserMainPage
+
+	user_id := c.Param("user_id")
 
 	_ = usecase.GetUserData(user_id, &data.UserData)
 	_ = usecase.GetUserIllustratio(user_id, &data.Illustratio)
@@ -58,5 +58,17 @@ func GetUserRough(c *gin.Context) {
 
 	_ = usecase.GetUserData(user_id, &data.UserData)
 	_ = usecase.GetUserRough(user_id, &data.Illustratio)
+	c.JSON(200, data)
+}
+
+func Post_management(c *gin.Context) {
+
+	var requestData model.UserData
+
+	c.BindJSON(&requestData)
+
+	var data []model.ContentHandling
+
+	_ = usecase.GetUserContent(requestData.User_id, &data)
 	c.JSON(200, data)
 }

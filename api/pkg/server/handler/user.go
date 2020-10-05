@@ -10,19 +10,8 @@ import (
 	_ "golang.org/x/image/tiff"
 )
 
-type UserData struct {
-	User_id       string `json:"user_id"`
-	User_name     string `json:"user_name"`
-	Comment       string `json:"comment"`
-	Last_seen     string `json:"last_seen"`
-	Account_id    string `json:"account_id"`
-	User_location string `json:"user_location"`
-	Icon_image    string `json:"icon_image"`
-	Header_image  string `json:"header_image"`
-}
-
 func CreateUser(c *gin.Context) {
-	var requestData UserData
+	var requestData model.UserData
 	var userData model.User
 	c.BindJSON(&requestData)
 
