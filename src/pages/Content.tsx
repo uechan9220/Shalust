@@ -186,7 +186,7 @@ interface ContentProps {
     title: string;
     views: number;
     adult: boolean;
-    image_url: string;
+    thumbnail_url: string;
     image_index: number;
     like_count: number;
     user_bookmarked: boolean;
@@ -218,7 +218,7 @@ const Content: React.FC = () => {
       detail: '雪だるまにはジャージを被せる派',
       icon_url: 'http://localhost:9000/mybucket/hoge/icon_sample.jpg',
       image_index: 1,
-      image_url: 'http://localhost:9000/mybucket/hoge/image_sample.jpg',
+      thumbnail_url: 'http://localhost:9000/mybucket/hoge/image_sample.jpg',
       like_count: 0,
       title: 'testt itle',
       user_id: '14358c5b-eacd-11ea-a19e-0242ac130002',
@@ -241,7 +241,7 @@ const Content: React.FC = () => {
           icon_url: 'http://localhost:9000/mybucket/hoge/icon_sample.jpg',
           illustratio: true,
           image_index: 1,
-          image_url: 'http://localhost:9000/mybucket/hoge/image_sample.jpg',
+          thumbnail_url: 'http://localhost:9000/mybucket/hoge/image_sample.jpg',
           like_count: 0,
           rough: false,
           title: 'testt itle',
@@ -261,7 +261,7 @@ const Content: React.FC = () => {
           icon_url: 'http://localhost:9000/mybucket/hoge/icon_sample.jpg',
           illustratio: true,
           image_index: 1,
-          image_url: 'http://localhost:9000/mybucket/hoge/image_sample.jpg',
+          thumbnail_url: 'http://localhost:9000/mybucket/hoge/image_sample.jpg',
           like_count: 0,
           rough: false,
           title: 'testt itle',
@@ -281,7 +281,7 @@ const Content: React.FC = () => {
           icon_url: 'http://localhost:9000/mybucket/hoge/icon_sample.jpg',
           illustratio: true,
           image_index: 1,
-          image_url: 'http://localhost:9000/mybucket/hoge/image_sample.jpg',
+          thumbnail_url: 'http://localhost:9000/mybucket/hoge/image_sample.jpg',
           like_count: 0,
           rough: false,
           title: 'testt itle',
@@ -301,7 +301,7 @@ const Content: React.FC = () => {
           icon_url: 'http://localhost:9000/mybucket/hoge/icon_sample.jpg',
           illustratio: true,
           image_index: 1,
-          image_url: 'http://localhost:9000/mybucket/hoge/image_sample.jpg',
+          thumbnail_url: 'http://localhost:9000/mybucket/hoge/image_sample.jpg',
           like_count: 0,
           rough: false,
           title: 'testt itle',
@@ -323,7 +323,7 @@ const Content: React.FC = () => {
           icon_url: 'http://localhost:9000/mybucket/hoge/icon_sample.jpg',
           illustratio: true,
           image_index: 1,
-          image_url: 'http://localhost:9000/mybucket/hoge/image_sample.jpg',
+          thumbnail_url: 'http://localhost:9000/mybucket/hoge/image_sample.jpg',
           like_count: 0,
           rough: false,
           title: 'testt itle',
@@ -343,7 +343,7 @@ const Content: React.FC = () => {
           icon_url: 'http://localhost:9000/mybucket/hoge/icon_sample.jpg',
           illustratio: true,
           image_index: 1,
-          image_url: 'http://localhost:9000/mybucket/hoge/image_sample.jpg',
+          thumbnail_url: 'http://localhost:9000/mybucket/hoge/image_sample.jpg',
           like_count: 0,
           rough: false,
           title: 'testt itle',
@@ -365,7 +365,7 @@ const Content: React.FC = () => {
           icon_url: 'http://localhost:9000/mybucket/hoge/icon_sample.jpg',
           illustratio: true,
           image_index: 1,
-          image_url: 'http://localhost:9000/mybucket/hoge/image_sample.jpg',
+          thumbnail_url: 'http://localhost:9000/mybucket/hoge/image_sample.jpg',
           like_count: 0,
           rough: false,
           title: 'testt itle',
@@ -411,7 +411,7 @@ const Content: React.FC = () => {
           <>
             <MainContent>
               <MainImageContainer>
-                <MainImage src={item.image_url} />
+                <MainImage src={item.thumbnail_url} />
               </MainImageContainer>
               <InfoContainer>
                 <Title>{item.title}</Title>
