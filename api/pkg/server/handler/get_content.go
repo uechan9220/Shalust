@@ -20,7 +20,7 @@ func GetUserIllustratio(c *gin.Context) {
 
 	user_id := c.Param("user_id")
 
-	var data model.UserMainPage
+	var data model.ContentPage
 
 	_ = usecase.GetUserData(user_id, &data.UserData)
 	_ = usecase.GetUserIllustratio(user_id, &data.Illustratio)
@@ -32,7 +32,7 @@ func GetUserCommic(c *gin.Context) {
 
 	user_id := c.Param("user_id")
 
-	var data model.UserMainPage
+	var data model.ContentPage
 
 	_ = usecase.GetUserData(user_id, &data.UserData)
 	_ = usecase.GetUserCommic(user_id, &data.Illustratio)
@@ -43,7 +43,7 @@ func GetUserGraffiti(c *gin.Context) {
 
 	user_id := c.Param("user_id")
 
-	var data model.UserMainPage
+	var data model.ContentPage
 
 	_ = usecase.GetUserData(user_id, &data.UserData)
 	_ = usecase.GetUserGraffiti(user_id, &data.Illustratio)
@@ -54,7 +54,7 @@ func GetUserRough(c *gin.Context) {
 
 	user_id := c.Param("user_id")
 
-	var data model.UserMainPage
+	var data model.ContentPage
 
 	_ = usecase.GetUserData(user_id, &data.UserData)
 	_ = usecase.GetUserRough(user_id, &data.Illustratio)

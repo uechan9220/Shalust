@@ -70,7 +70,7 @@ type RturnIllustratio struct {
 	illustratio []Content `json:"illustratio"`
 }
 
-type UserMainPage struct {
+type ContentPage struct {
 	UserData    User          `json:"userData"`
 	Illustratio []ContentData `json:"illustratio"`
 }
