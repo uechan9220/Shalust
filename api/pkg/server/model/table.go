@@ -69,6 +69,9 @@ type ContentData struct {
 type ContentPage struct {
 	UserData    User          `json:"userData"`
 	Illustratio []ContentData `json:"illustratio"`
+	Commic      []ContentData `json:"commic"`
+	Graffiti    []ContentData `json:"graffiti"`
+	Rough       []ContentData `json:"rough"`
 }
 type Like struct {
 	Id         int    `json:"id"`
