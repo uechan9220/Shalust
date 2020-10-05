@@ -61,7 +61,7 @@ func GetUserRough(c *gin.Context) {
 	c.JSON(200, data)
 }
 
-func Post_management(c *gin.Context) {
+func PostIllustratioManagement(c *gin.Context) {
 
 	var requestData model.UserData
 
@@ -69,6 +69,42 @@ func Post_management(c *gin.Context) {
 
 	var data []model.ContentHandling
 
-	_ = usecase.GetUserContent(requestData.User_id, &data)
+	_ = usecase.GetUserIllustratioManagement(requestData.User_id, &data)
+	c.JSON(200, data)
+}
+
+func PostCommicManagement(c *gin.Context) {
+
+	var requestData model.UserData
+
+	c.BindJSON(&requestData)
+
+	var data []model.ContentHandling
+
+	_ = usecase.GetUserCommicManagement(requestData.User_id, &data)
+	c.JSON(200, data)
+}
+
+func PostGraffitiManagement(c *gin.Context) {
+
+	var requestData model.UserData
+
+	c.BindJSON(&requestData)
+
+	var data []model.ContentHandling
+
+	_ = usecase.GetUserGraffitiManagement(requestData.User_id, &data)
+	c.JSON(200, data)
+}
+
+func PostRoughManagement(c *gin.Context) {
+
+	var requestData model.UserData
+
+	c.BindJSON(&requestData)
+
+	var data []model.ContentHandling
+
+	_ = usecase.GetUserRoughManagement(requestData.User_id, &data)
 	c.JSON(200, data)
 }
