@@ -111,15 +111,9 @@ const PostManagement: React.FC = () => {
   const [Data, setData] = useState([]);
 
   useEffect(() => {
-    console.log(currentUser.status);
-    if (currentUser.status === 'in') {
-    }
-  }, [currentUser]);
-
-  useEffect(() => {
     content !== undefined ? setPath(content) : setPath('illustratio');
     // let userId = { user_id: currentUser.user?.uid };
-    let userId = { user_id: 'd376e021-0717-11eb-87ca-0242ac140002' };
+    let userId = { user_id: '3b03ef4f-0724-11eb-b516-0242ac150002' };
     isLoading(true);
 
     switch (content) {
