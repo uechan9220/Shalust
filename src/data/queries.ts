@@ -111,6 +111,7 @@ export const GetIllustQuery = gql`
       image_url
       image_index
       like_count
+      thumbnail_url
     }
   }
 `;

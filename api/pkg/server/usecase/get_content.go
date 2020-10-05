@@ -108,7 +108,7 @@ func GetUserRough(user_id string, data *[]model.ContentData) error {
 	return err
 }
 
-func GetUserContent(user_id string, data *[]model.ContentHandling) error {
+func GetUserRoughManagement(user_id string, data *[]model.ContentHandling) error {
 	client, err := infra.Init_mysql()
 	if err != nil {
 
@@ -116,6 +116,52 @@ func GetUserContent(user_id string, data *[]model.ContentHandling) error {
 	}
 	client.From("content_handling").
 		Where("user_id = ?", user_id).
+		Where("rough = 1").
+		Scan(data)
+
+	defer client.Close()
+	return err
+}
+
+func GetUserGraffitiManagement(user_id string, data *[]model.ContentHandling) error {
+	client, err := infra.Init_mysql()
+	if err != nil {
+
+		return err
+	}
+	client.From("content_handling").
+		Where("user_id = ?", user_id).
+		Where("graffiti = 1").
+		Scan(data)
+
+	defer client.Close()
+	return err
+}
+
+func GetUserIllustratioManagement(user_id string, data *[]model.ContentHandling) error {
+	client, err := infra.Init_mysql()
+	if err != nil {
+
+		return err
+	}
+	client.From("content_handling").
+		Where("user_id = ?", user_id).
+		Where("illustratio = 1").
+		Scan(data)
+
+	defer client.Close()
+	return err
+}
+
+func GetUserCommicManagement(user_id string, data *[]model.ContentHandling) error {
+	client, err := infra.Init_mysql()
+	if err != nil {
+
+		return err
+	}
+	client.From("content_handling").
+		Where("user_id = ?", user_id).
+		Where("commic = 1").
 		Scan(data)
 
 	defer client.Close()

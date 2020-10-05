@@ -18,9 +18,9 @@ func GetIllustratio(c *gin.Context) {
 
 func GetUserIllustratio(c *gin.Context) {
 
-	var data model.UserMainPage
-
 	user_id := c.Param("user_id")
+
+	var data model.ContentPage
 
 	_ = usecase.GetUserData(user_id, &data.UserData)
 	_ = usecase.GetUserIllustratio(user_id, &data.Illustratio)
@@ -32,10 +32,10 @@ func GetUserCommic(c *gin.Context) {
 
 	user_id := c.Param("user_id")
 
-	var data model.UserMainPage
+	var data model.ContentPage
 
 	_ = usecase.GetUserData(user_id, &data.UserData)
-	_ = usecase.GetUserCommic(user_id, &data.Illustratio)
+	_ = usecase.GetUserCommic(user_id, &data.Commic)
 
 	c.JSON(200, data)
 }
@@ -43,10 +43,10 @@ func GetUserGraffiti(c *gin.Context) {
 
 	user_id := c.Param("user_id")
 
-	var data model.UserMainPage
+	var data model.ContentPage
 
 	_ = usecase.GetUserData(user_id, &data.UserData)
-	_ = usecase.GetUserGraffiti(user_id, &data.Illustratio)
+	_ = usecase.GetUserGraffiti(user_id, &data.Graffiti)
 
 	c.JSON(200, data)
 }
@@ -54,14 +54,14 @@ func GetUserRough(c *gin.Context) {
 
 	user_id := c.Param("user_id")
 
-	var data model.UserMainPage
+	var data model.ContentPage
 
 	_ = usecase.GetUserData(user_id, &data.UserData)
-	_ = usecase.GetUserRough(user_id, &data.Illustratio)
+	_ = usecase.GetUserRough(user_id, &data.Rough)
 	c.JSON(200, data)
 }
 
-func Post_management(c *gin.Context) {
+func PostIllustratioManagement(c *gin.Context) {
 
 	var requestData model.UserData
 
@@ -69,6 +69,42 @@ func Post_management(c *gin.Context) {
 
 	var data []model.ContentHandling
 
-	_ = usecase.GetUserContent(requestData.User_id, &data)
+	_ = usecase.GetUserIllustratioManagement(requestData.User_id, &data)
+	c.JSON(200, data)
+}
+
+func PostCommicManagement(c *gin.Context) {
+
+	var requestData model.UserData
+
+	c.BindJSON(&requestData)
+
+	var data []model.ContentHandling
+
+	_ = usecase.GetUserCommicManagement(requestData.User_id, &data)
+	c.JSON(200, data)
+}
+
+func PostGraffitiManagement(c *gin.Context) {
+
+	var requestData model.UserData
+
+	c.BindJSON(&requestData)
+
+	var data []model.ContentHandling
+
+	_ = usecase.GetUserGraffitiManagement(requestData.User_id, &data)
+	c.JSON(200, data)
+}
+
+func PostRoughManagement(c *gin.Context) {
+
+	var requestData model.UserData
+
+	c.BindJSON(&requestData)
+
+	var data []model.ContentHandling
+
+	_ = usecase.GetUserRoughManagement(requestData.User_id, &data)
 	c.JSON(200, data)
 }

@@ -243,6 +243,7 @@ interface ItemProps {
     like_count: number;
     user_bookmarked: boolean;
     user_liked: boolean;
+    thumbnail_url: string;
   };
   isInfo?: boolean;
   path?: string;
@@ -267,7 +268,7 @@ const Item: React.FC<ItemProps> = (props: any) => {
       {console.log(props)}
       <ImageContainer>
         <Link to={`/${props.path}/${props.item.content_id}`}>
-          <Image src={props.item.image_url} />
+          <Image src={props.item.thumbnail_url} />
         </Link>
         <HoverContent>
           <Title>{props.item.title}</Title>
