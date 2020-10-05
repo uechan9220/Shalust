@@ -28,8 +28,9 @@ func Init_mysql() (Db, error) {
 	return Db{client: client}, err
 }
 
-func (db *Db) Find(shell interface{}) {
-	db.client.Find(shell)
+func (db *Db) Find(shell interface{}) *Db {
+	db.client = db.client.Find(shell)
+	return db
 }
 
 func (db *Db) Scan(shell interface{}) *Db {
@@ -42,16 +43,16 @@ func (db *Db) Where(key string, param ...interface{}) *Db {
 }
 func (db *Db) Close() {
 	db.client.Close()
+
 }
-func (db *Db) Create(shell interface{}) {
-	db.client.Create(shell)
+func (db *Db) Create(shell interface{}) *Db {
+	db.client = db.client.Create(shell)
+	return db
 }
-func (db *Db) Delete(key string, src interface{}, param ...interface{}) bool {
-	if db.client.Where(key, param).First(src).RecordNotFound() {
-		return true
-	}
-	db.client.Delete(src)
-	return false
+func (db *Db) Delete(value interface{}, where ...interface{}) *Db {
+
+	db.client = db.client.Delete(value, where)
+	return db
 }
 func (db *Db) Having(key string, param ...interface{}) *Db {
 	db.client = db.client.Having(key, param)
@@ -71,10 +72,7 @@ func (db *Db) From(raw string) *Db {
 	db.client = db.client.Table(raw)
 	return db
 }
-func (db *Db) NewRecord(key interface{}) {
-	db.client.NewRecord(key)
 
-}
 func (db *Db) Join(key string, param ...interface{}) *Db {
 	db.client = db.client.Joins(key, param)
 	return db
@@ -100,5 +98,14 @@ func (db *Db) Preload(colum string, param ...interface{}) *Db {
 
 func (db *Db) Exec(sql string, values ...interface{}) *Db {
 	db.client = db.client.Exec(sql, values)
+	return db
+}
+
+func (db *Db) Update(attrs ...interface{}) *Db {
+	db.client = db.client.Update(attrs)
+	return db
+}
+func (db *Db) Updates(values interface{}) *Db {
+	db.client = db.client.Updates(values)
 	return db
 }

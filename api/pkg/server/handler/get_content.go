@@ -60,3 +60,15 @@ func GetUserRough(c *gin.Context) {
 	_ = usecase.GetUserRough(user_id, &data.Illustratio)
 	c.JSON(200, data)
 }
+
+func Post_management(c *gin.Context) {
+
+	var requestData model.UserData
+
+	c.BindJSON(&requestData)
+
+	var data []model.ContentHandling
+
+	_ = usecase.GetUserContent(requestData.User_id, &data)
+	c.JSON(200, data)
+}
