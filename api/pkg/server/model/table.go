@@ -66,10 +66,6 @@ type ContentData struct {
 	User_liked      bool   `json:"user_liked"`
 }
 
-type RturnIllustratio struct {
-	illustratio []Content `json:"illustratio"`
-}
-
 type ContentPage struct {
 	UserData    User          `json:"userData"`
 	Illustratio []ContentData `json:"illustratio"`
