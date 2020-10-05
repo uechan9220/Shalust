@@ -29,6 +29,7 @@ type ManagementData struct {
 	Graffiti    []ContentHandling `json:"graffiti"`
 	Rough       []ContentHandling `json:"rough"`
 	Illustratio []ContentHandling `json:"illustratio"`
+}
 type UserData struct {
 	User_id       string `json:"user_id"`
 	User_name     string `json:"user_name"`

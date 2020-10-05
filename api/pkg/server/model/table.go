@@ -64,7 +64,6 @@ type ContentData struct {
 	Thumbnail_url   string `json:"thumbnail_url"`
 	User_bookmarked bool   `json:"user_bookmarked"`
 	User_liked      bool   `json:"user_liked"`
-	Thumbnail_url   string `json:"thumbnail_url"`
 }
 
 type ContentPage struct {
