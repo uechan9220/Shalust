@@ -23,3 +23,10 @@ type Images struct {
 	Image string `json:"image`
 	Index int    `json:"index`
 }
+
+type ManagementData struct {
+	Commic      []ContentHandling `json:"commic"`
+	Graffiti    []ContentHandling `json:"graffiti"`
+	Rough       []ContentHandling `json:"rough"`
+	Illustratio []ContentHandling `json:"illustratio"`
+}

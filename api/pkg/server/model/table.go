@@ -56,13 +56,12 @@ type ContentData struct {
 	Title           string `json:"title"`
 	Views           int    `json:"views"`
 	Adult           bool   `json:"adult"`
-	Image_url       string `json:"image_url"`
-	Image_index     int    `json:"image_index"`
 	Like_count      int    `json:"like_count"`
 	Commic          bool   `json:"commic"`
 	Graffiti        bool   `json:"graffiti"`
 	Rough           bool   `json:"rough"`
 	Illustratio     bool   `json:"illustratio"`
+	Thumbnail_url   string `json:"thumbnail_url"`
 	User_bookmarked bool   `json:"user_bookmarked"`
 	User_liked      bool   `json:"user_liked"`
 }
