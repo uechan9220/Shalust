@@ -40,7 +40,7 @@ interface ItemsProps {
     title: string;
     views: number;
     adult: boolean;
-    image_url: string;
+    thumbnail_url: string;
     image_index: number;
     like_count: number;
     user_bookmarked: boolean;

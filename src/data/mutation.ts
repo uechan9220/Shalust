@@ -20,7 +20,7 @@ export const deleteLikePost = gql`
 export const GetIllustQuery = gql`
   mutation getIllustQuery($type: String!) {
     getIllustQuery(type: $type)
-    @rest(type: "illust", path: "getIllustratio", method: "POST") {
+      @rest(type: "illust", path: "getIllustratio", method: "POST") {
       content_id
       user_id
       user_name
@@ -59,7 +59,7 @@ export const GetIllustQuery = gql`
 export const CreateUserQuery = gql`
   mutation createUserQuery($input: userInfo!) {
     createUserQuery(input: $userInfo)
-    @rest(type: "createUser", path: "createUser", method: "POST") {
+      @rest(type: "createUser", path: "createUser", method: "POST") {
       user_id
     }
   }
@@ -68,8 +68,30 @@ export const CreateUserQuery = gql`
 export const PostQuery = gql`
   mutation postQuery($input: postData!) {
     postQuery(input: $postData)
-    @rest(type: "postContent", path: "postContent", method: "POST") {
+      @rest(type: "postContent", path: "postContent", method: "POST") {
       user_id
+    }
+  }
+`;
+
+export const ChangeDiscloseQuery = gql`
+  mutation changeDiscloseQuery($input: changeData!) {
+    changeDiscloseQuery(input: $changeData)
+      @rest(
+        type: "changeDisclose"
+        path: "cahngeDiscloseContent"
+        method: "PUT"
+      ) {
+      content_id
+    }
+  }
+`;
+
+export const DeleteContentQuery = gql`
+  mutation deleteContentQuery($input: ContentId!) {
+    deleteContentQuery(input: $ContentId)
+      @rest(type: "Post", path: "deleteContnt", method: "DELETE") {
+      content_id
     }
   }
 `;
