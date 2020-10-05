@@ -90,7 +90,7 @@ export const ChangeDiscloseQuery = gql`
 export const DeleteContentQuery = gql`
   mutation deleteContentQuery($input: ContentId!) {
     deleteContentQuery(input: $ContentId)
-      @rest(type: "Post", path: "deleteContnt", method: "DELETE") {
+      @rest(type: "Post", path: "deleteContnt", method: "POST") {
       content_id
     }
   }
