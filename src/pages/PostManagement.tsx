@@ -3,14 +3,9 @@ import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import PostContent from '../components/PostContent';
 /* testData */
-import {
-  ManagementIllustratioData,
-  ManagementRoughData,
-  ManagementCommicData,
-  ManagementGraffitiData,
-} from '../data/Data';
+import { ManagementData } from '../data/Data';
 
-/**
+/**ZZ
  * interface
  */
 
@@ -95,32 +90,32 @@ const PostManagement: React.FC = () => {
   const [path, setPath] = useState('illustratio');
   const [selectNumber, setSelectNumber] = useState(1);
 
-  const [Data, setData] = useState(ManagementIllustratioData);
+  const [Data, setData] = useState([]);
+
+  useEffect(() => {}, []);
 
   useEffect(() => {
     content !== undefined ? setPath(content) : setPath('illustratio');
     switch (content) {
       case 'illustratio':
         setSelectNumber(1);
-        setData(ManagementIllustratioData);
         break;
       case 'rough':
         setSelectNumber(2);
-        setData(ManagementRoughData);
         break;
       case 'commic':
         setSelectNumber(3);
-        setData(ManagementCommicData);
         break;
       case 'graffiti':
         setSelectNumber(4);
-        setData(ManagementGraffitiData);
         break;
       default:
         setSelectNumber(1);
-        setData(ManagementIllustratioData);
         break;
     }
+    // setData(ManagementData[0].content);
+    // console.log(ManagementData[0][`${content}`]);
+    setData(ManagementData[0][`${content}`]);
     console.log(Data);
   }, [content, Data]);
 
@@ -146,7 +141,14 @@ const PostManagement: React.FC = () => {
         </Nav>
       </NavContainer>
       {Data.map((items, index) => {
-        return <PostContent key={index} items={items} />;
+        console.log(Object.keys(items).length);
+        return (
+          <>
+            {Object.keys(items).length > 1 ? (
+              <PostContent key={index} items={items} />
+            ) : null}
+          </>
+        );
       })}
     </Container>
   );
