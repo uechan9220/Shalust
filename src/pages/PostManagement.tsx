@@ -1,9 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { useMutation } from 'react-apollo';
 import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import { AuthContext } from '../AuthProvider';
 import PostContent from '../components/PostContent';
 /* testData */
 import { ManagementData } from '../data/Data';
+import {
+  PostManagementCommicQuery,
+  PostManagementGraffitiQuery,
+  PostManagementIllustratioQuery,
+  PostManagementRoughQuery,
+} from '../data/mutation';
 
 /**ZZ
  * interface
@@ -86,38 +94,107 @@ const NavText = styled.p``;
 const NavContainer = styled.div``;
 
 const PostManagement: React.FC = () => {
+  const { currentUser } = useContext(AuthContext);
   let { content } = useParams<ParamsProps>();
   const [path, setPath] = useState('illustratio');
   const [selectNumber, setSelectNumber] = useState(1);
+  const [loading, isLoading] = useState(false);
+  const [postManagementIllustratioQuery] = useMutation(
+    PostManagementIllustratioQuery
+  );
+  const [postManagementCommicQuery] = useMutation(PostManagementCommicQuery);
+  const [postManagementRoughQuery] = useMutation(PostManagementRoughQuery);
+  const [postManagementGraffitiQuery] = useMutation(
+    PostManagementGraffitiQuery
+  );
 
   const [Data, setData] = useState([]);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    console.log(currentUser.status);
+    if (currentUser.status === 'in') {
+    }
+  }, [currentUser]);
 
   useEffect(() => {
     content !== undefined ? setPath(content) : setPath('illustratio');
+    // let userId = { user_id: currentUser.user?.uid };
+    let userId = { user_id: 'd376e021-0717-11eb-87ca-0242ac140002' };
+    isLoading(true);
+
     switch (content) {
       case 'illustratio':
         setSelectNumber(1);
+        postManagementIllustratioQuery({
+          variables: { userId },
+        }).then((res) => {
+          if (!res.errors) {
+            console.log(res);
+            setData(res.data.postManagementIllustratio);
+            isLoading(false);
+          } else {
+            console.log(res.errors);
+          }
+        });
         break;
       case 'rough':
         setSelectNumber(2);
+        postManagementRoughQuery({
+          variables: { userId },
+        }).then((res) => {
+          if (!res.errors) {
+            console.log(res);
+            setData(res.data.postManagementRough);
+            isLoading(false);
+          } else {
+            console.log(res.errors);
+          }
+        });
         break;
       case 'commic':
         setSelectNumber(3);
+        postManagementCommicQuery({
+          variables: { userId },
+        }).then((res) => {
+          if (!res.errors) {
+            console.log(res);
+            setData(res.data.postManagementCommic);
+            isLoading(false);
+          } else {
+            console.log(res.errors);
+          }
+        });
         break;
       case 'graffiti':
         setSelectNumber(4);
+        postManagementGraffitiQuery({
+          variables: { userId },
+        }).then((res) => {
+          if (!res.errors) {
+            console.log(res);
+            setData(res.data.postManagementGraffiti);
+            isLoading(false);
+          } else {
+            console.log(res.errors);
+          }
+        });
         break;
       default:
         setSelectNumber(1);
+        postManagementIllustratioQuery({
+          variables: { userId },
+        }).then((res) => {
+          if (!res.errors) {
+            console.log(res);
+            setData(res.data.postManagementIllustratio);
+            isLoading(false);
+          } else {
+            console.log(res.errors);
+          }
+        });
         break;
     }
-    // setData(ManagementData[0].content);
-    // console.log(ManagementData[0][`${content}`]);
-    setData(ManagementData[0][`${content}`]);
-    console.log(Data);
-  }, [content, Data]);
+  }, [content]);
 
   return (
     <Container>
@@ -140,16 +217,23 @@ const PostManagement: React.FC = () => {
           </StyledLink>
         </Nav>
       </NavContainer>
-      {Data.map((items, index) => {
-        console.log(Object.keys(items).length);
-        return (
+      <>
+        {loading ? (
+          <p>loading</p>
+        ) : (
           <>
-            {Object.keys(items).length > 1 ? (
-              <PostContent key={index} items={items} />
-            ) : null}
+            {Data.map((items, index) => {
+              return (
+                <>
+                  {Object.keys(items).length > 1 ? (
+                    <PostContent key={index} items={items} />
+                  ) : null}
+                </>
+              );
+            })}
           </>
-        );
-      })}
+        )}
+      </>
     </Container>
   );
 };
