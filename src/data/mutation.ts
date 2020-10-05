@@ -118,6 +118,7 @@ export const PostManagementIllustratioQuery = gql`
       like_count
       user_bookmarked
       user_liked
+      disclose
     }
   }
 `;
@@ -140,6 +141,7 @@ export const PostManagementCommicQuery = gql`
       like_count
       user_bookmarked
       user_liked
+      disclose
     }
   }
 `;
@@ -162,6 +164,7 @@ export const PostManagementRoughQuery = gql`
       like_count
       user_bookmarked
       user_liked
+      disclose
     }
   }
 `;
@@ -188,6 +191,7 @@ export const PostManagementGraffitiQuery = gql`
       like_count
       user_bookmarked
       user_liked
+      disclose
     }
   }
 `;
