@@ -1,7 +1,9 @@
 import { Button } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
+import { useMutation } from 'react-apollo';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { ChangeDiscloseQuery, DeleteContentQuery } from '../data/mutation';
 
 const Container = styled.div``;
 
@@ -189,29 +191,54 @@ interface PostContentProps {
     title: string;
     views: number;
     adult: boolean;
-    image_url: string;
+    thumbnail_url: string;
     image_index: number;
     like_count: number;
-    tags: string[];
-    is_public: boolean;
+    disclose: boolean;
   };
 }
 
 const PostContent: React.FC<PostContentProps> = (props) => {
-  const [postPublic, isPostPublic] = useState<boolean>();
+  const [disclose, isDisclose] = useState<boolean>();
+  const [changeDiscloseQuery] = useMutation(ChangeDiscloseQuery);
+  const [deleteContentQuery] = useMutation(DeleteContentQuery);
 
   useEffect(() => {
-    isPostPublic(props.items.is_public);
-  }, [props.items.is_public]);
+    isDisclose(props.items.disclose);
+  }, [props.items.disclose]);
 
-  const PublicFunc = () => {
-    isPostPublic(!postPublic);
-    alert(postPublic ? '非公開にしました' : '公開しました');
+  const PublicFunc = (contentId: string) => {
+    let changeData = { content_id: contentId, disclose: !disclose };
+    changeDiscloseQuery({
+      variables: { changeData },
+    }).then((res) => {
+      if (!res.errors) {
+        console.log(res);
+        isDisclose(!disclose);
+        alert(disclose ? '非公開にしました' : '公開しました');
+      } else {
+        console.log(res.errors);
+      }
+    });
+
+    console.log(contentId);
+    console.log(!disclose);
   };
 
-  const DeleteItem = () => {
-    console.log(props.items.content_id);
-    alert(`${props.items.content_id}を削除しました。(まだ実装してない)`);
+  const DeleteItem = (contentId: string, title: string) => {
+    console.log(contentId);
+    let ContentId = { content_id: contentId };
+    deleteContentQuery({
+      variables: { ContentId },
+    }).then((res) => {
+      if (!res.errors) {
+        console.log(res);
+        alert(`${title}を削除しました。`);
+        window.location.reload(false);
+      } else {
+        console.log(res.errors);
+      }
+    });
   };
 
   return (
@@ -219,7 +246,7 @@ const PostContent: React.FC<PostContentProps> = (props) => {
       <Content>
         <ImageContainer>
           <LinkStyled to={`/illustratio/${props.items.content_id}`}>
-            <Image src={props.items.image_url} />
+            <Image src={props.items.thumbnail_url} />
           </LinkStyled>
         </ImageContainer>
         <RightContent>
@@ -227,7 +254,7 @@ const PostContent: React.FC<PostContentProps> = (props) => {
             <TitleContainer>
               <Title>{props.items.title}</Title>
               <IsSpPublicContainer>
-                {postPublic ? (
+                {disclose ? (
                   <IsPublicContent>
                     <PublicIcon
                       viewBox='0 0 24 24'
@@ -273,7 +300,7 @@ const PostContent: React.FC<PostContentProps> = (props) => {
                 いいね数: {props.items.like_count.toLocaleString()}
               </LikeCount>
             </InfoContent>
-            <TagsContainer>
+            {/* <TagsContainer>
               {props.items.tags.map((tag, index) => {
                 return (
                   <TagText>
@@ -283,7 +310,7 @@ const PostContent: React.FC<PostContentProps> = (props) => {
                   </TagText>
                 );
               })}
-            </TagsContainer>
+            </TagsContainer> */}
           </InfoContainer>
           <UploadTimeContainer>
             <UploadTimeText>
@@ -292,7 +319,7 @@ const PostContent: React.FC<PostContentProps> = (props) => {
             <UploadText>アップロード</UploadText>
           </UploadTimeContainer>
           <IsPublicContainer>
-            {postPublic ? (
+            {disclose ? (
               <IsPublicContent>
                 <PublicIcon
                   viewBox='0 0 24 24'
@@ -323,11 +350,19 @@ const PostContent: React.FC<PostContentProps> = (props) => {
             )}
           </IsPublicContainer>
           <FunctionSection>
-            <Button color='primary' onClick={() => PublicFunc()}>
-              {postPublic ? '非公開にする' : '公開する'}
+            <Button
+              color='primary'
+              onClick={() => PublicFunc(props.items.content_id)}
+            >
+              {disclose ? '非公開にする' : '公開する'}
             </Button>
 
-            <Button color='secondary' onClick={() => DeleteItem()}>
+            <Button
+              color='secondary'
+              onClick={() =>
+                DeleteItem(props.items.content_id, props.items.title)
+              }
+            >
               削除する
             </Button>
           </FunctionSection>
