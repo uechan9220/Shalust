@@ -24,7 +24,7 @@ func Serve(r *gin.Engine, port string) {
 		v1.POST("/postManagement/rough", handler.PostRoughManagement)
 
 		v1.PUT("/cahngeDiscloseContent", handler.CahngeDiscloseContent)
-		v1.DELETE("/deleteContnt", handler.DeleteContent)
+		v1.POST("/deleteContnt", handler.DeleteContent)
 
 	}
 
