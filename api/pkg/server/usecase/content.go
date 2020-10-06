@@ -1,7 +1,6 @@
 package usecase
 
 import (
-	"fmt"
 	"shalust/api/pkg/infra"
 )
 
@@ -11,7 +10,6 @@ func CahngeDisclose(content_id string, disclose bool) error {
 	if err != nil {
 		return err
 	}
-	fmt.Println(content_id)
 	if disclose {
 		client.Exec("UPDATE content_handling SET disclose= 1 WHERE content_id = ?", content_id)
 	} else {

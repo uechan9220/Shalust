@@ -21,10 +21,10 @@ func Serve(r *gin.Engine, port string) {
 		v1.POST("/postManagement/illustratio", handler.PostIllustratioManagement)
 		v1.POST("/postManagement/commic", handler.PostCommicManagement)
 		v1.POST("/postManagement/graffiti", handler.PostGraffitiManagement)
-		v1.POST("/postManagement/roug", handler.PostRoughManagement)
+		v1.POST("/postManagement/rough", handler.PostRoughManagement)
 
 		v1.PUT("/cahngeDiscloseContent", handler.CahngeDiscloseContent)
-		v1.DELETE("/deleteContnt", handler.DeleteContent)
+		v1.POST("/deleteContnt", handler.DeleteContent)
 
 	}
 

@@ -90,8 +90,108 @@ export const ChangeDiscloseQuery = gql`
 export const DeleteContentQuery = gql`
   mutation deleteContentQuery($input: ContentId!) {
     deleteContentQuery(input: $ContentId)
-      @rest(type: "Post", path: "deleteContnt", method: "DELETE") {
+      @rest(type: "Post", path: "deleteContnt", method: "POST") {
       content_id
+    }
+  }
+`;
+
+export const PostManagementIllustratioQuery = gql`
+  mutation postManagementIllustratioQuery($input: userId!) {
+    postManagementIllustratio(input: $userId)
+      @rest(
+        type: "illustData"
+        path: "postManagement/illustratio"
+        method: "POST"
+      ) {
+      content_id
+      user_id
+      user_name
+      icon_url
+      detail
+      create_at
+      title
+      views
+      adult
+      thumbnail_url
+      image_index
+      like_count
+      user_bookmarked
+      user_liked
+      disclose
+    }
+  }
+`;
+
+export const PostManagementCommicQuery = gql`
+  mutation postManagementCommicQuery($input: userId!) {
+    postManagementCommic(input: $userId)
+      @rest(type: "commicData", path: "postManagement/commic", method: "POST") {
+      content_id
+      user_id
+      user_name
+      icon_url
+      detail
+      create_at
+      title
+      views
+      adult
+      thumbnail_url
+      image_index
+      like_count
+      user_bookmarked
+      user_liked
+      disclose
+    }
+  }
+`;
+
+export const PostManagementRoughQuery = gql`
+  mutation postManagementRoughQuery($input: userId!) {
+    postManagementRough(input: $userId)
+      @rest(type: "roughData", path: "postManagement/rough", method: "POST") {
+      content_id
+      user_id
+      user_name
+      icon_url
+      detail
+      create_at
+      title
+      views
+      adult
+      thumbnail_url
+      image_index
+      like_count
+      user_bookmarked
+      user_liked
+      disclose
+    }
+  }
+`;
+
+export const PostManagementGraffitiQuery = gql`
+  mutation postManagementGraffitiQuery($input: userId!) {
+    postManagementGraffiti(input: $userId)
+      @rest(
+        type: "graffitiData"
+        path: "postManagement/graffiti"
+        method: "POST"
+      ) {
+      content_id
+      user_id
+      user_name
+      icon_url
+      detail
+      create_at
+      title
+      views
+      adult
+      thumbnail_url
+      image_index
+      like_count
+      user_bookmarked
+      user_liked
+      disclose
     }
   }
 `;

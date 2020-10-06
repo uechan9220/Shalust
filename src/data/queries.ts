@@ -1,4 +1,4 @@
-import gql from 'graphql-tag'
+import gql from 'graphql-tag';
 
 export const allTagQuery = gql`
   query tags {
@@ -6,7 +6,7 @@ export const allTagQuery = gql`
       name
     }
   }
-`
+`;
 
 export const allPostQuery = gql`
   query post($tagName: String) {
@@ -26,7 +26,7 @@ export const allPostQuery = gql`
       }
     }
   }
-`
+`;
 
 export const fetchLikes = gql`
   query FetchLikes($id: number, $userId: string) {
@@ -41,7 +41,7 @@ export const fetchLikes = gql`
       }
     }
   }
-`
+`;
 
 export const userQuery = gql`
   query UserQuyery($uniqueid: String) {
@@ -54,7 +54,7 @@ export const userQuery = gql`
       }
     }
   }
-`
+`;
 
 export const myUserQuery = gql`
   query MyUserQuyery($email: String) {
@@ -68,7 +68,7 @@ export const myUserQuery = gql`
       }
     }
   }
-`
+`;
 
 /**
  * illustratio query
@@ -95,10 +95,9 @@ export const myUserQuery = gql`
 //   }
 // `
 
-
 export const GetIllustQuery = gql`
-  query getIllustQuery{
-    illust @rest(type: "Illust", path: "getIllustratio" ){
+  query getIllustQuery {
+    illust @rest(type: "Illust", path: "getIllustratio") {
       content_id
       user_id
       user_name
@@ -112,44 +111,44 @@ export const GetIllustQuery = gql`
       image_index
       like_count
       thumbnail_url
+      disclose
     }
   }
 `;
 
-
 // UserPageQuery
 export const GetUserIllustQuery = gql`
-  query getUserIllustQuery($user_id: String!){
+  query getUserIllustQuery($user_id: String!) {
     userData(user_id: $user_id)
-     @rest(type: "userData", path: "user/{args.user_id}/Illustratio"){
-       illustratio
-     }
+      @rest(type: "userData", path: "user/{args.user_id}/Illustratio") {
+      illustratio
+    }
   }
-`
+`;
 
 export const GetUserRoughQuery = gql`
-  query getUserRoughQuery($user_id: String!){
+  query getUserRoughQuery($user_id: String!) {
     userData(user_id: $user_id)
-     @rest(type: "userData", path: "user/{args.user_id}/rough"){
-       rough
-     }
+      @rest(type: "userData", path: "user/{args.user_id}/rough") {
+      rough
+    }
   }
-`
+`;
 
 export const GetUserCommicQuery = gql`
-  query getUserCommicQuery($user_id: String!){
+  query getUserCommicQuery($user_id: String!) {
     userData(user_id: $user_id)
-     @rest(type: "userData", path: "user/{args.user_id}/commic"){
-       commic
-     }
+      @rest(type: "userData", path: "user/{args.user_id}/commic") {
+      commic
+    }
   }
-`
+`;
 
 export const GetUserGraffitiQuery = gql`
-  query getUserGraffitiQuery($user_id: String!){
+  query getUserGraffitiQuery($user_id: String!) {
     userData(user_id: $user_id)
-     @rest(type: "userData", path: "user/{args.user_id}/graffiti"){
-       graffiti
-     }
+      @rest(type: "userData", path: "user/{args.user_id}/graffiti") {
+      graffiti
+    }
   }
-`
+`;
