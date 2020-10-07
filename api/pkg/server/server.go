@@ -21,15 +21,15 @@ func Serve(r *gin.Engine, port string) {
 		v1.GET("/getCommic", handler.GetCommic)
 		v1.GET("/getRough", handler.GetRough)
 
-		v1.GET("/getLikeIllustratio", handler.GetUserLikedIllustratio)
-		v1.GET("/getLikeGraffiti", handler.GetUserLikedGraffiti)
-		v1.GET("/getLikeCommic", handler.GetUserLikedCommic)
-		v1.GET("/getLikeRough", handler.GetUserLikedRough)
+		v1.POST("/getLikeIllustratio", handler.GetUserLikedIllustratio)
+		v1.POST("/getLikeGraffiti", handler.GetUserLikedGraffiti)
+		v1.POST("/getLikeCommic", handler.GetUserLikedCommic)
+		v1.POST("/getLikeRough", handler.GetUserLikedRough)
 
-		v1.GET("/getbookmarkIllustratio", handler.GetUserBookmarkedIllustratio)
-		v1.GET("/getbookmarkGraffiti", handler.GetUserBookmarkedGraffiti)
-		v1.GET("/getbookmarkCommic", handler.GetUserBookmarkedCommic)
-		v1.GET("/getbookmarkRough", handler.GetUserbookmarkedRough)
+		v1.POST("/getbookmarkIllustratio", handler.GetUserBookmarkedIllustratio)
+		v1.POST("/getbookmarkGraffiti", handler.GetUserBookmarkedGraffiti)
+		v1.POST("/getbookmarkCommic", handler.GetUserBookmarkedCommic)
+		v1.POST("/getbookmarkRough", handler.GetUserbookmarkedRough)
 
 		v1.POST("/createUser", handler.CreateUser)
 
