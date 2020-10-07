@@ -16,8 +16,12 @@ make up
 ### `停止`
 make down
 
-#### `起動してもdbが空だった場合(基本的にupで解決します)`
+#### `DBのセットアップ`
 make init/mysql 
+
+
+#### `サンプルの作成`
+make create/sample
 
 
 
