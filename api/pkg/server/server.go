@@ -25,7 +25,8 @@ func Serve(r *gin.Engine, port string) {
 		v1.POST("/postManagement/commic", handler.PostCommicManagement)
 		v1.POST("/postManagement/graffiti", handler.PostGraffitiManagement)
 		v1.POST("/postManagement/rough", handler.PostRoughManagement)
-
+		v1.POST("/bookmarkContent", handler.BookmarkContent)
+		v1.POST("/likeContent", handler.LikeContent)
 		v1.PUT("/cahngeDiscloseContent", handler.CahngeDiscloseContent)
 		v1.POST("/deleteContnt", handler.DeleteContent)
 

@@ -89,8 +89,3 @@ type Included_tags struct {
 	Content_id string `json:"content_id"`
 	name       string `json:"name"`
 }
-
-type ContentImages struct {
-	Image_Url string
-	Index     int
-}
