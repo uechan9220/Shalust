@@ -109,3 +109,8 @@ func (db *Db) Updates(values interface{}) *Db {
 	db.client = db.client.Updates(values)
 	return db
 }
+
+func (db *Db) Error(values interface{}) error {
+	err := db.client.Error
+	return err
+}
