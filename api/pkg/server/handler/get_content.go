@@ -137,7 +137,7 @@ func GetUserLikedIllustratio(c *gin.Context) {
 	c.BindJSON(&requestData)
 	var data model.ContentPage
 
-	_ = usecase.GetUserIllustratio(requestData.User_id, &data.Illustratio)
+	_ = usecase.GetUserLikedIllustratio(requestData.User_id, &data.Illustratio)
 
 	c.JSON(200, data)
 }
@@ -149,7 +149,7 @@ func GetUserLikedCommic(c *gin.Context) {
 	c.BindJSON(&requestData)
 	var data model.ContentPage
 
-	_ = usecase.GetUserCommic(requestData.User_id, &data.Commic)
+	_ = usecase.GetUserLikedCommic(requestData.User_id, &data.Commic)
 
 	c.JSON(200, data)
 }
@@ -159,7 +159,7 @@ func GetUserLikedGraffiti(c *gin.Context) {
 	c.BindJSON(&requestData)
 	var data model.ContentPage
 
-	_ = usecase.GetUserGraffiti(requestData.User_id, &data.Graffiti)
+	_ = usecase.GetUserLikedGraffiti(requestData.User_id, &data.Graffiti)
 
 	c.JSON(200, data)
 }
@@ -172,5 +172,50 @@ func GetUserLikedRough(c *gin.Context) {
 	var data model.ContentPage
 
 	_ = usecase.GetUserLikedRough(requestData.User_id, &data.Rough)
+	c.JSON(200, data)
+}
+
+func GetUserBookmarkedIllustratio(c *gin.Context) {
+
+	var requestData model.UserData
+
+	c.BindJSON(&requestData)
+	var data model.ContentPage
+
+	_ = usecase.GetUserBookmarkedIllustratio(requestData.User_id, &data.Illustratio)
+
+	c.JSON(200, data)
+}
+
+func GetUserBookmarkedCommic(c *gin.Context) {
+
+	var requestData model.UserData
+
+	c.BindJSON(&requestData)
+	var data model.ContentPage
+
+	_ = usecase.GetUserBookmarkedCommic(requestData.User_id, &data.Commic)
+
+	c.JSON(200, data)
+}
+func GetUserBookmarkedGraffiti(c *gin.Context) {
+	var requestData model.UserData
+
+	c.BindJSON(&requestData)
+	var data model.ContentPage
+
+	_ = usecase.GetUserBookmarkedGraffiti(requestData.User_id, &data.Graffiti)
+
+	c.JSON(200, data)
+}
+func GetUserbookmarkedRough(c *gin.Context) {
+
+	var requestData model.UserData
+
+	c.BindJSON(&requestData)
+
+	var data model.ContentPage
+
+	_ = usecase.GetUserBookmarkedRough(requestData.User_id, &data.Rough)
 	c.JSON(200, data)
 }
