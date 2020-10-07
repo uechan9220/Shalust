@@ -39,7 +39,7 @@ func LikeContent(requestData model.UserLikeContent) error {
 	if err != nil {
 		return err
 	}
-	requestData.User_liked = GetDeteInTokyo()
+	requestData.User_liked = true
 	client.From("likes").Create(&requestData)
 	defer client.Close()
 	return err
@@ -50,7 +50,7 @@ func BookmarkContent(requestData model.UserBookmarkContent) error {
 	if err != nil {
 		return err
 	}
-	requestData.User_bookmarked = GetDeteInTokyo()
+	requestData.User_bookmarked = true
 	client.From("bookmarks").Create(&requestData)
 	defer client.Close()
 	return err

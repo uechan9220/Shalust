@@ -44,11 +44,11 @@ type UserData struct {
 type UserLikeContent struct {
 	Content_id string `json:"content_id"`
 	User_id    string `json:"user_id"`
-	User_liked string `json:"user_liked"`
+	User_liked bool   `json:"user_liked"`
 }
 
 type UserBookmarkContent struct {
 	Content_id      string `json:"content_id"`
 	User_id         string `json:"user_id"`
-	User_bookmarked string `json:"user_bookmarked"`
+	User_bookmarked bool   `json:"user_bookmarked"`
 }
