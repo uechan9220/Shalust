@@ -26,6 +26,67 @@ func GetAllIllustratio(data *[]model.ContentData) error {
 	return err
 }
 
+func GetAllRough(data *[]model.ContentData) error {
+
+	client, err := infra.Init_mysql()
+	if err != nil {
+		return err
+	}
+
+	client.
+		From("content_handling").
+		Select(`content_handling.*, user.user_name, user.icon_url, likes.user_liked, bookmarks.user_bookmarked`).
+		Join("JOIN user ON user.user_id = content_handling.user_id").
+		Join("LEFT JOIN likes ON likes.content_id = content_handling.content_id AND likes.user_id = ?", "testid").
+		Join("LEFT JOIN bookmarks ON bookmarks.content_id = content_handling.content_id AND bookmarks.user_id = ?", "testid").
+		Where("rough = 1").
+		Where("disclose = 1").
+		Scan(data)
+
+	defer client.Close()
+	return err
+}
+func GetAllCommic(data *[]model.ContentData) error {
+
+	client, err := infra.Init_mysql()
+	if err != nil {
+		return err
+	}
+
+	client.
+		From("content_handling").
+		Select(`content_handling.*, user.user_name, user.icon_url, likes.user_liked, bookmarks.user_bookmarked`).
+		Join("JOIN user ON user.user_id = content_handling.user_id").
+		Join("LEFT JOIN likes ON likes.content_id = content_handling.content_id AND likes.user_id = ?", "testid").
+		Join("LEFT JOIN bookmarks ON bookmarks.content_id = content_handling.content_id AND bookmarks.user_id = ?", "testid").
+		Where("commic = 1").
+		Where("disclose = 1").
+		Scan(data)
+
+	defer client.Close()
+	return err
+}
+func GetAllGraffiti(data *[]model.ContentData) error {
+
+	client, err := infra.Init_mysql()
+	if err != nil {
+		return err
+	}
+
+	client.
+		From("content_handling").
+		Select(`content_handling.*, user.user_name, user.icon_url, likes.user_liked, bookmarks.user_bookmarked`).
+		Join("JOIN user ON user.user_id = content_handling.user_id").
+		Join("LEFT JOIN likes ON likes.content_id = content_handling.content_id AND likes.user_id = ?", "testid").
+		Join("LEFT JOIN bookmarks ON bookmarks.content_id = content_handling.content_id AND bookmarks.user_id = ?", "testid").
+		Where("graffiti = 1").
+		Where("disclose = 1").
+		Scan(data)
+
+	defer client.Close()
+	return err
+}
+
 func GetUserIllustratio(user_id string, data *[]model.ContentData) error {
 	client, err := infra.Init_mysql()
 	if err != nil {

@@ -15,6 +15,27 @@ func GetIllustratio(c *gin.Context) {
 
 	c.JSON(200, data)
 }
+func GetCommic(c *gin.Context) {
+
+	var data []model.ContentData
+	_ = usecase.GetAllCommic(&data)
+
+	c.JSON(200, data)
+}
+func GetGraffiti(c *gin.Context) {
+
+	var data []model.ContentData
+	_ = usecase.GetAllGraffiti(&data)
+
+	c.JSON(200, data)
+}
+func GetRough(c *gin.Context) {
+
+	var data []model.ContentData
+	_ = usecase.GetAllRough(&data)
+
+	c.JSON(200, data)
+}
 
 func GetUserIllustratio(c *gin.Context) {
 
