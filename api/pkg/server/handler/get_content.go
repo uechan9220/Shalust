@@ -129,3 +129,48 @@ func PostRoughManagement(c *gin.Context) {
 	_ = usecase.GetUserRoughManagement(requestData.User_id, &data)
 	c.JSON(200, data)
 }
+
+func GetUserLikedIllustratio(c *gin.Context) {
+
+	var requestData model.UserData
+
+	c.BindJSON(&requestData)
+	var data model.ContentPage
+
+	_ = usecase.GetUserIllustratio(requestData.User_id, &data.Illustratio)
+
+	c.JSON(200, data)
+}
+
+func GetUserLikedCommic(c *gin.Context) {
+
+	var requestData model.UserData
+
+	c.BindJSON(&requestData)
+	var data model.ContentPage
+
+	_ = usecase.GetUserCommic(requestData.User_id, &data.Commic)
+
+	c.JSON(200, data)
+}
+func GetUserLikedGraffiti(c *gin.Context) {
+	var requestData model.UserData
+
+	c.BindJSON(&requestData)
+	var data model.ContentPage
+
+	_ = usecase.GetUserGraffiti(requestData.User_id, &data.Graffiti)
+
+	c.JSON(200, data)
+}
+func GetUserLikedRough(c *gin.Context) {
+
+	var requestData model.UserData
+
+	c.BindJSON(&requestData)
+
+	var data model.ContentPage
+
+	_ = usecase.GetUserLikedRough(requestData.User_id, &data.Rough)
+	c.JSON(200, data)
+}
