@@ -2,8 +2,8 @@ package handler
 
 import (
 	"regexp"
-	"shalust/api/pkg/server/model"
-	"shalust/api/pkg/server/usecase"
+	"shalust/api/pkg/model"
+	"shalust/api/pkg/usecase"
 
 	"github.com/gin-gonic/gin"
 	_ "golang.org/x/image/bmp"

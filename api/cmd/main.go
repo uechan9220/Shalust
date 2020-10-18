@@ -1,7 +1,7 @@
 package main
 
 import (
-	"shalust/api/pkg/server"
+	"shalust/api/pkg"
 
 	"github.com/gin-gonic/gin"
 )
@@ -9,5 +9,5 @@ import (
 func main() {
 	r := gin.Default()
 
-	server.Serve(r, ":8080")
+	pkg.Serve(r, ":8080")
 }

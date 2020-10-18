@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"regexp"
 	"shalust/api/pkg/infra"
-	"shalust/api/pkg/server/model"
+	"shalust/api/pkg/model"
 )
 
 func CreateContentData(data model.Content) error {

@@ -2,7 +2,7 @@ package usecase
 
 import (
 	"shalust/api/pkg/infra"
-	"shalust/api/pkg/server/model"
+	"shalust/api/pkg/model"
 )
 
 func GetAllIllustratio(data *[]model.ContentData) error {

@@ -1,7 +1,7 @@
-package server
+package pkg
 
 import (
-	"shalust/api/pkg/server/handler"
+	"shalust/api/pkg/handler"
 
 	"github.com/gin-gonic/gin"
 )

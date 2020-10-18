@@ -2,7 +2,7 @@ package usecase
 
 import (
 	"shalust/api/pkg/infra"
-	"shalust/api/pkg/server/model"
+	"shalust/api/pkg/model"
 )
 
 func CahngeDisclose(content_id string, disclose bool) error {
