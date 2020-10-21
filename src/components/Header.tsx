@@ -189,6 +189,10 @@ const StyleLink = styled(Link)`
   text-decoration: none;
 `;
 
+const ExternalLink = styled.a`
+  text-decoration: none;
+`;
+
 const Header: React.FC = (props: any) => {
   const { currentUser } = useContext(AuthContext);
 
@@ -293,7 +297,13 @@ const Header: React.FC = (props: any) => {
             </ManegementContainer>
             <SettingContainer>
               <Text>設定</Text>
-              <Text>フィードバックを送る</Text>
+              <ExternalLink
+                target='_blank'
+                rel='noopener noreferrer'
+                href='https://forms.gle/96VworLpwGBqLkXq8'
+              >
+                <Text>フィードバックを送る</Text>
+              </ExternalLink>
             </SettingContainer>
             <Text onClick={() => logout()}>ログアウト</Text>
           </Content>

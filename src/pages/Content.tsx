@@ -171,6 +171,14 @@ const UserPopularityTitle = styled.p`
   font-weight: bold;
 `;
 
+const ExternalLink = styled.a`
+  text-decoration: none;
+  color: #000000;
+  &:active {
+    color: #000000;
+  }
+`;
+
 /**
  * interface
  */
