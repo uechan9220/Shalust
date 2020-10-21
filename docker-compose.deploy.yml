@@ -4,13 +4,10 @@ services:
   api:
     build: 
       context: .
-      dockerfile: Dockerfile.local
+      dockerfile: Dockerfile.deploy
     ports:
       - "8080:8080"
     env_file: [./.env]
-    volumes:
-      - ./:/app
-    working_dir: /app
     tty: true
     networks:
       - shalust-network

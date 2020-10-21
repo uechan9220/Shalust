@@ -1,7 +1,7 @@
 package main
 
 import (
-	"shalust/api/pkg/server"
+	"shalust/api/pkg"
 	"time"
 
 	"github.com/gin-contrib/cors"
@@ -34,5 +34,5 @@ func main() {
 		MaxAge: 24 * time.Hour,
 	}))
 
-	server.Serve(r, ":8080")
+	pkg.Serve(r, ":8080")
 }

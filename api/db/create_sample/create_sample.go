@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"log"
-	"shalust/api/pkg/server/model"
-	"shalust/api/pkg/server/usecase"
+	"shalust/api/pkg/model"
+	"shalust/api/pkg/usecase"
 
 	"github.com/google/uuid"
 )

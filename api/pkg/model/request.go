@@ -40,3 +40,15 @@ type UserData struct {
 	Icon_image    string `json:"icon_image"`
 	Header_image  string `json:"header_image"`
 }
+
+type UserLikeContent struct {
+	Content_id string `json:"content_id"`
+	User_id    string `json:"user_id"`
+	User_liked bool   `json:"user_liked"`
+}
+
+type UserBookmarkContent struct {
+	Content_id      string `json:"content_id"`
+	User_id         string `json:"user_id"`
+	User_bookmarked bool   `json:"user_bookmarked"`
+}
